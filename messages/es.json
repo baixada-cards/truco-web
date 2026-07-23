@@ -1,0 +1,1796 @@
+{
+  "Metadata": {
+    "title": "Truco - Baixada",
+    "description": "Juega truco paulista y estudia jugadas en vivo en Truco Lab."
+  },
+  "Common": {
+    "you": "Tú",
+    "them": "Él",
+    "they": "Él",
+    "tie": "Empate",
+    "close": "cerrar",
+    "random": "Aleatorio",
+    "unknown": "Desconocido",
+    "dismiss": "Descartar",
+    "tryAgain": "Intentar de nuevo",
+    "newMatch": "nueva partida"
+  },
+  "Language": {
+    "label": "Idioma",
+    "title": "Idioma",
+    "summary": "{language}",
+    "ariaLabel": "Elegir idioma",
+    "en": "English",
+    "pt-BR": "Português (Brasil)",
+    "es": "Español"
+  },
+  "Bot": {
+    "kind": {
+      "random": {
+        "label": "Aleatorio",
+        "summary": "Elige cada jugada sin plan fijo.",
+        "description": "Sirve para pruebas ruidosas: puede acertar, inventar algo raro o retirarse sin aviso."
+      },
+      "simple": {
+        "label": "Simple",
+        "summary": "Sigue reglas básicas y juega directo.",
+        "description": "Un oponente predecible para probar el flujo, sin faroles ni lectura fina de mesa."
+      },
+      "heuristic": {
+        "label": "Heurístico",
+        "summary": "Lee mano, marcador y riesgo antes de presionar.",
+        "description": "El rival más parecido a una mesa real: disputa, sube o se frena según el contexto."
+      },
+      "solver": {
+        "label": "La Solución",
+        "summary": "El equilibrio exacto, desde 10 × 10.",
+        "description": "Juega la solución exacta del juego. Solo existe a partir de 10 × 10, así que la partida empieza en ese marcador. Desde ahí, toda continuación se resolvió hasta el equilibrio."
+      },
+      "openai": {
+        "label": "OpenAI",
+        "description": "Juega contra un bot de OpenAI con el catálogo de modelos configurado."
+      },
+      "anthropic": {
+        "label": "Anthropic",
+        "description": "Juega contra un bot de Anthropic con el catálogo de modelos configurado."
+      },
+      "openrouter": {
+        "label": "OpenRouter",
+        "description": "Juega contra cualquier modelo de OpenRouter — usa tu propia clave para alcanzar Grok, DeepSeek, Qwen y más."
+      },
+      "unknown": {
+        "label": "Desconocido",
+        "description": "Elige cómo debe jugar la próxima partida."
+      }
+    },
+    "profile": {
+      "conservative": {
+        "label": "Conservador",
+        "description": "Juega ventajas pequeñas y protege el marcador."
+      },
+      "balanced": {
+        "label": "Equilibrado",
+        "description": "Mezcla presión y disciplina para la lectura predeterminada."
+      },
+      "aggressive": {
+        "label": "Agresivo",
+        "description": "Presiona más las situaciones y se inclina por subir."
+      },
+      "tricky": {
+        "label": "Astuto",
+        "description": "Añade más engaño y cambios raros de ritmo."
+      }
+    },
+    "model": {
+      "loading": "Cargando modelos predeterminados...",
+      "unavailable": "No disponible",
+      "choose": "Elige un modelo",
+      "select": "Selecciona un modelo",
+      "noneAvailable": "No hay modelos disponibles.",
+      "chooseConfigured": "Elige un modelo expuesto por el proveedor configurado. Si todavía no aparece ninguno, añade primero las credenciales del proveedor."
+    },
+    "provider": {
+      "loadingModels": "Cargando modelos del proveedor...",
+      "catalogTimeout": "Cargar el catálogo de proveedores LLM tardó demasiado.",
+      "catalogLoadFailed": "La app no pudo cargar el catálogo de proveedores LLM."
+    }
+  },
+  "Live": {
+    "launcher": {
+      "ariaLabel": "Iniciar una partida en vivo",
+      "eyebrow": "Truco",
+      "title": "Iniciar partida",
+      "copy": "Acércate a la mesa.\nEl mazo está listo.",
+      "opponent": "oponente",
+      "style": "estilo",
+      "model": "modelo",
+      "firstDealer": "reparte",
+      "startAria": "Iniciar partida",
+      "start": "Iniciar",
+      "studyLab": "Explora el laboratorio de soluciones →"
+    },
+    "settings": {
+      "ariaLabel": "Ajustes de la partida en vivo",
+      "kicker": "partida en vivo",
+      "title": "Ajustes",
+      "closeAria": "Cerrar ajustes",
+      "matchGroup": "Partida",
+      "preferencesGroup": "Preferencias",
+      "settingsNeeded": "ajustes necesarios",
+      "studySpot": "estudiar esta jugada",
+      "section": {
+        "bot": "Bot y modelo",
+        "playback": "Ritmo",
+        "deck": "Mazo",
+        "shortcuts": "Atajos",
+        "debug": "Debug"
+      },
+      "currentlyPlaying": "jugando ahora",
+      "simpleBotNote": "Este bot no necesita ajuste extra. Elígelo aquí y pasa directo a la próxima mano.",
+      "reloadLlm": "Recargar opciones de LLM",
+      "useHeuristic": "Usar heurístico",
+      "playbackSummary": "{speed} - sonido {volume}%",
+      "speed": {
+        "fast": "rápido",
+        "normal": "normal"
+      },
+      "shortcuts": {
+        "enabled": "activos",
+        "disabled": "desactivados",
+        "enable": "activar atajos",
+        "pressKey": "Pulsa una tecla",
+        "reset": "restaurar valores",
+        "ariaOn": "Atajos activados",
+        "ariaOff": "Atajos desactivados",
+        "action": {
+          "play_card_1": "jugar carta 1",
+          "play_card_2": "jugar carta 2",
+          "play_card_3": "jugar carta 3",
+          "hide_card_1": "ocultar carta 1",
+          "hide_card_2": "ocultar carta 2",
+          "hide_card_3": "ocultar carta 3",
+          "raise_stake": "subir apuesta",
+          "accept_raise": "aceptar",
+          "decline_raise": "retirarse / rechazar",
+          "toggle_strength_guide": "alternar guía de manilhas"
+        }
+      },
+      "fastMode": "modo rápido",
+      "fastModeAriaOn": "Modo rápido activado",
+      "fastModeAriaOff": "Modo rápido desactivado",
+      "playOnHide": "jugar al ocultar",
+      "playOnHideHint": "ocultar una carta la juega boca abajo inmediatamente",
+      "playOnHideAriaOn": "Jugar al ocultar activado",
+      "playOnHideAriaOff": "Jugar al ocultar desactivado",
+      "soundFx": "efectos sonoros",
+      "soundVolumeAria": "Volumen del sonido",
+      "muteSoundAria": "Silenciar efectos sonoros",
+      "unmuteSoundAria": "Activar efectos sonoros",
+      "debugSummary": {
+        "logging": "registrando",
+        "off": "apagado"
+      },
+      "logEngineEvents": "registrar eventos del motor",
+      "logEngineAriaOn": "Registro de eventos activado",
+      "logEngineAriaOff": "Registro de eventos desactivado",
+      "gameplayHints": "ayudas de juego",
+      "gameplayHintsHint": "muestra consejos en tu primer envido y mano de once",
+      "gameplayHintsAriaOn": "Ayudas de juego activadas",
+      "gameplayHintsAriaOff": "Ayudas de juego desactivadas"
+    },
+    "matchSetup": {
+      "bot": "Bot",
+      "heuristicProfile": "Perfil heurístico",
+      "heuristicProfileSettings": "perfil heurístico",
+      "model": "Modelo {provider}",
+      "modelSettings": "modelo {provider}",
+      "firstDealer": "Reparte",
+      "byokLabel": "Clave {provider} (opcional)",
+      "byokPlaceholder": "sk-or-…  ·  tu propia clave de API",
+      "byokHint": "Usa tu propia clave para jugar cuando el bot compartido se quede sin créditos. Solo para esta partida — nunca se guarda."
+    },
+    "deck": {
+      "eyebrow": "Preferencias",
+      "title": "Mazo",
+      "help": "Truco Paulista se juega tradicionalmente con mazo francés. La baraja española queda disponible como opción de tradición.",
+      "summary": {
+        "french": "francés",
+        "spanish": "español"
+      },
+      "french": {
+        "name": "Francés",
+        "tag": "recomendado",
+        "description": "Picas, corazones, diamantes y tréboles estándar para mesas paulistas."
+      },
+      "spanish": {
+        "name": "Español",
+        "tag": "tradición",
+        "description": "Oros, copas, espadas y bastos con las mismas reglas debajo."
+      },
+      "tip": "Consejo: mantén presionado el mazo durante una partida para cambiarlo al instante."
+    },
+    "deckSwitch": {
+      "aria": "Abrir guía de fuerza; mantén presionado para cambiar el mazo",
+      "switchedTo": "Cambió a {deck}",
+      "undo": "deshacer"
+    },
+    "firstRunDeck": {
+      "eyebrow": "Bienvenido a Farol",
+      "title": "Elige tu mazo.",
+      "subtitle": "Puedes cambiarlo cuando quieras en ajustes o haciendo clic en el mazo durante una partida.",
+      "decideLater": "Decidir después"
+    },
+    "status": {
+      "matchWon": "Tú ganaste la partida",
+      "matchLost": "Él ganó la partida",
+      "sideTakesPoints": "{side}: +{points}",
+      "dealing": "Repartiendo...",
+      "dealingShort": "Repartiendo",
+      "roundSettled": "Ronda resuelta",
+      "betweenHands": "Entre manos...",
+      "noHand": "No hay mano en juego",
+      "faceDownReady": "{count, plural, one {Carta boca abajo lista} other {Cartas boca abajo listas}}",
+      "hiddenReady": "{count, plural, one {Carta oculta lista} other {Cartas ocultas listas}}",
+      "elevenDecision": "Decisión de mano de once",
+      "elevenDecisionChoose": "Decisión de mano de once - elige bien",
+      "theyDeciding": "Él está decidiendo",
+      "theyDecidingProgress": "Él está decidiendo...",
+      "theyRaisedTo": "Él subió a {stake}",
+      "raiseSent": "Subida a {stake} enviada",
+      "playCard": "Juega una carta",
+      "tapHidden": "Toca una carta oculta para jugarla",
+      "resolving": "Resolviendo",
+      "resolvingProgress": "Resolviendo...",
+      "theyThinking": "Él está pensando",
+      "yourTurn": "Tu turno",
+      "theirTurn": "Turno de él",
+      "stakeLocked": "Apuesta fijada en +{stake}",
+      "heroReraised": "Tú resubiste a {stake}",
+      "villainReraised": "Él resubió a {stake}",
+      "heroRaised": "Tú subiste a {stake}",
+      "villainRaised": "Él subió a {stake}",
+      "heroFolded": "Tú te retiraste",
+      "villainFolded": "Él se retiró",
+      "scoreDelta": "{side} +{points}"
+    },
+    "actions": {
+      "acceptRaise": "Aceptar subida",
+      "playFor3": "Jugar por 3",
+      "raiseTo": "Subir a {stake}",
+      "accept": "aceptar",
+      "play": "jugar",
+      "fold": "retirarse",
+      "foldTitle": "Retirarse",
+      "truco": "Truco",
+      "three": "tres",
+      "six": "seis",
+      "nine": "nueve",
+      "twelve": "doce",
+      "decision": "Decisión"
+    },
+    "stakeFx": {
+      "label": {
+        "raise": "Subida: {actor}",
+        "reraise": "Resubida: {actor}",
+        "accept": "Aceptación: {actor}",
+        "decline": "Rechazo: {actor}"
+      },
+      "callout": {
+        "raise": "Subida a +{stake}: {actor}",
+        "reraise": "Resubida a +{stake}: {actor}",
+        "accept": "Aceptación: {actor}",
+        "decline": "Rechazo: {actor}"
+      },
+      "liveBadge": "+{stake} en juego"
+    },
+    "table": {
+      "elevenWhisper": "mano de once - elige jugar o retirarte",
+      "raisedWhisper": "él subió - responde o sube otra vez",
+      "playWhisper": "tu jugada - elige una carta",
+      "waitingWhisper": "observa la mesa",
+      "unrollScorepad": "Abrir marcador",
+      "unroll": "abrir",
+      "rollUpScorepad": "Enrollar marcador",
+      "clickToRoll": "clic para enrollar",
+      "dealerMarker": "Marca de repartidor",
+      "scoreAria": "Marcador: Tú {heroScore}, Él {villainScore}, a {to}",
+      "youScoreAria": "Tu puntuación {score}",
+      "themScoreAria": "Puntuación de él {score}",
+      "to": "a {score}",
+      "matchPoint": "punto final",
+      "elevenHand": "mano de once",
+      "worthNoRaises": "vale 3 - sin subidas",
+      "theyCalled": "él llamó",
+      "yourRaise": "Tu subida",
+      "theirRaise": "Subida de él",
+      "yourReraise": "Tu resubida",
+      "theirReraise": "Resubida de él",
+      "locked": "Fijado",
+      "youFold": "Tú te retiras",
+      "theyFold": "Él se retira",
+      "opponentCardSlot": "Espacio de carta del oponente",
+      "yourPlaySlot": "Espacio de tu jugada"
+    },
+    "result": {
+      "complete": "partida completa",
+      "won": "Ganaste.",
+      "lost": "Perdiste.",
+      "finalScoreAria": "Marcador final tú {youScore}, él {themScore}",
+      "handsAria": "Resultados de las manos",
+      "handsLabel": "manos -",
+      "handWon": "mano ganada",
+      "handLost": "mano perdida",
+      "rematch": "revancha",
+      "rematchAria": "Revancha",
+      "changeOpponent": "cambiar oponente",
+      "changeOpponentAria": "Cambiar oponente",
+      "studyLab": "Estudiar las soluciones →",
+      "studyLastHand": "Estudiar la última mano →"
+    },
+    "study": {
+      "button": "estudiar esta mano",
+      "notSolved": "El laboratorio cubre el juego desde 10 × 10 (y manos de once). Desde ahí, toda continuación está resuelta. Este marcador aún no está en la región resuelta.",
+      "viraUnavailable": "Este marcador está resuelto, pero las cartas cargadas aquí no incluyen esta vira. Una versión más completa del laboratorio la tendría.",
+      "notReconstructable": "Esta mano tuvo un truco resuelto, que el laboratorio aún no puede reconstruir."
+    },
+    "newMatch": {
+      "subtitle": "confirmar",
+      "title": "¿Salir de la partida?",
+      "copy": "La mesa actual se limpiará.",
+      "cancel": "seguir jugando",
+      "confirm": "Salir de la partida",
+      "divider": "nueva partida",
+      "inProgress": "en curso",
+      "against": "contra",
+      "currentAria": "Partida actual en curso, tú {youScore}, él {themScore}, contra {opponent}"
+    },
+    "failure": {
+      "retryNextHand": "Reintentar próxima mano",
+      "retryLoading": "Reintentar carga",
+      "startFresh": "Iniciar partida nueva",
+      "byok": {
+        "label": "Tu clave de OpenRouter",
+        "placeholder": "sk-or-…",
+        "action": "Usar mi clave y seguir jugando",
+        "hint": "Inicia una partida nueva con tu propia clave. Solo para esta partida — nunca se guarda."
+      },
+      "note": {
+        "stageLabel": "Nota de la mesa",
+        "inlineLabel": "Nota de la mesa",
+        "serviceFolio": "servicio",
+        "statusFolio": "estado {status}",
+        "rejectedStamp": "Revisar",
+        "reviewStamp": "Esperar",
+        "detailsSummary": "Detalles técnicos",
+        "statusLabel": "Estado",
+        "codeLabel": "Código",
+        "messageLabel": "Mensaje"
+      },
+      "copy": {
+        "ENGINE_REJECTED_REQUEST": {
+          "default": {
+            "title": "No pudimos cargar la mesa.",
+            "description": "El servicio de juego rechazó la solicitud. Intenta cargar la partida de nuevo o inicia una mesa nueva."
+          },
+          "inline": {
+            "title": "La mesa no se actualizó.",
+            "description": "La última solicitud no fue aceptada por el servicio de juego. Recarga la partida antes de hacer otra jugada."
+          }
+        },
+        "ENGINE_TIMEOUT": {
+          "default": {
+            "title": "El servicio tardó en responder.",
+            "description": "El servicio de juego tardó demasiado en responder. Intenta de nuevo en un momento o inicia otra partida si la mesa sigue detenida."
+          }
+        },
+        "ENGINE_UNAVAILABLE": {
+          "default": {
+            "title": "El servicio de juego está fuera de alcance.",
+            "description": "El navegador está abierto, pero el servicio de juego no se puede alcanzar ahora. Intenta de nuevo en un momento."
+          }
+        },
+        "SESSION_LIMIT_REACHED": {
+          "default": {
+            "title": "Se alcanzó el límite de mesas.",
+            "description": "El servicio tiene demasiadas partidas activas para este navegador. Cierra una partida anterior, espera un momento e intenta de nuevo."
+          }
+        },
+        "BOT_PROVIDER_UNAVAILABLE": {
+          "default": {
+            "title": "El oponente LLM no está disponible.",
+            "description": "Ese proveedor no está listo en este servicio ahora. Recarga la lista de proveedores o vuelve a un oponente heurístico."
+          }
+        },
+        "BOT_MODEL_REQUIRED": {
+          "default": {
+            "title": "Elige un modelo de bot.",
+            "description": "Selecciona un modelo para el oponente LLM antes de iniciar la próxima partida en vivo."
+          }
+        },
+        "BOT_MODEL_UNAVAILABLE": {
+          "default": {
+            "title": "Ese modelo de bot no está disponible.",
+            "description": "El proveedor seleccionado ya no expone ese modelo. Elige otro modelo o vuelve al juego heurístico."
+          }
+        },
+        "LLM_PROVIDER_EXHAUSTED": {
+          "default": {
+            "title": "El bot de IA compartido se quedó sin créditos.",
+            "description": "El oponente de IA compartido agotó sus créditos por ahora. Agrega tu propia clave en Ajustes para seguir jugando, o cambia a un bot heurístico."
+          }
+        },
+        "UNKNOWN": {
+          "default": {
+            "title": "No pudimos cargar esta partida.",
+            "description": "Algo inesperado ocurrió al hablar con el servicio de juego. Intenta cargar la partida de nuevo."
+          },
+          "inline": {
+            "title": "La mesa necesita revisión.",
+            "description": "Algo inesperado ocurrió al actualizar la partida. Recarga antes de hacer otra jugada."
+          }
+        }
+      }
+    },
+    "recent": {
+      "localTable": "Mesa local",
+      "justNow": "ahora mismo",
+      "minutesAgo": "hace {count} min",
+      "hoursAgo": "hace {count} h",
+      "daysAgo": "{count, plural, one {hace # día} other {hace # días}}"
+    },
+    "notFound": {
+      "expired": {
+        "stamp": "CERRADA",
+        "headline": "Esa partida terminó.",
+        "explanation": "El enlace <link></link> terminó o fue cerrado por el anfitrión."
+      },
+      "notfound": {
+        "stamp": "NO ENCONTRADA",
+        "headline": "No hay partida con ese nombre.",
+        "explanation": "El enlace <link></link> no coincide con ninguna mesa en Farol - puede estar mal escrito o ser una invitación privada que no te enviaron."
+      },
+      "offline": {
+        "stamp": "SIN CONEXIÓN",
+        "headline": "No podemos alcanzar la mesa.",
+        "explanation": "Estás sin conexión, así que no podemos ver si esa partida sigue en curso. Puedes jugar una local mientras tanto - se sincronizará cuando vuelvas."
+      },
+      "lastEntry": "ÚLTIMA ENTRADA",
+      "recentLine": "{opponent} - tú {youScore} - él {themScore} - {when}",
+      "startFresh": "iniciar partida nueva",
+      "rejoinLast": "volver a la última partida",
+      "retryConnection": "reintentar conexión",
+      "pasteAgain": "pegar enlace otra vez",
+      "matchLinkAria": "Enlace de partida",
+      "placeholder": "/?match=...",
+      "try": "probar",
+      "pasteError": "Escribe un enlace de partida de Farol o un id de partida."
+    },
+    "strengthGuide": {
+      "closeAria": "Cerrar guía de fuerza de cartas",
+      "panelAria": "Guía de fuerza de cartas",
+      "peekAria": "Abrir guía de manilhas",
+      "trigger": "guía",
+      "cardStrengthAria": "Fuerza de cartas, las más fuertes arriba",
+      "manilhasAria": "Manilhas, del palo más débil al más fuerte",
+      "title": "manilhas de esta mano",
+      "sub": "salió {turnup} → la manilha es {manilha}",
+      "weak": "débil",
+      "strong": "fuerte",
+      "weakest": "más débil",
+      "strongest": "más fuerte",
+      "note": "las cuatro manilhas de esta mano",
+      "foot": "de la más fuerte a la más débil"
+    },
+    "hints": {
+      "gotIt": "Entendido",
+      "neverShowHints": "Desactivar sugerencias",
+      "raise": "Subió a {raisedTo}. Acepta para jugar por {raisedTo} puntos, sube a {reraiseTo}, o pliégate — se lleva {foldGives}.",
+      "raiseMax": "Subió a {raisedTo}. Acepta para jugar por {raisedTo} puntos, o pliégate — se lleva {foldGives}.",
+      "elevenHand": "Tienes 11 puntos. Juega esta mano para disputar 3 puntos, o pliégate y cede 1 al oponente."
+    }
+  },
+  "Study": {
+    "terms": {
+      "accept": "aceptar",
+      "fold": "retirarse",
+      "raise": "subir",
+      "hidden": "oculta",
+      "play": "jugar",
+      "hide": "ocultar",
+      "otherCard": "jugar la otra carta",
+      "playHighest": "jugar la más alta",
+      "playMiddle": "jugar la del medio",
+      "playLowest": "jugar la más baja",
+      "hideHighest": "ocultar la más alta",
+      "hideMiddle": "ocultar la del medio",
+      "hideLowest": "ocultar la más baja",
+      "acceptEleven": "Aceptar la mano de once",
+      "foldEleven": "Retirarse de la mano de once",
+      "acceptRaise": "Aceptar la subida",
+      "foldAction": "Retirarse",
+      "hiddenCard": "Carta oculta",
+      "raiseTo": "Subir a {n}",
+      "playFaceDown": "Jugar {card} boca abajo",
+      "playCard": "Jugar {card}",
+      "mao": "mano",
+      "pe": "pie"
+    },
+    "timeline": {
+      "ariaTimeline": "Línea de tiempo de la mano",
+      "theHand": "La mano",
+      "prevDecision": "Decisión anterior",
+      "prevDecisionTitle": "Decisión anterior (←)",
+      "nextDecision": "Siguiente decisión",
+      "nextDecisionTitle": "Siguiente decisión (→)",
+      "clearHand": "Limpiar la mano",
+      "clearHandTitle": "Limpiar la mano fijada",
+      "eleven": "Mano de once",
+      "round": "Ronda {n}",
+      "verbAcceptFold": "¿aceptar o retirarse?",
+      "verbAnswerTruco": "responde al truco",
+      "verbLeads": "abre",
+      "verbAnswers": "responde",
+      "dealer": "reparte",
+      "unpinHand": "Soltar esta mano",
+      "unpinRoleHand": "Quitar las cartas de {role}",
+      "handPinned": "mano fijada",
+      "handPinnedTitle": "La mano de este jugador está fijada. La línea de decisiones y el gráfico solo muestran líneas compatibles con ella.",
+      "reachTitleOverall": "Esta decisión se alcanza en el {overall}% de todos los repartos.",
+      "reachTitleConditional": "Esta decisión se alcanza en el {overall}% de todos los repartos. En la decisión anterior, se elige {action} el {conditional}% de las veces.",
+      "reachOverall": "{pct}% total",
+      "reachConditional": "{pct}% condicionado",
+      "loadingCharts": "cargando gráficos…",
+      "notInExport": "fuera del export",
+      "pickAction": "Elegí la acción tomada",
+      "playedFaceDown": "jugadas boca abajo",
+      "hintHandConditioned": "% = cómo juega acá la mano fijada",
+      "hintRangeFreq": "% = con qué frecuencia la solución hace esa jugada acá",
+      "noActionPinned": "Aún no hay acción fijada — elegí una abajo",
+      "optionTitleSuffix": "la solución hace esto el {pct}% de las veces acá",
+      "optionImpossible": "sin copias restantes — la muestra, la otra mano y las jugadas hasta acá ya las usan todas",
+      "round3Body": "<b>Nada más que graficar.</b> Cada lado tiene una carta forzada — el ganador se sigue del reparto. Los exports del estudio terminan en la respuesta de la ronda 2.",
+      "handOver": "Mano terminada.",
+      "foldedEleven": "{role} se retiró de la mano de once.",
+      "foldedTruco": "{role} se retiró del truco.",
+      "emptyHint": "Recorré una mano: elegí cada carta como se mostró, en orden. Cada paso guarda su propio gráfico — usá ← → para avanzar por la mano."
+    },
+    "lab": {
+      "actionWorstAvailable": "peor disponible",
+      "anySuit": "cualquier palo — los palos fuera de la manilha son equivalentes",
+      "axisHiLo": "alta \\ baja",
+      "blockBadgeAria": "Opciones de los bloques — carta {slot} {card}",
+      "blockBadgeTitle": "Elegí el corte, o enfocá un solo gráfico",
+      "blockMenuAria": "Opciones de los bloques",
+      "blockShowLabel": "Mostrar",
+      "blockShowAll": "Todos los bloques",
+      "blockShowAllTitle": "Apila un bloque por carta {slot}",
+      "blockShowOne": "Gráfico único",
+      "blockShowOneTitle": "Mantiene un solo gráfico, fijado en una carta que elegís",
+      "blockFixedCard": "Carta fijada",
+      "blockDraftNote": "Tu carta {slot} en borrador está eligiendo el gráfico ahora — borrala para elegir libremente.",
+      "cardClickHint": "{card} — clic para limpiar, doble clic para el menú",
+      "cellImpossible": "imposible con las cartas fijadas — hacé clic para reiniciar desde acá",
+      "cellUntrained": "mal entrenado: la solución casi nunca llega a esta mano acá, su mezcla es ruido — leé el % de victoria y los puntos, no las frecuencias",
+      "qualityLabel": "calidad de la solución",
+      "qualityTitle": "Medida por una mejor respuesta adversaria contra la estrategia publicada en este nodo exacto",
+      "qualityGood": "medida sólida · {pp} pp explotable",
+      "qualityCaution": "medida con cautela · {pp} pp explotable",
+      "qualityPoor": "medida débil · {pp} pp explotable",
+      "qualityTechnical": "Por qué este nodo puede quedar fuera de la línea",
+      "qualityTechnicalBody": "Diagnósticos de apoyo: pérdida propia {selfLoss} pp; alcance propio {ownReach}%. Explican cómo se entrenó el ramal; la insignia mide si un rival puede explotarlo.",
+      "chooseCompare": "Elegí con qué comparar",
+      "chooseSlotCard": "Elegí la carta {slot}",
+      "chooseVira": "elegir la muestra",
+      "chooseViraAria": "Elegir la muestra",
+      "clear": "Quitar",
+      "collapsePanel": "Contraer el panel de la mano",
+      "compare": "Comparar",
+      "compareAgain": "Comparar con {spot} otra vez",
+      "compareDialogAria": "Comparar con otra jugada",
+      "compareNote": "mirá cómo cambia esta decisión en…",
+      "compareOverlay": "Superponer esta misma decisión de otra jugada resuelta",
+      "confirmClearsDraft": "Esto también limpia la mano en borrador de {role}.",
+      "confirmClearsPinned": "Esto también limpia la mano fijada de {role}.",
+      "confirmRewritesDraft": "Esto también reacomoda la mano en borrador de {role} para que entre en la línea.",
+      "confirmRewritesPinned": "Esto también reacomoda la mano fijada de {role} para que entre en la línea.",
+      "costFlatHabit": "Esta decisión es neutra en costo: la acción más jugada es la mejor para toda mano — la mezcla en Estrategia es pura indiferencia, un hábito fijo no cuesta nada acá.",
+      "costFlatWorst": "Esta decisión es neutra en costo: incluso la peor acción disponible no cuesta nada para ninguna mano.",
+      "costHabit": "más jugada",
+      "costHabitTitle": "Costo de jugar siempre la acción más jugada",
+      "costWorst": "peor acción",
+      "costWorstTitle": "Costo de jugar siempre la peor acción disponible",
+      "dealer": "reparte",
+      "dealerToAct": "reparte en turno",
+      "dealsLand": "repartos que caen acá con estas cartas",
+      "dealsLandTitle": "Contando desde antes de mezclar: el reparto da estas cartas Y la mano se juega hasta esta decisión exacta",
+      "dontAskAgain": "no volver a preguntar",
+      "droppedKeptDraft": "ojo — la mano en borrador de {role} ya no entra, así que se limpió",
+      "droppedKeptLine": "ojo — la línea jugada no entra en ese punto, así que se limpió",
+      "emptyPinnedHint": "Hacé clic en una celda del gráfico para llenar dos cartas, o hacé clic en un ? de arriba para elegir las cartas una por una. Con las tres definidas, la mano sigue el recorrido siempre que este jugador actúa — doble clic en una carta para jugarla.",
+      "equityTitle": "Chance de ganar la partida desde esta decisión, promediada sobre todo el rango, si ambos lados siguen la solución",
+      "errChartData": "No se pudieron cargar los datos del gráfico de {spot}.",
+      "errManifest": "No se pudo cargar el manifiesto del estudio.",
+      "expandPanel": "Expandir el panel de la mano",
+      "grid": "cuadrícula",
+      "gridTitle": "Toda mano en el gráfico: bloques exactos en la ronda 1, un gráfico 2D en cuanto se conoce tu primera carta",
+      "helpAria": "Ayuda: recorrido y guía",
+      "menuTour": "Hacer el recorrido",
+      "menuGuide": "Abrir la guía — teoría & manual",
+      "menuPlayHand": "Jugar esta mano en vivo",
+      "menuPlayHandAria": "Retomar esta posición exacta como partida en vivo",
+      "menuPlayHandTitle": "Retoma esta posición exacta en vivo: la vira y la línea continúan, las cartas definidas quedan fijas, y lo no definido se reparte desde su rango en esta jugada. El rival juega la solución.",
+      "menuPlayHandHeuristicTitle": "Retoma esta posición exacta en vivo: la vira y la línea continúan, las cartas definidas quedan fijas, y lo no definido se reparte desde su rango en esta jugada. El rival resuelto no está disponible aquí, así que enfrentarás al heurístico.",
+      "menuPlayHandOver": "Esta línea ya termina la mano: no queda nada por jugar.",
+      "menuPlayHandBusy": "Repartiendo",
+      "menuPlayHandFailed": "No se pudo iniciar la partida.",
+      "guideAria": "Abrir la guía en una pestaña nueva: la Parte I es la teoría de la solución, la Parte II el manual del jugador",
+      "guideTitle": "Parte I: la teoría · Parte II: el manual del jugador (abre en una pestaña nueva)",
+      "handLabel": "mano",
+      "handOfRole": "cartas de {role}",
+      "handStringAria": "String de la mano",
+      "handHelpAria": "¿Qué significa esta notación? Leé la guía (abre en otra pestaña)",
+      "here": "acá",
+      "howOften": "con qué frecuencia",
+      "howOftenTitle": "Dos formas de pesar estas cartas: sobre cada reparto posible de la partida y dentro de lo que este jugador podría tener ahora",
+      "ignoreHides": "ignorar ocultas",
+      "ignoreHidesTitle": "Deja las jugadas boca abajo fuera de la comparación mejor/peor — ocultar tras una ronda decidida es casi siempre un tiro en el pie",
+      "keepIt": "conservar",
+      "latticeBoth": "resueltos: {solved} · resolviendo: {queued}",
+      "latticeSolved": "resueltos: {solved}",
+      "layout": "Disposición",
+      "leads": "abre",
+      "leaveUnknown": "Dejar esta carta desconocida",
+      "legendAcceptsMore": "acepta más en {spot}",
+      "legendDiff": "número = qué tan distinta es la jugada allá · 0 = idéntica · 100 = nada en común · pasá el mouse para ver ambas mezclas",
+      "legendEv": "número = {unit} perdidos por jugar siempre la acción {action}",
+      "legendFoldsMore": "se retira más allá · número = pp de aceptación desplazados",
+      "legendRange": "número = fracción de las manos posibles de {actor} acá · más oscuro = más del rango · las celdas enmascaradas son imposibles",
+      "legendRangeTitle": "Clave del rango",
+      "legendRangeNumber": "fracción de las manos posibles de {actor}",
+      "legendRangeShade": "más oscuro = más del rango",
+      "legendRangeDot": "menos de 0,05%",
+      "legendRangeMasked": "enmascarada = imposible",
+      "list": "lista",
+      "listTitle": "Toda mano como una fila ordenada",
+      "loadingDeeper": "Cargando los gráficos más profundos de esta jugada…",
+      "maoScoreAria": "Puntuación de mano",
+      "marginaliaGap": "La línea principal es cómoda — pero las mejores y peores líneas acá quedan a <b>{gap} pp de chance de ganar la partida</b> de distancia, así que un mal hábito se notaría.",
+      "marginaliaMistake": "Un error fijo acá resigna <b>{loss} {unit}</b> cada vez que se reparte esta mano.",
+      "marginaliaNoise": "Toda línea está dentro del ruido acá — el equilibrio es genuinamente indiferente.",
+      "mastheadKicker": "Baixada · Estudio",
+      "mastheadTitle": "Gráficos de la solución",
+      "noChartBody": "El export no tiene gráfico en esta decisión — el equilibrio nunca llega a ella, o la rama sigue resolviéndose. Volvé un paso en la mano para seguir leyendo.",
+      "noChartHere": "Sin gráfico acá — volvé un paso en la mano para seguir leyendo.",
+      "noChartTitle": "Sin gráfico para esta rama",
+      "noCopiesLeft": "{card} — sin copias restantes: la muestra, las jugadas y las dos manos las usan todas",
+      "noMatch": "Ninguna mano repartida coincide con estas cartas acá.",
+      "notSolved": "aún no resuelto",
+      "notSolvedYetSpot": "{mao}x{pe} muestra {vira} aún no resuelto",
+      "open": "abrir",
+      "openTitle": "Cargar una jugada desde un archivo .truco",
+      "outOfOrder": "{card} — fuera de orden para la posición {slot}; la mano se reordena",
+      "peScoreAria": "Puntuación de pie",
+      "pickSlotCard": "Elegí la carta {slot}",
+      "pin": "fijar",
+      "pinAsSlot": "{action} {card} como la carta {slot} — {mix}",
+      "pinTitle": "Fijá estas cartas para toda la mano: las decisiones de este jugador en el riel las siguen, y solo sus cartas quedan jugables",
+      "pinVerb": "Fijar",
+      "pinnedFollows": "Fijada para toda la mano — las decisiones de este jugador en el riel ahora siguen {what}.",
+      "pinnedUnpinToEdit": "Fijada — soltala para editar",
+      "playCardNow": "jugar {card} ahora",
+      "played": "jugadas: {cards}",
+      "pickDraftBody": "Toca las cartas en borrador:",
+      "pickDraftTitle": "¿Elegir esta jugada?",
+      "pickIt": "elegir",
+      "provisional": "provisional",
+      "provisionalDefault": "provisional — solución inicial, no la columna certificada",
+      "reachChipTitle": "Con qué frecuencia una mano de la partida recorre exactamente esta línea, bajo la solución",
+      "replaceBody": "¿Elegís otra acción acá?",
+      "replaceIt": "cambiar",
+      "replaceTitle": "¿Cambiar esta jugada?",
+      "rewroteKeptDraft": "ojo — la mano en borrador de {role} se reacomodó para que entre en la línea",
+      "riskStripTitle": "la peor mano acá pierde mucho más que el promedio",
+      "settingAskDestructive": "Preguntar antes de cambios destructivos",
+      "settingAskDestructiveDesc": "Pregunta primero cuando una edición limpiaría acciones posteriores o tocaría una mano en borrador. Las manos fijadas siempre preguntan.",
+      "settingsAria": "Ajustes del laboratorio",
+      "settingsTitle": "Ajustes",
+      "settingsClose": "listo",
+      "settingsEditLegend": "Cambiar una acción anterior",
+      "settingsEditAsk": "preguntar cada vez",
+      "settingsEditAskDesc": "un diálogo ofrece ambas opciones y puede recordar tu respuesta",
+      "settingsEditKeep": "mantener lo que aún encaja",
+      "settingsEditKeepDesc": "las acciones posteriores sobreviven mientras sigan siendo legales para los mismos jugadores",
+      "settingsEditReset": "reiniciar desde ese punto",
+      "settingsEditResetDesc": "toda acción posterior a la editada se borra",
+      "editChoiceBody": "{count, plural, one {Hay # acción después de esta. ¿Qué pasa con ella?} other {Hay # acciones después de esta. ¿Qué pasa con ellas?}}",
+      "editChoiceKeep": "mantener lo que encaja",
+      "editChoiceKeepAll": "{count, plural, one {la acción posterior sobrevive} other {todas las # acciones posteriores sobreviven}}",
+      "editChoiceReset": "reiniciar desde aquí",
+      "editChoiceResetDetail": "{count, plural, one {borra la acción posterior} other {borra todas las # acciones posteriores}}",
+      "rememberChoiceTitle": "Tu elección pasa a ser el valor por defecto. Puedes cambiarla cuando quieras en los ajustes del laboratorio (el engranaje).",
+      "save": "guardar",
+      "saveTitle": "Guardar esta jugada como un archivo .truco",
+      "score": "Marcador",
+      "shareOf": "fracción de las manos posibles de {role} acá",
+      "shareOfTitle": "Dentro del conjunto de información de {role} en esta decisión — cada mano que {role} podría tener dada la jugada hasta ahora — estas cartas cargan esta fracción de la probabilidad",
+      "slotCard": "carta {slot}",
+      "slotHigher": "más alta",
+      "slotHighest": "más alta",
+      "slotInfeasible": "{card} — ninguna mano posible acá la lleva como carta {slot}",
+      "slotLower": "más baja",
+      "slotLowest": "más baja",
+      "slotMiddle": "del medio",
+      "solving": "resolviendo…",
+      "splitBy": "Dividir bloques por",
+      "splitTitle": "Un bloque por carta {slot}",
+      "spotSelector": "Selector de jugada",
+      "spotDraftBody": "La línea jugada se mantiene, pero:",
+      "spotDraftTitle": "¿Cambiar de punto?",
+      "stopComparing": "Dejar de comparar",
+      "strategyChartAria": "Gráfico de estrategia",
+      "stringTitle": "Todo el estado como una línea editable — copiala, compartila o escribí una nueva y pulsá Enter",
+      "switchIt": "cambiar",
+      "swapAria": "Invertir las puntuaciones de mano y pie",
+      "swapTitle": "Invertí las dos puntuaciones — estudiá la misma mano desde el otro lado",
+      "theOtherSpot": "la otra jugada",
+      "there": "allá",
+      "thisHand": "esta mano",
+      "thisRange": "este rango",
+      "titleAnswerRaise": "Respondé a la subida antes de la ronda {n}",
+      "titleEleven": "Mano de once: aceptar o retirarse",
+      "titleR1Answer": "Ronda 1: respondé a {card}",
+      "titleR1Lead": "Ronda 1: elegí la primera carta",
+      "titleR1LeadAfterAccept": "Ronda 1: elegí la primera carta tras aceptar",
+      "titleRoundAnswer": "Ronda {n}: respondé a {card} tras {recap}",
+      "titleRoundLead": "Ronda {n}: elegí la primera carta tras {recap}",
+      "toAct": "en turno",
+      "tourTitle": "Hacé un tour rápido guiado por el laboratorio",
+      "trainWarnUntrained": "No entrenado: la propia estrategia de {role} juega esta línea con estas cartas el {pct}% de las veces, así que la mezcla promedio acá nunca se acumuló — es ruido de inicialización. Confiá en el % de victoria y en los valores en puntos, no en las frecuencias.",
+      "trainWarnWeak": "Mal entrenado: esta mezcla pierde {pp} pp frente a su propia mejor acción, así que la solución nunca visitó de verdad esta mano acá. Confiá en el % de victoria y en los valores en puntos, no en las frecuencias.",
+      "unitEquity": "equity",
+      "unitHandPoints": "puntos de la mano",
+      "unitMatchWinPp": "pp de victoria",
+      "unitPoints": "puntos",
+      "unitPpMatchWin": "pp de chance de ganar la partida",
+      "unitPtsTitle": "Cotiza los errores en puntos de la mano — el 1/3/6/9/12 que vale la mano",
+      "unitWinTitle": "Cotiza los errores en puntos porcentuales de victoria en la partida",
+      "truncatedKeptLine": "ojo — con este marcador no existe el aumento, así que la línea se cortó donde pasaba el primero",
+      "unpick": "deshacer",
+      "unpickBody": "¿Deshacer esta acción?",
+      "unpickDetail": "{count, plural, one {La # acción posterior también se borrará.} other {Las # acciones posteriores también se borrarán.}}",
+      "unpickTitle": "¿Deshacer?",
+      "unpin": "soltar",
+      "unpinTitle": "Soltar — la mano vuelve a ser editable",
+      "unrolling": "Desplegando los gráficos…",
+      "varyHint": "Hacé clic en una carta para fijarla en esta posición; hacé clic de nuevo para limpiar",
+      "viewCost": "Costo",
+      "viewMode": "Modo de vista",
+      "viewRange": "Rango",
+      "viewStrategy": "Estrategia",
+      "vira": "Muestra",
+      "viraChangeAria": "Muestra {rank} — cambiar",
+      "viraGreyNote": "las muestras en gris aún se están resolviendo",
+      "viraKicker": "muestra",
+      "viraShortPrefix": "m",
+      "viraSolving": "muestra {rank} — otras muestras aún se están resolviendo",
+      "viraWord": "muestra",
+      "vsSpot": "vs {spot}",
+      "win": "victoria",
+      "winIfTake": "% de victoria si hacés esa jugada ahora y ambos lados siguen la solución.",
+      "statEquityLabel": "equity · {actor}",
+      "statEquitySub": "{other} {pct}%",
+      "statReachLabel": "alcance",
+      "statReachSub": "de los repartos llegan acá",
+      "legendHelpAria": "Qué significan las vistas, colores y selectores — leé la guía (abre en otra pestaña)",
+      "tableTitle": "La mesa",
+      "tableAria": "La línea recorrida, tendida como mesa",
+      "tableExpandAria": "Ampliar la mesa",
+      "tableCloseAria": "Cerrar la mesa ampliada",
+      "tableWorth": "jugando por {n}",
+      "tablePendingRaise": "subida a {n} pendiente",
+      "tableFolded": "no quiso",
+      "tableFaceDown": "boca abajo",
+      "tableUnknownCard": "carta desconocida",
+      "tableEmpty": "nada aún: elegí una acción en el riel",
+      "elevenHandbook": "manual: los gráficos de la mano de once",
+      "elevenHandbookAria": "Abrí el capítulo del manual sobre la mano de once (se abre en otra pestaña)",
+      "replaceDetailPartial": "{kept, plural, one {# acción posterior sobrevive al cambio} other {# acciones posteriores sobreviven al cambio}} — {dropped, plural, one {la última # se borra} other {las últimas # se borran}}: {reason}",
+      "cutReasonActor": "el orden de turnos cambia desde ahí",
+      "cutReasonDeck": "una carta jugada ahí ya no está en el mazo",
+      "cutReasonIllegal": "el resto deja de ser legal desde ahí",
+      "keptLaterActions": "{count, plural, one {se mantuvo # acción posterior} other {se mantuvieron # acciones posteriores}}"
+    },
+    "walkthrough": {
+      "ariaLabel": "Tour del laboratorio de estudio",
+      "skip": "saltar",
+      "back": "atrás",
+      "next": "Siguiente",
+      "start": "Empezar a estudiar",
+      "tryIt": "probarlo",
+      "steps": {
+        "intro": {
+          "title": "Un tour guiado",
+          "body": "Este laboratorio muestra el truco <b>resuelto</b> — para un puñado de situaciones exactas, la estrategia que ningún rival puede vencer. Este tour te enseña a leerlo sobre una sola situación fija: <b>11 × 11, con un 4 de muestra</b>, así que los 5 son las manilhas. Salteá cuando quieras; acá no se califica nada."
+        },
+        "spot": {
+          "title": "Prepará la escena",
+          "body": "El encabezado prepara la escena — el <b>marcador</b> y la muestra. Cambiá el marcador y todo el gráfico se resuelve de nuevo para las nuevas apuestas. Volvé a ponerlo en 11 × 11 y seguí."
+        },
+        "pickLead": {
+          "title": "Vos abrís",
+          "body": "Sos mano. Jugá <b>cualquier</b> carta como tu primera movida — una manilha, una carta de descarte, la que quieras. El riel la registra y después responde pie."
+        },
+        "pickReply": {
+          "title": "La respuesta",
+          "body": "Ahora juega pie. Elegí <b>cualquier</b> carta para cerrar el intercambio de apertura. De acá en más el tour fija una sola línea de enseñanza para que los números no se muevan."
+        },
+        "navArrows": {
+          "title": "Recorré la mano",
+          "body": "Ya hay dos cartas jugadas. Estas <b>flechas</b> te mueven para adelante y para atrás por cada decisión de la mano — cada una guarda su propio gráfico."
+        },
+        "navPlates": {
+          "title": "Saltá a una decisión",
+          "body": "Cada decisión es una <b>placa</b>. Hacé clic en la placa del mano para saltar ahí — el gráfico te sigue a donde vayas."
+        },
+        "editPast": {
+          "title": "Nada está fijo",
+          "body": "Cualquier decisión pasada se puede <b>reescribir</b>. Acá el mano jugó un 3 — hacé clic en <b>5♦</b> para cambiar la línea a la que vamos a estudiar."
+        },
+        "dealerActs": {
+          "title": "El pie responde",
+          "body": "Con 5♦ jugado, le toca al <b>pie</b>. Este encabezado enmarca la decisión — quién juega, qué ronda y el equity en juego — leelo antes del gráfico de abajo."
+        },
+        "stats": {
+          "title": "Leyendo el encabezado",
+          "body": "El encabezado lleva la cuenta: la <g>equity de partida</g> de mano en esta situación, y con qué <g2>frecuencia</g2> un reparto llega siquiera hasta acá. Los dos son porciones de toda la partida, no de esta mano sola."
+        },
+        "badge": {
+          "title": "Bloques",
+          "body": "Esta placa de latón <b>L = 4</b> nombra el bloque — fija la carta que mostró mano. Los <g>bloques</g> dividen el gráfico según lo que ya está en la mesa; hacé clic en la placa para cambiar de bloque."
+        },
+        "axes": {
+          "title": "Los dos ejes",
+          "body": "Adentro de un bloque, cada celda es una mano. Las <b>filas</b> son la carta H, las <b>columnas</b> la carta M — las dos cartas que te quedan en la mano. Las flechas recorren cada eje."
+        },
+        "cellPick": {
+          "title": "Levantá una mano",
+          "body": "Hacé clic en la celda que brilla — la mano <b>5♥ · 3 · 4</b>, una manilha y dos cartas bajas. El panel de la derecha se activa para esas tres exactas."
+        },
+        "handAll": {
+          "title": "El panel de la mano",
+          "body": "Este panel es todo lo que la solución sabe de esa mano: cuánto vale cada jugada, con qué frecuencia la tenés, y cómo cambia el plan. Lo leemos de arriba hacia abajo."
+        },
+        "handWin": {
+          "title": "Cuánto vale cada jugada",
+          "body": "Cada fila tasa una jugada: la <g>equity de partida</g> de pie si actúa ahora y los dos lados siguen la solución, y al lado, lo que esa jugada resigna. Estas tres quedan bien lejos entre sí: esa brecha es real, no ruido."
+        },
+        "handOften": {
+          "title": "Con qué frecuencia estás acá",
+          "body": "Con qué <g>frecuencia</g> llega exactamente esta mano, y cuánto pesa del rango de pie. Las manos raras también cuentan — esto solo te dice qué memorizar primero."
+        },
+        "colors": {
+          "title": "Leyendo los colores",
+          "body": "El gráfico se colorea según qué carta juega la solución: la <b>más alta</b>, la <b>del medio</b> o la <b>más baja</b>. Una celda de un solo color es una elección pura."
+        },
+        "mix": {
+          "title": "Cuando la solución mezcla",
+          "body": "Una celda dividida significa que la solución <g>mezcla</g> — a veces juega una carta, a veces otra. Estas dos están cerca del 50/50: son situaciones de farol, donde hacer siempre lo mismo te deja explotable."
+        },
+        "rangeMake": {
+          "title": "Armá un rango",
+          "body": "Hacé clic en la carta que brilla para vaciarla. La mano se convierte en un <b>rango</b> — todas las cartas que podrían estar en esa posición, a la vez."
+        },
+        "rangeVary": {
+          "title": "Leé el rango",
+          "body": "Esa posición ahora es <b>?</b>. Abajo, el rango se despliega: una fila por cada carta posible, cada una mostrando cómo juega la solución esa mano completa. Compará las filas de manilha con las comunes — las mismas dos cartas conocidas, una historia distinta. Más sobre <g>rangos</g> en la guía."
+        },
+        "pin": {
+          "title": "Fijala",
+          "body": "<b>Fijá</b> la mano para llevarla mientras cambiás el marcador o la muestra — el gráfico se resuelve de nuevo alrededor de ella mientras todo lo demás se mueve. Fijala ahora."
+        },
+        "pinSee": {
+          "title": "Las manos fijadas viajan",
+          "body": "Tu mano fijada viaja acá en el riel y se queda mientras explorás otras situaciones. Soltala cuando quieras."
+        },
+        "done": {
+          "title": "Eso fue el tour",
+          "body": "Eso es todo. El botón <b>?</b> reabre esto cuando quieras, y cada <g>término subrayado</g> abre la guía en una pestaña nueva — la Parte I es la teoría de la solución, la Parte II el manual del jugador. Ahora andá a leer algunos gráficos."
+        }
+      }
+    },
+    "guide": {
+      "back": "volver al lab",
+      "kicker": "Baixada · Estudio · Guía de campo",
+      "title": "Leyendo los gráficos de la solución",
+      "lede": "Esto es truco <b>resuelto</b>. Para un puñado de situaciones exactas de partida, muestra la forma de jugar que <b>no se puede explotar</b> — calculada por una máquina que juega contra sí misma miles de millones de manos. No es la opinión de un bot; es la aritmética del juego. Así se lee.",
+      "contents": "Contenido",
+      "parts": {
+        "theory": {
+          "kicker": "Parte I",
+          "head": "La solución, y cómo leerla"
+        },
+        "handbook": {
+          "kicker": "Parte II",
+          "head": "El manual del jugador",
+          "lede": "La Parte I explica qué es la solución; este volumen dice qué enseña: la mano de once, la carta de salida, el truco desde los dos lados, y los hábitos que más cuestan — cada uno tasado en equity de la partida. Crece a medida que se resuelve más del juego."
+        },
+        "reference": {
+          "kicker": "Apéndice",
+          "head": "Referencia"
+        }
+      },
+      "toc": {
+        "rules": "Las reglas que resolvemos",
+        "solving": "Qué significa resolver",
+        "chart": "Leyendo un gráfico",
+        "ranges": "Rangos",
+        "views": "Las cuatro vistas",
+        "abstractions": "Abstracciones sin pérdida",
+        "notation": "Anotar una jugada",
+        "trust": "Hasta dónde confiar",
+        "eleven": "La mano de once",
+        "leads": "La carta de salida",
+        "raising": "Cuándo subir, cuándo soltar",
+        "leaks": "Los hábitos que más cuestan",
+        "numbers": "Las soluciones, en números",
+        "glossary": "Glosario"
+      },
+      "teaser": {
+        "rules": "Mazo, muestra, empates, la escalera del truco, la mano de once — como los define el engine.",
+        "solving": "Equilibrio, mezcla, y por qué los gráficos hablan en porcentajes.",
+        "chart": "Bloques, ejes, el número impreso — los mismos datos como lista, y un reparto real recorrido decisión por decisión.",
+        "ranges": "Armá una mano posible o un rango y mirá cómo se estrecha la distribución que llega.",
+        "views": "Estrategia, Rango, Costo, Comparar — qué significa cada número, con las fórmulas.",
+        "abstractions": "Las equivalencias exactas de palo, copia, rol y muestra detrás de cada solución.",
+        "notation": "La gramática de una línea que anota cualquier situación.",
+        "trust": "Qué está certificado, qué está señalado, y cómo leer las celdas ≈.",
+        "eleven": "Aceptar o retirarse con once — cada mano en el gráfico en cada marcador, con el precio de equivocarse.",
+        "leads": "Qué carta abre la mano — cuándo sale la fuerza, cuándo espera la manilha, y el precio de salir mal.",
+        "raising": "El truco desde los dos lados — cuándo lo canta la solución, qué lleva su rango de suba, y cómo responde.",
+        "leaks": "Seis hábitos comunes tasados contra la solución, del casi gratis al que pierde partidas.",
+        "numbers": "Censo, certificados, semejanza, pureza y costo — toda estadística medida de las soluciones, en una sola página.",
+        "glossary": "Las palabras del lab, definidas una sola vez."
+      },
+      "nav": {
+        "backToContents": "índice de la guía",
+        "openLabShort": "abrir el lab",
+        "chapter": "Capítulo {no}",
+        "previous": "Anterior",
+        "next": "Siguiente",
+        "pagerAria": "Navegación de capítulos"
+      },
+      "sec": {
+        "rules": {
+          "title": "El juego exacto que juega el solver",
+          "intro1": "Hay muchos trucos — y ni el “truco paulista” tiene un estándar único. Esta página es la variante que el solver juega de verdad, leída directo del código del engine. Donde el truco de tu mesa difiera, <b>gana el engine</b>: cada gráfico del lab es exacto para estas reglas y ninguna otra.",
+          "intro2": "Dos ausencias de entrada: <b>sin envido, sin flor</b>. El juego resuelto es la pelea de cartas a tres rondas más la escalera del truco — nada más corre por debajo.",
+          "cardsHead": "El mazo, la muestra, las manilhas",
+          "cardsP1": "Mazo de 40 cartas: los valores <code>4 5 6 7 Q J K A 2 3</code> en los cuatro palos — los 8, 9 y 10 quedan afuera. Fuera de las manilhas, ese listado ES el orden, del más débil al más fuerte: <code>4</code> abajo, <code>3</code> arriba, <b>el palo nunca importa</b>, y dos cartas del mismo valor empatan.",
+          "cardsP2": "Después del reparto se da vuelta una carta: la <b>muestra</b>. El valor justo por encima — dando la vuelta en <code>3 → 4</code> — pasa a ser el valor de <b>manilha</b>: esas cuatro cartas le ganan a todas las demás, y solo entre ellas decide el palo, del más fuerte al más débil <b>♣ > ♥ > ♠ > ♦</b>. Cada manilha es entonces una carta específica: con muestra 4, el 5♣ es la carta más fuerte del juego.",
+          "roundsHead": "Rondas, salidas y todos los empates",
+          "roundsP1": "Tres cartas cada uno, hasta tres rondas, una carta por ronda; la mano se lleva con <b>dos de tres</b>. La <b>mano</b> — quien no repartió — sale en la ronda 1; después sale quien ganó la ronda, y una ronda empatada mantiene la misma salida. Los empates son donde más divergen las reglas caseras, así que acá va la tabla completa del engine:",
+          "tie1": {
+            "term": "Ronda empatada",
+            "def": "no tiene ganador; la mano sigue y sale de nuevo el mismo jugador."
+          },
+          "tie2": {
+            "term": "Una victoria más un empate",
+            "def": "termina la mano al instante para quien tiene la victoria — en cualquier orden, victoria-y-empate o empate-y-victoria. La tercera ronda no se juega."
+          },
+          "tie3": {
+            "term": "1 a 1 con la tercera empatada",
+            "def": "se lleva la mano quien ganó la <b>primera ronda no empatada</b> — en un 1 a 1 común, el ganador de la ronda 1."
+          },
+          "tie4": {
+            "term": "Las tres rondas empatadas",
+            "def": "la mano queda para la <b>mano</b>, quien salió en la ronda 1."
+          },
+          "fdHead": "Cartas tapadas",
+          "fdP1": "De la ronda 2 en adelante (nunca en la ronda 1) una carta puede jugarse <b>tapada</b>. Su identidad nunca se revela ni se consulta: una carta tapada <b>pierde contra cualquier carta boca arriba</b>, y dos tapadas empatan. Es puro sacrificio — una forma de quemar una carta sin mostrar el juego — no un arma secreta.",
+          "stakesHead": "El truco y la escalera de apuestas",
+          "stakesP1": "La mano arranca valiendo <b>1 punto</b>. Cantar <b>truco</b> ofrece 3; las subidas siguientes trepan un escalón por vez en la escalera <code>1 → 3 → 6 → 9 → 12</code>. Una subida pausa las cartas hasta ser respondida: <b>aceptá</b> y el juego sigue al valor nuevo; <b>retirate</b> y quien subió anota al instante el valor <i>anterior</i> (retirarse del primer truco vale 1 punto).",
+          "stakesP2": "Las subidas <b>alternan</b> estrictamente: quien hizo la última subida no puede hacer la siguiente — solo el rival puede escalar, sea retrucando sobre una oferta pendiente, sea subiendo más tarde en la misma mano. Entregar la mano es legal en cualquier turno y paga al rival exactamente lo que pagaría retirarse — nunca menos.",
+          "elevenHead": "La mano de once — y el 11 × 11",
+          "elevenP1": "Cuando un jugador llega a <b>11 puntos</b>, la mano siguiente es una <b>mano de once</b>: antes de cualquier carta, el jugador con 11 — y solo él, aun cuando la salida fuera del otro — elige. <b>Aceptá</b>, y la mano se juega por <b>3</b>; <b>retirate</b>, y el rival cobra <b>1</b>. La escalera del truco queda trabada la mano entera, para los dos lados.",
+          "elevenP2": "En <b>11 × 11</b> no hay decisión: la mano vale 3 automáticamente, las subidas siguen trabadas, y las cartas se reparten y se ven <b>normalmente</b>. La “mano de fierro” del folclore — jugar a ciegas en 11 × 11 — <b>no</b> es parte de esta variante.",
+          "matchHead": "La partida",
+          "matchP1": "Gana la partida quien llega primero a <b>12 puntos</b>, y el marcador se clava ahí — ganar 3 estando en 11 cae exacto en 12. La mano termina en el instante en que el resultado queda fijo: si la ronda 3 ya no puede cambiar nada, no se juega.",
+          "aside": "El truco resuelto es exactamente este juego. Si un gráfico te sorprende, revisá esta página antes de dudar de la matemática.",
+          "rulesVisual": {
+            "manilha": {
+              "aria": "Elegí el valor de la muestra",
+              "vira": "Muestra",
+              "order": "Orden de fuerza",
+              "low": "más débil",
+              "high": "más fuerte",
+              "manilhas": "Manilhas",
+              "manilhaCard": "Las manilhas de {rank}, fuera del orden común",
+              "viraCard": "Hacer de {rank} la muestra",
+              "note": "Los {rank}s dejan una marca angosta en el orden y pasan a la derecha como las cuatro manilhas desactivadas.",
+              "caption": "Elegí cualquier valor activo como muestra. El valor siguiente viaja al abanico de cuatro manilhas."
+            },
+            "tie": {
+              "aria": "Elegí un recorrido de resultados de ronda",
+              "mao": "Mano",
+              "pe": "Pie",
+              "tie": "Empate",
+              "handWinner": "Ganador de la mano",
+              "round": "Ronda {no}",
+              "chooseResult": "Elegí un resultado para cada ronda. El ganador aparece apenas las reglas resuelven la mano.",
+              "resolved": "La mano queda decidida después de la ronda {no}.",
+              "notPlayed": "La ronda {no} no se juega: {winner} ya ganó la mano después de la ronda {endRound}.",
+              "dismiss": "Cerrar pista",
+              "labelWinTie": "Mano gana, luego empate",
+              "labelTieWin": "Empate, luego Pie gana",
+              "labelSplitTie": "Mano / Pie / empate",
+              "labelAllTie": "Tres empates",
+              "firstDecisive": "La ronda {no} fue la primera no empatada, así que {winner} se lleva la mano.",
+              "allTies": "No se decidió ninguna ronda, así que mano — quien salió primero — se lleva la mano.",
+              "caption": "Elegí un resultado por ronda; el engine resuelve la mano en el instante en que la línea ingresada la decide."
+            },
+            "faceDown": {
+              "aria": "Comparación de carta tapada",
+              "faceUp": "visible",
+              "faceDown": "tapada",
+              "show": "Dar vuelta",
+              "hide": "Tapar",
+              "downResult": "El 3♦ tapado pierde. Su valor nunca se consulta.",
+              "upResult": "Visible, el 3♦ gana por valor — pero una carta tapada nunca puede hacerlo.",
+              "stable": "Tapado, el 3♦ fuerte pierde contra el 4♠ débil.",
+              "caption": "Desde la segunda ronda, una carta tapada es un sacrificio: cualquier carta visible la vence."
+            },
+            "stakes": {
+              "aria": "Intercambio interactivo de subidas alternadas del truco",
+              "raise": "{player} sube de {from} → {to}",
+              "raiseShort": "Subir de {from} → {to}",
+              "response": "{player} responde a la oferta de {stake}.",
+              "accept": "Aceptar {stake}",
+              "reraise": "Subir a {stake}",
+              "fold": "Retirarse — paga {stake}",
+              "foldResult": "{player} cobra {stake} punto(s) cuando se retira de la oferta.",
+              "playContinues": "Las cartas siguen por {stake} punto(s).",
+              "onlyCanRaise": "Solo {player} puede hacer la próxima subida.",
+              "newHand": "Nueva mano",
+              "nextHand": "Repartir próxima mano",
+              "atStake": "en juego",
+              "currentStake": "{stake} punto(s) en juego",
+              "to": "a {score}",
+              "scoreAria": "Marcador acumulado de la partida",
+              "actionsAria": "Acciones disponibles de {player}",
+              "waiting": "{player} actúa ahora.",
+              "playPrompt": "Las cartas juegan por {stake} punto(s).",
+              "winHand": "{player} gana la mano",
+              "winHandShort": "Ganar la mano",
+              "playResult": "{player} cobra {stake} punto(s) por ganar la mano.",
+              "caption": "Seguí el intercambio: solo quien responde puede aceptar, retirarse por el valor anterior o resubir; después el control pasa al otro lado de la mesa."
+            },
+            "eleven": {
+              "aria": "La mano de once ilustrada: en 11 × 7 el jugador con 11 elige entre aceptar por 3 y retirarse por 1; en 11 × 11 la mano vale 3 automáticamente; la escalera del truco queda trabada en 3 en ambos casos",
+              "chooseSub": "el jugador con 11 ve sus cartas y elige",
+              "acceptNote": "aceptá — la mano se juega por 3",
+              "foldNote": "retirate — el rival cobra 1",
+              "autoSub": "nada que elegir",
+              "autoNote": "vale 3 automáticamente",
+              "ironHand": "se juega normal, no a ciegas",
+              "lockedNote": "escalera del truco trabada en 3",
+              "caption": "Dos manos de once. En 11 × 7 el jugador con 11 mira sus cartas y elige: aceptar y jugar por 3, o retirarse y entregar 1. En 11 × 11 no hay elección — la mano simplemente vale 3 — y nadie juega a ciegas."
+            },
+            "match": {
+              "aria": "Marcador tallado sobre 12: la cuenta del Pie muestra 11 de los 12 cortes, la de la Mano 9 de 12",
+              "caption": "Marcador tallado sobre 12 — al Pie le falta un corte. Ganar 3 estando en 11 talla solo ese último corte: el marcador se clava en 12, y la partida termina ahí."
+            }
+          }
+        },
+        "solving": {
+          "title": "Qué significa realmente “resolver” un juego como el truco",
+          "p1": "La solución es un par de estrategias — una por lado — donde ninguno puede mejorar cambiando, haga lo que haga el otro. La teoría de juegos lo llama <b>equilibrio de Nash</b>. En un juego de cartas ocultas y engaño no puede ser una única “mejor jugada”: es una <b>mezcla</b>, calibrada para que el rival no pueda leerte. La idea entera entra en un final diminuto que podés resolver a mano —",
+          "toyHead": "Un engaño que se resuelve a mano",
+          "toySetup": "Última ronda, apuestas reales. Mano salió con un <b>3</b> común — está sobre la mesa, sin nada atrás. Pie llega con la manilha más alta (<b>m♣</b>, el 5♣ bajo <code>v4</code>) o con un <b>4</b> muerto, con la misma frecuencia, y canta <b>truco</b>: la mano sube de 1 punto a 3. Mano puede <b>retirarse</b> — cediendo el punto base — o <b>aceptar</b> y jugar la ronda por 3. Un reparto, un engaño, una decisión:",
+          "toyP2": "¿Mano debería aceptar? Depende de un solo número: <b>p</b>, la porción de manilhas detrás del truco de pie. Aceptar cobra 3 cuando el truco era aire y pierde 3 cuando aparece la manilha; retirarse cuesta 1 seguro:",
+          "toyFnote": "Los pagos son puntos para mano, con las apuestas reales del engine: retirarse de un truco cede el valor aceptado anterior (1); aceptar juega la mano subida (3). p es la probabilidad de que el truco esconda la m♣.",
+          "toyP3": "En <b>p* = 2/3</b> mano queda exactamente indiferente. Un rango de truco más rico que dos tercios de manilha hace correcto retirarse; más flaco, y aceptar imprime. Todo lo que muestran los gráficos del lab es esta misma aritmética, repetida a escala.",
+          "mixHead": "Por qué la solución mezcla",
+          "mixP1": "Ahora dale la perilla a pie. Trucar la manilha es automático — la elección es <b>b</b>, qué tan seguido pie también truca el 4 muerto. Nunca mientas y cada truco significa manilha: mano aprende a retirarse, y el monstruo de pie gana un solo punto. Mentí siempre y la mitad de los trucos es aire: mano acepta todos y cobra 3 cada vez que asoma el 4. Los dos hábitos puros quedan explotados apenas el rival se aviva.",
+          "mixP2": "El equilibrio queda donde nadie puede ser leído. Pie miente justo lo suficiente para que el rango de truco caiga en el punto de indiferencia de mano, y mano acepta justo lo suficiente para que mentir ni imprima plata ni la queme:",
+          "mixFnote": "b es la frecuencia de engaño de pie con el 4 muerto; c es la frecuencia de aceptar de mano. El reparto 50/50 más b* = ½ pone 2 manilhas detrás de cada 3 trucos — el p* de arriba.",
+          "mixTakeaway": "Una estrategia resuelta sortea a propósito — exactamente a la tasa que vuelve inútil leerla. Cada celda mixta del lab está haciendo esto.",
+          "cfrHead": "Cómo la máquina resuelve el juego real",
+          "cfrP1": "El árbol real del juego es demasiado grande para aritmética a mano, así que la solución se calcula con <b>minimización de arrepentimiento contrafactual</b>: el programa juega contra sí mismo miles de millones de manos y, en cada decisión, se inclina un poco más hacia lo que se arrepintió de no jugar —",
+          "cfrFnote": "Rᵀ(a) suma cuánto mejor habría rendido jugar siempre a que la estrategia realmente jugada; los arrepentimientos positivos, renormalizados, arman la próxima mezcla — regret matching.",
+          "cfrP2": "Promediado en el tiempo, ese juego contra sí mismo se asienta en el equilibrio, y el resultado queda <b>certificado</b> — revisado acción por acción contra una mejor respuesta perfecta — así que “exacto” significa exacto, dentro de una tolerancia declarada.",
+          "aside": "Resolver de forma exacta es caro, y el lab incluye solo algunos gráficos exportados. Una opción gris de Marcador o Muestra significa que no hay un gráfico cargado para ese spot exacto; no significa que se esté calculando ahora ni que no exista un artefacto del solver. El censo de cobertura del apéndice — el capítulo de números — separa esos casos."
+        },
+        "chart": {
+          "title": "Leyendo un gráfico",
+          "intro1": "Cada gráfico muestra cómo juega la solución <b>cada mano posible</b> en una decisión. Con las tres cartas desconocidas el lab nunca las aprieta en una sola grilla: dibuja <b>bloques exactos</b> — una carta fijada por bloque, las otras dos en los ejes — así cada celda es exactamente una mano, nunca una familia.",
+          "intro2": "El lector de abajo da vuelta un 5 (<code>v5</code>), así que los 6 son las manilhas: le ganan a todo, cargan su palo — 6♣ > 6♥ > 6♠ > 6♦ — y cada una es una <b>carta única</b>, así que una fila o columna de manilha guarda exactamente una copia y aparece sola. Los valores comunes ignoran el palo por completo: un 3 es cualquier 3.",
+          "blocksHead": "Encontrar una mano",
+          "blocksP": "Fijá tu carta más débil para elegir el bloque (este lector empieza en <code>L = 7</code>), después corré la más alta por las filas y la del medio por las columnas. La propia etiqueta de latón es el control — hacé clic para cambiar tanto la posición fijada como la única carta de este gráfico. Pasá el mouse o tocá cualquier celda —",
+          "numberHead": "El número, las bandas y el ≈",
+          "numberP": "Solo un número entra en la celda, así que una celda mixta imprime la <b>porción más grande</b> — el porcentaje de la acción más jugada. Las bandas de color cargan la mezcla entera, cada una del tamaño de su probabilidad; el lector de acá (en el lab: el tooltip) abre cada acción con su fracción exacta.",
+          "approxP": "Una celda con <b>≈</b> en vez de número es débil: cuando hay medición de mejor respuesta por nodo, una mejor respuesta adversarial gana más de 5 puntos de victoria de partida. Las exportaciones antiguas usan la alarma heredada de pérdida propia/alcance. En ambos casos, leé ≈ como advertencia, no como táctica — el capítulo de confianza muestra la maquinaria.",
+          "aside": "el número = la tajada más grande. el tooltip = la mezcla entera.",
+          "listHead": "La lista — los mismos datos, ordenados",
+          "listP": "<b>LISTA</b> dispone exactamente las mismas manos como filas, de la más fuerte a la más débil: las cartas adelante, la mezcla como una barra rotulada. Solo cambia la forma — la grilla es para ver regiones de un vistazo, la lista es para leer una mano a la vez.",
+          "listCaption": "Datos reales — las primeras ocho manos del mismo bloque L = 4, exactamente como las dibuja la LISTA del lab; cada segmento de la barra lleva su acción y su porción.",
+          "walkHead": "Recorrer una mano por las decisiones",
+          "walkP1": "Fijá la mano tal como se jugó realmente en la barra lateral izquierda, después recorré las decisiones con <b>← →</b>. Una celda del gráfico completa dos de tus tres cartas; la lista de cartas del panel o el menú de la propia carta completa el resto, y las celdas imposibles con tus elecciones quedan en gris.",
+          "walkP2": "<b>Fijar</b> la mano (⚑) la fija durante toda la mano: las decisiones de ese jugador en la barra lateral pasan a mostrar la mezcla de las propias cartas fijadas, y solo esas cartas siguen jugables. Hacé clic en una carta para quitarla, doble clic para su menú.",
+          "walkAside": "Pensalo como repetir un reparto en cámara lenta, preguntando en cada bifurcación: <i>¿qué hace la solución acá?</i>",
+          "walkerAria": "Un riel de historial de mano en miniatura",
+          "walkerCaption": "Hacé clic en un punto del riel: el foco se mueve allí y las cartas ya vistas siguen en la línea.",
+          "walker": {
+            "focus": "Foco del riel",
+            "deal": "Reparto",
+            "dealP": "Antes de una jugada, toda mano sigue siendo posible. El gráfico describe esa distribución inicial completa.",
+            "lead": "Mão sale",
+            "leadP": "La primera carta abierta ahora es historial. Sigue visible mientras inspeccionás la decisión del otro jugador.",
+            "reply": "Pé responde",
+            "replyP": "Esta respuesta filtra el rango de Pé: las manos que rara vez la mostrarían se achican en el próximo gráfico.",
+            "next": "Próxima decisión",
+            "nextP": "Cambió el foco, no el reparto. Fijá una mano para seguir preguntando qué hace esa misma mano acá."
+          }
+        },
+        "ranges": {
+          "title": "Rangos — las manos que siguen siendo posibles",
+          "intro": "Un <b>rango</b> no es una sensación vaga sobre lo que alguien puede tener. Es el conjunto completo de manos que todavía son posibles en esta decisión, con un peso para cada una. La línea que recorriste filtra ese conjunto: una mano que rara vez elegiría las acciones observadas queda como una barra chica; una mano imposible desaparece por completo.",
+          "toolHead": "Armá un rango y leelo",
+          "toolP": "Empezá con <code>[? ? ?]</code> para todas las manos legales de tres cartas. Fijá cartas escribiendo su notación, haciendo clic en una casilla y eligiendo una carta o arrastrándola a una casilla; las tres entradas quedan sincronizadas. La GRILLA siempre dibuja <b>todos los bloques compatibles</b>. Su placa de latón solo cambia la división — H, M o L — mientras que la LISTA muestra el mismo rango que llega como filas. Elegí cualquier mano para volverlo exacto.",
+          "blockersHead": "Bloqueadores — por qué desaparecen manos",
+          "blockersP": "Un <b>bloqueador</b> es simplemente una carta que ya está visible y, por eso, no puede estar también en una mano. La vira quita una copia antes de que alguien actúe; cada carta abierta de la línea quita otra. Es una restricción física del mazo, no una preferencia del solver. El lab deja en gris las opciones sin copias restantes y el editor de rango también las rechaza.",
+          "blockerWidget": {
+            "eyebrow": "Un reparto visible",
+            "question": "Probabilidad de que Pé tenga al menos un 3",
+            "opponent": "Pé · mano oculta",
+            "opponentHidden": "Las tres cartas ocultas de Pé",
+            "yourHand": "Mão · tu rango",
+            "turnUp": "Vira",
+            "chooseTurnUp": "Elegí la vira",
+            "chooseSlot": "Elegí la carta {slot}",
+            "chance": "el rival tiene un 3",
+            "takeaway": "Hacé clic en una carta de la mano de Mão para fijarla o borrarla. La vira visible y cada carta fijada salen del mazo antes de contar la mano oculta de Pé.",
+            "caption": "Este porcentaje está condicionado por las cartas visibles en esta mesa, no por una base abstracta del mazo. El selector de vira excluye deliberadamente el 2."
+          }
+        },
+        "views": {
+          "title": "Las cuatro vistas",
+          "intro": "Cada celda del lab responde una de cuatro preguntas sobre la misma decisión resuelta: <b>qué hace la solución acá</b> (Estrategia), <b>qué manos llegan de verdad hasta acá</b> (Rango), <b>cuánto costaría un hábito fijo</b> (Costo) y <b>cómo cambia el juego entre dos puntos</b> (Comparar). La tabla da las cuatro de un vistazo; las secciones de abajo las toman de a una — primero la fórmula, después una figura de celdas resueltas reales, dibujada con los mismos componentes del lab.",
+          "tableHead": "Las cuatro vistas de un vistazo",
+          "table": {
+            "colView": "Vista",
+            "colShows": "Qué muestra el número",
+            "colFormula": "Fórmula",
+            "colTakeaway": "Para tu juego"
+          },
+          "strategy": {
+            "head": "Estrategia — la mezcla misma",
+            "shows": "la porción de cada acción en la mezcla — las bandas de color; el número impreso es la porción más grande",
+            "takeaway": "Cuando la celda mezcla, mezclá vos también: un hábito fijo en un punto de mezcla es justo lo que un lector explota.",
+            "p1": "Fijá una mano y la respuesta de la solución no es una carta: es una <b>probabilidad para cada acción legal</b>: σ(a | h), la estrategia promedio en esta decisión. La celda dibuja esa mezcla como bandas de color, cada una tan ancha como la porción de su acción, e imprime solo la <b>porción más grande</b> como número. La mezcla completa está siempre a un hover — el tooltip y el panel de la mano abren cada acción; el número solo, nunca.",
+            "fnote": "El número impreso es la porción modal de la mezcla mostrada. Cada celda es una mano exacta, así que las bandas son el σ de esa mano — nada se agrega.",
+            "note": "Orden, para que las porciones diminutas no parezcan ruido: una acción mostrada por debajo del 3% que además pierde más de 1 pp de equity de partida se descarta y el resto se renormaliza. El export guarda la mezcla cruda — el gráfico solo es más prolijo que los decimales crudos.",
+            "figCaption": "Datos reales — 11x11 v4, salida de la mano, bloque L = 4: cada mano exacta cuya carta más débil es un 4. 23 de estas 87 celdas mezclan; el número es la porción más grande, y el tratamiento ≈ marcaría cualquier celda subentrenada (este bloque no tiene ninguna)."
+          },
+          "range": {
+            "head": "Rango — quién llega de verdad",
+            "shows": "la porción de cada mano dentro del rango que llega del jugador en turno; el sombreado sigue a la celda más pesada",
+            "takeaway": "Los rangos se ganan, no se reparten — cada acción que un jugador atraviesa filtra lo que todavía puede tener.",
+            "p1": "Un rango es cada mano que un jugador todavía puede tener en una decisión, pesada por qué tan seguido <b>de verdad está acá</b>. Ese peso es la aritmética de Bayes: arrancá por qué tan seguido el reparto produce la mano, y multiplicá σ por cada acción observada de la línea. El gráfico normaliza esos pesos en porciones del rango que llega.",
+            "p2": "Por eso los rangos se mueven a medida que recorrés. Cada decisión multiplica otro σ, y las manos que rara vez habrían jugado la línea observada se escurren del cuadro — las manos de retirarse desaparecen después de un aceptar, las manos débiles desaparecen después de una salida confiada. El árbol de juguete del capítulo de resolución es el caso mínimo: un truco de pie repesa al instante su rango a dos tercios de manilha.",
+            "fnote": "El export trae w(h) precalculado por nodo — el lab solo normaliza y sombrea.",
+            "figCaption": "Datos reales — 11x11 v4 : 4 6 — pie respondió el 4 de mano con un 6 y ahora sale en la ronda 2. Cada celda es un par exacto de cartas restantes; el % es su porción del rango que llega de pie, sombreada contra la celda más pesada. Los pesos cargan σ(responder 6 | h): las manos que hubieran preferido responder distinto quedan pálidas."
+          },
+          "cost": {
+            "head": "Costo — el precio de un hábito",
+            "shows": "cuánto resigna el hábito tasado frente a la mejor acción disponible, mano por mano",
+            "takeaway": "Las celdas oscuras son donde la disciplina paga; las claras perdonan casi cualquier hábito.",
+            "p1": "El Costo tasa errores en vez de describir la mezcla. Para cada mano alinea cuánto valen las acciones disponibles — v(a) — y cobra la brecha entre la mejor acción y la que toma tu hábito. <b>PEOR ACCIÓN</b> tasa el error más grande disponible; <b>MÁS JUGADA</b> tasa el hábito más suave de tomar siempre la acción más jugada de la solución en vez de mezclar.",
+            "p2": "Dos monedas: <b>puntos de la mano</b> — los 1 · 3 · 6 · 9 · 12 en juego en esta mano — o <b>puntos porcentuales de victoria en la partida</b>, donde la equity q del solver (±1) convierte a 50 pp por unidad: % de victoria = 50 + 50 q.",
+            "figCaption": "Datos reales — el mismo bloque de la figura de Estrategia (11x11 v4, salida, L = 4), tasado con PEOR ACCIÓN en pp de victoria, con IGNORAR OCULTAS prendido. Las celdas '·' son planas de costo: cualquier carta sirve. Las oscuras son las manos donde un hábito perezoso sangra en serio — comparalas con sus mezclas de arriba."
+          },
+          "compare": {
+            "head": "Comparar — misma decisión, otro punto",
+            "shows": "cuánto se corre la misma decisión entre dos puntos resueltos — brecha de aceptar en las apuestas, variación total en el resto",
+            "takeaway": "Si Comparar se enciende, el marcador cambió el juego — no lleves un gráfico de un marcador a otro.",
+            "p1": "Comparar carga la misma decisión desde un segundo punto resuelto y colorea el desacuerdo. En decisiones de apuesta — la mano de once, un truco pendiente — cada celda muestra la <b>brecha de aceptar con signo</b>: verde donde el otro punto acepta más, rojo donde se retira más. En decisiones de carta muestra la <b>distancia de variación total</b>: la porción del juego que tendría que moverse para convertir una mezcla en la otra, de 0 (idénticas) a 100 (opuestas).",
+            "fnote": "σ′ es la mezcla del otro punto. La celda elige Δaceptar exactamente cuando la decisión ofrece aceptar / retirarse; si no, TV.",
+            "figCaption": "Datos reales — la salida después del aceptar, mano a 10 (11x10 v4) contra mano a 2 (11x2 v4), bloque L = 4. El dorado marca manos que la mano que va perdiendo juega distinto. En el propio aceptar de la mano de once esta comparación queda casi en blanco — entre esos marcadores el umbral de aceptar casi no se mueve."
+          },
+          "selHead": "Los selectores de la barra",
+          "selIntro": "Los selectores de la barra no cambian la maquinaria — cambian qué pregunta responde el Costo, y qué acciones cuentan.",
+          "points": {
+            "term": "Puntos",
+            "desc": "tasa el COSTO en puntos de la mano — los 1 · 3 · 6 · 9 · 12 en juego en esta mano — en vez de equity de la partida. Sirve para la intuición; la equity sigue siendo la vara real, porque los mismos puntos valen distinto según el marcador."
+          },
+          "ignoreHides": {
+            "term": "Ignorar ocultas",
+            "desc": "deja las jugadas tapadas fuera del pool de mejor/peor del Costo siempre que exista una jugada boca arriba, así el número tasa qué carta elegís, no si la tapás. Apagalo para tasar la propia decisión de tapar. La acción más jugada de la mezcla todavía puede ser una tapada — solo se filtra el pool."
+          },
+          "mostPlayed": {
+            "term": "Más jugada",
+            "desc": "la base por defecto del COSTO: lo que perdés jugando siempre la única acción más jugada en vez de la mezcla verdadera."
+          },
+          "worstAction": {
+            "term": "Peor acción",
+            "desc": "la base adversarial: lo que pierde la acción disponible más cara — el tamaño del peor error posible en cada celda."
+          },
+          "headHead": "Los números del encabezado",
+          "headIntro": "Dos números acompañan cada gráfico, y los dos salen de los mismos pesos que el Rango.",
+          "equity": {
+            "term": "Equity · % de victoria",
+            "desc": "la chance del jugador en turno de ganar la partida desde esta decisión si los dos lados siguen la solución — el promedio del rango, pesado por llegada, del valor de la mezcla de cada mano, convertido a porcentaje."
+          },
+          "reach": {
+            "term": "Alcance",
+            "desc": "qué tan seguido una partida de esta banda recorre exactamente esta línea — el peso total del nodo sobre el de la raíz de la banda. Los rincones de poco alcance reciben poco entrenamiento, y ahí vive la marca ≈ (mirá el capítulo de confianza)."
+          }
+        },
+        "abstractions": {
+          "title": "Las abstracciones sin pérdida detrás de la solución",
+          "intro1": "El solver no conserva dos nombres cuando las reglas nunca pueden distinguirlos. Renombra cartas, copias y asientos estratégicamente idénticos, resuelve una vez ese juego compartido y devuelve los nombres familiares en el lab.",
+          "intro2": "Esto <b>no es agrupación de manos</b> ni una estimación. Cada reducción de esta página es un <b>isomorfismo sin pérdida</b>: preserva toda acción legal, azar, puntaje y continuación. El árbol es menor; el juego no cambia.",
+          "suitsHead": "Fuera de las manilhas, el palo desaparece",
+          "suitsP1": "Fuera de las cuatro manilhas, el palo nunca afecta la fuerza ni la legalidad. Un 3 de oros y un 3 de bastos tienen, por lo tanto, el mismo futuro contra cualquier mano posible. El solver conserva una sola <b>clase de 3 común</b>; el lab puede imprimir cualquiera de sus cuatro palos físicos cuando hace falta.",
+          "suitsAria": "Los cuatro tres comunes con palo se convierten en una sola clase de tres común",
+          "plainThree": "una clase de 3 común",
+          "copiesHead": "Las cartas equivalentes se vuelven conteos de copias",
+          "copiesP1": "Cuando los palos comunes dejan de importar, los 7 físicos son intercambiables. Solo importa <b>cuántos quedan</b>. En el ejemplo de abajo ya hay un 7 visible, así que el árbol guarda un valor con tres copias restantes en vez de tres cartas con nombre. Cada nuevo 7 visible resta otra copia.",
+          "copiesAria": "Después de que un siete queda visible, los tres sietes físicos restantes se convierten en una clase con tres copias",
+          "oneSevenVisible": "después de que un 7 queda visible",
+          "threeCopies": "7 × tres copias restantes",
+          "rolesHead": "Tres datos públicos eligen un subjuego",
+          "rolesP1": "La partida no se resuelve como un árbol monolítico. Al comienzo de cada mano, tres datos públicos eligen un subjuego acotado: el <b>marcador</b>, quién es el <b>repartidor</b> y la <b>carta muestra</b>. Cada uno cambia lo que sigue por una razón distinta.",
+          "factorsAria": "Un marcador, un repartidor y una carta muestra se combinan para elegir un subjuego exacto de una mano",
+          "factorOne": "1",
+          "factorTwo": "2",
+          "factorThree": "3",
+          "factorScore": "Marcador de la partida",
+          "factorScoreWhy": "Define la mano de once, la escalera de aumentos legal y el valor de cada marcador alcanzado después.",
+          "factorDealer": "Quién reparte",
+          "factorDealerWhy": "Define mano y pie: quién abre ahora, de quién es cada puntaje y quién reparte después.",
+          "factorTurnup": "Carta muestra",
+          "factorTurnupValue": "muestra 4 · los 5 son manilhas",
+          "factorTurnupWhy": "Fija la fuerza de las cartas, la clase reducida del mazo y las probabilidades de los repartos abstractos.",
+          "factorResultLabel": "Subjuego elegido",
+          "factorResult": "mano 7 × pie 5",
+          "factorResultValue": "muestra 4 · repartidor en asiento 0",
+          "rolesP2": "El solver después reescribe los dos primeros datos en <b>orden de rol</b>. Asiento 0 y asiento 1 son identificadores del servicio; <b>mano</b> abre la primera ronda y <b>pie</b> repartió. Por eso el repartidor no desaparece ni agrega otro ×2: decide qué puntaje físico ocupa cada posición. Rotá el repartidor sin cambiar los puntos y el marcador ordenado se invierte.",
+          "rolesAria": "Con el asiento cero en cinco y el asiento uno en siete, cambiar el repartidor cambia el marcador ordenado por roles y elige otro subjuego",
+          "dealerSeat": "Repartidor en asiento {seat}",
+          "roleScore": "mano {mao} × pie {pe}",
+          "roleExampleNote": "El marcador físico es el mismo en ambos casos: asiento 0 tiene 5 · asiento 1 tiene 7. La posición del repartidor cambia qué subjuego ordenado se resuelve.",
+          "subgamesHead": "Resolver desde el final hacia atrás",
+          "backsolveP1": "Acá está la dependencia real. En <b>10 × 11</b>, quien tiene 11 enfrenta la decisión de mano de once: aceptar y jugar la mano por 3, o retirarse y ceder 1 punto. Aceptar hace que esta mano decida la partida de cualquier manera. Retirarse crea la mano siguiente en <b>11 × 11</b>, con el repartidor rotado. Por eso el valor correcto de retirarse es lo que el juego 11 × 11 ya resuelto vale para ese jugador — no simplemente “menos un punto”.",
+          "backsolveP2": "El solver primero resuelve las dos orientaciones del repartidor de <b>11 × 11</b>, en las nueve clases de muestra, y guarda sus valores de continuación ponderados por el azar. Sustituye la hoja de retirarse de cada árbol 10 × 11 por el valor guardado correcto y luego resuelve aceptar o retirarse. Repetir esa sustitución lleva la solución hacia atrás por la partida. La muestra actual afecta la rama de aceptar; después de retirarse se baraja de nuevo y se sortea otra muestra. Esto es programación dinámica exacta, no un horizonte truncado.",
+          "censusHead": "¿Cuántos subjuegos crea eso?",
+          "subgamesP1": "Esa normalización produce la grilla de inmediato. Mano y pie pueden tener de 0 a 11 puntos, así que el marcador orientado por el repartidor forma <b>12 × 12 = 144</b> estados ordenados por rol. El mazo tiene diez valores concretos de muestra, pero solo <b>nueve clases estructurales exactas</b>; la sección siguiente demuestra la única fusión, muestra 2 ≡ muestra 3. El repartidor no agrega otro ×2 porque ya decidió qué marcador físico pertenece a pie.",
+          "censusAria": "Doce marcadores de mano por doce marcadores de pie por nueve clases de muestra equivalen a mil doscientos noventa y seis subjuegos exactos",
+          "censusScores": "marcadores ordenados por rol",
+          "censusTurnups": "clases de muestra",
+          "censusTotal": "subjuegos exactos",
+          "subgamesP2": "Juntos forman <b>1.296 subjuegos exactos de una mano</b>. Eso es lo que seleccionan los controles Marcador, Repartidor y Muestra del lab: el marcador y el repartidor eligen el estado ordenado por rol, y la muestra elige uno de sus nueve árboles de cartas. Son coordenadas de una política, no etiquetas cosméticas.",
+          "viraHead": "Dos muestras pueden formar una clase exacta",
+          "viraP1": "El caso sorprendente es <code>muestra 2 ≡ muestra 3</code>. Con muestra 2, los 3 se vuelven manilhas y quedan solo tres 2 comunes. Con muestra 3, los 4 se vuelven manilhas y quedan solo tres 3 comunes. Renombrá cada fuerza un paso alrededor del mazo y las estructuras coinciden: <b>ocho valores comunes completos, un valor común máximo con tres copias y cuatro manilhas ordenadas por palo</b>.",
+          "viraP2": "Por eso el selector puede mostrar <code>2</code> o <code>3</code> y aun así cargar la misma solución exacta. El valor elegido o escrito se sigue recordando en cada etiqueta concreta de carta; solo se comparte la estructura estratégicamente idéntica.",
+          "exactNote": "Acá no se promedia nada. Si dos repartos permiten alguna acción o puntaje diferente, no pueden compartir esta clase.",
+          "visual": {
+            "aria": "Compará los mazos concretos de muestra 2 y muestra 3 que comparten una clase estratégica exacta",
+            "kicker": "Dos filas horizontales, un inventario",
+            "title": "Por qué dos muestras comparten una clase",
+            "concrete": "Muestra concreta",
+            "viraChoice": "muestra {rank}",
+            "manilhaValue": "los {rank} son manilhas",
+            "plain": "Fuerzas comunes · de menor a mayor",
+            "manilhas": "Manilhas",
+            "caption": "Leé cada fila de punta a punta: ocho valores comunes completos, un valor común máximo con tres copias y luego cuatro manilhas de palo específico. Los nombres concretos cambian, pero el inventario y todas las relaciones estratégicas quedan iguales — por eso las dos filas comparten una solución exacta."
+          },
+          "backsolve": {
+            "aria": "Un árbol resuelto de diez a once que muestra que aceptar tiene un porcentaje de victoria distinto para cada mano, mientras retirarse siempre entra en la misma continuación",
+            "kicker": "Una decisión pública, muchas manos privadas",
+            "title": "Aceptar cambia con la mano; retirarse queda en 44,7%",
+            "context": "muestra 4",
+            "rootLabel": "nodo de decisión",
+            "rootValue": "mano 10 × pie 11",
+            "acceptEdge": "aceptar",
+            "foldEdge": "retirarse",
+            "acceptLabel": "jugar la mano actual por 3",
+            "accept": "aceptar",
+            "fold": "retirarse",
+            "sampleOneHand": "5♦ · A · 4",
+            "sampleOneChance": "74,0%",
+            "sampleFourHand": "A · Q · 4",
+            "sampleFourChance": "28,3%",
+            "moreHands": "muchas otras manos",
+            "acceptNote": "Probabilidad de ganar si pie acepta; cambia con las cartas de pie.",
+            "foldLabel": "ceder 1 y entrar en 11 × 11",
+            "foldChance": "44,7%",
+            "foldChanceNote": "probabilidad de ganar si se juega la mano 11 × 11",
+            "foldNext": "mano 11 × pie 11 · rota el repartidor",
+            "verdict": "Compara cada mano con 44,7%",
+            "legend": "debajo → retirarse · encima → aceptar · igual → mezclar",
+            "caption": "Los dos porcentajes de aceptar son manos reales de la solución publicada con muestra 4 y repartidor en asiento 0; los puntos finales representan las muchas otras manos posibles. Retirarse ignora las cartas actuales y carga la misma continuación 11 × 11 recién repartida."
+          },
+          "dependencies": {
+            "aria": "Un árbol de dependencias entre marcadores que muestra cómo los futuros resueltos liberan marcadores anteriores ordenados por rol",
+            "treeAria": "Resolvé primero once por once; eso libera once por diez y diez por once, que después liberan la grilla de marcadores anteriores hasta nueve por nueve",
+            "kicker": "Inducción hacia atrás · una capa de marcador por vez",
+            "title": "Los futuros resueltos liberan marcadores anteriores",
+            "edge": "flecha: continuación resuelta → marcador ahora resoluble",
+            "first": "resolver primero",
+            "hoverHint": "Pasá el cursor o enfocá un marcador para ver la equidad guardada.",
+            "storedEquity": "{score}. Probabilidad de victoria guardada: mano {mao}; pie {pe}.",
+            "missingEquity": "{score}. La equidad todavía no está guardada en el conjunto actual de soluciones.",
+            "caption": "Los marcadores están en orden mano × pie. La rotación del repartidor invierte los roles después de cada mano; por eso, 11 × 10 resuelto libera 9 × 11, mientras 10 × 11 libera 11 × 9. Un nodo con dos flechas de entrada — como 10 × 10 o 9 × 9 — espera ambas continuaciones. Las ramas punteadas siguen hacia atrás más allá de este recorte."
+          },
+          "simTakeaway": "¿Cuánto importan las coordenadas? Está medido, sobre soluciones vecinas convergidas: las <b>clases de muestra</b> vecinas son casi intercambiables por donde el juego realmente pasa, mientras que los <b>marcadores</b> vecinos discrepan en cerca de un séptimo del juego real, concentrado en las primeras jugadas de la mano. Esa asimetría es la razón de que las soluciones se transfieran entre muestras mucho más barato que entre marcadores.",
+          "sizesTakeaway": "El tamaño de esos árboles — y cuánto de la grilla de 1.296 subjuegos ya está resuelto, y a qué costo — es material de registro, guardado con el resto de las mediciones.",
+          "seeAppendix": "Las tablas medidas, en el apéndice"
+        },
+        "notation": {
+          "title": "Anotar una jugada",
+          "p1": "Todo lo que muestra el lab entra en <b>una línea</b> — el campo MANO. Marcador, muestra, una mano armada, el historial recorrido: la línea y el lab van de la mano en los dos sentidos, y vive en la URL de la página — una jugada anotada es una jugada que podés <b>compartir, guardar o pegar de vuelta después</b>.",
+          "p2": "Probá las dos comprobaciones de abajo. El lab revisa la misma gramática mientras escribís y dice exactamente qué no pudo leer; las secciones omitidas conservan su estado actual.",
+          "grammarHead": "La gramática",
+          "grammarP": "Leé la línea como una frase breve: nombrá el marcador y la muestra, opcionalmente armá las cartas de cada rol, y poné el historial después de <code>:</code>. Los corchetes siempre tienen tres cartas, de mayor a menor.",
+          "historiesHead": "Historias completas",
+          "historiesP": "La historia se escribe en el orden de las acciones. <code>/</code> marca una baza completa, <code>*</code> esconde una carta, y <code>a</code> acepta un aumento o la mano de once cuando hay una decisión pendiente.",
+          "quizHead": "Leelo y escribilo",
+          "quizP": "Son ejercicios chicos a propósito. Usan el mismo analizador que el campo MANO, así que una respuesta correcta es una línea que el lab entiende.",
+          "grammar": {
+            "aria": "Gramática de la notación de estudio",
+            "kicker": "gramática abstracta",
+            "caption": "La notación es un lenguaje para describir un estado exacto de estudio. Los corchetes y los dos puntos hacen que sus límites se vean fácil.",
+            "spot": {
+              "term": "jugada",
+              "desc": "Marcador, muestra, manos e historia son secciones opcionales de un estado. Dos puntos solos limpian solo la historia."
+            },
+            "draft": {
+              "term": "mano",
+              "desc": "Usá mao para la mano y pe para el pie. ! mantiene esa mano fijada mientras recorrés la línea."
+            },
+            "card": {
+              "term": "carta",
+              "desc": "Los rangos comunes no necesitan palo. Una manilha necesita palo, o md / ms / mh / mc. ? (o .) deja una posición desconocida."
+            },
+            "history": {
+              "term": "historia",
+              "desc": "Las acciones van de izquierda a derecha. / es opcional, pero si aparece debe seguir la segunda carta de una baza completa."
+            },
+            "action": {
+              "term": "acción",
+              "desc": "Una carta puede terminar en * para jugarse tapada. r canta truco; después vienen r6, r9 y r12. a y f responden una decisión pendiente."
+            }
+          },
+          "examples": {
+            "fixedKicker": "Rango fijado del pie",
+            "fixedText": "Con 10–10 y muestra 4, el pie queda fijado a 5♦, 3 y una carta desconocida. La primera baza termina tras 3 y J; después se canta y acepta truco.",
+            "elevenKicker": "Mano de once",
+            "elevenText": "Con 11–8 la mano primero acepta o se va; esta línea escribe la aceptación explícita. Después muestra una salida con 5♦, una baza completa y un 3 tapado."
+          },
+          "quiz": {
+            "kicker": "dos comprobaciones rápidas",
+            "readHead": "¿Qué dice esta mano?",
+            "readPrompt": "mao![5d 3 ?]",
+            "options": {
+              "correct": "La mano fijada es 5♦, 3 y una carta desconocida.",
+              "wrongRole": "La mano fijada del pie es 5♦, 3 y una carta desconocida.",
+              "wrongKnown": "La mano fija es 5♦, 3 y 2."
+            },
+            "readCorrect": "Exacto: mao nombra a la mano, ! la fija, y ? todavía es una posición desconocida.",
+            "readAgain": "Leé el rol antes del corchete, después el !, y recién entonces cada una de las tres posiciones.",
+            "writeHead": "Escribí la misma mano",
+            "writePrompt": "Escribí una mano fijada de la mano con 5♦, 3 y una posición desconocida. Los espacios son opcionales.",
+            "check": "Comprobar",
+            "writeCorrect": "El analizador la acepta. Es un rango fijado válido.",
+            "writeAgain": "Todavía no. Incluí mao, !, tres posiciones entre corchetes, 5d, 3 y ? — en ese orden de fuerza."
+          }
+        },
+        "trust": {
+          "title": "Hasta dónde confiar",
+          "intro": "Una solución no promete que cada mezcla impresa esté igual de pulida. El lab ahora mide la pregunta importante en cada nodo: <b>¿cuánto puede ganar contra la estrategia mostrada un rival perfectamente adaptado?</b> La respuesta es la insignia de calidad; los números antiguos de alcance y pérdida propia explican por qué un rincón salió mal.",
+          "badgeHead": "La insignia de calidad es la señal principal",
+          "badgeP": "La insignia es una <b>brecha de mejor respuesta adversarial por nodo</b>, expresada en puntos porcentuales de victoria de partida. Compara la mezcla exportada con una mejor respuesta genuina del rival, en vez de pedirle a la solución que se califique sola.",
+          "solidTerm": "sólido · ≤ 1 pp",
+          "solidDef": "La ganancia explotable medida es como mucho un punto de victoria. Leé la mezcla normalmente.",
+          "cautionTerm": "cuidado · 1–5 pp",
+          "cautionDef": "Hay margen visible para que gane el rival. Usala como pista, no como receta.",
+          "weakTerm": "débil · > 5 pp",
+          "weakDef": "El lab reemplaza el número de estrategia por ≈. Esta rama no es estrategia confiable.",
+          "badgeAside": "Una tabla de mejor respuesta acompaña la situación resuelta cuando esta medida está disponible. Las exportaciones antiguas conservan la advertencia anterior por compatibilidad.",
+          "warningHead": "Reconocer un rincón débil",
+          "warningP": "Esta es una continuación real del piloto 11×10 en el lab. Las celdas pálidas con <b>≈</b> no son solamente improbables: cada una tiene una brecha de mejor respuesta medida por encima de 5 pp. Pasá el mouse o tocá una celda para ver su propia medida.",
+          "warningCaption": "Datos reales del lab — 11×10 v4, después de aceptar la mano de once y una continuación de primera baza de poco alcance. {n} de las 87 celdas de la grilla exacta de dos cartas son débiles por su brecha de mejor respuesta medida, así que el lab muestra ≈ en lugar de un número de estrategia.",
+          "warningTakeaway": "No deduzcas una táctica de una celda ≈. Volvé a la última decisión sólida o explorá otra línea.",
+          "diagnosticsHead": "Por qué una mezcla fuera de camino queda ruidosa",
+          "diagnosticsP": "Antes de la tabla de mejor respuesta, la advertencia del lab venía de dos diagnósticos. Siguen acá porque explican cómo se degradó un rincón — describen la cobertura del entrenamiento, no la calidad.",
+          "selfLossQ": "el valor de equilibrio de la solución después de la acción a en la mano h",
+          "selfLossScale": "convierte la escala de valor −1…1 del solver en puntos porcentuales de victoria de partida",
+          "selfLossNote": "La pérdida propia pregunta si la mezcla está cerca de su propia mejor acción según los valores q de la solución — una alarma, no una garantía adversarial.",
+          "ownLine": "las decisiones previas del jugador activo en la línea",
+          "ownReach": "cuán seguido la estrategia exportada del propio jugador lleva esta mano hasta el nodo",
+          "ownReachNote": "Un alcance propio cerca de cero significa que el promedio casi no acumuló experiencia acá; la alarma heredada usa ε = 0,001.",
+          "pruningP": "La causa es concreta: cuando una acción de quien no es dueño llega a probabilidad cero, CFR deja de bajar por esa rama — correcto para una acción realmente dominada, pero congela los valores aleatorios tempranos que haya debajo. Un alcance propio bajo registra esa historia; la brecha de mejor respuesta dice si el resultado realmente es explotable.",
+          "certificateHead": "Qué dice el certificado — y qué no",
+          "certificateP": "El certificado de la solución es una cota <b>del juego completo, ponderada por alcance</b>, contra mejores respuestas exactas. Dice que el perfil está cerca del equilibrio en promedio a lo largo del árbol de repartos. Una rama minúscula fuera de camino casi no contribuye a ese promedio, así que el certificado solo no puede certificar cada celda. Por eso la medida de mejor respuesta por nodo va en el gráfico.",
+          "certificateTakeaway": "Confiá primero en la insignia del propio nodo. Usá el certificado global para entender la solución completa, y pérdida propia más alcance propio para entender cómo apareció una advertencia."
+        },
+        "eleven": {
+          "title": "La mano de once, en el gráfico",
+          "lede": "La Parte II empieza donde la teoría rinde más rápido: la única decisión que todo jugador con once debe tomar, mano tras mano, sin nada oculto y sin rondas futuras que temer. Estos son los propios gráficos de aceptar/retirarse de la solución, resumidos para la mesa.",
+          "stakesHead": "Cuál es la decisión",
+          "stakesP1": "En once puntos, la mano siguiente cambia de forma: el lado con once mira sus tres cartas y responde — <b>retirarse</b>, cediendo un punto, o <b>aceptar</b>, jugando la mano por tres. La decisión es del lado con once sin importar quién repartió, y las subidas quedan fuera de la mesa el resto de la mano.",
+          "stakesP2": "Eso la vuelve la pregunta más limpia del truco: una mirada, sí o no. También es la decisión que la solución cotiza con más precisión — cada gráfico de este capítulo es una lectura de equilibrio certificado, tomada directo de los puntos resueltos.",
+          "stakesAside": "Los dos lados en once es otro animal: la mano de 11×11 se juega por la partida — vale tres automáticamente, sin ningún paso de aceptar o retirarse — así que no aparece más abajo.",
+          "readingHead": "Cómo leer los gráficos",
+          "readingP1": "Las grillas son las mismas que enseñó la Parte I: cada mini-gráfico fija la carta más baja — la placa L — y sus ejes ubican las otras dos. <b>Azul acepta, bermellón retira.</b> A diferencia de la mayoría de los nodos, acá la respuesta casi nunca se mezcla: de las 403 manos distintas, como mucho un puñado se mezcla en cada marcador. La frontera es una línea que podés memorizar.",
+          "readingP2": "Pasá el mouse o tocá una celda y el lector cotiza las dos respuestas: la chance de ganar la partida si aceptás, la chance de ganar la partida si te retirás, y la brecha entre ambas en puntos porcentuales. Retirarse vale lo mismo sin importar lo que tengas — su valor es el marcador, no la mano.",
+          "chartsHead": "Los gráficos, marcador por marcador",
+          "chartsP1": "Elegí el marcador del rival. En 11×10 importa si el lado con once reparte la mano o abre, así que ese marcador aparece dos veces.",
+          "plateScoresAria": "Marcador del rival",
+          "plateDeals": "repartiendo",
+          "plateLeads": "abriendo",
+          "plateSummary": "La solución acepta el {accept}% de las manos repartidas acá · retirarse gana el {fold}% de las partidas.",
+          "plateHint": "Pasá el mouse o tocá una celda — el lector cotiza aceptar y retirarse para esa mano exacta.",
+          "plateWin": "gana {win}%",
+          "plateClose": "Un genuino cara o ceca — cualquier respuesta cuesta casi nada.",
+          "plateFoldCosts": "Retirarse en esta mano cede {pp} pp de chance de ganar la partida.",
+          "plateAcceptCosts": "Aceptar esta mano cuesta {pp} pp de chance de ganar la partida.",
+          "plateCaption": "Cada decisión de once resuelta, generada a partir de las mismas exportaciones certificadas que el lab.",
+          "shapeHead": "La forma del rango",
+          "shapeP1": "De 11×0 a 11×8 el rango casi no se mueve: la solución acepta más o menos el <b>60%</b> de las manos repartidas en cada uno de esos marcadores. Lo que cambia es el precio del descuido. En 11×0 hasta el peor error posible cuesta unos 2 pp — retirarse siempre gana el 97,6% de las partidas desde ahí. Para 11×8 los mismos malos hábitos cuestan hasta 31 pp.",
+          "shapeP2": "<b>11×9 es el rincón ajustado.</b> Un aceptar perdido regala la partida — nueve más tres es doce — mientras que retirarse todavía deja un cómodo 63,4%. Así que el rango se cierra de golpe: solo el 44% de las manos acepta, el gráfico más ajustado de esta página, y aceptar con la peor mano posible (4 · 4 · 4) es el error más caro de todo el capítulo, 63 pp de chance de ganar la partida.",
+          "shapeP3": "<b>El 11×10 se divide según quién reparte.</b> Retirarse manda la partida al 11×11, y el valor de esa mano depende de quién reparte. Cuando el lado con once reparte acá, retirarse cae por debajo de la mitad — 44,7% — así que la solución se arriesga y acepta el 62% de las manos. Abriendo en cambio, retirarse llega al 55,3% y el rango de aceptar se ajusta al 37%.",
+          "shapeAside": "Tres manilhas nunca son motivo para retirarse — soltarlas en el 11×10 quema 55 pp. Los hábitos caros viven todos en el 11×9 y el 11×10; esos dos gráficos son los que vale la pena memorizar primero."
+        },
+        "leads": {
+          "title": "La carta de salida",
+          "lede": "Toda mano de truco empieza igual: quien sale mira tres cartas y pone una en la mesa. Este capítulo es esa decisión, leída directo de las raíces resueltas — qué carta abre, cuándo la más fuerte espera, y qué cuesta la elección equivocada en chance de ganar la partida.",
+          "questionHead": "La primera decisión",
+          "questionP1": "Las opciones de quien sale son más anchas de lo que parecen: jugar cualquiera de las tres cartas boca arriba — o, cuando la escalera de subas está viva, <b>cantar truco antes de jugar nada</b>. La solución casi nunca toma ese último camino: en el 10×10 el truco inmediato lleva apenas el <b>0,3%</b> de su mezcla de apertura. La palanca vale más después de una ronda vista.",
+          "questionP2": "Lo que la solución pesa al elegir la carta es todo lo que construyeron los capítulos de teoría: qué ronda quiere ganar más la mano, qué revela la salida sobre las dos cartas que quedan atrás, y — en marcadores con escalera viva — qué continuaciones mantienen la amenaza de truco apuntando para el lado correcto.",
+          "chartsHead": "Los gráficos",
+          "chartsP1": "Las grillas son las de la Parte I: cada bloque fija la carta más baja, los ejes ubican las otras dos, y los colores de una celda son la mezcla real de la solución sobre primeras acciones — <b>azul oscuro sale con la más fuerte, celeste con la del medio, bermellón con la más baja</b>, violeta canta truco primero. Pasá el mouse o tocá una celda y el lector le pone precio a cada apertura posible de esa mano exacta.",
+          "plateSpotsAria": "Situación resuelta",
+          "spotTen": "10 × 10",
+          "spotIronDeal": "11 × 11 · repartiendo",
+          "spotIronLead": "11 × 11 · saliendo",
+          "plateSummary": "Sale con la carta más fuerte en el {top}% de los repartos · con la del medio {mid}% · con la más baja {low}% · canta truco primero {raise}%.",
+          "plateHint": "Pasá el mouse o tocá una celda — el lector le pone precio a cada apertura de esa mano.",
+          "plateWin": "gana {win}%",
+          "roleTruco": "truco primero",
+          "plateVerdict": "Los porcentajes son la mezcla de la solución; gana % es la chance de ganar la partida tras esa apertura, y −pp marca lo que entregan las aperturas inferiores.",
+          "plateCaption": "La primera decisión de quien sale en las raíces resueltas, renderizada de los mismos exports certificados del lab.",
+          "patternsHead": "Los patrones",
+          "patternsP1": "En el <b>10×10</b> el titular es simple: salí con fuerza. La carta más fuerte abre en el <b>58%</b> de los repartos, la del medio en el 22%, la más baja en el 19%. Pero la regla tiene una excepción estructural — <b>la manilha se queda en casa</b>. Las manos con al menos una manilha son el 28% de los repartos, y abren con la manilha solo el <b>12%</b> de las veces; cuando la más fuerte es una manilha, la solución la guarda y sale con otra cosa el <b>83%</b>. “Salir con fuerza” quiere decir, en realidad: salí con tu mejor carta <i>lisa</i> y guardate la ronda segura en el bolsillo.",
+          "patternsP2": "La <b>apuesta trabada invierte la política</b>. En el 11×11, con la mano valiendo tres automáticamente y sin escalera que amenazar, las mismas 403 manos salen con la carta <b>más baja</b> el 45% y con la del medio el 39% — la más fuerte abre solo el 17% de los repartos. Sin nada que apalancar, la apertura se vuelve sonda: gastá la carta barata, aprendé la ronda, y guardá las ganadoras para las rondas que deciden la partida.",
+          "patternsP3": "Dos hechos medidos más que vale guardar. La decisión de salida es mayormente nítida — <b>233 de las 403</b> manos del gráfico en el 10×10, y más de <b>330</b> en el 11×11, se comprometen con una sola apertura; el resto mezcla de verdad. Y en el 11×11 casi no importa quién reparte: las políticas de salida de los dos roles coinciden hasta una décima de punto porcentual.",
+          "patternsAside": "Las dos situaciones difieren en exactamente un hecho estructural — que la escalera del truco siga viva. Esa sola diferencia vale un giro de 40 puntos en cuántas veces la fuerza abre la mano.",
+          "pricesHead": "Qué cuesta salir mal",
+          "pricesP1": "Promediado sobre los repartos, elegir la <b>peor</b> primera carta disponible cuesta cerca de <b>5 pp</b> de chance de ganar en el 10×10 — y cerca de <b>11 pp</b> en el 11×11, donde no hay escalera después para recuperar una mala apertura.",
+          "pricesP2": "Las trampas caras se juntan donde la mano es más fuerte: con el <b>zap y dos cartas del montón</b>, la peor apertura quema cerca de <b>20 pp</b> en el 10×10, y la misma familia llega a <b>44 pp</b> en el 11×11. Una mano fuerte no vuelve segura la apertura — sube el precio de equivocarse. Recorré cualquiera de esas celdas en la lámina de arriba y el lector muestra exactamente qué aperturas sangran."
+        },
+        "raising": {
+          "title": "Cuándo subir, cuándo soltar",
+          "lede": "El truco es la única palanca de presión pura del juego — y la decisión sobre la que más discuten los jugadores. Este capítulo lee la palanca en la situación resuelta de 10×10, desde los dos lados: cuándo el equilibrio la tira de verdad, de qué está hecho su rango de suba, y cómo responde cuando la presión vuelve en dirección contraria.",
+          "ladderHead": "La escalera con diez a diez",
+          "ladderP1": "Un hecho estructural encuadra todo en este marcador: <b>el primer truco ya juega por la partida</b>. Diez más tres pasa de doce, así que una vez aceptado el truco no queda nada que seis, nueve o doce agreguen — el solver prueba que los peldaños de arriba son irrelevantes acá y los quita. Toda pregunta sobre subir en el 10×10 es la pregunta del truco único.",
+          "ladderP2": "Y la solución no tiene apuro en hacerla. Cantar truco <b>antes de jugar carta alguna</b> lleva el 0,3% de la mezcla de apertura — la palanca vale más después de una ronda vista. La escalera es arma de mitad de mano, no de apertura.",
+          "timingHead": "Cuándo sube la solución",
+          "timingP1": "Ponderando por repartos en la ventana resuelta, así de seguido se canta de verdad un truco en cada momento de la mano (contando solo situaciones donde todavía no hubo suba):",
+          "timingColMoment": "Momento",
+          "timingColShare": "Sube",
+          "timingRoot": "Antes de cualquier carta (opción de quien sale)",
+          "timingReply": "Viendo la salida, antes de responder (el pie)",
+          "timingWon": "Saliendo en la ronda 2 tras ganar la 1",
+          "timingTied": "Saliendo en la ronda 2 tras empatar la 1",
+          "timingDeep": "Ronda 2, con la primera carta ya en la mesa",
+          "timingP2": "Dos patrones saltan. <b>Una primera ronda empatada es clima de truco</b> — la tasa salta del 5% al 32%, porque el empate convierte la ronda 2 en muerte súbita y la jugada de presión cotiza mejor exactamente ahí. Y la tasa sube a medida que la mano envejece: llegó información, los rangos se estrecharon, y la amenaza tiene más donde apoyarse.",
+          "timingAside": "Tener una manilha casi duplica las ganas: en la salida de la ronda 2, las manos con manilha suben 12,5% contra 5,1% de las manos lisas.",
+          "rangeHead": "Qué lleva el rango de suba",
+          "rangeP1": "Sumá todo lo que sube en la ventana y mirá adentro del rango: <b>el 51,8% de la masa que sube tiene una manilha</b>, contra una tasa base del 28%. En otras palabras, los trucos de la solución son más o menos <b>mitad valor, mitad presión</b> — fuerza suficiente para que el canto sea honesto, aire suficiente para que retirarse de todo sea explotable.",
+          "rangeP2": "Esa mezcla es la lección práctica. Un truco del equilibrio no es anuncio de la mejor mano; es una amenaza tasada que casualmente tiene respaldo la mitad de las veces. Las dos lecturas puras — “truco es manilha” y “truco es bluff” — pierden contra ella.",
+          "answerHead": "Cuándo soltar la mano",
+          "answerP1": "El lado que responde es donde está la plata. Frente a un truco, la solución <b>se retira el 63% y acepta el 37%</b> de su masa de alcance (resubir es irrelevante acá — los peldaños de arriba no cambian el marcador). Retirarse la mayoría de las veces no es timidez; a estas apuestas, entregar un punto sale rutinariamente más barato que jugar tres desde atrás.",
+          "answerP2": "Los hábitos están tasados en el capítulo de fugas, pero el titular pertenece acá: <b>aceptar todo truco cuesta 10,4 pp</b> de chance de ganar por reparto, en promedio, y el peor call de la ventana — aceptar con <code>4 4 4</code> después de salir de 4 y recibir el truco — quema <b>36,6 pp</b>. El hábito espejo, retirarse de todo, cuesta 6,2 pp: caro, pero el más barato de los dos pecados.",
+          "answerAside": "Todos los precios de acá son de desvío único: lo que el hábito pierde contra el rival en equilibrio en ese nodo, en puntos porcentuales de chance de ganar la partida. Los trucos más profundos — ronda 3, y toda línea más allá de la ventana de export — se caminan en vivo en el lab."
+        },
+        "leaks": {
+          "title": "Los hábitos que más cuestan",
+          "lede": "Todo jugador carga reglas de bolsillo. Este capítulo tasa seis de las más comunes contra la solución — no como insulto sino como cuenta: el costo promedio por reparto de seguir el hábito donde aplica, y la peor mano que arruina. Los hábitos caros no son los que el folclore advierte.",
+          "pricingHead": "Cómo se tasa un hábito",
+          "pricingP1": "Cada precio es un <b>desvío único</b>: en cada nodo donde el hábito prescribe una acción, cobramos la brecha entre el valor certificado de esa acción y el de la mejor disponible, ponderada por cuántas veces el reparto llega ahí. La unidad es <b>puntos porcentuales de chance de ganar por reparto</b> — los mismos pp de la vista COSTO del lab y del capítulo de la mano de once.",
+          "pricingAside": "Desvío único quiere decir: el rival sigue en equilibrio y tu yo futuro vuelve a él. El costo de largo plazo contra un rival que se adapta es mayor — estos son precios de piso.",
+          "tableHead": "La cuenta",
+          "colHabit": "Hábito",
+          "colMean": "Precio medio, pp/reparto",
+          "colWorst": "Peor mano, pp",
+          "habitAcceptTruco": "Aceptar todo truco (10×10)",
+          "habitFoldTruco": "Retirarse de todo truco (10×10)",
+          "habitAcceptEleven": "Aceptar toda mano de once en el 11×9",
+          "habitFoldEleven": "Retirarse de toda mano de once en el 11×10, repartiendo",
+          "habitLeadManilha": "Abrir con la manilha cuando tenés una (10×10)",
+          "habitLeadStrongest": "Abrir siempre con la carta más fuerte (10×10)",
+          "tableP1": "El orden es el hallazgo. Los hábitos caros son <b>hábitos de respuesta</b> — cómo reaccionás a un truco o a una mano de once — y los baratos son <b>hábitos de salida</b>. Abrir siempre con la más fuerte, la regla más repetida, cuesta apenas un punto por reparto; pagar todo truco cuesta ocho veces eso, y aceptar la once en automático en el 11×9 cuesta veinte veces.",
+          "readingHead": "Leyendo la cuenta",
+          "readingP1": "Las dos filas de la once apuntan a lados opuestos a propósito: en el <b>11×9</b> el rango se cierra y la fuga es aceptar de más, mientras que en el <b>11×10 repartiendo</b> la retirada está bajo el agua (44,7%) y la fuga es retirarse de más. El mismo instinto — “cuidado con once” — es virtud en un marcador e impuesto de 19 pp en el otro. Marcador primero, cartas después.",
+          "readingP2": "Los hábitos de salida son baratos por una razón estructural que el capítulo de la carta de salida grafica: la mayoría de las manos tiene varias aperturas a menos de un punto entre sí, así que hasta una regla dogmática suele caer cerca de la frontera. Las trampas están concentradas — las manos que salen con el zap, a ~20 pp — y no repartidas. Las decisiones de respuesta no tienen ese colchón: aceptar y retirarse divergen por manos enteras, no por fracciones.",
+          "readingAside": "Precios medidos en los exports certificados tc0 de 10×10 y 11×N (2026-07-18); la columna de la peor mano nombra la fila más cara de la ventana de export. Donde un hábito cruza marcadores, su precio se mueve con el marcador — mirá el lab antes de generalizar."
+        },
+        "numbers": {
+          "title": "Las soluciones, en números",
+          "lede": "La Parte I explica qué es la solución; este apéndice es su libro mayor. Toda estadística que el proyecto midió sobre las soluciones publicadas — el tamaño del juego, cuánto ya está resuelto, qué tan ajustado es cada certificado, cuánto se parecen las soluciones vecinas, qué tan nítido es el juego óptimo y qué costó computarlo — reunida en una página. Cada cifra es un registro fechado en el log de benchmarks del proyecto.",
+          "censusHead": "El juego, contado",
+          "censusP1": "Un subjuego por (marcador, quién reparte, clase de muestra): <b>1.296</b> en total, cada uno cubriendo <b>140.118</b> repartos distintos una vez que las equivalencias exactas colapsan la combinatoria cruda de las cartas. Dentro de un subjuego, el árbol crece según cuánta escalera de subas sigue viva.",
+          "censusP2": "Esos son los árboles crudos. El árbol de producción además quita ramas probadamente irrelevantes — poda de subas consciente del marcador más podas con prueba — recortando el nivel más profundo de <b>6,70B a 3,80B</b> de nodos (756,8M de conjuntos de información) sin perder exactitud. Los gráficos publicados viven en los dos niveles más chicos: una raíz de once es un árbol de 49,6M de nodos, y un 10×10 es un árbol de ~200M de nodos sobre <b>39,5M</b> de conjuntos de información.",
+          "censusAside": "Un <i>nodo</i> es un estado del árbol del juego; un <i>conjunto de información</i> es una decisión como el jugador la enfrenta de verdad — sus cartas y la línea pública, no las cartas del rival. Los gráficos dibujan una fila por conjunto de información.",
+          "certHead": "Qué se publica, y cómo se certifica",
+          "certP1": "La versión actual del Study lleva <b>225 situaciones resueltas</b> — los artefactos por (marcador, muestra, repartidor) de la cobertura de arriba. Cada situación sale con una autocertificación exacta: se computa una mejor respuesta genuina contra la estrategia exportada desde ambos asientos, y el promedio de las dos ganancias es la explotabilidad ε de la situación, en la escala donde <b>ε 0,01 ≈ 0,5 puntos porcentuales</b> de chance de ganar la partida. Según el origen de la solución:",
+          "certColSource": "Cómo se resolvió la situación",
+          "certColSpots": "Situaciones",
+          "certColRaw": "ε crudo (mediana / máx)",
+          "certColPure": "ε purificado (mediana / máx)",
+          "certColGap": "Gap de BR por nodo, pp (mediana / máx)",
+          "certTransferred": "Transferida de un vecino y refinada en caliente",
+          "certRefined": "Refinada y exportada directo",
+          "certFallback": "Resuelta desde cero (transferencia rechazada)",
+          "certP2": "Las transferencias tenían que pasar puertas duras — ε crudo ≤ 0,01, ε purificado ≤ 0,004, gap medio ponderado de mejor respuesta por nodo ≤ 0,25 pp — o el worker descartaba la candidata y resolvía desde cero. Las soluciones nativas convergen mucho más ajustado en lo global (mediana ε 0,00001), pero 28 de ellas llevan perfiles por nodo más anchos — exactamente lo que las insignias ≈ por celda del lab existen para mostrar.",
+          "certAside": "El ε <i>purificado</i> se mide después de pegar a la mejor acción las colas de mezcla casi nulas para exportar — en general ajusta la cota. La columna por nodo es el promedio ponderado por alcance de los mismos gaps de mejor respuesta por celda detrás de las insignias del capítulo de confianza.",
+          "simHead": "Cuánto se parecen las soluciones vecinas",
+          "simP1": "Resolvé dos subjuegos vecinos de forma independiente hasta converger y comparalos fila por fila. Dos promedios cuentan historias distintas: sobre <i>todas las filas de la tabla</i>, y ponderado por <i>cuántas veces el juego llega de verdad</i> a cada fila. TV es la distancia de variación total — la fracción de probabilidad que tendría que moverse para convertir la mezcla de una fila en la de la otra (0 = idénticas).",
+          "simColPair": "Vecinos comparados",
+          "simColTvRows": "TV media, todas las filas",
+          "simColTvPlay": "TV media, por juego",
+          "simColAgreeRows": "Mejor acción coincide, filas",
+          "simColAgreePlay": "…por juego",
+          "simScoreMao": "Marcador: 11×10 vs 11×9, misma muestra",
+          "simTurnupMao": "Muestra: 11×10, tc0 vs tc1",
+          "simTurnupBig": "Muestra: 10×10, tc0 vs tc1",
+          "simP2": "La asimetría es el hallazgo. Cambiar la <b>clase de muestra</b> casi no mueve el juego en ningún lado: la distancia en el camino queda cerca de 0,02 y la decisión de la raíz cambia 0,005. Cambiar el <b>marcador</b> concentra todo su efecto justo donde pasa el juego — la fila de aceptar/retirarse de la raíz se mueve 0,196, las profundidades 1–3 se mueven 0,12–0,18, y solo cerca de la mitad de la masa de juego queda en filas efectivamente idénticas. Un núcleo chico, poco profundo y sensible al marcador carga más o menos la mitad del juego jugado.",
+          "simAside": "Donde ambos vecinos son puros con confianza (acción principal arriba de 0,99 de los dos lados), eligen la <b>misma</b> acción en el 99,99–100% de las filas. La parte nítida del juego óptimo es estable entre subjuegos vecinos.",
+          "purityHead": "Qué tan nítido es el juego óptimo",
+          "purityP1": "Llamá <i>pura</i> a la fila cuya mayor acción se lleva más del 99% de la mezcla. La mezcla domina las tablas — pero no el juego jugado:",
+          "purityColSolution": "Solución",
+          "purityColRows": "Pura, fracción de filas",
+          "purityColPlay": "Pura, fracción del juego",
+          "purityColMaxProb": "Peso medio de la acción principal (filas / juego)",
+          "purityMao": "11×10 tc0 (5,6M de filas)",
+          "purityBig": "10×10 tc0 (39,5M de filas)",
+          "purityP2": "Más de la mitad del juego real pasa en decisiones (casi) puras — las mismas filas que coinciden en 99,99%+ entre soluciones vecinas. El complemento es igual de real: cerca del <b>45% de la masa de juego es genuinamente mixta</b>, la parte del truco óptimo que se resiste a reglas humanas nítidas. Ajustá “pura” a 99,9% y la pureza en el camino cae a 50,7% (11×10) y 39,3% (10×10) — la nitidez se ablanda con el corte.",
+          "effortHead": "Qué costó computarlo",
+          "effortP1": "El solver es CFR+ sincrónico, adoptado tras medir un recorte de ~10× en la cantidad de iteraciones con el mismo ε certificado. La versión de 225 situaciones la construyeron cuatro workers preemptibles de nube en 3–4,5 horas cada uno — transfiriendo la solución de un vecino donde el certificado lo permitía (85% de las situaciones) y resolviendo desde cero donde no — por del orden de <b>US$ 5</b> de cómputo. Una solución en caliente de la banda del truco hoy hace pico en ~16 GiB y ~18 minutos; una cadena de trabajo de memoria bajó el mismo job desde una clase de máquina de 75 GiB.",
+          "effortP2": "Certificar es barato al lado de resolver: una mejor respuesta exacta del juego entero en el nivel más profundo — la escalera completa desde 0×0, 14,6 mil millones de visitas a nodos — entra en <b>8,1 GiB</b> y menos de tres horas. La frontera es la solución profunda en sí: solo armar el árbol del 0×0 en memoria pide más de <b>150 GiB</b>, y por eso la malla debajo de las bandas publicadas se ataca de abajo hacia arriba, subjuego por subjuego.",
+          "effortAside": "Fuentes: los registros fechados del log de benchmarks del proyecto, 2026-07-15 → 2026-07-17 — censos de árbol, compare-policies, policy-stats, la flota de la versión de 225 perfiles y los scouts de banda profunda.",
+          "censusPruneP": "Fuera de mano de once, el motor sigue permitiendo la escalera normal de aumentos. El solver solo elimina el aumento siguiente cuando <code>marcador menor + apuesta actual ≥ 12</code>: en ese punto la mano actual ya decide la partida para cualquiera que gane, así que subir no agrega premio ni poder racional para hacer retirar al rival. Esto es <b>poda exacta en valor</b>, no una afirmación de que esos botones sean ilegales. Los extremos diagonales son referencias compactas: <code>0 × 0 → 2 × 2</code> también cubre marcadores desiguales como 2 × 10 y su espejo 10 × 2. La tabla muestra lo que el solver conserva con muestra 4, para una orientación del repartidor, sobre todos los repartos abstractos.",
+          "treeTier": "franja del subjuego",
+          "treeScore": "interacción con el marcador",
+          "treeLadder": "solver conserva",
+          "treeNodes": "nodos del árbol",
+          "treeInfos": "conjuntos de información",
+          "treeOnze": "Mano de once",
+          "treeOnzeScore": "0 × 11 → 11 × 11",
+          "treeTruco": "Solo truco",
+          "treeTrucoScore": "9 × 9 → 10 × 10",
+          "treeSix": "Hasta seis",
+          "treeSixScore": "6 × 6 → 8 × 8",
+          "treeNine": "Hasta nueve",
+          "treeNineScore": "3 × 3 → 5 × 5",
+          "treeFull": "Escalera completa",
+          "treeFullScore": "0 × 0 → 2 × 2",
+          "treeNote": "Conteos exactos con muestra 4; las otras clases de muestra todavía no se contaron todas en cada franja.",
+          "coverageHead": "Qué está realmente resuelto",
+          "coverageAria": "Doscientos dieciséis de mil doscientos noventa y seis subjuegos tabulares exactos están resueltos en julio de 2026",
+          "coverageLabel": "Cobertura tabular exacta · julio de 2026",
+          "coverageRemaining": "1.080 subjuegos siguen fuera de la solución tabular exacta",
+          "coverageP1": "Existen estrategias exactas para <b>216 de 1.296</b> subjuegos: los 23 marcadores ordenados donde mano o pie está en 11, en las nueve clases de muestra (207), más 10 × 10 en las nueve clases (9). Los otros <b>1.080</b> no se resolvieron como una grilla tabular completa.",
+          "coverageP2": "La versión detrás de esa cobertura guarda <b>225 artefactos</b> — uno por (marcador, muestra, asiento del repartidor): cada marcador 11 × N en las dos orientaciones del repartidor, más el 10 × 10 en una. Las dos cuentas difieren exactamente por el 11 × 11, simétrico: sus dos orientaciones son el mismo juego con los asientos renombrados — nueve artefactos que cubren nueve subjuegos ya contados una vez. El propio Study Lab incluye un <b>subconjunto de 15 gráficos</b> de la versión, todos con muestra 4.",
+          "coverageNote": "La grilla restante está <b>estacionada, no calculándose en silencio</b>. El censo medido estima unos US$ 505 mil en spot / US$ 1,12 millones bajo demanda para terminarla de forma tabular, y un job de escalera completa necesitaría aproximadamente 1,54 TB de RAM. La dirección actual usa subjuegos exactos como datos de profesor y luego amplía la cobertura con una política neural destilada y self-play; esas etapas posteriores todavía no están resueltas ni certificadas."
+        },
+        "glossary": {
+          "title": "Glosario",
+          "p1": "Las palabras en las que se apoya este lab, en un solo lugar. Los links del lab y del recorrido llegan acá."
+        }
+      },
+      "toy": {
+        "press": "Jugar una mano",
+        "reset": "Nueva partida",
+        "treeAria": "Árbol de juego del engaño de juguete",
+        "deal": "reparto",
+        "raise": "truco",
+        "give": "juega el 4",
+        "cantTell": "mano no distingue estos dos",
+        "raiseBubble": "¡truco!",
+        "giveBubble": "juega el 4",
+        "callBubble": "¡acepto!",
+        "foldBubble": "me voy",
+        "resGive": "El pie juega el 4 — mano +1.",
+        "resFold": "La mano se va: −1, sin ver la carta.",
+        "resCallManilha": "La mano acepta — sale la manilha: −3.",
+        "resCallBluff": "La mano acepta — blof cazado: +3.",
+        "targetTitle": "la porción de equilibrio: 2 de cada 3 trucos llevan la manilha",
+        "tallyHands": "{hands, plural, one {# mano} other {# manos}} · {raises} trucos",
+        "tallyShare": "manilha detrás del truco: <b>{pct}%</b> <dim>(→ 67%)</dim>",
+        "tallyNoRaises": "todavía no hay trucos",
+        "caption": "Un final de juguete, sorteado en vivo según la solución: el camino del árbol, la mesa y el conteo se mueven juntos. La barra sigue cuánto del rango de truco de pie llevaba de verdad la manilha — converge a p* = 2/3.",
+        "beats": {
+          "deal": "Mezclar y repartir",
+          "pe": "El pie decide",
+          "mao": "La mano responde",
+          "showdown": "Se muestran"
+        },
+        "stepLabel": "Paso",
+        "prevStep": "Paso anterior",
+        "nextStep": "Paso siguiente",
+        "playMany": "Jugar {n} manos"
+      },
+      "gcr": {
+        "hint": "Pasá el mouse o tocá una celda. El bloque fija una carta; los ejes nombran las otras dos.",
+        "badgeTitle": "Elegí la posición (H·M·L) y la carta fijadas. Esta figura didáctica siempre muestra un gráfico.",
+        "caption": "Datos reales — 11x11 v5, salida de la mano, dibujado con las mismas celdas del lab. La etiqueta de latón elige la carta fijada; el lector imprime la mezcla completa de la mano apuntada y el % de victoria de cada acción."
+      },
+      "footer": {
+        "openLab": "Abrir el lab",
+        "tour": "o hacé el recorrido guiado"
+      },
+      "plate": "Lámina {no}",
+      "refsHead": "Referencias",
+      "symbols": {
+        "h": "una mano exacta",
+        "sigma": "qué tan seguido la solución toma la acción a con h",
+        "p0": "qué tan seguido el reparto produce h",
+        "ell": "la línea de juego observada hasta acá",
+        "d": "una decisión observada a lo largo de ℓ",
+        "w": "el peso de llegada de h — enviado por nodo en el export",
+        "pool": "el pool de acciones: todas, o solo las jugadas boca arriba bajo IGNORAR OCULTAS",
+        "v": "el valor de una acción en la moneda elegida (puntos o pp de victoria)",
+        "q": "la equity de partida del solver tras la acción, en escala ±1 (50 pp por unidad)",
+        "astar": "la acción más jugada de la mezcla",
+        "qsigma": "el valor de h bajo su propia mezcla: Σₐ σ·q",
+        "W": "el peso total de un nodo — la suma de sus w(h)",
+        "sigmaP": "la mezcla de la misma decisión en el punto comparado"
+      },
+      "an": {
+        "aria": "Anatomía de una línea de estudio",
+        "hint": "Pasá el mouse o tocá cualquier pedazo de la línea.",
+        "caption": "Una línea de estudio válida, pedazo por pedazo. La misma gramática mueve el campo MANO y la URL de la página.",
+        "try": "Abrir exactamente esta jugada en el lab",
+        "refManilha": "Las manilhas siempre nombran el palo — <code>5d 5s 5h 5c</code> con muestra 4 — o, sin depender de la muestra: <code>md ms mh mc</code>.",
+        "refHide": "Un <code>*</code> después de la carta la juega <b>boca abajo</b>: <code>k*</code>.",
+        "refRaise": "Escalones de la subida: <code>r</code> → vale 3, después <code>r6</code>, <code>r9</code>, <code>r12</code>.",
+        "refAce": "<code>a</code> responde a una subida pendiente o a la mano de once; sin nada pendiente, es solo el <b>as</b>.",
+        "tok": {
+          "score": {
+            "term": "El marcador",
+            "desc": "<code>mano×pie</code>, hasta 11 cada uno — acá los dos lados están en 10. En la línea se escribe <code>10x10</code>."
+          },
+          "vira": {
+            "term": "La muestra",
+            "desc": "<code>v4</code>: la carta dada vuelta es un 4, así que los 5 son las manilhas."
+          },
+          "role": {
+            "term": "La mano de quién",
+            "desc": "<code>pe[…]</code> arma las cartas del pie; <code>mao[…]</code>, las de la mano. El <code>!</code> fija la mano para todo el recorrido."
+          },
+          "hand": {
+            "term": "La mano armada",
+            "desc": "exactamente tres lugares, de la más fuerte a la más débil: <code>5d</code> es la manilha 5♦, <code>3</code> un tres común, <code>?</code> un lugar desconocido."
+          },
+          "colon": {
+            "term": "Los dos puntos",
+            "desc": "todo lo que sigue a <code>:</code> es el historial jugado, acción por acción."
+          },
+          "play": {
+            "term": "Una carta jugada",
+            "desc": "solo el valor: fuera de las manilhas, el palo no importa, así que <code>3</code> es cualquier tres."
+          },
+          "play2": {
+            "term": "La respuesta",
+            "desc": "el pie responde con una J. Dos cartas en la mesa — se completa la ronda."
+          },
+          "round": {
+            "term": "Marca de ronda",
+            "desc": "<code>/</code> afirma que una ronda terminó justo ahí. Opcional — el lab la escribe por legibilidad y revisa que caiga en un límite de verdad."
+          },
+          "raise": {
+            "term": "Una subida",
+            "desc": "<code>r</code> canta truco. Los escalones siguientes son <code>r6</code>, <code>r9</code>, <code>r12</code>."
+          },
+          "answer": {
+            "term": "Aceptar / no querer",
+            "desc": "<code>a</code> acepta una subida pendiente (o la mano de once); <code>f</code> no la quiere."
+          }
+        }
+      },
+      "glossary": {
+        "mao": {
+          "term": "mano",
+          "def": "quien lidera el reparto — actúa primero en la ronda 1. También es simplemente “la mano”: el reparto en juego."
+        },
+        "pe": {
+          "term": "pie",
+          "def": "la posición del repartidor — responde último en la ronda 1."
+        },
+        "vira": {
+          "term": "muestra",
+          "def": "la carta dada vuelta después del reparto; el valor justo arriba de ella pasa a ser el valor de las manilhas."
+        },
+        "manilha": {
+          "term": "manilha",
+          "def": "las cuatro cartas un valor arriba de la muestra — las más fuertes en juego, en el orden ♣ > ♥ > ♠ > ♦."
+        },
+        "zap": {
+          "term": "zap",
+          "def": "el apodo de mesa de la manilha de trébol — la carta más fuerte del juego, ♣ arriba de ♥, ♠ y ♦."
+        },
+        "ladder": {
+          "term": "truco · la escalera",
+          "def": "la escalera de apuestas 1 → 3 → 6 → 9 → 12. El truco es el primer escalón; cada suba posterior sube un escalón, y las subas alternan estrictamente entre los jugadores."
+        },
+        "eleven": {
+          "term": "mano de once",
+          "def": "la mano que se reparte cuando un jugador llega a 11: mira sus cartas y acepta (la mano se juega por 3) o se retira (concede 1). La escalera queda trabada igual."
+        },
+        "iron": {
+          "term": "mano de fierro",
+          "def": "nombre de folclore, y ambiguo: tradicionalmente la mano de 11 × 11 jugada a ciegas, pero muchas veces usado para el 11 × 11 en general. En esta variante el 11 × 11 se juega con las cartas vistas, vale 3 automáticamente — la guía dice simplemente “11 × 11”."
+        },
+        "spot": {
+          "term": "spot · subjuego",
+          "def": "un juego de mano exacto seleccionado por marcador, repartidor y muestra — las coordenadas que fijan los controles del lab. El solver resuelve la partida un spot a la vez, desde el final hacia atrás."
+        },
+        "solve": {
+          "term": "solución",
+          "def": "un equilibrio certificado: un par de estrategias que ningún lado puede mejorar, calculado por self-play y revisado contra mejores respuestas exactas."
+        },
+        "equity": {
+          "term": "equity · % de victoria",
+          "def": "tu probabilidad de ganar la partida desde acá, si los dos lados siguen la solución."
+        },
+        "pp": {
+          "term": "pp · punto porcentual",
+          "def": "una centésima de chance de ganar la partida, la unidad de precios de la guía. La escala q del solver (±1) convierte a 50 pp por unidad: victoria % = 50 + 50q."
+        },
+        "range": {
+          "term": "rango",
+          "def": "todas las manos que un jugador puede tener en una jugada, cada una pesada por cuántas veces llega ahí de verdad."
+        },
+        "blocker": {
+          "term": "blocker · carta vista",
+          "def": "una carta visible — la muestra, o cualquier carta abierta — que por eso no puede estar en una mano oculta. Un hecho del mazo, no una preferencia del solver; es lo que tacha manos de un rango."
+        },
+        "reach": {
+          "term": "alcance (reach)",
+          "def": "con qué frecuencia una línea de juego pasa de verdad bajo la solución — los rincones poco alcanzados entrenan poco y merecen menos confianza."
+        },
+        "pure": {
+          "term": "estrategia pura",
+          "def": "una jugada donde la solución siempre toma la misma acción — una celda de un solo color."
+        },
+        "mix": {
+          "term": "estrategia mixta",
+          "def": "una jugada donde la solución sortea a propósito para quedar ilegible — una celda multicolor. El número impreso es la tajada más grande; el tooltip guarda la mezcla entera."
+        },
+        "selfloss": {
+          "term": "la marca ≈",
+          "def": "una medición débil de calidad por nodo: el lab muestra ≈ cuando una mejor respuesta adversarial puede ganar más de 5 puntos de victoria de partida. La pérdida propia y el alcance propio explican la advertencia; no son su prueba principal."
+        },
+        "eps": {
+          "term": "explotabilidad · ε",
+          "def": "cuánto gana una mejor respuesta perfecta contra una estrategia, promediado entre los dos asientos — el número que acota el certificado de un spot. ε 0,01 ≈ 0,5 pp de chance de ganar."
+        }
+      },
+      "landing": {
+        "viewsIntro": "Las cuatro lentes del lab sobre una decisión resuelta — la página más importante de esta guía.",
+        "viewsCta": "Leé el capítulo de las cuatro vistas"
+      },
+      "gax": {
+        "hint": "Pasá el mouse o tocá una celda. Las celdas sólidas llevan mezclas entrenadas; las celdas pálidas con ≈ están señaladas.",
+        "flagged": "≈ señalada: esta mezcla pierde {pp} pp de equity de partida contra su propia mejor acción — por encima de la tolerancia de {tol} pp por punto del certificado. La solución casi nunca viene acá, así que los números son ruido de inicialización, no estrategia.",
+        "trained": "Entrenada: pérdida propia de {pp} pp, dentro de la tolerancia de {tol} pp — la mezcla de abajo es segura de leer.",
+        "flaggedBr": "≈ débil: una mejor respuesta adversarial gana {pp} pp de victoria de partida contra esta mezcla. El lab no la va a presentar como estrategia.",
+        "measuredBr": "Medida por mejor respuesta adversarial: {pp} pp de victoria de partida explotables en esta mano.",
+        "caption": "Datos reales — 11x11 v4, un rincón que la solución rara vez visita: mano salió con el 4, pie se llevó la ronda con un 3 y salió en la ronda 2 tapado. La grilla exacta de dos cartas de mano tiene {n} de 87 celdas con ≈ — poco alcance les dio casi nada de entrenamiento."
+      },
+      "labSpot": "Recorré esta jugada en el lab:"
+    }
+  }
+}

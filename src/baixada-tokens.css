@@ -1,0 +1,120 @@
+/* Baixada — Tactile direction. Real materials, quiet color. */
+
+:root {
+  /* Walnut table — warm, matte, a little worn */
+  --wood-0: #1f1610;   /* deepest shadow under cards */
+  --wood-1: #2a1e15;
+  --wood-2: #3d2e20;   /* base table color */
+  --wood-3: #5a4230;   /* mid grain */
+  --wood-4: #785538;   /* highlight grain */
+
+  /* Paper — score pad, notes. Cream, not white. */
+  --paper-0: #ede4d0;
+  --paper-1: #e4d9bf;
+  --paper-2: #d5c7a4;   /* paper shadow edge */
+  /* Study stock — neutral card stock for long-form reference pages. Keeps
+     the guide distinct from the score-pad cream used at the table. */
+  --study-stock: #e9e7e1;
+  --study-stock-edge: #cfcdc5;
+  --ink-0:   #2a241b;   /* graphite/ink */
+  --ink-1:   #4a4032;   /* lighter ink, rules, faint marks */
+  --ink-2:   #7a6d56;   /* pencilled notes */
+
+  /* Spanish card — cream card stock with ochre border */
+  --card-0:  #f6edd7;
+  --card-1:  #ede2c3;
+  --card-edge:#c8a040;   /* the signature yellow frame */
+  --card-edge-deep:#9a7a2e;
+  --card-back-a:#5a2a26;  /* bordeaux back */
+  --card-back-b:#3a1a18;
+
+  /* Spanish suit colors — muted, not garish */
+  --suit-red:    #a23c2c;   /* copas */
+  --suit-ochre:  #b88528;   /* oros */
+  --suit-black:  #1e1a14;   /* espadas */
+  --suit-green:  #4a5a2a;   /* bastos */
+
+  /* Metal — a single metallic accent, aged brass */
+  --brass-0: #8a6a28;
+  --brass-1: #a88540;
+  --brass-2: #d4b36a;
+  --brass-hi:#ecd999;
+
+  /* Study action encoding — five-color CVD-safe subset of Okabe–Ito.
+     This is data color, not a game/suit accent; labels and percentages remain
+     required because color alone never carries the strategy meaning. */
+  --study-action-blue:       #0072b2;
+  --study-action-sky:        #56b4e9;
+  --study-action-vermillion: #d55e00;
+  --study-action-teal:       #009e73;
+  --study-action-purple:     #cc79a7;
+
+  /* Ambient light from an overhead lamp, centered */
+  --lamp: radial-gradient(
+    ellipse 60% 50% at 50% 40%,
+    rgba(255, 220, 160, 0.10) 0%,
+    rgba(255, 220, 160, 0.04) 40%,
+    rgba(0, 0, 0, 0) 75%
+  );
+
+  /* Typography — a quiet serif for headings/letters, humanist sans for small */
+  --font-serif: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+  --font-hand:  "Kalam", "Caveat", "Shadows Into Light", cursive;
+  --font-sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --shadow-card: 0 2px 2px rgba(0,0,0,0.28), 0 6px 14px rgba(0,0,0,0.35);
+  --shadow-card-low: 0 1px 1px rgba(0,0,0,0.25), 0 3px 6px rgba(0,0,0,0.28);
+}
+
+/* Walnut grain — layered noise + subtle streaks. Applied as a class */
+.walnut {
+  background-color: var(--wood-2);
+  background-image:
+    /* dark streaks along the grain */
+    repeating-linear-gradient(
+      92deg,
+      rgba(0,0,0,0.00) 0px,
+      rgba(0,0,0,0.00) 3px,
+      rgba(0,0,0,0.06) 4px,
+      rgba(0,0,0,0.00) 8px,
+      rgba(0,0,0,0.00) 14px,
+      rgba(0,0,0,0.04) 15px,
+      rgba(0,0,0,0.00) 22px
+    ),
+    /* broader lighter grain */
+    repeating-linear-gradient(
+      89deg,
+      rgba(120, 85, 56, 0.00) 0px,
+      rgba(120, 85, 56, 0.00) 40px,
+      rgba(120, 85, 56, 0.07) 42px,
+      rgba(120, 85, 56, 0.00) 80px
+    ),
+    /* broad tonal variation */
+    radial-gradient(
+      ellipse 120% 80% at 30% 20%,
+      rgba(120, 85, 56, 0.18) 0%,
+      rgba(120, 85, 56, 0.00) 60%
+    ),
+    radial-gradient(
+      ellipse 100% 60% at 80% 90%,
+      rgba(0,0,0, 0.22) 0%,
+      rgba(0,0,0, 0.00) 60%
+    );
+}
+
+/* Paper texture — slightly mottled cream */
+.paper {
+  background-color: var(--paper-0);
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(90,70,40,0.05) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(90,70,40,0.06) 0%, transparent 40%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(90,70,40,0.00) 0px,
+      rgba(90,70,40,0.00) 24px,
+      rgba(90,70,40,0.04) 25px
+    );
+}
+
+/* Utility */
+.no-select { user-select: none; -webkit-user-select: none; }

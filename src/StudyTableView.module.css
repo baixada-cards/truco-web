@@ -1,0 +1,674 @@
+/* The table view (plan 76 H-3, redesigned again) — a compact walnut mini-map
+   docked in the rail above the timeline, plus a full-size lightbox stage.
+   Tokens and the .walnut/.fcard/.peg surfaces come from baixada-tokens.css,
+   FrenchCard.css and Peg.css; only the study-table layout lives here. */
+
+.dock {
+  margin-bottom: 14px;
+}
+
+.dockHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-bottom: 6px;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.kicker {
+  font: 700 10px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--paper-2, #b7a98a);
+}
+
+.chevron {
+  color: var(--paper-2, #b7a98a);
+  font-size: 10px;
+}
+
+/* ─── collapsed: one brass button straight to the lightbox — same control
+       family as the rail's navBtn, so it reads as a real control ─── */
+
+.expandBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border-radius: 6px;
+  border: 1px solid rgba(212, 179, 106, 0.4);
+  background: rgba(31, 22, 16, 0.5);
+  color: var(--brass-2, #d4b36a);
+  font-size: 12px;
+  line-height: 1;
+  cursor: zoom-in;
+}
+
+.expandBtn:hover {
+  border-color: var(--brass-hi, #ecd999);
+  color: var(--brass-hi, #ecd999);
+}
+
+.expandBtn:focus-visible {
+  outline: 2px solid var(--brass-hi, #ecd999);
+  outline-offset: 1px;
+}
+
+/* ─── shared felt: walnut under the lamp ─── */
+
+.stageCompact,
+.stageFull,
+.stagePortrait {
+  position: relative;
+  border-radius: 10px;
+  border: 1px solid rgba(236, 217, 153, 0.14);
+  overflow: hidden;
+  background: var(--wood-1, #2a1e15);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 220, 160, 0.05),
+    0 14px 32px rgba(0, 0, 0, 0.42);
+}
+
+/* the phone lightbox stage: portrait composition at full card size */
+.stagePortrait {
+  width: 372px;
+  margin: 0 auto;
+}
+
+/* the compact stage doubles as the expand control: one big zoom target */
+.stageCompact {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  text-align: initial;
+  cursor: zoom-in;
+}
+
+.stageCompact:hover .lamp {
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 40%,
+    rgba(255, 220, 160, 0.13) 0%,
+    rgba(255, 220, 160, 0.05) 40%,
+    rgba(0, 0, 0, 0) 75%
+  );
+}
+
+.stageCompact:focus-visible {
+  outline: 2px solid var(--brass-hi, #ecd999);
+  outline-offset: 1px;
+}
+
+.surface {
+  position: absolute;
+  inset: 0;
+}
+
+/* the overhead lamp, painted as a plain warm overlay: the live table uses
+   mix-blend-mode for this, but a blend layer inside a scroll container can
+   wedge some compositors, and on walnut the plain gradient reads the same */
+.lamp {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 40%,
+    rgba(255, 220, 160, 0.09) 0%,
+    rgba(255, 220, 160, 0.035) 40%,
+    rgba(0, 0, 0, 0) 75%
+  );
+  pointer-events: none;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 85% 75% at 50% 45%,
+    transparent 52%,
+    rgba(10, 6, 3, 0.5) 100%
+  );
+  pointer-events: none;
+}
+
+/* ─── the compact docked scene ─── */
+
+.sceneCompact {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 10px 10px;
+}
+
+.seatRowCompact {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  min-height: 84px;
+}
+
+/* md-card portrait overrides (the phone lightbox) — kept after the base
+   .sceneCompact rules so they win at equal specificity */
+.scenePortraitMd {
+  gap: 10px;
+  padding: 14px 12px 12px;
+}
+
+.scenePortraitMd .seatRowCompact {
+  min-height: 134px;
+}
+
+.scenePortraitMd .handCard {
+  margin: 0 -10px;
+}
+
+.deckCorner {
+  position: absolute;
+  right: 6px;
+  top: -2px;
+  width: 66px;
+  height: 84px;
+  transform: scale(0.68);
+  transform-origin: top right;
+}
+
+.deckCornerMd {
+  right: 10px;
+  top: 2px;
+  transform: scale(0.95);
+}
+
+.deckCornerBack {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: rotate(3deg);
+}
+
+.deckCornerVira {
+  position: absolute;
+  top: 18px;
+  /* slid well out from under the back (which renders on top of it) so the
+   * rank corner stays readable, as in the lightbox's deckStack */
+  right: 26px;
+  transform: rotate(-84deg);
+}
+
+.pegCorner {
+  position: absolute;
+  right: 4px;
+  bottom: 2px;
+}
+
+/* ─── the full lightbox scene ─── */
+
+.sceneFull {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px 12px;
+}
+
+.seatRowFull {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  min-height: 84px;
+}
+
+.mid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 34px;
+  width: 100%;
+}
+
+/* ─── seats and hands ─── */
+
+.seatPlate {
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.seatName {
+  font: 700 10px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 240, 210, 0.72);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.foldedTag {
+  font: italic 600 11px/1 var(--font-serif, Georgia, serif);
+  letter-spacing: 0.08em;
+  color: rgba(162, 60, 44, 0.9);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.hand {
+  display: flex;
+  align-items: center;
+}
+
+.handCard {
+  margin: 0 -7px;
+}
+
+.handFolded {
+  filter: brightness(0.62) saturate(0.5);
+}
+
+/* ─── deck + turn-up ─── */
+
+.deckArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 118px;
+}
+
+.deckStack {
+  position: relative;
+  width: 88px;
+  height: 92px;
+}
+
+.deckBack1,
+.deckBack2,
+.deckBack3 {
+  position: absolute;
+  top: 0;
+  left: 30px;
+}
+
+.deckBack1 {
+  transform: rotate(-2deg);
+}
+
+.deckBack2 {
+  top: 2px;
+  left: 32px;
+  transform: rotate(1deg);
+}
+
+.deckBack3 {
+  top: 4px;
+  left: 34px;
+}
+
+.deckVira {
+  position: absolute;
+  top: 22px;
+  left: -8px;
+  transform: rotate(-84deg);
+}
+
+/* ─── trick columns ─── */
+
+.played {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.sceneCompact .played {
+  gap: 12px;
+}
+
+.scenePortraitMd .played {
+  gap: 20px;
+}
+
+.round {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+/* two cards overlapping vertically, like the live ft-played-pair */
+.pair,
+.pairSm {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pair {
+  width: 96px;
+}
+
+.pairSm {
+  width: 58px;
+}
+
+/* the reply card tucks under the lead, near side on top */
+.pair > .slot:first-child {
+  margin-bottom: -50px;
+}
+
+.pairSm > .slotSm:first-child {
+  margin-bottom: -32px;
+}
+
+.pair > .slot:last-child,
+.pairSm > .slotSm:last-child {
+  z-index: 1;
+}
+
+.roundActive .pair,
+.roundActive .pairSm {
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 50%,
+    rgba(255, 220, 160, 0.12) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+}
+
+.marker {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-serif, serif);
+  font-style: italic;
+  font-size: 13px;
+  color: rgba(255, 240, 210, 0.35);
+  letter-spacing: 0.3em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.sceneCompact .marker {
+  font-size: 11px;
+}
+
+.scenePortraitMd .marker {
+  font-size: 13px;
+}
+
+.markerWon {
+  color: rgba(168, 133, 64, 0.9);
+}
+
+.markerLost {
+  color: rgba(162, 60, 44, 0.75);
+}
+
+.markerPending {
+  color: rgba(255, 240, 210, 0.55);
+}
+
+.slot,
+.slotSm {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slot {
+  width: 84px;
+  height: 128px;
+}
+
+.slotSm {
+  width: 52px;
+  height: 78px;
+}
+
+/* an empty trick is empty felt: unplayed slots keep only their geometry */
+.slotGhost {
+  width: 100%;
+  height: 100%;
+}
+
+.playWrap {
+  position: relative;
+}
+
+.playWon {
+  filter: drop-shadow(0 0 10px rgba(212, 179, 106, 0.5));
+}
+
+.playLost {
+  filter: saturate(0.35) brightness(0.68);
+}
+
+.faceDownTag {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(20, 12, 7, 0.85);
+  border: 1px solid rgba(212, 179, 106, 0.5);
+  font-size: 11px;
+  color: var(--brass-2, #d4b36a);
+}
+
+/* top-seat plays are rotated ~180°; counter-rotate the badge upright */
+.faceDownTagFlip {
+  transform: rotate(180deg);
+}
+
+/* ─── stake ─── */
+
+.stakeArea {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* the live table's peg is a control; this one is a readout — don't let its
+   pointer cursor promise a click that isn't there */
+.stakeArea :global(.peg) {
+  cursor: inherit;
+}
+
+.sceneFull .stakeArea {
+  width: 118px;
+}
+
+/* the pending caption hangs off the peg absolutely so its appearance never
+   nudges the peg itself */
+.stakePending {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 96px;
+  font: 600 10px/1.2 var(--font-sans, Inter, system-ui, sans-serif);
+  text-align: center;
+  color: var(--brass-2, #d4b36a);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* the compact peg sits on the bottom edge: hang the caption above instead */
+.pegCorner .stakePending {
+  top: auto;
+  bottom: calc(100% + 5px);
+}
+
+/* ─── empty line ─── */
+
+.emptyNote {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: max-content;
+  max-width: 82%;
+  padding: 9px 16px;
+  border-radius: 8px;
+  background: rgba(12, 7, 4, 0.62);
+  border: 1px solid rgba(236, 217, 153, 0.18);
+  font: italic 500 12.5px/1.5 var(--font-serif, Georgia, serif);
+  color: var(--paper-1, #e4d9bf);
+  text-align: center;
+}
+
+/* ─── the lightbox ─── */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100; /* above the lab's fixed scrims (90), under the tour (120+) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  background: rgba(10, 6, 3, 0.72);
+}
+
+/* phones: near-fullscreen, the stage zooms to fit instead of scrolling */
+@media (max-width: 719px) {
+  .lightbox {
+    padding: 10px;
+    background: rgba(10, 6, 3, 0.86);
+  }
+}
+
+.lightboxInner {
+  position: relative;
+  max-width: min(920px, 100%);
+  width: 100%;
+  max-height: 100%;
+  overflow: auto;
+}
+
+.lightboxInner .stageFull {
+  min-width: 660px;
+}
+
+/* close + prev/next echo the rail's navBtn: brass hairline squares */
+.lightboxClose,
+.lightboxNavBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  min-width: 0;
+  padding: 0;
+  border-radius: 6px;
+  border: 1px solid rgba(212, 179, 106, 0.4);
+  background: rgba(31, 22, 16, 0.72);
+  color: var(--brass-2, #d4b36a);
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightboxClose {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  font-size: 15px;
+}
+
+.lightboxNavBtn {
+  font-size: 10px;
+}
+
+.lightboxClose:hover,
+.lightboxNavBtn:hover:not([disabled]) {
+  border-color: var(--brass-hi, #ecd999);
+  color: var(--brass-hi, #ecd999);
+}
+
+.lightboxClose:focus-visible,
+.lightboxNavBtn:focus-visible {
+  outline: 2px solid var(--brass-hi, #ecd999);
+  outline-offset: 1px;
+}
+
+.lightboxNavBtn[disabled] {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.lightboxNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 0 2px;
+}
+
+.lightboxPos {
+  min-width: 52px;
+  text-align: center;
+  font: 600 11px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  letter-spacing: 0.08em;
+  color: var(--paper-2, #b7a98a);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── the study-card "any suit" face ─── */
+
+.anyCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.anyRank {
+  font-family: var(--font-serif, Georgia, serif);
+  font-weight: 500;
+  line-height: 1;
+  color: var(--ink-0, #2a241b);
+}
+
+/* the classic 6/9 bar: a rotated 6 must not read as a 9 */
+.anyRankSix {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+.anyPips {
+  display: flex;
+  gap: 3px;
+  line-height: 1;
+  opacity: 0.85;
+}

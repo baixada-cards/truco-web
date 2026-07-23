@@ -1,0 +1,1114 @@
+/* App.css — foundation only (tokens, reset, shell, utilities, @media fallbacks). */
+
+/* Global Styles */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0a0705;
+  color: #fff;
+  text-align: center;
+}
+
+html {
+  background-color: #0a0705;
+}
+
+/* ---------------- Live Arena Full Reskin ---------------- */
+
+:root {
+  background-color: #0a0705;
+  --hand-block-height: 170px;
+  --table-block-height: 260px;
+  --column-gap: 20px;
+  --rail-width: 200px;
+  --column-stack-gap: 16px;
+  --text-primary: #f7f4ef;
+  --text-secondary: #d8d2c7;
+  --text-muted: #bcb5a8;
+  --text-disabled: #8f8778;
+}
+
+.app-shell {
+  max-width: 980px;
+  width: 95%;
+  margin: 18px auto 0;
+  transition: filter 180ms ease, transform 180ms ease, opacity 180ms ease;
+}
+
+.app-shell.is-fast-mode * {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+.app-shell.is-new-match-confirming {
+  filter: blur(7px) saturate(0.55) brightness(0.8);
+  transform: scale(0.994);
+  pointer-events: none;
+  user-select: none;
+}
+
+.game-topbar {
+  --game-topbar-control-height: 42px;
+  margin: 0 auto 20px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 215, 140, 0.24);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 214, 140, 0.16), transparent 32%),
+    radial-gradient(circle at top right, rgba(255, 235, 189, 0.1), transparent 28%),
+    linear-gradient(180deg, rgba(43, 33, 18, 0.96), rgba(21, 16, 9, 0.98));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 244, 220, 0.05),
+    0 18px 34px rgba(0, 0, 0, 0.34);
+}
+
+.game-topbar__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.game-topbar__details {
+  margin-top: 10px;
+  display: grid;
+  gap: 10px;
+}
+
+.game-topbar__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  text-align: left;
+}
+
+.game-topbar__eyebrow {
+  font-size: 0.66em;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.game-topbar__title {
+  font-size: 1.05em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff4de;
+}
+
+.game-topbar__controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.game-topbar__bot-picker {
+  position: relative;
+  min-width: 248px;
+}
+
+.game-topbar__bot-picker-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: stretch;
+  min-height: var(--game-topbar-control-height);
+  box-sizing: border-box;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 215, 140, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 10px 18px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+.game-topbar__bot-picker-shell.is-open {
+  border-color: rgba(255, 210, 122, 0.34);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 14px 24px rgba(0, 0, 0, 0.24);
+}
+
+.game-topbar__bot-picker-trigger {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  color: #fff4de;
+  cursor: pointer;
+  text-align: left;
+}
+
+.game-topbar__bot-picker-kicker {
+  color: var(--text-muted);
+  font-size: 0.7em;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.game-topbar__bot-picker-value {
+  min-width: 0;
+  font-size: 0.82em;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.game-topbar__bot-picker-meta {
+  min-width: 0;
+  color: var(--text-secondary);
+  font-size: 0.74em;
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.game-topbar__bot-picker-settings {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  margin: 4px 4px 4px 0;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 215, 140, 0.16);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(24, 18, 10, 0.2));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  color: #f7e7c0;
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.game-topbar__bot-picker-settings-label,
+.game-topbar__bot-picker-option-settings-label {
+  display: block;
+  line-height: 1;
+}
+
+.game-topbar__bot-picker-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  z-index: 50;
+  width: min(360px, calc(100vw - 48px));
+  display: grid;
+  gap: 6px;
+  padding: 8px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 215, 140, 0.2);
+  background:
+    radial-gradient(circle at top left, rgba(255, 218, 143, 0.12), transparent 42%),
+    linear-gradient(180deg, rgba(27, 20, 11, 0.98), rgba(15, 11, 6, 0.99));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 18px 38px rgba(0, 0, 0, 0.34);
+}
+
+.game-topbar__bot-picker-option {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: stretch;
+  gap: 6px;
+  padding: 4px;
+  border-radius: 14px;
+}
+
+.game-topbar__bot-picker-option.is-selected {
+  background:
+    radial-gradient(circle at top left, rgba(255, 218, 143, 0.1), transparent 72%),
+    rgba(126, 79, 20, 0.14);
+}
+
+.game-topbar__bot-picker-option-main {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.game-topbar__bot-picker-option-label {
+  color: #fff4de;
+  font-size: 0.82em;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.game-topbar__bot-picker-option-copy {
+  color: var(--text-secondary);
+  font-size: 0.76em;
+  line-height: 1.35;
+}
+
+.game-topbar__bot-picker-option-settings {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  padding: 0 10px;
+  border-radius: 12px;
+  color: #f7e7c0;
+  font-size: 0.96em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.game-topbar__launcher-anchor {
+  min-width: 128px;
+}
+
+.game-topbar__provider-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  color: var(--text-secondary);
+}
+
+.game-topbar__provider-label {
+  font-size: 0.7em;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.game-topbar__provider-pill {
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 215, 140, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  color: #f3e2bc;
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.game-topbar__provider-pill.is-ready {
+  border-color: rgba(167, 219, 133, 0.28);
+  color: #dff4c7;
+}
+
+.game-topbar__provider-pill.is-unavailable {
+  border-color: rgba(255, 168, 99, 0.28);
+  color: #ffd7b5;
+}
+
+.game-topbar__provider-pill.is-loading {
+  border-color: rgba(255, 215, 140, 0.28);
+  color: #fff4de;
+}
+
+.game-topbar__provider-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 215, 140, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  color: #f2e2be;
+  font-size: 0.84em;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.game-topbar__session {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 215, 140, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  text-align: left;
+}
+
+.game-topbar__session-copy {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  flex: 1 1 320px;
+}
+
+.game-topbar__session-headline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  color: #fff4de;
+}
+
+.game-topbar__session-headline strong {
+  font-size: 0.94em;
+}
+
+.game-topbar__session-feedback {
+  color: #dff4c7;
+  font-size: 0.74em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.game-topbar__session-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.game-topbar__session-fact {
+  color: var(--text-secondary);
+  font-size: 0.78em;
+}
+
+.game-topbar__session-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.game-topbar__provider-note.is-warning {
+  border-color: rgba(255, 168, 99, 0.26);
+  background: rgba(122, 57, 18, 0.2);
+  color: #ffd7b5;
+}
+
+.game-topbar__provider-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.game-topbar__field {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--game-topbar-control-height);
+  padding: 8px 11px;
+  box-sizing: border-box;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 215, 140, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  font-size: 0.72em;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.game-topbar__field--volume {
+  gap: 8px;
+  min-width: 0;
+}
+
+.game-topbar__field--stacked {
+  min-height: 78px;
+  display: grid;
+  align-content: start;
+  justify-items: stretch;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  text-transform: none;
+  letter-spacing: 0.04em;
+}
+
+.game-topbar__field--volume input[type='range'] {
+  width: 96px;
+  accent-color: #d9a04a;
+}
+
+.game-topbar__field--stacked input[type='range'] {
+  width: 100%;
+}
+
+.game-topbar__volume-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.game-topbar__field select {
+  border: none;
+  background: transparent;
+  color: #fff4de;
+  font: inherit;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.game-topbar__field select:focus {
+  outline: none;
+}
+
+.game-topbar__field--stacked select {
+  width: 100%;
+}
+
+.game-topbar__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--game-topbar-control-height);
+  padding: 8px 14px;
+  box-sizing: border-box;
+  border-radius: 999px;
+  font-size: 0.74em;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.game-topbar__toggle--fast-mode {
+  min-inline-size: 150px;
+  white-space: nowrap;
+}
+
+.game-topbar__volume-toggle {
+  min-width: 44px;
+  padding: 7px 9px;
+  border-radius: 999px;
+  color: #fff4de;
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.game-topbar__toggle.is-active,
+.game-topbar__volume-toggle.is-active {
+  border-color: rgba(255, 210, 122, 0.44);
+  background:
+    radial-gradient(circle at top, rgba(255, 218, 143, 0.22), transparent 68%),
+    linear-gradient(180deg, rgba(146, 92, 24, 0.9), rgba(92, 54, 12, 0.92));
+  color: #fff8ea;
+}
+
+.game-topbar__volume-toggle.is-muted {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(14, 14, 14, 0.28));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.02),
+    0 8px 14px rgba(0, 0, 0, 0.18);
+  color: #c7c3ba;
+}
+
+.game-topbar__toggle:disabled,
+.game-topbar__volume-toggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+/* MAIN CONTAINER: holds the opponent hand, middle area, and player hand */
+
+.main-container {
+  max-width: 980px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(170px, var(--rail-width)) minmax(0, 1fr) minmax(190px, 230px);
+  grid-template-areas: "left center right";
+  gap: 28px;
+  align-items: start;
+  position: relative;
+}
+
+.left-rail {
+  grid-area: left;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+  padding-top: 0;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.22s ease, filter 0.22s ease;
+}
+
+.right-rail {
+  grid-area: right;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: stretch;
+  padding-top: calc(var(--hand-block-height) + var(--column-stack-gap));
+  position: relative;
+  isolation: isolate;
+  transition: filter 0.22s ease, opacity 0.22s ease;
+}
+
+/* Left column (score) */
+
+/* Consistent width for hands */
+
+/* Specific hand styles */
+
+/* Position each card slot in player's hand */
+
+@keyframes heroDropSlotPulse {
+  0% {
+    transform: scale(1);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 236, 199, 0.12),
+      0 0 10px rgba(255, 196, 98, 0.12);
+  }
+
+  50% {
+    transform: scale(1.018);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 236, 199, 0.2),
+      0 0 24px rgba(255, 196, 98, 0.28);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 236, 199, 0.12),
+      0 0 10px rgba(255, 196, 98, 0.12);
+  }
+}
+
+@keyframes heroDropSlotDash {
+  0% {
+    opacity: 0.45;
+    transform: scale(0.985);
+  }
+
+  50% {
+    opacity: 0.92;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0.45;
+    transform: scale(0.985);
+  }
+}
+
+/* Right column (previous rounds) */
+
+/* Each round slot is fixed: width 60px, height 130px (60 + 10 + 60) */
+
+/* Placeholders for missing data */
+
+/* FULL CARD STYLES */
+
+/* REFERENCE CARD STYLES (for Previous Rounds) */
+
+/* Hidden card style for both full and reference cards */
+
+/* Base glow effect that we'll reuse */
+
+/* Add dimming effect for losing cards */
+
+/* Keep loser faces dim even if motion sets inline opacity */
+
+/* Hidden losing cards get a subtle shadow so backs don't look flat */
+
+/* Hover effect for the main card area in hero's hand */
+
+/* Separate hover effect for the fold */
+
+@keyframes foldBreath {
+  0% {
+    opacity: 0.3;
+    transform: translateY(4px);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: translateY(0px);
+  }
+
+  100% {
+    opacity: 0.3;
+    transform: translateY(4px);
+  }
+}
+
+/* Add styles for the fold corner */
+
+/* Adjust font size for reference cards */
+
+/* Make sure each hand slot can hold the card's space */
+
+/* Fade out entire previous-rounds column if needed */
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/*==============================*/
+
+/* NEW ANIMATION FOR COLLECTING CARDS */
+
+/*==============================*/
+
+/*
+   Once we mark Vira as "becoming-deck", hide its face and show only card-back
+   (just a simple example of how to override face/back).
+*/
+
+/* Dev controls share the same glass-and-gold chrome as the refreshed game surfaces,
+   but stay visually quieter so the board keeps priority. */
+
+/* ============================================================= */
+
+/* LIVE ARENA — table-centric redesign                           */
+
+/* Scoped under .live-arena so Engine Lab and other views are    */
+
+/* not affected. See plan glimmering-hopping-cloud.md.           */
+
+/* ============================================================= */
+
+.app-shell.is-live-match {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* ---------------- Settings drawer ---------------- */
+
+@keyframes liveDrawerScrim {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes liveDrawerSlide {
+  from { transform: translateX(24px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Note: .live-settings-drawer__title is styled in the later block */
+
+/* below alongside the kicker/body rules.                          */
+
+/* Reparented topbar internals need different margins inside the drawer */
+
+/* ---------------- Player zones (villain + hero) ---------------- */
+
+/* Hand row inside a player zone — reuses existing .hand markup */
+
+/* ---------------- Table (felt surface) ---------------- */
+
+/* ---------------- Decision bar (stake + actions) ---------------- */
+
+/* When response mode hides the non-responder raise button, the accept+fold pair */
+
+/* ---------------- Hero zone specifics ---------------- */
+
+/* ---------------- Footer (persistent HUD) ---------------- */
+
+/* ---- Footer round trace ---- */
+
+/* Two rows (villain / hero), each preceded by a thin color-coded identity bar.
+   Three card slots per row (one per round). Ghost outlines before any hand data. */
+
+/* The trace is a flex column: villain row stacked above hero row */
+
+/* Each row: [color bar] [card][card][card] */
+
+/* 3 px colored strip — the ONLY hero/villain color indicator.
+   Shorter than full row height so it reads as an accent, not a divider. */
+
+/* Base card */
+
+/* Ghost: no hand data yet */
+
+/* Plain white card face — no hero/villain coloring on the card itself */
+
+/* Round winner: gold ring + subtle glow */
+
+/* Round loser: washed out */
+
+/* Hidden play (face-down) */
+
+/* Keep dead footer-meta styles for safety (element is gone from JSX) */
+
+/* Winner result chip — shown right next to the round trace */
+
+/* Coach dock: transparent flex container, single row, no decoration */
+
+/* Inline error — rare, so just show it as a small pill */
+
+/* ---------------- Opponent hand visual polish ---------------- */
+
+/* ---------------- Responsive ---------------- */
+
+@keyframes liveDrawerSlideUp {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ============================================================= */
+
+/* Live Arena – fills and tweaks to match JSX class names.       */
+
+/* ============================================================= */
+
+/* The player chip wraps the existing ScoreboardRow (which renders */
+
+/* .score-row / .score-player-name / .score-number). Flatten the   */
+
+/* ScoreboardRow's background so the chip's background dominates,  */
+
+/* and enlarge the score number.                                   */
+
+/* Both zones use the same column layout: chip left, hand center,  */
+
+/* status right. The villain chip stays on the left so that the    */
+
+/* player eye tracks to the same position for each score.          */
+
+/* Felt surface wrapper that contains trace / turnup / stage. Layout */
+
+/* keeps the played-card stage centered while giving the trace a     */
+
+/* dedicated top-left rail so it sits near the table corner instead  */
+
+/* of vertically centering with the table cards.                     */
+
+/* Decision bar stake/decision wrappers (sibling scoping)          */
+
+/* Hide the old decision-panel opacity mute inside the arena so    */
+
+/* the bar stays visible even when no decision is pending.         */
+
+/* Footer details */
+
+/* Provider note polish */
+
+/* Settings drawer toggle pill used for Fast Mode and Shortcuts En */
+
+/* .live-settings-drawer__volume and .live-settings-drawer__mute are styled
+ * in their baseline rules above (single combined pill, custom amber slider
+ * track and thumb). The mute button is plain text inside the pill and the
+ * percent fill comes from the --volume-pct CSS variable set in JSX. */
+
+/* Constrain ScoreboardRow inside chip even for "is-leading" variant */
+
+/* ============================================================= */
+
+/* Live Arena responsive layout contract                         */
+
+/* Keep these overrides at the end of the file so breakpoint     */
+
+/* behavior wins over earlier generic hand/table rules.          */
+
+/* ============================================================= */
+
+/* ---------------- Live Arena Full Reskin Final Overrides ---------------- */
+
+/* ============================================================= */
+
+/* Live arena correction pass: centered score row, real top/bottom */
+
+/* table seating, floating coach dock, compact score visibility.   */
+
+/* ============================================================= */
+
+/* Final live arena polish pass: tighter score strip, calmer settings,
+   floating coach dock, compact/mobile fit, and draggable dev controls. */
+
+/* Final corrective pass: center the arena shell, keep compact play inside
+   one viewport, and make the floating utilities behave like overlays. */
+
+/* Hero panel mirror: score sits on the inner edge of the pair and the accent
+   bar moves to the outer (right) edge, so the two score digits read as an
+   adjacent "villain : hero" cluster. */
+
+/* Neutralize the legacy .live-arena__villain / .live-arena__hero padding
+   that was meant for the hand-area offset — the match-strip sides reuse
+   those class names and inherit a 2px asymmetric padding that shifts the
+   hero chip down relative to villain. */
+
+/* =========================================================================
+   Desktop Coach & Lab dock — floating glass panel redesign.
+   Scoped to non-compact viewports. Anchors bottom-right, stays anchored
+   when expanded (grows upward from the pill), and uses roomier cards +
+   stacked full-width actions for a calmer read at desktop widths.
+   ========================================================================= */
+
+/* =========================================================================
+   Desktop Coach & Lab — viewport anchoring + internal full-width layout.
+   Pins the pill/dock to the viewport (so it is always reachable without
+   scrolling) and overrides inherited flex-row / content-width rules inside
+   the dock so its children actually fill the 408px panel instead of
+   clustering at the right edge with blank space on the left.
+   ========================================================================= */
+
+/* Anchor footer to the viewport, not the arena shell, so the pill stays
+   in view regardless of internal content height. Scroll-lock on body/shell
+   is deliberately NOT applied until we verify the arena fits in 100vh at
+   the target viewport — clipping critical gameplay is strictly worse than
+   a small amount of scroll. */
+
+/* Footer is position:fixed above, so the 102px board padding that used to
+   reserve space for it in flow is now pure overflow. Removing it trims
+   the arena height by ~102px at the desktop variant. */
+
+/* Override the legacy flex-row alignment on the outer dock so the inner
+   body can fill the panel width. Keeps the glass panel look intact. */
+
+/* Round trace: stretch across dock width (not align-self: flex-start). */
+
+/* Handoff panel: full width, stretched children, no inherited centering. */
+
+/* Match complete board hold: keep the final table readable while the
+   result overlay is still waiting to appear. */
+
+@keyframes liveMatchCompleteBoardWash {
+  0% {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+
+  18% {
+    opacity: 1;
+  }
+
+  56% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0.58;
+    transform: scale(1);
+  }
+}
+
+@keyframes liveMatchCompleteFrameReveal {
+  0% {
+    opacity: 0;
+  }
+
+  14% {
+    opacity: 0.86;
+  }
+
+  56% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.74;
+  }
+}
+
+@keyframes liveMatchCompleteHaloOrbit {
+  from {
+    inset: -16px;
+    border-radius: 38px;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+      0 0 26px var(--match-complete-frame-glow),
+      0 0 58px var(--match-complete-frame-glow-strong);
+  }
+
+  to {
+    inset: 0;
+    border-radius: 26px;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+      0 0 8px var(--match-complete-frame-glow),
+      0 0 16px var(--match-complete-frame-glow-strong);
+  }
+}
+
+@keyframes liveMatchCompleteSweep {
+  0% {
+    opacity: 0;
+    background-position: 140% 0;
+  }
+
+  18% {
+    opacity: 0.08;
+  }
+
+  42% {
+    opacity: 0.22;
+  }
+
+  70% {
+    opacity: 0.12;
+  }
+
+  100% {
+    opacity: 0;
+    background-position: -30% 0;
+  }
+}
+
+@keyframes liveMatchCompleteWinnerPulse {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  42% {
+    transform: translateY(0) scale(1.01);
+  }
+
+  62% {
+    transform: translateY(0) scale(1.004);
+  }
+}
+
+@keyframes liveMatchCompleteScoreNumberPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 18px var(--match-complete-chip-glow);
+    filter: drop-shadow(0 0 0.18em var(--match-complete-chip-glow));
+  }
+
+  38% {
+    transform: scale(1.055);
+    text-shadow:
+      0 0 20px var(--match-complete-chip-glow),
+      0 0 30px var(--match-complete-score-flare);
+    filter:
+      drop-shadow(0 0 0.22em var(--match-complete-chip-glow))
+      drop-shadow(0 0 0.38em var(--match-complete-score-flare));
+  }
+
+  58% {
+    transform: scale(1.018);
+    text-shadow:
+      0 0 18px var(--match-complete-chip-glow),
+      0 0 24px var(--match-complete-score-flare);
+    filter:
+      drop-shadow(0 0 0.2em var(--match-complete-chip-glow))
+      drop-shadow(0 0 0.3em var(--match-complete-score-flare));
+  }
+}
+
+@keyframes liveMatchCompleteScoreFlare {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+
+  40% {
+    opacity: 0.92;
+    transform: scale(1.14);
+  }
+
+  62% {
+    opacity: 0.46;
+    transform: scale(1.01);
+  }
+}
+
+/* ============================================================
+ * RESPONSIVE BREAKPOINTS
+ * All @media rules consolidated here (Phase 2 of CSS architecture plan).
+ * Within each breakpoint, rules are listed in their original
+ * document order to preserve intra-breakpoint cascade.
+ * ============================================================ */
+
+@media (max-width: 980px) {
+  .main-container {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "center"
+        "left"
+        "right";
+      gap: 22px;
+    }
+  .left-rail,
+    .right-rail {
+      padding-top: 0;
+      justify-self: center;
+      max-width: 420px;
+    }
+  .game-topbar__session {
+      align-items: flex-start;
+    }
+  .game-topbar__session-actions {
+      width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+  .game-topbar__bot-picker {
+      width: 100%;
+    }
+  .game-topbar__bot-picker-menu {
+      width: 100%;
+    }
+  .game-topbar__launcher-anchor {
+      width: 100%;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] {
+      margin-top: 10px;
+      height: calc(100dvh - 10px);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] {
+      margin-top: 0;
+      max-width: none;
+      width: 100%;
+      height: 100dvh;
+      min-height: 100dvh;
+      max-height: 100dvh;
+      overflow: hidden;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__board,
+    .app-shell.is-live-match[data-compact-play="true"] .live-arena__strength-shell,
+    .app-shell.is-live-match[data-compact-play="true"] .live-arena__strength-table {
+      height: 100%;
+      min-height: 0;
+    }
+
+  .app-shell.is-live-match[data-compact-play="true"] .ft-root {
+      height: 100%;
+      min-height: 100%;
+    }
+}

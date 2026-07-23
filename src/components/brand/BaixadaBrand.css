@@ -1,0 +1,179 @@
+.baixada-wordmark,
+.baixada-game-lockup {
+  --baixada-lockup-accent: var(--brass-1);
+  --baixada-lockup-foreground: var(--ink-0);
+  --baixada-lockup-secondary: var(--ink-2);
+
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--baixada-lockup-foreground);
+}
+
+.baixada-wordmark--dark,
+.baixada-game-lockup--dark {
+  --baixada-lockup-foreground: var(--paper-0);
+  --baixada-lockup-secondary: var(--brass-2);
+}
+
+.baixada-wordmark {
+  gap: 10px;
+  text-align: center;
+}
+
+.baixada-wordmark__lamp {
+  margin-bottom: 6px;
+}
+
+.baixada-wordmark__name,
+.baixada-game-lockup__name,
+.baixada-horizontal-lockup__name,
+.baixada-stamp__letter {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.baixada-wordmark__name {
+  color: var(--baixada-lockup-foreground);
+  font-size: var(--baixada-wordmark-size, 112px);
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+}
+
+.baixada-wordmark__tagline {
+  max-width: 46ch;
+  color: var(--baixada-lockup-secondary);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.baixada-game-lockup {
+  gap: 12px;
+  text-align: center;
+}
+
+.baixada-game-lockup__eyebrow {
+  padding-left: 0.42em;
+  color: var(--baixada-lockup-secondary);
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.baixada-game-lockup__rule {
+  width: 28px;
+  height: 1px;
+  background: var(--baixada-lockup-accent);
+  opacity: 0.7;
+}
+
+.baixada-game-lockup__name {
+  color: var(--baixada-lockup-foreground);
+  font-size: var(--baixada-game-lockup-size, 76px);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+}
+
+.baixada-game-lockup__suffix {
+  margin-top: 4px;
+}
+
+.baixada-plaque {
+  --baixada-plaque-color: var(--brass-1);
+
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px 3px;
+  border-radius: 2px;
+  background: var(--baixada-plaque-color);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.18);
+  color: var(--paper-0);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.baixada-horizontal-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--ink-0);
+}
+
+.baixada-horizontal-lockup__name {
+  font-size: 64px;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+}
+
+.baixada-horizontal-lockup__label {
+  margin-top: 2px;
+  color: var(--ink-2);
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.baixada-stamp {
+  position: relative;
+  display: inline-flex;
+  width: var(--baixada-stamp-size, 96px);
+  height: var(--baixada-stamp-size, 96px);
+  align-items: center;
+  justify-content: center;
+  border-radius: 18%;
+  background: linear-gradient(180deg, var(--card-back-a), var(--card-back-b));
+  box-shadow: var(--shadow-card);
+  color: var(--brass-2);
+}
+
+.baixada-stamp::before {
+  content: '';
+  position: absolute;
+  inset: 6%;
+  border: 1.5px solid var(--brass-1);
+  border-radius: 14%;
+  opacity: 0.72;
+}
+
+.baixada-stamp__letter {
+  position: relative;
+  font-size: calc(var(--baixada-stamp-size, 96px) * 0.62);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.baixada-suit-row {
+  display: inline-flex;
+  align-items: center;
+}
+
+@media (max-width: 640px) {
+  .baixada-wordmark__name {
+    font-size: var(--baixada-wordmark-size-compact, 76px);
+  }
+
+  .baixada-wordmark__tagline {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+  }
+
+  .baixada-game-lockup__name {
+    font-size: var(--baixada-game-lockup-size-compact, 60px);
+  }
+}

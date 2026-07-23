@@ -1,0 +1,578 @@
+/* Shared chart-cell visuals for the study lab and the study guide.
+   Moved verbatim from StudyLab.module.css so the lab keeps rendering
+   pixel-identically; both surfaces import these classes. */
+
+/* the 2D chart table and its axis headers */
+.chart {
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart th {
+  font: 600 10.5px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  color: var(--ink-2, #7a6d56);
+  padding: 4px 5px;
+  text-align: center;
+}
+
+.axisLabel {
+  font-size: 9.5px !important;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.gridWrap {
+  overflow-x: auto;
+  min-width: 0;
+}
+
+.cell {
+  width: 37px;
+  height: 33px;
+  border: 1px solid rgba(42, 36, 27, 0.18);
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+}
+
+.cell:focus-visible {
+  outline: 2px solid var(--ink-0, #2a241b);
+  outline-offset: -2px;
+}
+
+.cellSel {
+  composes: cell;
+  outline: 2.5px solid var(--ink-0, #2a241b);
+  outline-offset: -2px;
+  background: var(--ink-0, #2a241b);
+}
+
+.cellSelFill {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brass-hi, #ecd999);
+  font-size: 13px;
+  pointer-events: none;
+}
+
+/* impossible with the pinned cards: washed out under a paper veil */
+.cellMasked {
+  position: relative;
+}
+
+.cellMasked > * {
+  opacity: 0.12;
+}
+
+.cellMasked::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(229, 217, 191, 0.55);
+  pointer-events: none;
+}
+
+.void {
+  border: none;
+  cursor: default;
+  background: transparent;
+}
+
+.cellFill {
+  position: absolute;
+  inset: 0;
+  display: flex;
+}
+
+.cellFill div {
+  height: 100%;
+}
+
+.cellText {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 600 10px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  color: rgba(246, 237, 215, 0.95);
+  /* a two-tone (mixed) cell splits into a dark and a light half, but the number
+     is centred over the seam — so each variant carries a halo in the OPPOSITE
+     tone, keeping it legible over whichever half it overlaps (fixes e.g. the
+     dark "51" reading poorly on the dark-blue half of a play-high/mid mix) */
+  text-shadow: 0 0 2px rgba(20, 14, 8, 0.85), 0 1px 1px rgba(20, 14, 8, 0.6);
+  pointer-events: none;
+}
+
+.cellTextDark {
+  composes: cellText;
+  color: var(--ink-1, #4a4032);
+  text-shadow: 0 0 2px rgba(247, 240, 222, 0.95), 0 1px 1px rgba(247, 240, 222, 0.7);
+}
+
+.split {
+  position: absolute;
+  right: 1.5px;
+  top: 1.5px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-top: 6px solid rgba(42, 36, 27, 0.55);
+  pointer-events: none;
+}
+
+/* the hot bottom edge of a cost cell whose worst holding loses far more */
+.riskStrip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  pointer-events: none;
+}
+
+/* a mix the solve never trained: neutral enough to recede, with a pencil-like
+   ≈ mark that remains readable without becoming a competing UI badge */
+.untrainedFill {
+  position: absolute;
+  inset: 0;
+  display: block;
+  filter: saturate(0.08) opacity(0.22);
+}
+
+.untrainedMark {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(42, 36, 27, 0.88);
+  text-shadow: 0 1px 0 rgba(246, 237, 215, 0.78);
+  font: 800 17px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  pointer-events: none;
+}
+
+/* manilha suit glyph colors */
+.suitRed {
+  color: var(--suit-red, #a23c2c);
+}
+
+.suitBlack {
+  color: var(--suit-black, #1e1a14);
+}
+
+/* blocks layout: exact M·L triangles, one per card in the split slot */
+.blocksWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 22px;
+  align-items: flex-start;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* the pinned-card label is the block's key fact — set it like a brass plate
+   so it cannot be missed (plan 77 J-4; shared by the lab and the guide) */
+.blockHead {
+  align-self: flex-start;
+  font: 700 10.5px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--wood-0, #1f1610);
+  background: linear-gradient(180deg, var(--brass-hi, #ecd999), var(--brass-2, #d4b36a));
+  border: 1px solid var(--brass-0, #8a6a28);
+  border-radius: 3px;
+  padding: 4px 8px 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* the badge as a control: the same brass plate, now clickable — shared by
+   the lab's full picker and the guide's split-only figure (plan 77 L-3) */
+.blockHeadBtn {
+  composes: blockHead;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.blockHeadBtn:hover {
+  filter: brightness(1.07);
+}
+
+.blockHeadBtn:focus-visible {
+  outline: 2px solid var(--ink-0, #2a241b);
+  outline-offset: 2px;
+}
+
+.blockHeadCaret {
+  font-size: 8px;
+  line-height: 1;
+  opacity: 0.72;
+}
+
+/* the badge's popover menu (plan 77 K-1, shared with the guide in L-3) */
+.badgeAnchor {
+  position: relative;
+  display: inline-flex;
+  align-self: flex-start;
+}
+
+.badgeBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+}
+
+.badgeMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: max-content;
+  max-width: 288px;
+  padding: 12px;
+  background: var(--paper-0, #ede4d0);
+  border: 1px solid var(--brass-1, #a88540);
+  border-radius: 6px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+}
+
+.badgeMenuLabel {
+  font: 800 9.5px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-2, #7a6d56);
+  margin-top: 5px;
+}
+
+.badgeMenuLabel:first-child {
+  margin-top: 0;
+}
+
+.badgeMenuRow {
+  display: flex;
+  gap: 4px;
+}
+
+.badgeOpt {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 7px 9px;
+  font: 600 12px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  color: var(--ink-0, #2a241b);
+  background: var(--card-0, #f6edd7);
+  border: 1px solid var(--paper-2, #d5c7a4);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.badgeOpt i {
+  font: 500 9.5px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  font-style: normal;
+  letter-spacing: 0.04em;
+  color: var(--ink-2, #7a6d56);
+}
+
+.badgeOpt:hover:not([disabled]) {
+  border-color: var(--brass-0, #8a6a28);
+}
+
+.badgeOpt:focus-visible {
+  outline: 2px solid var(--brass-0, #8a6a28);
+  outline-offset: 1px;
+}
+
+.badgeOpt[disabled] {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.badgeOptOn {
+  composes: badgeOpt;
+  background: var(--ink-0, #2a241b);
+  color: var(--paper-0, #ede4d0);
+  border-color: var(--ink-0, #2a241b);
+}
+
+.badgeOptOn i {
+  color: var(--paper-2, #d5c7a4);
+}
+
+.badgeCardGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+}
+
+.badgeCardOpt {
+  width: auto;
+  padding: 8px 0;
+  font: 600 12.5px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  color: var(--ink-0, #2a241b);
+  background: var(--card-0, #f6edd7);
+  border: 1px solid var(--paper-2, #d5c7a4);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.badgeCardOpt:hover:not([disabled]) {
+  border-color: var(--brass-0, #8a6a28);
+}
+
+.badgeCardOpt:focus-visible {
+  outline: 2px solid var(--brass-0, #8a6a28);
+  outline-offset: 1px;
+}
+
+.badgeCardOpt[disabled] {
+  opacity: 0.35;
+  border-style: dashed;
+  cursor: default;
+}
+
+.badgeCardOptOn {
+  composes: badgeCardOpt;
+  background: var(--ink-0, #2a241b);
+  color: var(--paper-0, #ede4d0);
+  border-color: var(--ink-0, #2a241b);
+}
+
+.badgeMenuNote {
+  font-size: 10.5px;
+  line-height: 1.45;
+  color: var(--ink-2, #7a6d56);
+  max-width: 224px;
+}
+
+.blockTable {
+  table-layout: fixed;
+}
+
+.blockTable th,
+.blockTable td {
+  width: 28px;
+  overflow: hidden;
+}
+
+.blockTable th:first-child {
+  width: 44px;
+}
+
+.cellMini {
+  width: 28px;
+  height: 24px;
+}
+
+.cellMini .cellText,
+.cellMini .cellTextDark {
+  font-size: 8.5px;
+}
+
+/* a two-tone (mixed) cell centres its number over the seam of a dark and a
+   light half; each variant carries a halo in the OPPOSITE tone so the number
+   stays legible over whichever half it lands on (the dark "51" was unreadable
+   on the dark-blue half of a play-high/mid mix). More specific than the base
+   .cellText rules, so the halo must live here too. */
+.cellMini .cellText {
+  text-shadow: 0 0 2px rgba(20, 14, 8, 0.9), 0 1px 1px rgba(20, 14, 8, 0.6);
+}
+
+.cellMini .cellTextDark {
+  text-shadow: 0 0 2px rgba(247, 240, 222, 0.95), 0 1px 1px rgba(247, 240, 222, 0.7);
+}
+
+.cellMini .untrainedMark {
+  font-size: 14px;
+}
+
+/* list layout: every holding as one sorted row */
+.handList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 640px;
+  overflow-y: auto;
+  padding-right: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--brass-1, #a88540) rgba(213, 199, 164, 0.35);
+}
+
+.handList::-webkit-scrollbar {
+  width: 8px;
+}
+
+.handList::-webkit-scrollbar-track {
+  background: rgba(213, 199, 164, 0.35);
+  border-radius: 4px;
+}
+
+.handList::-webkit-scrollbar-thumb {
+  background: var(--brass-1, #a88540);
+  border-radius: 4px;
+}
+
+.handRow,
+.handRowOn {
+  display: grid;
+  grid-template-columns: minmax(118px, auto) minmax(0, 1fr) 48px;
+  gap: 10px;
+  align-items: center;
+  padding: 3px 6px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.handRow:hover {
+  border-color: rgba(138, 106, 40, 0.5);
+  background: rgba(138, 106, 40, 0.07);
+}
+
+.handRowOn {
+  border-color: var(--ink-0, #2a241b);
+  background: rgba(138, 106, 40, 0.12);
+}
+
+.handRow:focus-visible,
+.handRowOn:focus-visible {
+  outline: 2px solid var(--brass-0, #8a6a28);
+  outline-offset: 1px;
+}
+
+.handRowCards {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.handRowCard {
+  min-width: 30px;
+  padding: 3px 4px;
+  border-radius: 3px;
+  border: 1px solid var(--paper-2, #d5c7a4);
+  background: var(--card-0, #f6edd7);
+  font: 700 11px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  color: var(--ink-0, #2a241b);
+  text-align: center;
+}
+
+.handRowBar {
+  position: relative;
+  height: 16px;
+  border: 1px solid rgba(42, 36, 27, 0.25);
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--paper-2, #d5c7a4);
+}
+
+.handRowVal {
+  font: 700 11px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-1, #4a4032);
+  text-align: right;
+}
+
+.handRowSeg {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  white-space: nowrap;
+  font: 700 9px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  color: rgba(246, 237, 215, 0.95);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+}
+
+.handRowSegDark {
+  color: var(--ink-0, #2a241b);
+  text-shadow: none;
+}
+
+/* compare in the list: this spot above, the other below */
+.handRowDuo {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.handRowDuoBar {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+.handRowDuoBar > div {
+  height: 100%;
+}
+
+.handRowDuoBar:last-child {
+  opacity: 0.75;
+}
+
+/* micro tag naming each bar of a compared list row */
+.duoTag {
+  position: absolute;
+  left: 3px;
+  font: 700 6.5px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(246, 237, 215, 0.9);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
+  align-self: center;
+  z-index: 1;
+  font-style: normal;
+}
+
+/* the mini playing cards (pinned hand, table views) */
+.miniCard {
+  width: 34px;
+  height: 48px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--card-0, #f6edd7), var(--card-1, #ede2c3));
+  border: 2px solid var(--card-edge, #c8a040);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: center;
+  justify-content: center;
+  font: 600 14px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  color: var(--ink-0, #2a241b);
+}
+
+.miniManilha {
+  composes: miniCard;
+  border-color: var(--suit-red, #a23c2c);
+}
+
+.anyPips {
+  font-size: 8px;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  color: var(--ink-2, #7a6d56);
+}
+
+.miniUnknown {
+  composes: miniCard;
+  border-style: dashed;
+  color: var(--ink-2, #7a6d56);
+}

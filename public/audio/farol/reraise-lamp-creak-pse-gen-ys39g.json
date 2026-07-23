@@ -1,0 +1,22 @@
+{
+  "source": "METLMvmt_Metal Hinge Squeak Metallic Friction Hinge_PSE_GEN_ys39G.wav",
+  "runtime": "reraise-lamp-creak-pse-gen-ys39g.m4a",
+  "sourcePage": "https://www.prosoundeffects.com/sound-effects/PSE_GEN/ys39G/Metal-Hinge-Squeak-Metallic-Friction-Hinge",
+  "license": "Pro Sound Effects commercial license",
+  "sourceTrim": [
+    0.0246,
+    1.1847
+  ],
+  "sequenceGapMs": 620,
+  "auditionGain": 0.45,
+  "stake": 6,
+  "sequenceGains": [
+    0.8
+  ],
+  "sequenceDurations": [
+    0.42
+  ],
+  "playbackRates": [
+    0.94
+  ]
+}

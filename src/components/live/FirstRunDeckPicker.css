@@ -1,0 +1,202 @@
+.frp-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  padding: 28px;
+  overflow: hidden;
+  background-color: var(--ts-stage-base);
+  background-image:
+    var(--ts-menu-wood-vignette),
+    var(--ts-menu-wood-fine-grain),
+    var(--ts-menu-wood-broad-grain),
+    var(--ts-menu-wood-warm-blob),
+    var(--ts-menu-wood-dark-blob);
+}
+
+.frp-card {
+  position: relative;
+  box-sizing: border-box;
+  width: min(600px, 100%);
+  max-height: calc(100dvh - 56px);
+  padding: 32px 32px 20px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: 6px;
+  background-color: var(--paper-0);
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(90, 70, 40, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(90, 70, 40, 0.06) 0%, transparent 40%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 240, 210, 0.5),
+    0 18px 36px rgba(0, 0, 0, 0.5);
+  color: var(--ink-0);
+  font-family: var(--font-sans);
+  text-align: center;
+}
+
+.frp-eyebrow {
+  color: var(--ink-2);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.frp-title {
+  margin: 6px 0 0;
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.frp-sub {
+  max-width: 440px;
+  margin: 8px auto 0;
+  color: var(--ink-1);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.frp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.frp-pick {
+  padding: 18px 14px 14px;
+  border: 1.2px solid rgba(74, 64, 50, 0.2);
+  border-radius: 6px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(200, 160, 64, 0.06), transparent 60%),
+    rgba(255, 250, 235, 0.35);
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  transition:
+    border-color 0.12s ease,
+    box-shadow 0.12s ease,
+    transform 0.12s ease;
+}
+
+.frp-pick:hover {
+  border-color: var(--card-edge-deep);
+  transform: translateY(-2px);
+}
+
+.frp-pick.is-recommended {
+  border-color: var(--card-edge);
+  box-shadow:
+    0 0 0 1px var(--card-edge-deep),
+    0 6px 14px rgba(154, 122, 46, 0.2);
+}
+
+.frp-pick-stage {
+  display: grid;
+  place-items: center;
+  padding-bottom: 6px;
+}
+
+.frp-pick-foot {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.frp-pick-name {
+  font-family: var(--font-serif);
+  font-size: 22px;
+}
+
+.frp-pick-tag {
+  color: var(--card-edge-deep);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.frp-skip {
+  margin-top: 18px;
+  padding: 6px 10px;
+  border: 0;
+  background: none;
+  color: var(--ink-2);
+  cursor: pointer;
+  font: inherit;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-decoration: underline dashed transparent;
+  text-transform: lowercase;
+  text-underline-offset: 4px;
+}
+
+.frp-skip:hover {
+  color: var(--ink-0);
+  text-decoration-color: rgba(74, 64, 50, 0.4);
+}
+
+@media (max-width: 560px) {
+  .frp-overlay {
+    place-items: start center;
+    padding:
+      max(10px, env(safe-area-inset-top, 0px))
+      10px
+      max(10px, env(safe-area-inset-bottom, 0px));
+  }
+
+  .frp-card {
+    width: min(100%, 430px);
+    max-height: calc(100dvh - max(10px, env(safe-area-inset-top, 0px)) - max(10px, env(safe-area-inset-bottom, 0px)));
+    padding: 18px 16px 14px;
+  }
+
+  .frp-title {
+    font-size: clamp(30px, 9vw, 36px);
+  }
+
+  .frp-sub {
+    font-size: 12px;
+    line-height: 1.42;
+  }
+
+  .frp-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .frp-pick {
+    padding: 12px 10px 10px;
+  }
+
+  .frp-pick .sd-spread.is-md {
+    --sd-spread-width: 190px;
+    --sd-spread-height: 112px;
+    transform: scale(0.86);
+    transform-origin: center bottom;
+  }
+
+  .frp-pick-foot {
+    flex-wrap: wrap;
+    row-gap: 2px;
+  }
+
+  .frp-skip {
+    margin-top: 14px;
+  }
+}
+
+@media (max-width: 560px) and (max-height: 640px) {
+  .frp-card {
+    height: calc(100dvh - max(10px, env(safe-area-inset-top, 0px)) - max(10px, env(safe-area-inset-bottom, 0px)));
+  }
+}

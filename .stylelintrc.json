@@ -1,0 +1,11 @@
+{
+  "rules": {},
+  "overrides": [
+    {
+      "files": ["src/components/live/*.css"],
+      "rules": {
+        "selector-max-compound-selectors": 4
+      }
+    }
+  ]
+}

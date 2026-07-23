@@ -1,0 +1,35 @@
+{
+  "source": "tally-strokes-ani-music-632478.wav",
+  "sourcePage": "https://freesound.org/people/ani_music/sounds/632478/",
+  "license": "CC0",
+  "sourceTrim": [
+    0.03,
+    0.748
+  ],
+  "sequenceGapMs": 150,
+  "gain": 0.44,
+  "segments": [
+    {
+      "name": "tally-scratch-1",
+      "offset": 0.03,
+      "duration": 0.2424
+    },
+    {
+      "name": "tally-scratch-2",
+      "offset": 0.2724,
+      "duration": 0.2424
+    },
+    {
+      "name": "tally-scratch-3",
+      "offset": 0.5148,
+      "duration": 0.2332
+    }
+  ],
+  "sequences": {
+    "plus3": [
+      0,
+      1,
+      2
+    ]
+  }
+}

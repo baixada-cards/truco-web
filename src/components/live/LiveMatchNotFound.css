@@ -1,0 +1,430 @@
+/* Match-not-found empty state: returned-to-sender folio handoff. */
+
+.mnf-stage {
+  position: relative;
+  width: 100%;
+  min-height: max(520px, calc(100vh - 16px));
+  overflow: hidden;
+  background-color: var(--ts-stage-base);
+  background-image:
+    var(--ts-menu-wood-vignette),
+    var(--ts-menu-wood-fine-grain),
+    var(--ts-menu-wood-broad-grain),
+    var(--ts-menu-wood-warm-blob),
+    var(--ts-menu-wood-dark-blob);
+  font-family: var(--font-serif);
+  color: var(--paper-0);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.mnfa-pad {
+  position: relative;
+  width: min(380px, calc(100vw - 48px));
+  box-sizing: border-box;
+  background-color: var(--paper-0);
+  background-image:
+    radial-gradient(circle at 18% 22%, rgba(90, 70, 40, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 82% 78%, rgba(90, 70, 40, 0.06) 0%, transparent 45%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(90, 70, 40, 0) 0,
+      rgba(90, 70, 40, 0) 26px,
+      rgba(90, 70, 40, 0.18) 27px,
+      rgba(90, 70, 40, 0) 28px
+    );
+  border-radius: 3px;
+  box-shadow:
+    0 1px 0 rgba(255, 235, 200, 0.12) inset,
+    0 -1px 0 rgba(60, 40, 20, 0.1) inset,
+    0 2px 2px rgba(0, 0, 0, 0.18),
+    0 24px 60px rgba(0, 0, 0, 0.6);
+  font-family: var(--font-serif);
+  color: var(--ink-0);
+  text-align: left;
+  transform: rotate(-1.1deg);
+  padding: 32px 30px 28px;
+}
+
+.mnfa-pad::before {
+  content: "";
+  position: absolute;
+  left: 42px;
+  top: 14px;
+  bottom: 14px;
+  width: 1px;
+  background: rgba(160, 50, 40, 0.35);
+}
+
+.mnfa-pad-tack {
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  background: radial-gradient(
+    circle at 35% 30%,
+    var(--brass-hi),
+    var(--brass-1) 60%,
+    var(--brass-0)
+  );
+  border-radius: 50%;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.5),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.mnfa-folio {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--ink-2);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.mnfa-folio code {
+  font-family: var(--font-hand);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--ink-1);
+  text-transform: none;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+.mnfa-stamp-mark {
+  position: absolute;
+  top: 78px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-7deg);
+  padding: 10px 22px 8px;
+  border: 3px solid #b03828;
+  border-radius: 4px;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #b03828;
+  background: transparent;
+  box-shadow: inset 0 0 0 1px rgba(176, 56, 40, 0.4);
+  filter: contrast(1.05);
+  opacity: 0.88;
+  pointer-events: none;
+  white-space: nowrap;
+  animation: mnfa-stamp-press 220ms cubic-bezier(0.18, 0.82, 0.24, 1) both;
+}
+
+.mnfa-stamp-mark::before,
+.mnfa-stamp-mark::after {
+  content: "";
+  position: absolute;
+  background: rgba(176, 56, 40, 0.22);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.mnfa-stamp-mark::before {
+  width: 14px;
+  height: 4px;
+  top: -2px;
+  left: 30%;
+  transform: rotate(8deg);
+}
+
+.mnfa-stamp-mark::after {
+  width: 18px;
+  height: 3px;
+  bottom: -1px;
+  right: 22%;
+  transform: rotate(-4deg);
+}
+
+@keyframes mnfa-stamp-press {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) rotate(-9deg) scale(1.4);
+  }
+
+  82% {
+    opacity: 0.9;
+    transform: translateX(-50%) rotate(-6.4deg) scale(0.98);
+  }
+
+  100% {
+    opacity: 0.88;
+    transform: translateX(-50%) rotate(-7deg) scale(1);
+  }
+}
+
+.mnfa-verdict {
+  font-family: var(--font-hand);
+  font-size: 28px;
+  line-height: 1.05;
+  color: var(--ink-0);
+  font-weight: 700;
+  margin: 96px 0 6px;
+  letter-spacing: 0;
+}
+
+.mnfa-explain {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--ink-1);
+  margin-bottom: 22px;
+}
+
+.mnfa-explain code {
+  font-family: var(--font-hand);
+  font-size: 16px;
+  font-style: normal;
+  color: var(--ink-0);
+  background: rgba(160, 50, 40, 0.06);
+  padding: 0 4px;
+  border-radius: 2px;
+}
+
+.mnfa-rule {
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(90, 70, 40, 0.4) 0 5px,
+    transparent 5px 9px
+  );
+  margin: 4px 0 16px;
+}
+
+.mnfa-recent {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  font-family: var(--font-hand);
+  font-size: 14px;
+  color: var(--ink-1);
+  letter-spacing: 0.02em;
+  margin: 0 0 18px;
+  padding: 0 0 0 10px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mnfa-recent:hover {
+  color: var(--ink-0);
+  border-color: transparent;
+}
+
+.mnfa-recent-label {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--ink-2);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.mnfa-recent-line {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mnfa-recent strong {
+  font-weight: 700;
+  color: var(--ink-0);
+}
+
+.mnfa-recent em {
+  font-style: italic;
+  color: var(--ink-2);
+}
+
+.mnfa-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.mnfa-cta {
+  display: inline-block;
+  padding: 12px 22px 10px;
+  background: linear-gradient(180deg, #b89548 0%, #8a6a28 100%);
+  border: 1px solid rgba(168, 133, 64, 0.55);
+  border-radius: 3px;
+  color: #fdf4dc;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.16em;
+  text-transform: lowercase;
+  cursor: pointer;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 220, 160, 0.3);
+  transition:
+    filter 150ms,
+    transform 100ms;
+}
+
+.mnfa-cta:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  border-color: rgba(168, 133, 64, 0.55);
+}
+
+.mnfa-cta:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+  filter: grayscale(0.35);
+  transform: none;
+}
+
+.mnfa-cta-secondary {
+  background: transparent;
+  color: var(--ink-1);
+  border: 1px dashed rgba(90, 70, 40, 0.4);
+  border-radius: 3px;
+  padding: 11px 18px 9px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.mnfa-cta-secondary:hover {
+  background: rgba(168, 133, 64, 0.08);
+  border-color: var(--brass-1);
+  color: var(--ink-0);
+}
+
+.mnfa-tertiary-row {
+  margin-top: 10px;
+}
+
+.mnfa-cta-tertiary {
+  background: transparent;
+  border: 0;
+  color: var(--ink-2);
+  font-family: var(--font-hand);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  padding: 6px 4px;
+  text-decoration: underline dotted rgba(90, 70, 40, 0.4);
+  text-underline-offset: 3px;
+}
+
+.mnfa-cta-tertiary:hover {
+  color: var(--ink-0);
+  border-color: transparent;
+}
+
+.mnfa-cta-tertiary:disabled {
+  cursor: not-allowed;
+  opacity: 0.54;
+}
+
+.mnfa-paste-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.mnfa-paste-input {
+  min-width: 0;
+  border: 1px dashed rgba(90, 70, 40, 0.36);
+  border-radius: 3px;
+  background: rgba(255, 247, 226, 0.42);
+  color: var(--ink-0);
+  font-family: var(--font-hand);
+  font-size: 14px;
+  padding: 8px 10px 6px;
+}
+
+.mnfa-paste-input::placeholder {
+  color: rgba(74, 64, 50, 0.46);
+}
+
+.mnfa-paste-submit {
+  border: 1px solid rgba(168, 133, 64, 0.35);
+  border-radius: 3px;
+  background: rgba(168, 133, 64, 0.12);
+  color: var(--ink-1);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 14px;
+  padding: 8px 12px 6px;
+  cursor: pointer;
+}
+
+.mnfa-paste-submit:hover {
+  border-color: var(--brass-1);
+  color: var(--ink-0);
+}
+
+.mnfa-paste-error {
+  grid-column: 1 / -1;
+  color: #b03828;
+  font-family: var(--font-hand);
+  font-size: 13px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mnfa-stamp-mark {
+    animation: none;
+  }
+
+  .mnfa-cta {
+    transition: none;
+  }
+}
+
+@media (max-width: 430px) {
+  .mnf-stage {
+    padding: 24px;
+  }
+
+  .mnfa-pad {
+    padding: 32px 24px 28px;
+  }
+
+  .mnfa-folio {
+    gap: 10px;
+  }
+
+  .mnfa-folio code {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mnfa-stamp-mark {
+    font-size: 20px;
+    letter-spacing: 0.24em;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}

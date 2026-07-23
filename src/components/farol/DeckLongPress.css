@@ -1,0 +1,132 @@
+.dlp-root {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  touch-action: none;
+  -webkit-touch-callout: none;
+}
+
+.dlp-root::before {
+  content: '';
+  position: absolute;
+  inset: -28px -34px -18px;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 179, 106, 0.38) 0%, rgba(212, 179, 106, 0.16) 34%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.78);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.dlp-root.is-visual-switching::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.dlp-root.is-visual-switching::before {
+  animation: dlp-deck-glow 450ms ease-out forwards;
+}
+
+.dlp-stack {
+  position: relative;
+  z-index: 1;
+}
+
+.dlp-root.is-pressing .dlp-stack {
+  filter: drop-shadow(0 0 12px rgba(212, 179, 106, 0.36));
+}
+
+.dlp-root > .sg2-press-ring {
+  z-index: 3;
+  width: 136px;
+  height: 174px;
+}
+
+@keyframes dlp-deck-glow {
+  0% {
+    opacity: 0;
+    transform: scale(0.78);
+  }
+
+  22% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.12);
+  }
+}
+
+.dlp-toast {
+  position: fixed;
+  bottom: max(86px, calc(env(safe-area-inset-bottom) + 28px));
+  left: 50%;
+  z-index: 20000;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 8px 8px 10px;
+  border: 1px solid rgba(200, 160, 100, 0.3);
+  border-radius: 4px;
+  background: rgba(20, 12, 8, 0.88);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+  color: var(--paper-0);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  transform: translateX(-50%);
+  animation: dlp-toast-in 0.25s ease-out;
+}
+
+@keyframes dlp-toast-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.dlp-toast-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--brass-2);
+  box-shadow: 0 0 8px rgba(212, 179, 106, 0.7);
+}
+
+.dlp-toast-undo {
+  margin-left: 6px;
+  min-width: 44px;
+  min-height: 32px;
+  padding: 7px 12px;
+  border: 1px solid rgba(200, 160, 100, 0.35);
+  border-radius: 3px;
+  background: rgba(200, 160, 100, 0.08);
+  color: var(--brass-2);
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.dlp-toast-undo:hover {
+  color: var(--brass-hi);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dlp-root::before,
+  .dlp-toast {
+    transition: none;
+    animation: none;
+  }
+}

@@ -1,0 +1,101 @@
+/* MatchSetupFields.css — extracted from App.css during plan 56 phase 3. */
+
+.match-setup-form {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 14px;
+  padding-bottom: 152px;
+}
+
+.match-setup-card--replace .match-setup-form {
+  padding-bottom: 168px;
+}
+
+.match-setup-field {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  text-align: left;
+}
+
+.match-setup-field__label {
+  color: #d8c495;
+  font-size: 0.7em;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.match-setup-field--subordinate {
+  gap: 6px;
+}
+
+.match-setup-field__label--subordinate {
+  color: #c7b48a;
+  font-size: 0.64em;
+  letter-spacing: 0.15em;
+}
+
+/* Bring-your-own-key field */
+.match-setup-byok {
+  display: grid;
+  gap: 6px;
+  text-align: left;
+}
+
+.match-setup-byok__label {
+  color: #d8c495;
+  font-size: 0.7em;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.match-setup-byok--subordinate .match-setup-byok__label {
+  color: #c7b48a;
+  font-size: 0.64em;
+  letter-spacing: 0.15em;
+}
+
+.match-setup-byok__input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 215, 140, 0.16);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.02));
+  color: #f4e2bc;
+  font: inherit;
+  font-size: 0.86em;
+  letter-spacing: 0.04em;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.match-setup-byok__input::placeholder {
+  color: rgba(216, 196, 149, 0.4);
+  letter-spacing: 0.08em;
+}
+
+.match-setup-byok__input:hover,
+.match-setup-byok__input:focus-visible {
+  border-color: rgba(255, 210, 122, 0.28);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.03));
+  outline: none;
+}
+
+.match-setup-byok__hint {
+  color: rgba(199, 180, 138, 0.72);
+  font-size: 0.6em;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .match-setup-form,
+    .match-setup-card--replace .match-setup-form {
+      padding-bottom: 132px;
+    }
+}

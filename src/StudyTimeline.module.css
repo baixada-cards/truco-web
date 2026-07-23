@@ -1,0 +1,503 @@
+/* Hand timeline — the pinned line of decisions, walked like a score sheet.
+   Walnut register: dark step cards on a brass spine; the active step lifts
+   to paper like the chart sheet it opens. Tokens from baixada-tokens.css. */
+
+.navigator {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.kicker {
+  color: var(--brass-2, #d4b36a);
+  font: 700 10px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 28px;
+}
+
+.headBtns {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.headPos {
+  min-width: 42px;
+  text-align: center;
+  color: rgba(212, 179, 106, 0.85);
+  font: 600 10.5px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+}
+
+.navBtn {
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: 1px solid rgba(212, 179, 106, 0.4);
+  background: rgba(31, 22, 16, 0.5);
+  color: var(--brass-2, #d4b36a);
+  font-size: 9px;
+  cursor: pointer;
+}
+
+.navBtn:hover:not([disabled]) {
+  border-color: var(--brass-hi, #ecd999);
+  color: var(--brass-hi, #ecd999);
+}
+
+.navBtn:focus-visible {
+  outline: 2px solid var(--brass-hi, #ecd999);
+  outline-offset: 1px;
+}
+
+.navBtn[disabled] {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* a hand pinned for the whole walk, worn above the rail */
+.pinStrip {
+  display: grid;
+  grid-template-columns: 12px 32px 1fr auto;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 9px;
+  border-radius: 6px;
+  border: 1px solid rgba(236, 217, 153, 0.5);
+  background: rgba(31, 22, 16, 0.6);
+  color: var(--paper-1, #e4d9bf);
+  font: 700 11px/1 var(--font-sans, Inter, system-ui, sans-serif);
+}
+
+.pinCards {
+  display: inline-flex;
+  gap: 4px;
+  margin-left: 2px;
+}
+
+.pinOff {
+  margin-left: auto;
+  width: 22px;
+  height: 22px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(212, 179, 106, 0.85);
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.pinOff:hover {
+  color: var(--brass-hi, #ecd999);
+  background: rgba(212, 179, 106, 0.12);
+}
+
+.pinOff:focus-visible {
+  outline: 2px solid var(--brass-hi, #ecd999);
+}
+
+.pinMark {
+  color: var(--brass-2, #d4b36a);
+  font-size: 10px;
+}
+
+.stepOn .pinMark {
+  color: var(--brass-0, #8a6a28);
+}
+
+/* the spine the steps hang from */
+.rail {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  position: relative;
+}
+
+.rail::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 0;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(212, 179, 106, 0.05),
+    rgba(212, 179, 106, 0.45) 12%,
+    rgba(212, 179, 106, 0.45) 88%,
+    rgba(212, 179, 106, 0.05)
+  );
+}
+
+.slot {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.groupLabel {
+  display: block;
+  margin: 5px 0 0;
+  color: rgba(212, 179, 106, 0.75);
+  font: 800 9px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.step,
+.stepOn {
+  border: 1px solid rgba(212, 179, 106, 0.24);
+  border-radius: 6px;
+  background: rgba(31, 22, 16, 0.5);
+  overflow: hidden;
+}
+
+.step:hover {
+  border-color: rgba(236, 217, 153, 0.6);
+}
+
+.stepOn {
+  border-color: rgba(236, 217, 153, 0.75);
+  background: linear-gradient(178deg, #f2e9d5, var(--paper-0, #ede4d0) 55%, var(--paper-1, #e4d9bf));
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+}
+
+.stepHead {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 12px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 9px 9px 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  color: var(--paper-1, #e4d9bf);
+  font: 500 12px/1.3 var(--font-sans, Inter, system-ui, sans-serif);
+}
+
+.stepOn .stepHead {
+  color: var(--ink-1, #4a4032);
+}
+
+.stepHead:focus-visible {
+  outline: 2px solid var(--brass-hi, #ecd999);
+  outline-offset: -2px;
+}
+
+.stepText {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stepText b {
+  font-weight: 700;
+  color: inherit;
+}
+
+.stepOn .stepText b {
+  color: var(--ink-0, #2a241b);
+}
+
+.stepWarn {
+  color: rgba(162, 60, 44, 0.9);
+  font: 600 9.5px/1.2 var(--font-sans, Inter, system-ui, sans-serif);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stepOn .stepWarn {
+  color: var(--suit-red, #a23c2c);
+}
+
+.seatDotMao,
+.seatDotPe {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1px solid rgba(236, 217, 153, 0.55);
+  background: var(--suit-green, #4a5a2a);
+}
+
+.seatDotPe {
+  background: var(--card-back-a, #5a2a26);
+}
+
+/* the pinned action, worn like a tiny card on the row's right edge */
+.chipCard,
+.chipHidden,
+.chipBid,
+.chipFold,
+.chipEmpty {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 30px;
+  height: 26px;
+  padding: 0 6px;
+  border-radius: 4px;
+  font: 800 11.5px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  white-space: nowrap;
+}
+
+.chipCard {
+  background: linear-gradient(180deg, var(--card-0, #f6edd7), var(--card-1, #ede2c3));
+  border: 1.5px solid var(--card-edge, #c8a040);
+  color: var(--ink-0, #2a241b);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.chipHidden {
+  background: linear-gradient(180deg, var(--card-back-a, #5a2a26), var(--card-back-b, #3a1a18));
+  border: 1.5px solid rgba(200, 160, 64, 0.7);
+  color: var(--paper-0, #ede4d0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.chipBid {
+  border: 1px solid rgba(184, 133, 40, 0.8);
+  background: rgba(184, 133, 40, 0.16);
+  color: var(--brass-hi, #ecd999);
+  font-weight: 700;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.stepOn .chipBid {
+  color: #6e5014;
+  background: rgba(184, 133, 40, 0.14);
+}
+
+.chipFold {
+  border: 1px solid rgba(162, 60, 44, 0.75);
+  background: rgba(162, 60, 44, 0.14);
+  color: #e0a79c;
+  font-weight: 700;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.stepOn .chipFold {
+  color: var(--suit-red, #a23c2c);
+}
+
+.chipEmpty {
+  border: 1px dashed rgba(212, 179, 106, 0.5);
+  color: rgba(212, 179, 106, 0.7);
+}
+
+.stepOn .chipEmpty {
+  border-color: rgba(74, 64, 50, 0.5);
+  color: var(--ink-2, #7a6d56);
+}
+
+.suitRed {
+  color: var(--suit-red, #a23c2c);
+}
+
+.suitBlack {
+  color: var(--suit-black, #1e1a14);
+}
+
+.chipHidden .suitRed {
+  color: #e8a498;
+}
+
+.chipHidden .suitBlack {
+  color: var(--paper-1, #e4d9bf);
+}
+
+/* the picker inside the active step */
+.picker {
+  padding: 9px 10px 10px;
+  border-top: 1px dashed var(--paper-2, #d5c7a4);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.optionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+  gap: 4px;
+}
+
+.sectionLabel {
+  display: block;
+  margin-top: 2px;
+  color: var(--ink-2, #7a6d56);
+  font: 700 8.5px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* a pickable card is drawn as the card itself: one surface, rank + frequency */
+.optionCard,
+.optionHide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-width: 0;
+  padding: 6px 2px 5px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--card-0, #f6edd7), var(--card-1, #ede2c3));
+  border: 1.5px solid var(--card-edge, #c8a040);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.22);
+  color: var(--ink-0, #2a241b);
+  cursor: pointer;
+}
+
+.optionHide {
+  background: linear-gradient(180deg, var(--card-back-a, #5a2a26), var(--card-back-b, #3a1a18));
+  border-color: rgba(200, 160, 64, 0.7);
+  color: var(--paper-0, #ede4d0);
+}
+
+.optionBid {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 8px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(138, 106, 40, 0.55);
+  background: rgba(138, 106, 40, 0.1);
+  color: var(--ink-0, #2a241b);
+  font: 700 10.5px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.optionCard:hover,
+.optionHide:hover,
+.optionBid:hover {
+  border-color: var(--brass-0, #8a6a28);
+  filter: brightness(1.04);
+}
+
+.optionCard:focus-visible,
+.optionHide:focus-visible,
+.optionBid:focus-visible {
+  outline: 2px solid var(--brass-0, #8a6a28);
+  outline-offset: 1px;
+}
+
+.on {
+  border-color: var(--ink-0, #2a241b) !important;
+  box-shadow: 0 0 0 1.5px var(--ink-0, #2a241b);
+}
+
+.never {
+  opacity: 0.5;
+}
+
+/* deck-impossible given the other hand + vira + plays so far (plan 77
+   L-2) — greyed and blocked, matching the range picker's disabled slots */
+.impossible {
+  opacity: 0.35;
+  border-style: dashed !important;
+  cursor: default;
+  filter: none !important;
+}
+
+.optionRank {
+  font: 800 13px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  white-space: nowrap;
+}
+
+.optionPct {
+  color: var(--ink-2, #7a6d56);
+  font: 600 9.5px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  font-variant-numeric: tabular-nums;
+}
+
+.optionHide .optionPct {
+  color: rgba(237, 228, 208, 0.75);
+}
+
+.optionHide .suitRed {
+  color: #e8a498;
+}
+
+.optionHide .suitBlack {
+  color: var(--paper-1, #e4d9bf);
+}
+
+.bidRow {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+.pickerHint {
+  color: var(--ink-2, #7a6d56);
+  font: 500 10px/1.45 var(--font-sans, Inter, system-ui, sans-serif);
+}
+
+/* end-of-line notes */
+.terminal {
+  border: 1px dashed rgba(212, 179, 106, 0.4);
+  border-radius: 6px;
+  padding: 10px 11px;
+  color: var(--paper-2, #d5c7a4);
+  font: italic 500 12.5px/1.5 var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+}
+
+.terminal b {
+  color: var(--brass-2, #d4b36a);
+  font-style: normal;
+  font-family: var(--font-sans, Inter, system-ui, sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-right: 4px;
+}
+
+.emptyHint {
+  margin: 0;
+  color: var(--paper-2, #d5c7a4);
+  opacity: 0.8;
+  font-size: 11.5px;
+  line-height: 1.55;
+}
+
+/* how often the solve reaches a decision, whispered after the verb */
+.stepReach {
+  font-style: normal;
+  font-size: 10px;
+  color: rgba(212, 179, 106, 0.65);
+  font-variant-numeric: tabular-nums;
+}
+
+.stepOn .stepReach {
+  color: var(--ink-2, #7a6d56);
+}

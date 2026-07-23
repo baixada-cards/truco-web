@@ -1,0 +1,23 @@
+.deck-vira {
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+.deck-vira-card {
+  position: absolute;
+  top: 24px;
+  left: -22px;
+  z-index: 1;
+  width: 128px;
+  height: 84px;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.26));
+}
+.deck-vira-stack {
+  position: absolute;
+  top: 14px;
+  left: 40px;
+  width: 88px;
+  height: 132px;
+  z-index: 2;
+  pointer-events: none;
+}

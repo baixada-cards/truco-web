@@ -1,0 +1,403 @@
+.farol-session-failure {
+  position: relative;
+  box-sizing: border-box;
+  font-family: var(--font-sans);
+  color: var(--ink-0);
+}
+
+.farol-session-failure.is-stage {
+  width: 100%;
+  min-height: max(520px, calc(100vh - 16px));
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  overflow: hidden;
+  background-color: var(--ts-stage-base);
+  background-image:
+    var(--ts-menu-wood-vignette),
+    var(--ts-menu-wood-fine-grain),
+    var(--ts-menu-wood-broad-grain),
+    var(--ts-menu-wood-warm-blob),
+    var(--ts-menu-wood-dark-blob);
+}
+
+.farol-session-failure.is-inline {
+  width: min(100%, var(--arena-shell-max, 1020px));
+  margin: 0 auto 16px;
+  padding: 0 6px;
+}
+
+.fsfn-note {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: min(620px, calc(100vw - 48px));
+  padding: 28px 30px 24px;
+  border: 1px solid rgba(154, 122, 46, 0.26);
+  border-radius: 4px;
+  box-shadow:
+    0 1px 0 rgba(255, 246, 221, 0.2) inset,
+    0 -1px 0 rgba(65, 44, 24, 0.12) inset,
+    0 2px 2px rgba(0, 0, 0, 0.2),
+    0 22px 54px rgba(0, 0, 0, 0.52);
+  text-align: left;
+}
+
+.farol-session-failure.is-stage .fsfn-note {
+  transform: rotate(-0.6deg);
+}
+
+.farol-session-failure.is-inline .fsfn-note {
+  width: 100%;
+  max-width: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 18px;
+  row-gap: 10px;
+  padding: 18px 22px 18px 26px;
+  box-shadow:
+    0 1px 0 rgba(255, 246, 221, 0.18) inset,
+    0 -1px 0 rgba(65, 44, 24, 0.1) inset,
+    0 14px 28px rgba(0, 0, 0, 0.34);
+}
+
+.fsfn-note::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  bottom: 14px;
+  left: 18px;
+  width: 1px;
+  background: rgba(162, 60, 44, 0.22);
+}
+
+.farol-session-failure.is-inline .fsfn-note::before {
+  top: 12px;
+  bottom: 12px;
+}
+
+.fsfn-note__pin {
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 30%,
+    var(--brass-hi),
+    var(--brass-1) 60%,
+    var(--brass-0)
+  );
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.45),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.farol-session-failure.is-inline .fsfn-note__pin {
+  left: 24px;
+}
+
+.fsfn-note__folio {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.farol-session-failure.is-inline .fsfn-note__folio {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+.fsfn-note__stamp {
+  position: absolute;
+  top: 64px;
+  right: 28px;
+  transform: rotate(4deg);
+  padding: 7px 13px 6px;
+  border: 2px solid rgba(162, 60, 44, 0.72);
+  border-radius: 3px;
+  color: rgba(162, 60, 44, 0.82);
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.farol-session-failure.is-inline .fsfn-note__stamp {
+  top: 18px;
+  right: 22px;
+  opacity: 0.72;
+}
+
+.fsfn-note__title {
+  max-width: 440px;
+  margin: 0;
+  color: var(--ink-0);
+  font-family: var(--font-serif);
+  font-size: clamp(1.45rem, 3vw, 2.05rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+.farol-session-failure.is-inline .fsfn-note__title {
+  max-width: none;
+  font-size: 1.34rem;
+}
+
+.fsfn-note__copy {
+  max-width: 520px;
+  margin: 10px 0 0;
+  color: var(--ink-1);
+  font-size: 0.94rem;
+  line-height: 1.55;
+  letter-spacing: 0;
+}
+
+.farol-session-failure.is-inline .fsfn-note__copy {
+  max-width: none;
+  margin-top: 2px;
+}
+
+.fsfn-byok {
+  margin-top: 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.farol-session-failure.is-inline .fsfn-byok {
+  grid-column: 1 / -1;
+}
+
+.fsfn-byok__label {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.fsfn-byok__row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.fsfn-byok__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  box-sizing: border-box;
+  min-height: 38px;
+  padding: 8px 12px;
+  border: 1px solid rgba(154, 122, 46, 0.34);
+  border-radius: 4px;
+  background: rgba(255, 250, 236, 0.5);
+  color: var(--ink-0);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+}
+
+.fsfn-byok__input::placeholder {
+  color: var(--ink-2);
+  opacity: 0.7;
+  font-family: var(--font-sans);
+  letter-spacing: 0;
+}
+
+.fsfn-byok__input:focus-visible {
+  outline: none;
+  border-color: rgba(168, 133, 64, 0.7);
+  background: rgba(255, 250, 236, 0.72);
+}
+
+.fsfn-byok__row .fsfn-button {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.fsfn-byok__hint {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 0.74rem;
+  line-height: 1.45;
+}
+
+.fsfn-note__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.farol-session-failure.is-inline .fsfn-note__actions {
+  grid-column: 2;
+  grid-row: 2 / span 2;
+  align-self: end;
+  justify-content: flex-end;
+  min-width: 210px;
+  margin-top: 0;
+}
+
+.fsfn-button {
+  appearance: none;
+  min-height: 38px;
+  padding: 9px 15px;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    color 150ms ease,
+    filter 150ms ease,
+    transform 100ms ease;
+}
+
+.fsfn-button--primary {
+  border: 1px solid rgba(168, 133, 64, 0.58);
+  background: linear-gradient(180deg, #b89548 0%, #8a6a28 100%);
+  color: #fff8ea;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 220, 160, 0.28);
+}
+
+.fsfn-button--secondary {
+  border: 1px dashed rgba(90, 70, 40, 0.42);
+  background: rgba(255, 247, 226, 0.22);
+  color: var(--ink-1);
+}
+
+.fsfn-button--tertiary {
+  min-height: 34px;
+  padding-inline: 8px;
+  border: 0;
+  background: transparent;
+  color: var(--ink-2);
+  text-decoration: underline dotted rgba(90, 70, 40, 0.42);
+  text-underline-offset: 3px;
+}
+
+.fsfn-button:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+.fsfn-button--secondary:hover,
+.fsfn-button--tertiary:hover {
+  color: var(--ink-0);
+}
+
+.fsfn-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+  filter: grayscale(0.35);
+  transform: none;
+}
+
+.fsfn-details {
+  margin-top: 16px;
+  border-top: 1px dashed rgba(90, 70, 40, 0.28);
+  padding-top: 10px;
+  color: var(--ink-2);
+  font-size: 0.78rem;
+}
+
+.farol-session-failure.is-inline .fsfn-details {
+  grid-column: 1 / -1;
+}
+
+.fsfn-details summary {
+  width: fit-content;
+  cursor: pointer;
+  color: var(--ink-2);
+  font-weight: 700;
+}
+
+.fsfn-details dl {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 6px 12px;
+  margin: 10px 0 0;
+}
+
+.fsfn-details dt {
+  color: var(--ink-2);
+  font-weight: 700;
+}
+
+.fsfn-details dd {
+  min-width: 0;
+  margin: 0;
+  color: var(--ink-1);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 720px) {
+  .farol-session-failure.is-stage {
+    min-height: max(500px, calc(100vh - 16px));
+    padding: 18px;
+  }
+
+  .farol-session-failure.is-inline {
+    padding-inline: 10px;
+  }
+
+  .farol-session-failure.is-inline .fsfn-note {
+    display: block;
+  }
+
+  .farol-session-failure.is-inline .fsfn-note__actions {
+    justify-content: flex-start;
+    min-width: 0;
+    margin-top: 16px;
+  }
+
+  .fsfn-note {
+    width: min(100%, 440px);
+    padding: 26px 24px 22px 28px;
+  }
+
+  .fsfn-note__stamp {
+    position: static;
+    display: inline-block;
+    transform: rotate(-2deg);
+    margin: 0 0 14px;
+  }
+
+  .fsfn-note__title {
+    font-size: 1.42rem;
+  }
+
+  .fsfn-note__actions {
+    align-items: stretch;
+  }
+
+  .fsfn-button {
+    flex: 1 1 150px;
+  }
+
+  .fsfn-byok__row {
+    flex-direction: column;
+  }
+
+  .fsfn-byok__row .fsfn-button {
+    flex: 1 1 auto;
+  }
+}

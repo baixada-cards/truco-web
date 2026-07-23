@@ -1,0 +1,420 @@
+/* Solution Atlas — poker-range-chart style viewer for solved Truco strategies.
+   Inherits Baixada / Tactile tokens from baixada-tokens.css. Clean, flat, airy. */
+
+.page {
+  min-height: 100vh;
+  background: var(--paper-0);
+  color: var(--ink-0);
+  font-family: var(--font-sans);
+  padding: 32px clamp(16px, 5vw, 64px) 80px;
+  box-sizing: border-box;
+}
+
+.shell {
+  max-width: 1040px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* ---- Header ---- */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-bottom: 1px solid var(--paper-2);
+  padding-bottom: 22px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(30px, 5vw, 44px);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 0;
+  line-height: 1.05;
+}
+
+.contextLine {
+  font-size: 13px;
+  color: var(--ink-1);
+}
+
+.contextLine .dot {
+  color: var(--ink-2);
+  margin: 0 8px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 22px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldLabel {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.select {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--ink-0);
+  background: var(--paper-1);
+  border: 1px solid var(--paper-2);
+  border-radius: 7px;
+  padding: 8px 12px;
+  min-width: 150px;
+  cursor: pointer;
+}
+
+.select:focus-visible {
+  outline: 2px solid var(--brass-1);
+  outline-offset: 1px;
+}
+
+.meta {
+  margin-left: auto;
+  display: flex;
+  gap: 26px;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: right;
+}
+
+.metaValue {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink-0);
+  line-height: 1;
+}
+
+.metaLabel {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+/* ---- Section scaffolding ---- */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.sectionTitle {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.sectionNote {
+  font-size: 12px;
+  color: var(--ink-2);
+  max-width: 540px;
+}
+
+/* ---- Score lattice ---- */
+.latticeWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  align-items: flex-start;
+}
+
+.lattice {
+  display: grid;
+  /* 1 row/col-header + 12 cells */
+  grid-template-columns: 24px repeat(12, 26px);
+  gap: 3px;
+}
+
+.latticeCorner {
+  font-size: 9px;
+  color: var(--ink-2);
+}
+
+.latticeColHead,
+.latticeRowHead {
+  font-size: 10px;
+  color: var(--ink-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.latticeCell {
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  border: 1px solid var(--paper-2);
+  background: transparent;
+  padding: 0;
+  cursor: default;
+}
+
+.latticePending {
+  border-color: color-mix(in srgb, var(--ink-2) 22%, transparent);
+}
+
+.latticeEdge {
+  border: 1px solid color-mix(in srgb, var(--brass-1) 55%, transparent);
+  background: color-mix(in srgb, var(--brass-2) 14%, transparent);
+}
+
+.latticeSolved {
+  border: 1px solid var(--brass-0);
+  background: var(--brass-1);
+  cursor: pointer;
+  box-shadow: var(--shadow-card-low);
+}
+
+.latticeSolved.latticeSelected {
+  outline: 2px solid var(--brass-0);
+  outline-offset: 1px;
+}
+
+.latticeAxisLabel {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+/* ---- Legends ---- */
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--ink-1);
+}
+
+.legendRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legendSwatch {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid var(--paper-2);
+  flex: none;
+}
+
+.legendSwatch.edge {
+  border: 1px solid color-mix(in srgb, var(--brass-1) 55%, transparent);
+  background: color-mix(in srgb, var(--brass-2) 14%, transparent);
+}
+
+.legendSwatch.solved {
+  border: 1px solid var(--brass-0);
+  background: var(--brass-1);
+}
+
+.legendSwatch.pending {
+  border-color: color-mix(in srgb, var(--ink-2) 22%, transparent);
+  background: transparent;
+}
+
+/* ---- Hand grid ---- */
+.gridScroll {
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.handGrid {
+  display: grid;
+  grid-template-columns: 30px repeat(13, minmax(40px, 1fr));
+  gap: 3px;
+  min-width: 620px;
+}
+
+.gridCorner {
+  font-size: 9px;
+  color: var(--ink-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gridColHead,
+.gridRowHead {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 28px;
+  padding: 2px;
+}
+
+.gridColHead .manilha,
+.gridRowHead .manilha {
+  color: var(--suit-red);
+}
+
+.cell {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  min-height: 40px;
+  border-radius: 5px;
+  border: 1px solid color-mix(in srgb, var(--ink-2) 14%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  cursor: default;
+}
+
+.cellEmpty {
+  background: transparent;
+  border-color: transparent;
+}
+
+.cellLabel {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
+}
+
+/* Manilha corner fence (both cards manilhas). Drawn as an outline overlay. */
+.manilhaFence {
+  outline: 2px dashed var(--brass-0);
+  outline-offset: -3px;
+}
+
+/* ---- Tooltip ---- */
+.tooltip {
+  position: fixed;
+  z-index: 40;
+  pointer-events: none;
+  background: var(--ink-0);
+  color: var(--paper-0);
+  border-radius: 7px;
+  padding: 8px 11px;
+  font-size: 12px;
+  line-height: 1.4;
+  box-shadow: var(--shadow-card);
+  max-width: 220px;
+}
+
+.tooltip .ttHead {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.tooltip .ttPct {
+  font-family: var(--font-serif);
+  font-size: 16px;
+}
+
+.tooltip .ttDist {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid color-mix(in srgb, var(--paper-0) 25%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tooltip .ttDistRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.tooltip .ttDistRow .manilha {
+  color: var(--brass-2);
+}
+
+/* ---- Color scale legend ---- */
+.scaleBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  color: var(--ink-2);
+}
+
+.scaleGradient {
+  height: 12px;
+  width: 220px;
+  border-radius: 6px;
+  border: 1px solid var(--paper-2);
+}
+
+/* ---- Empty / error state ---- */
+.empty {
+  border: 1px dashed var(--paper-2);
+  border-radius: 10px;
+  padding: 40px;
+  text-align: center;
+  color: var(--ink-2);
+  font-size: 14px;
+}
+
+.kickerOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.kickerChip {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--ink-1);
+  background: var(--paper-1);
+  border: 1px solid var(--paper-2);
+  border-radius: 999px;
+  padding: 5px 11px;
+  cursor: pointer;
+}
+
+.kickerChip:hover {
+  border-color: var(--brass-1);
+}
+
+.kickerChip.active {
+  background: var(--brass-1);
+  border-color: var(--brass-0);
+  color: var(--ink-0);
+  font-weight: 600;
+}

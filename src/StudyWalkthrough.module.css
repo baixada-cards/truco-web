@@ -1,0 +1,328 @@
+/* Study lab first-visit tour — spotlight coach-marks over the real UI.
+   Tokens from baixada-tokens.css. */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  /* the overlay blocks the whole page (plan 76 A-4); each step's whitelisted
+     anchors are lifted above it with [data-tour-lift] instead */
+  pointer-events: auto;
+}
+
+/* dynamic lab surfaces (the confirm dialog, the hover tooltip) mount and
+   unmount mid-step — lift them by attribute whenever the tour is open so
+   they never paint dimmed under the scrim */
+:global(body[data-tour-open]) :global([data-tour='confirm']),
+:global(body[data-tour-open]) :global([data-tour='tooltip']) {
+  /* above the tour card (140): a dialog the user must answer — or a mix
+     tooltip they are actively reading — always outranks the coach-mark */
+  z-index: 150;
+}
+
+/* decorations are attribute-driven (plan 82) so teardown is a global attribute
+   sweep and no inline style can leak: the lifted section rises above the
+   blocking overlay but is click-dead, and only its `allow` descendants take
+   pointer events back — a deep child can be the sole live control without
+   fighting ancestor stacking contexts. */
+:global([data-tour-lift]) {
+  position: relative;
+  z-index: 125;
+  pointer-events: none;
+}
+:global([data-tour-allow]) {
+  pointer-events: auto;
+}
+
+/* the step's intended control is marked by a loud pulsing ring, drawn as a
+   PORTALED overlay over the control (not a box-shadow on the element — that
+   gets clipped by the rail/panel's own overflow, which is why plate glows
+   never showed). Sits above lifted controls (125), below the card (140). */
+.glowLayer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 138;
+}
+/* ONE ring hugging the group of glowed controls (their bounding box), marked by
+   a soft box-shadow (no border/scale — those made it read as a detached,
+   dislocated square). Gentle brightness pulse so it never overwhelms. */
+.glowRing {
+  position: fixed;
+  border-radius: 8px;
+  animation: glowPulse 1.7s ease-in-out infinite;
+}
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 2px rgba(240, 221, 156, 0.85), 0 0 9px 1px rgba(240, 221, 156, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 2px rgba(240, 221, 156, 1), 0 0 16px 3px rgba(240, 221, 156, 0.55);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glowRing {
+    animation: none;
+    box-shadow: 0 0 0 2px rgba(240, 221, 156, 0.95), 0 0 12px 2px rgba(240, 221, 156, 0.45);
+  }
+}
+
+/* the beacon: for the ONE small control a step revolves around (the 5♦ to
+   click, the card to blank), a bobbing arrow points right at it — a clearer
+   "click here" than a ring on a tiny card. The glow ring outlines the target;
+   this arrow nods toward it. */
+.beaconArrow {
+  position: fixed;
+  transform: translateX(-50%);
+  font-size: 20px;
+  line-height: 1;
+  color: rgba(248, 232, 176, 1);
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.55), 0 0 6px rgba(240, 221, 156, 0.7);
+  pointer-events: none;
+}
+.beaconArrowDown {
+  animation: beaconNodDown 0.9s ease-in-out infinite;
+}
+.beaconArrowUp {
+  animation: beaconNodUp 0.9s ease-in-out infinite;
+}
+/* sits ABOVE the target pointing down; nods down toward it */
+@keyframes beaconNodDown {
+  0%, 100% { transform: translateX(-50%) translateY(-100%) translateY(-3px); }
+  50% { transform: translateX(-50%) translateY(-100%) translateY(3px); }
+}
+/* sits BELOW the target pointing up; nods up toward it */
+@keyframes beaconNodUp {
+  0%, 100% { transform: translateX(-50%) translateY(3px); }
+  50% { transform: translateX(-50%) translateY(-3px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .beaconArrowDown { animation: none; transform: translateX(-50%) translateY(-100%); }
+  .beaconArrowUp { animation: none; transform: translateX(-50%); }
+}
+
+/* the spotlight: one full-screen SVG with an N-hole mask (visual only — the
+   overlay itself blocks clicks). Not box-shadow, which miscomposites here. */
+.mask {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  animation: fade 200ms ease;
+}
+
+/* axis hint (step "axes"): a soft golden line runs along the chart's column
+   headers (M) and row headers (H); a brighter highlight sweeps along each — a
+   wave of light tracing the two dimensions — with a labelled arrow at the end */
+.axes {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 137;
+}
+.axisBarH,
+.axisBarV {
+  position: fixed;
+  border-radius: 3px;
+  background: rgba(240, 221, 156, 0.22);
+  box-shadow: 0 0 8px rgba(240, 221, 156, 0.35);
+  overflow: hidden;
+}
+.axisBarH { height: 4px; }
+.axisBarV { width: 4px; }
+.axisSweepH,
+.axisSweepV {
+  position: absolute;
+  background: linear-gradient(var(--dir, 90deg), transparent, rgba(240, 221, 156, 0.98), transparent);
+}
+.axisSweepH {
+  top: 0;
+  bottom: 0;
+  width: 34%;
+  --dir: 90deg;
+  animation: sweepH 1.5s linear infinite;
+}
+.axisSweepV {
+  left: 0;
+  right: 0;
+  height: 34%;
+  --dir: 180deg;
+  animation: sweepV 1.5s linear infinite;
+}
+@keyframes sweepH { from { left: -34%; } to { left: 100%; } }
+@keyframes sweepV { from { top: -34%; } to { top: 100%; } }
+.axisTag {
+  position: fixed;
+  padding: 1px 6px 2px;
+  border-radius: 3px;
+  background: rgba(31, 22, 16, 0.85);
+  color: rgba(240, 221, 156, 0.98);
+  font: 800 12px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  letter-spacing: 0.06em;
+  box-shadow: 0 0 8px rgba(240, 221, 156, 0.4);
+}
+@media (prefers-reduced-motion: reduce) {
+  .axisSweepH, .axisSweepV { animation: none; opacity: 0.8; }
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(31, 22, 16, 0.72);
+  backdrop-filter: blur(1px);
+  animation: fade 200ms ease;
+}
+
+.ring {
+  position: fixed;
+  border-radius: 7px;
+  box-shadow: 0 0 0 2px rgba(236, 217, 153, 0.55);
+  pointer-events: none;
+  transition: top 260ms cubic-bezier(0.2, 0.7, 0.2, 1), left 260ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    width 260ms cubic-bezier(0.2, 0.7, 0.2, 1), height 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes tipIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* positioning lives on this wrapper (top/left/transform inline) so the card's
+   entrance animation below can't override the centering transform while it
+   runs — animated transforms beat inline ones, which made the card paint
+   bottom-right of center for its first 220ms, then snap into place */
+.tipPos {
+  position: fixed;
+  z-index: 140; /* above lifted anchors (125) and lab dialogs (126) */
+  width: min(340px, calc(100vw - 32px));
+  pointer-events: none;
+}
+
+.tip {
+  position: relative;
+  pointer-events: auto;
+  padding: 16px 18px 14px;
+  border-radius: 5px;
+  background: linear-gradient(178deg, #f4ecd9, var(--paper-0, #ede4d0) 45%, var(--paper-1, #e4d9bf));
+  color: var(--ink-1, #4a4032);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.4);
+  animation: tipIn 220ms ease backwards 80ms;
+}
+
+/* a little pointer beak toward the target */
+.tip::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  transform: rotate(45deg);
+  background: #f2e9d5;
+}
+.below::before { top: -6px; }
+.above::before { bottom: -6px; background: var(--paper-1, #e4d9bf); }
+.center::before { display: none; }
+.side::before { display: none; }
+
+.tipHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.tipStep {
+  font: 700 10px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brass-0, #8a6a28);
+}
+.tryChip {
+  padding: 2px 7px 3px;
+  border-radius: 3px;
+  border: 1px solid rgba(138, 106, 40, 0.45);
+  color: var(--brass-0, #8a6a28);
+  font: 700 9.5px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.guideLink {
+  color: var(--brass-0, #8a6a28);
+  font-weight: 600;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+}
+.guideLink:hover { color: var(--ink-0, #2a241b); }
+
+.skip {
+  border: 0;
+  background: none;
+  color: var(--ink-2, #7a6d56);
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+}
+.skip:hover { color: var(--ink-0, #2a241b); }
+
+.tipTitle {
+  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 1.1;
+  color: var(--ink-0, #2a241b);
+  margin: 0 0 6px;
+}
+.tipBody {
+  margin: 0 0 12px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink-1, #4a4032);
+}
+
+.dots {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+.dot, .dotOn {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(122, 109, 86, 0.35);
+}
+.dotOn { background: var(--brass-1, #a88540); }
+
+.tipActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.back {
+  border: 0;
+  background: none;
+  color: var(--ink-2, #7a6d56);
+  font: 600 12.5px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  cursor: pointer;
+}
+.back:hover { color: var(--ink-0, #2a241b); }
+.next {
+  padding: 8px 16px;
+  border-radius: 3px;
+  border: 1px solid rgba(138, 106, 40, 0.5);
+  background: linear-gradient(180deg, #b89548 0%, #8a6a28 100%);
+  color: #fff8ea;
+  font: 700 12.5px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 220, 160, 0.28);
+  transition: filter 150ms ease, transform 100ms ease;
+}
+.next:hover { filter: brightness(1.06); transform: translateY(-1px); }
+
+.skip:focus-visible, .back:focus-visible, .next:focus-visible {
+  outline: 2px solid var(--brass-0, #8a6a28);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hole, .scrim, .tip { transition: none; animation: none; }
+}

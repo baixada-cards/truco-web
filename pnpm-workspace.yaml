@@ -1,0 +1,5 @@
+packages:
+  - '.'
+
+# Equivalent to npm min-release-age=7 (days); value is minutes.
+minimumReleaseAge: 10080

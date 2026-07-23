@@ -1,0 +1,197 @@
+/* French card — same stock, frame, and card-back language as SpanishCard. */
+
+.fcard {
+  position: relative;
+  border-radius: 6px;
+  background:
+    linear-gradient(180deg, var(--card-0) 0%, var(--card-1) 100%),
+    var(--card-0);
+  box-shadow: var(--shadow-card);
+  flex-shrink: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: var(--font-serif);
+  line-height: normal;
+  isolation: isolate;
+}
+
+.fcard-lost {
+  filter: saturate(0.15) brightness(0.58) contrast(0.92);
+}
+
+.fcard-inner {
+  position: absolute;
+  inset: 4px;
+  border: 1.5px solid var(--card-edge);
+  border-radius: 3px;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(200, 160, 64, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(200, 160, 64, 0.05) 0%, transparent 50%);
+  overflow: hidden;
+}
+
+.fcard-inner::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 0.5px solid var(--card-edge);
+  border-radius: 2px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.fcard-corner {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  font-family: var(--font-serif);
+  line-height: 1;
+}
+
+.fcard-corner-tl {
+  top: 6px;
+  left: 7px;
+}
+
+.fcard-corner-br {
+  right: 7px;
+  bottom: 6px;
+  transform: rotate(180deg);
+}
+
+.fcard-corner-rank {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.fcard-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fcard-pipfield {
+  position: absolute;
+  inset: 18%;
+}
+
+.fcard-pip {
+  position: absolute;
+}
+
+.fcard-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.fcard-face-letter {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.fcard-face-label {
+  font-family: var(--font-serif);
+  font-size: 11px;
+  font-style: italic;
+  color: var(--ink-1);
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+}
+
+.fcard-back {
+  position: relative;
+  border-radius: 6px;
+  background: linear-gradient(180deg, var(--card-back-a) 0%, var(--card-back-b) 100%);
+  box-shadow: var(--shadow-card);
+}
+
+.fcard-back-pattern {
+  position: absolute;
+  inset: 4px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(200, 160, 100, 0.25);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.fcard-back-pattern::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 0.5px solid rgba(200, 160, 100, 0.2);
+  border-radius: 2px;
+}
+
+.fcard-manilha .fcard-inner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(236, 217, 153, 0.10) 35%,
+    rgba(236, 217, 153, 0.22) 50%,
+    rgba(236, 217, 153, 0.10) 65%,
+    transparent 100%
+  );
+  border-radius: 3px;
+  mix-blend-mode: screen;
+  animation: manilha-sweep 10s linear infinite;
+  pointer-events: none;
+}
+
+.fcard-manilha-s0 {
+  box-shadow: var(--shadow-card), 0 0 7px 1px rgba(212, 179, 106, 0.30);
+}
+
+.fcard-manilha-s1 {
+  box-shadow: var(--shadow-card), 0 0 11px 2px rgba(212, 179, 106, 0.46);
+}
+
+.fcard-manilha-s2 {
+  box-shadow: var(--shadow-card), 0 0 17px 3px rgba(212, 179, 106, 0.62);
+}
+
+.fcard-manilha-s3 {
+  box-shadow: var(--shadow-card), 0 0 24px 5px rgba(212, 179, 106, 0.82);
+}
+
+.fcard-manilha.fcard-manilha-s0 .fcard-inner::after {
+  animation-delay: 0s;
+}
+
+.fcard-manilha.fcard-manilha-s1 .fcard-inner::after {
+  animation-delay: 0.3s;
+}
+
+.fcard-manilha.fcard-manilha-s2 .fcard-inner::after {
+  animation-delay: 0.6s;
+}
+
+.fcard-manilha.fcard-manilha-s3 .fcard-inner::after {
+  animation-delay: 0.9s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fcard-manilha .fcard-inner::after {
+    width: 100%;
+    background: linear-gradient(90deg, transparent 25%, rgba(236, 217, 153, 0.10) 50%, transparent 75%);
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+}

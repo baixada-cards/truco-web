@@ -1,0 +1,197 @@
+/* Spanish card — cream stock with ochre frame */
+
+.spcard {
+  position: relative;
+  border-radius: 6px;
+  background:
+    linear-gradient(180deg, var(--card-0) 0%, var(--card-1) 100%),
+    var(--card-0);
+  box-shadow: var(--shadow-card);
+  flex-shrink: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: var(--font-serif);
+  line-height: normal;
+  isolation: isolate;
+}
+
+/* "Lost" state: de-emphasized via filter only — never see-through */
+.spcard-lost {
+  filter: saturate(0.15) brightness(0.58) contrast(0.92);
+}
+
+.spcard-inner {
+  position: absolute;
+  inset: 4px;
+  border: 1.5px solid var(--card-edge);
+  border-radius: 3px;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(200,160,64,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(200,160,64,0.05) 0%, transparent 50%);
+  overflow: hidden;
+}
+
+/* Double frame line, classic Spanish */
+.spcard-inner::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 0.5px solid var(--card-edge);
+  border-radius: 2px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.spcard-corner {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  font-family: var(--font-serif);
+}
+.spcard-corner-tl { top: 6px; left: 6px; }
+.spcard-corner-br { bottom: 6px; right: 6px; transform: rotate(180deg); }
+
+.spcard-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spcard-pip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.spcard-pip-num {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.spcard-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.spcard-face-letter {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.spcard-face-label {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 11px;
+  color: var(--ink-1);
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+}
+
+/* Face-down card — bordeaux back with quiet pattern */
+.spcard-back {
+  position: relative;
+  border-radius: 6px;
+  background: linear-gradient(180deg, var(--card-back-a) 0%, var(--card-back-b) 100%);
+  box-shadow: var(--shadow-card);
+}
+.spcard-back-pattern {
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(200,160,100,0.25);
+  border-radius: 3px;
+  background:
+    repeating-linear-gradient(45deg,
+      rgba(200,160,100,0.08) 0px,
+      rgba(200,160,100,0.08) 1px,
+      transparent 1px,
+      transparent 8px),
+    repeating-linear-gradient(-45deg,
+      rgba(200,160,100,0.08) 0px,
+      rgba(200,160,100,0.08) 1px,
+      transparent 1px,
+      transparent 8px);
+}
+.spcard-back-pattern::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 0.5px solid rgba(200,160,100,0.2);
+  border-radius: 2px;
+}
+
+/* Size variants — kept for backward-compat but dimensions now set inline */
+.spcard-sm { width: 52px;  height: 78px;  }
+.spcard-md { width: 84px;  height: 128px; }
+.spcard-lg { width: 120px; height: 180px; }
+
+/* ── Manilha ──────────────────────────────────────────────────────────────── */
+
+@keyframes manilha-sweep {
+  /* Sweeps across in ~1.5s, then stays invisible for ~8.5s before repeating */
+  0%   { transform: translateX(-200%); opacity: 0; }
+  4%   { transform: translateX(-80%);  opacity: 1; }
+  11%  { transform: translateX(200%);  opacity: 1; }
+  15%  { transform: translateX(300%);  opacity: 0; }
+  100% { transform: translateX(300%);  opacity: 0; }
+}
+
+/* Diagonal shimmer that sweeps across the card face */
+.spcard-manilha .spcard-inner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(236, 217, 153, 0.10) 35%,
+    rgba(236, 217, 153, 0.22) 50%,
+    rgba(236, 217, 153, 0.10) 65%,
+    transparent 100%
+  );
+  mix-blend-mode: screen;
+  animation: manilha-sweep 10s linear infinite;
+  pointer-events: none;
+  border-radius: 3px;
+}
+
+/* Suit-strength-tiered glow — stacks on top of the base card shadow. */
+.spcard-manilha-s0 {
+  box-shadow: var(--shadow-card), 0 0 7px 1px rgba(212, 179, 106, 0.30);
+}
+.spcard-manilha-s1 {
+  box-shadow: var(--shadow-card), 0 0 11px 2px rgba(212, 179, 106, 0.46);
+}
+.spcard-manilha-s2 {
+  box-shadow: var(--shadow-card), 0 0 17px 3px rgba(212, 179, 106, 0.62);
+}
+.spcard-manilha-s3 {
+  box-shadow: var(--shadow-card), 0 0 24px 5px rgba(212, 179, 106, 0.82);
+}
+
+/* Small positive stagger so multiple manilhas cascade rather than sync.
+   All start at 0 (sweeping on arrival) and repeat every 10s thereafter. */
+.spcard-manilha.spcard-manilha-s0 .spcard-inner::after { animation-delay: 0s; }
+.spcard-manilha.spcard-manilha-s1 .spcard-inner::after { animation-delay: 0.3s; }
+.spcard-manilha.spcard-manilha-s2 .spcard-inner::after { animation-delay: 0.6s; }
+.spcard-manilha.spcard-manilha-s3 .spcard-inner::after { animation-delay: 0.9s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .spcard-manilha .spcard-inner::after {
+    animation: none;
+    width: 100%;
+    transform: none;
+    background: linear-gradient(90deg, transparent 25%, rgba(236,217,153,0.10) 50%, transparent 75%);
+    opacity: 1;
+  }
+}

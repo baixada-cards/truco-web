@@ -1,0 +1,1700 @@
+/* LiveArena.css — extracted from App.css during plan 56 phase 3. */
+
+.live-arena {
+  --match-rail-width: clamp(214px, 18vw, 248px);
+  --arena-shell-max: 1020px;
+  --arena-shell-gap: 18px;
+  position: relative;
+}
+
+.app-shell.is-live-match {
+  background: #0a0705;
+}
+
+.app-shell.is-live-match[data-compact-play="true"] {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+.farol-utility-bar {
+  position: fixed;
+  top: max(14px, env(safe-area-inset-top));
+  right: max(14px, env(safe-area-inset-right));
+  z-index: 190;
+}
+
+.farol-utility-menu-button {
+  position: relative;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(238, 205, 142, 0.42);
+  border-radius: 999px;
+  color: #f8e9c0;
+  background:
+    radial-gradient(circle at 50% 24%, rgba(255, 237, 184, 0.18), transparent 48%),
+    linear-gradient(180deg, rgba(64, 45, 25, 0.94), rgba(25, 17, 10, 0.94));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 244, 214, 0.18),
+    0 10px 24px rgba(0, 0, 0, 0.34);
+  cursor: pointer;
+}
+
+.farol-utility-menu-button:hover,
+.farol-utility-menu-button.is-active {
+  border-color: rgba(255, 225, 156, 0.72);
+  color: #fff8db;
+}
+
+.farol-utility-menu-button svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+.farol-utility-menu-button__badge {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #f0c15b;
+  box-shadow: 0 0 10px rgba(240, 193, 91, 0.8);
+}
+
+.live-arena__board {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  align-items: start;
+  width: 100%;
+}
+
+.live-arena__board::before {
+  content: "";
+  position: absolute;
+  inset: 48px auto 82px 0;
+  width: var(--match-rail-width);
+  border-radius: 28px;
+  border: 1px solid rgba(218, 181, 118, 0.12);
+  background:
+    radial-gradient(circle at top, rgba(255, 222, 163, 0.08), transparent 36%),
+    linear-gradient(180deg, rgba(17, 14, 10, 0.94), rgba(8, 8, 8, 0.84));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 244, 220, 0.04),
+    0 24px 34px rgba(0, 0, 0, 0.22);
+  pointer-events: none;
+}
+
+.live-arena__board > * {
+  position: relative;
+  z-index: 1;
+}
+
+.live-arena__match-strip {
+  display: none;
+}
+
+.live-arena__player-zone {
+  display: grid;
+  grid-template-columns: var(--match-rail-width) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--arena-shell-gap);
+  padding: 0;
+  min-height: 0;
+}
+
+.live-arena__player-chip {
+  grid-column: 1;
+  justify-self: stretch;
+  align-self: stretch;
+  min-width: 0;
+  gap: 0;
+  padding: 16px 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background:
+    radial-gradient(circle at top, rgba(255, 247, 230, 0.08), transparent 44%),
+    linear-gradient(180deg, rgba(31, 24, 16, 0.92), rgba(13, 11, 9, 0.94));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 241, 210, 0.05),
+    0 16px 28px rgba(0, 0, 0, 0.18);
+}
+
+.live-arena__player-chip::before {
+  top: 18px;
+  bottom: 18px;
+}
+
+.live-arena__player-status {
+  grid-column: 1;
+  min-height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.live-arena__player-hand-wrap {
+  grid-column: 2;
+  justify-self: stretch;
+  width: min(100%, var(--arena-shell-max));
+  padding: 0 0 0 2px;
+}
+
+.live-arena__villain .live-arena__player-hand-wrap {
+  padding-top: 6px;
+}
+
+.live-arena__hero .live-arena__player-hand-wrap {
+  padding-top: 0;
+}
+
+.live-arena__trace-label,
+.live-arena__table-turnup-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  color: rgba(230, 222, 208, 0.56);
+}
+
+.live-arena {
+  --felt-deep: #0b2a1f;
+  --felt-mid: #0f3b2c;
+  --felt-rim: #051912;
+  --felt-edge: #1c4d38;
+  --felt-spotlight: rgba(255, 223, 158, 0.1);
+  --wood-warm: #663a15;
+  --wood-hi: #9b6427;
+  --wood-lo: #744114;
+  --accent-gold: #e7b758;
+  --accent-gold-hi: #ffdc95;
+  --accent-hot: #ff9f4d;
+  --hero-tint: #e7b758;
+  --villain-tint: #c4475e;
+  --ink-hi: #fff4de;
+  --ink-med: #d8d2c7;
+  --ink-low: #9a9488;
+  --arena-card-w: clamp(72px, 5.8vw, 82px);
+  --arena-card-h: calc(var(--arena-card-w) * 1.439);
+  --arena-card-table-w: clamp(82px, 6.7vw, 92px);
+  --arena-card-table-h: calc(var(--arena-card-table-w) * 1.435);
+  --arena-card-trace-w: clamp(30px, 2.5vw, 34px);
+  --arena-card-trace-h: calc(var(--arena-card-trace-w) * 1.412);
+  --arena-card-turnup-w: clamp(58px, 4.5vw, 64px);
+  --arena-card-turnup-h: calc(var(--arena-card-turnup-w) * 1.4);
+  --arena-trace-pad: clamp(6px, 0.6vw, 8px);
+  --arena-trace-stack-gap: clamp(4px, 0.4vw, 6px);
+  --arena-trace-column-gap: clamp(8px, 0.75vw, 10px);
+  --arena-stage-gap: clamp(8px, 0.8vw, 12px);
+  --arena-felt-min-h:
+    calc(
+      (var(--arena-card-table-h) * 2) +
+      var(--arena-stage-gap) +
+      32px
+    );
+  --arena-felt-max-h: calc(var(--arena-felt-min-h) + 48px);
+  --arena-zone-gap: 4px;
+  --arena-pad: 16px;
+
+  position: relative;
+  width: min(1440px, 100%);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 var(--arena-pad) 8px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--arena-zone-gap);
+  color: var(--ink-hi);
+  box-sizing: border-box;
+}
+
+.live-arena__board {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--arena-zone-gap);
+  min-height: 0;
+}
+
+.live-arena__player-zone {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) auto minmax(180px, 1fr);
+  align-items: center;
+  gap: 14px;
+  padding: 2px 16px;
+  min-height: calc(var(--arena-card-h) + 14px);
+  position: relative;
+}
+
+.live-arena__villain {
+  padding-bottom: 2px;
+}
+
+.live-arena__hero {
+  padding-top: 2px;
+}
+
+.live-arena__player-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.live-arena__villain .live-arena__player-identity {
+  grid-column: 1;
+  justify-self: end;
+}
+
+.live-arena__hero .live-arena__player-identity {
+  grid-column: 3;
+  justify-self: start;
+}
+
+.live-arena__player-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 14px 20px 14px 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255, 255, 255, 0.08), transparent 58%),
+    linear-gradient(180deg, rgba(40, 32, 20, 0.96), rgba(14, 10, 6, 0.98));
+  box-shadow:
+    0 16px 28px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 240, 210, 0.06);
+  min-width: 210px;
+  position: relative;
+}
+
+.live-arena__player-chip::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 16px;
+  bottom: 16px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--chip-tint, var(--accent-gold));
+  box-shadow: 0 0 14px 0 var(--chip-tint, var(--accent-gold));
+}
+
+.live-arena__villain .live-arena__player-chip {
+  --chip-tint: var(--villain-tint);
+}
+
+.live-arena__hero .live-arena__player-chip {
+  --chip-tint: var(--hero-tint);
+}
+
+.live-arena__player-chip__kicker {
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(216, 210, 199, 0.62);
+}
+
+.live-arena__player-chip__name {
+  font-size: 1.02rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--ink-hi);
+  text-transform: uppercase;
+}
+
+.live-arena__player-chip__score {
+  font-size: 3.4rem;
+  font-weight: 900;
+  line-height: 0.95;
+  color: var(--ink-hi);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  margin-top: 2px;
+  text-shadow: 0 0 24px rgba(255, 213, 138, 0.2);
+}
+
+.live-arena__player-chip__target {
+  font-size: 0.56rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-low);
+  margin-top: 6px;
+}
+
+.live-arena__player-chip.is-leading {
+  border-color: rgba(255, 224, 150, 0.4);
+}
+
+.live-arena__player-chip.is-leading .live-arena__player-chip__score {
+  color: var(--accent-gold-hi);
+  text-shadow: 0 0 30px rgba(255, 213, 138, 0.34);
+}
+
+.live-arena__player-chip.is-trailing {
+  opacity: 0.82;
+}
+
+.live-arena__player-chip.is-scoring {
+  animation: arenaChipPulse 0.58s ease-out 1;
+}
+
+@keyframes arenaChipPulse {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+.live-arena__player-hand-slot {
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.live-arena__player-status {
+  grid-column: 3;
+  justify-self: start;
+  max-width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.live-arena__villain .live-arena__player-status {
+  grid-column: 3;
+  justify-self: start;
+}
+
+.live-arena__trace-label {
+  font-size: 0.54rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(240, 232, 210, 0.46);
+  margin-bottom: 4px;
+}
+
+@keyframes arenaDockOpen {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.live-arena__board {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.live-arena__board.is-response-focus .live-arena__villain,
+.live-arena__board.is-response-focus .live-arena__hero {
+  filter: saturate(1.06) brightness(1.04);
+}
+
+.live-arena__player-chip {
+  padding: 6px 14px 8px;
+  min-width: 200px;
+  gap: 0;
+}
+
+.live-arena__player-chip {
+  overflow: visible;
+}
+
+.live-arena__player-hand-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.live-arena__player-status {
+  min-height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.live-arena__player-chip {
+  grid-column: 1;
+  justify-self: end;
+}
+
+.live-arena__player-hand-wrap {
+  grid-column: 2;
+  justify-self: center;
+}
+
+.live-arena__player-status {
+  grid-column: 3;
+  justify-self: start;
+}
+
+.live-arena__stake {
+  position: relative;
+}
+
+.live-arena__decision {
+  position: relative;
+}
+
+.live-arena__provider-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 10px 18px;
+  margin: 0 0 4px;
+  border-radius: 14px;
+  border: 1px solid rgba(231, 183, 88, 0.2);
+  background: rgba(22, 16, 8, 0.86);
+  color: var(--ink-med);
+  font-size: 0.76rem;
+}
+
+.live-arena__provider-note.is-warning {
+  border-color: rgba(255, 120, 90, 0.46);
+  background: rgba(58, 18, 8, 0.9);
+  color: #ffd5c6;
+}
+
+.live-arena__provider-note-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.app-shell[data-compact-play="true"] .live-arena {
+  --arena-pad: 0px;
+  --arena-zone-gap: 4px;
+  --arena-card-w: clamp(40px, 11.5vw, 46px);
+  --arena-card-h: calc(var(--arena-card-w) * 1.439);
+  --arena-card-table-w: clamp(48px, 13.5vw, 54px);
+  --arena-card-table-h: calc(var(--arena-card-table-w) * 1.435);
+  --arena-card-trace-w: clamp(18px, 5.1vw, 22px);
+  --arena-card-trace-h: calc(var(--arena-card-trace-w) * 1.412);
+  --arena-card-turnup-w: clamp(30px, 9vw, 36px);
+  --arena-card-turnup-h: calc(var(--arena-card-turnup-w) * 1.4);
+  --arena-trace-pad: 4px;
+  --arena-trace-stack-gap: 4px;
+  --arena-trace-column-gap: 5px;
+  --arena-stage-gap: 6px;
+  --arena-felt-min-h:
+    calc(
+      (var(--arena-card-table-h) * 2) +
+      var(--arena-stage-gap) +
+      24px
+    );
+  --arena-felt-max-h: calc(var(--arena-felt-min-h) + 24px);
+  height: 100%;
+  min-height: 0;
+  max-height: 100%;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+
+.app-shell[data-compact-play="true"] .live-arena__player-zone {
+  grid-template-columns: minmax(92px, auto) minmax(0, 1fr);
+  grid-template-areas: "chip hand";
+  align-items: center;
+  gap: 8px;
+  min-height: 0;
+  padding: 2px 2px;
+}
+
+.app-shell[data-compact-play="true"] .live-arena__player-chip {
+  min-width: 0;
+  width: 100%;
+  padding: 8px 12px 8px 14px;
+  border-radius: 16px;
+}
+
+.app-shell[data-compact-play="true"] .live-arena__player-status {
+  display: none;
+}
+
+.app-shell[data-compact-play="true"] .live-arena__player-hand-wrap {
+  justify-self: stretch;
+}
+
+.app-shell[data-compact-play="true"] .live-arena__trace-label,
+.app-shell[data-compact-play="true"] .live-arena__table-turnup-label {
+  display: none;
+}
+
+.live-arena,
+.live-arena__board,
+.live-arena__player-zone,
+.live-arena__player-chip,
+.live-arena__player-hand-wrap,
+.live-arena__player-status,
+.live-arena__table,
+.live-arena__decision-bar,
+.live-arena__footer,
+.live-arena__provider-note,
+.live-arena__coach-dock,
+.live-arena__coach-dock .live-lab-handoff-panel,
+.live-arena__coach-dock .live-lab-handoff-panel__actions {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.live-arena {
+  overflow-x: clip;
+}
+
+.live-arena__player-zone {
+  grid-template-columns: max-content minmax(0, 1fr) max-content;
+  grid-template-areas: "chip hand status";
+}
+
+.live-arena__player-chip {
+  grid-area: chip;
+  justify-self: start;
+  align-self: center;
+}
+
+.live-arena__player-hand-wrap {
+  grid-area: hand;
+  justify-self: stretch;
+  width: 100%;
+}
+
+.live-arena__player-status {
+  grid-area: status;
+  justify-self: end;
+  align-self: center;
+  max-width: min(100%, 280px);
+}
+
+.app-shell.is-live-match .live-arena {
+  --match-rail-width: clamp(176px, 14vw, 214px);
+  --arena-shell-max: 700px;
+  --arena-shell-gap: clamp(14px, 2vw, 24px);
+}
+
+.app-shell.is-live-match .live-arena__board {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  align-items: start;
+  width: 100%;
+}
+
+.app-shell.is-live-match .live-arena__board::before {
+  display: none;
+}
+
+.app-shell.is-live-match .live-arena__board > * {
+  position: relative;
+  z-index: 1;
+}
+
+.app-shell.is-live-match .live-arena__match-strip {
+  display: none;
+}
+
+.app-shell.is-live-match .live-arena__desktop-shell {
+  display: grid;
+  grid-template-columns: var(--match-rail-width) minmax(0, 1fr);
+  gap: var(--arena-shell-gap);
+  align-items: start;
+  width: 100%;
+}
+
+.app-shell.is-live-match .live-arena__score-rail {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 100%;
+  padding: 4px 0;
+}
+
+.app-shell.is-live-match .live-arena__score-rail::before {
+  content: "";
+  position: absolute;
+  top: 26px;
+  bottom: 26px;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, transparent, rgba(216, 180, 118, 0.26), transparent);
+  box-shadow: 0 0 16px rgba(216, 180, 118, 0.14);
+  pointer-events: none;
+}
+
+.app-shell.is-live-match .live-arena__score-slot {
+  position: relative;
+  z-index: 1;
+  display: flex;
+}
+
+.app-shell.is-live-match .live-arena__score-slot.is-hero {
+  margin-top: auto;
+}
+
+.app-shell.is-live-match .live-arena__score-slot .live-arena__player-chip {
+  min-width: 0;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background:
+    radial-gradient(circle at top, rgba(255, 247, 230, 0.08), transparent 44%),
+    linear-gradient(180deg, rgba(31, 24, 16, 0.92), rgba(13, 11, 9, 0.94));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 241, 210, 0.05),
+    0 16px 28px rgba(0, 0, 0, 0.18);
+}
+
+.app-shell.is-live-match .live-arena__stage-column {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.app-shell.is-live-match .live-arena__player-zone {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  min-height: 0;
+}
+
+.app-shell.is-live-match .live-arena__player-hand-wrap {
+  display: flex;
+  justify-content: center;
+  width: min(100%, var(--arena-shell-max));
+  padding: 0;
+}
+
+.app-shell.is-live-match .live-arena__player-status {
+  display: none;
+}
+
+.app-shell.is-live-match .live-arena__stake-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: max-content;
+}
+
+.app-shell.is-live-match .live-arena__desktop-shell,
+.app-shell.is-live-match .live-arena__score-rail,
+.app-shell.is-live-match .live-arena__status-banner {
+  display: none !important;
+}
+
+.app-shell.is-live-match .live-arena__board {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  align-items: start;
+  width: 100%;
+  padding-bottom: 102px;
+}
+
+.app-shell.is-live-match .live-arena__board::before {
+  display: none;
+}
+
+.app-shell.is-live-match .live-arena__board > * {
+  position: relative;
+  z-index: 1;
+}
+
+.app-shell.is-live-match .live-arena__match-strip {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  width: min(100%, 760px);
+  margin-inline: auto;
+  padding: 0;
+  border: none;
+  background: none;
+  box-sizing: border-box;
+}
+
+.app-shell.is-live-match .live-arena__match-strip-pair {
+  grid-column: 2;
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  min-width: 0;
+}
+
+.app-shell.is-live-match .live-arena__match-strip-aside {
+  grid-column: 3;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-shell.is-live-match .live-arena__match-strip-side {
+  min-width: 0;
+}
+
+.app-shell.is-live-match .live-arena__match-strip-side .live-arena__player-chip {
+  min-width: 0;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background:
+    radial-gradient(circle at top, rgba(255, 247, 230, 0.08), transparent 44%),
+    linear-gradient(180deg, rgba(31, 24, 16, 0.92), rgba(13, 11, 9, 0.94));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 241, 210, 0.05),
+    0 18px 30px rgba(0, 0, 0, 0.18);
+}
+
+.app-shell.is-live-match .live-arena__stage-column {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.app-shell.is-live-match .live-arena__player-zone {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 0;
+  padding: 0;
+}
+
+.app-shell.is-live-match .live-arena__player-hand-wrap {
+  display: flex;
+  justify-content: center;
+  width: min(100%, var(--arena-shell-max));
+  padding: 0;
+}
+
+.app-shell.is-live-match .live-arena__player-status {
+  display: none;
+}
+
+.app-shell.is-live-match .live-arena__stake-meta {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.app-shell.is-live-match[data-compact-play="true"] .live-arena {
+  --arena-felt-min-h: clamp(184px, 28vh, 208px);
+  --arena-felt-max-h: clamp(198px, 31vh, 220px);
+}
+
+.app-shell.is-live-match[data-compact-play="true"] .live-arena__board,
+.app-shell.is-live-match[data-compact-play="true"] .live-arena__strength-shell,
+.app-shell.is-live-match[data-compact-play="true"] .live-arena__strength-table {
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.app-shell.is-live-match[data-compact-play="true"] .live-arena__board {
+  padding-bottom: 0;
+}
+
+.app-shell.is-live-match .live-arena__stage-column {
+  width: min(100%, var(--arena-shell-max));
+  margin-inline: auto;
+}
+
+.app-shell.is-live-match .live-arena__player-zone,
+.app-shell.is-live-match .live-arena__table-shell {
+  width: 100%;
+}
+
+.app-shell.is-live-match .live-arena__table-shell {
+  position: relative;
+}
+
+.app-shell.is-live-match .live-arena__match-strip {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  width: min(100%, var(--arena-shell-max));
+  margin-inline: auto;
+}
+
+.app-shell.is-live-match .live-arena__match-strip-pair {
+  grid-column: 2;
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  min-width: 0;
+}
+
+.app-shell.is-live-match .live-arena__match-strip-aside {
+  grid-column: 3;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-shell.is-live-match .live-arena__match-strip-side {
+  flex: 0 1 clamp(190px, 24vw, 232px);
+  min-width: 0;
+  max-width: clamp(190px, 24vw, 232px);
+}
+
+.app-shell.is-live-match .live-arena__match-strip-side .live-arena__player-chip {
+  padding: 14px 18px;
+}
+
+.app-shell.is-live-match .live-arena__board.is-response-focus .live-arena__stake,
+.app-shell.is-live-match .live-arena__board.is-response-focus .live-arena__decision {
+  box-shadow:
+    0 0 0 1px rgba(255, 212, 126, 0.28),
+    0 18px 34px rgba(0, 0, 0, 0.28),
+    0 0 22px rgba(255, 200, 120, 0.18);
+}
+
+.app-shell.is-live-match .live-arena__match-strip {
+  --match-strip-aside-width: 52px;
+  --match-strip-side-width: clamp(208px, 23vw, 236px);
+  --match-strip-stake-width: clamp(124px, 12vw, 144px);
+  display: grid;
+  grid-template-columns: var(--match-strip-aside-width) minmax(0, 1fr) var(--match-strip-aside-width);
+  align-items: center;
+  gap: 0;
+  width: min(100%, 740px);
+  margin-inline: auto;
+}
+
+.app-shell.is-live-match .live-arena__match-strip-pair {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  justify-self: center;
+  display: grid;
+  grid-template-columns:
+    var(--match-strip-side-width)
+    var(--match-strip-stake-width)
+    var(--match-strip-side-width);
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.app-shell.is-live-match .live-arena__match-strip-aside {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  width: var(--match-strip-aside-width);
+  max-width: var(--match-strip-aside-width);
+}
+
+.app-shell.is-live-match .live-arena__match-strip-stake {
+  width: var(--match-strip-stake-width);
+  max-width: var(--match-strip-stake-width);
+  min-width: 0;
+  align-self: stretch;
+}
+
+.app-shell.is-live-match .live-arena__stake--match-strip {
+  width: 100%;
+  min-width: 0;
+  min-height: 88px;
+  padding: 10px 10px 8px;
+  margin: 0;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 24px;
+  border: 1px solid rgba(231, 183, 88, 0.22);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 232, 178, 0.12), transparent 52%),
+    linear-gradient(180deg, rgba(30, 23, 15, 0.94), rgba(12, 10, 8, 0.97));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 242, 214, 0.04),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.34),
+    0 14px 24px rgba(0, 0, 0, 0.22);
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) 6px;
+  justify-items: center;
+  align-content: center;
+  gap: 7px;
+}
+
+.app-shell.is-live-match .live-arena__stake--match-strip::before {
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(255, 214, 124, 0.2), transparent 48%),
+    linear-gradient(180deg, rgba(255, 214, 124, 0.08), transparent 72%);
+  box-shadow: none;
+  opacity: 0;
+}
+
+.app-shell.is-live-match .live-arena__stake--match-strip.is-pending::before,
+.app-shell.is-live-match .live-arena__stake--match-strip.is-raise::before,
+.app-shell.is-live-match .live-arena__stake--match-strip.is-reraise::before {
+  opacity: 0.42;
+}
+
+.app-shell.is-live-match .live-arena__stake--match-strip.is-accept::before {
+  background:
+    radial-gradient(circle at 50% 22%, rgba(220, 246, 184, 0.22), transparent 48%),
+    linear-gradient(180deg, rgba(220, 246, 184, 0.1), transparent 72%);
+  opacity: 0.44;
+}
+
+.app-shell.is-live-match .live-arena__stake-chip {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 100%;
+  grid-template-rows: auto minmax(2.1rem, auto);
+  justify-items: center;
+  align-content: center;
+  gap: 4px;
+  text-align: center;
+}
+
+.app-shell.is-live-match .live-arena__stake-chip-label {
+  color: rgba(239, 221, 183, 0.76);
+  min-height: 0.75rem;
+  font-size: 0.48rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.app-shell.is-live-match .live-arena__stake-chip-values {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 2.1rem;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.app-shell.is-live-match .live-arena__stake-chip-values.has-preview {
+  gap: 6px;
+}
+
+.app-shell.is-live-match .live-arena__stake-chip-current {
+  min-width: 1.25ch;
+  color: #fff2d2;
+  font-size: 2.15rem;
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1, 'lnum' 1;
+}
+
+.app-shell.is-live-match .live-arena__stake-chip-values.has-preview .live-arena__stake-chip-current {
+  color: rgba(255, 242, 210, 0.76);
+  font-size: 1.36rem;
+  font-weight: 750;
+}
+
+.app-shell.is-live-match .live-arena__stake-chip-arrow {
+  position: relative;
+  flex: 0 0 16px;
+  width: 16px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 241, 212, 0.58), rgba(255, 209, 125, 0.82));
+  box-shadow: 0 0 8px rgba(255, 210, 138, 0.14);
+}
+
+.app-shell.is-live-match .live-arena__stake-chip-arrow::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-right: 2px solid rgba(255, 211, 135, 0.92);
+  border-top: 2px solid rgba(255, 211, 135, 0.92);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.app-shell.is-live-match .live-arena__stake-chip-next {
+  min-width: 1.25ch;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  color: #ffd28a;
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1, 'lnum' 1;
+}
+
+.app-shell.is-live-match .live-arena__stake-chip-caption {
+  max-width: 15ch;
+  color: rgba(223, 208, 181, 0.6);
+  font-size: 0.52rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.app-shell.is-live-match .live-arena__stake--match-strip .live-arena__stake-track {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  width: min(100%, 86px);
+  min-height: 6px;
+  height: 6px;
+  gap: 4px;
+  margin: 0;
+  opacity: 0.58;
+  overflow: hidden;
+  transform: none;
+  transition:
+    opacity 0.18s ease,
+    filter 0.22s ease;
+}
+
+.app-shell.is-live-match .live-arena__stake--match-strip .live-arena__stake-track.is-emphasis {
+  opacity: 0.92;
+  filter: none;
+}
+
+.app-shell.is-live-match .live-arena__stake--match-strip .stake-dot {
+  width: auto;
+  min-width: 0;
+  height: 4px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(226, 215, 190, 0.16);
+  box-shadow: none;
+  color: transparent;
+  font-size: 0;
+  overflow: hidden;
+}
+
+.app-shell.is-live-match .live-arena__stake--match-strip .stake-dot.is-active {
+  background: linear-gradient(90deg, rgba(241, 192, 99, 0.94), rgba(255, 222, 157, 0.96));
+  box-shadow: 0 0 10px rgba(231, 183, 88, 0.2);
+}
+
+.app-shell.is-live-match .live-arena__stake--match-strip .stake-dot.is-pending,
+.app-shell.is-live-match .live-arena__stake--match-strip .stake-dot.is-fx-target {
+  background: linear-gradient(90deg, rgba(255, 200, 104, 0.9), rgba(255, 236, 194, 0.98));
+  box-shadow: 0 0 12px rgba(255, 210, 138, 0.22);
+}
+
+.app-shell.is-live-match .live-arena__stake--match-strip .stake-dot.is-fx-trail {
+  background: rgba(255, 210, 138, 0.38);
+}
+
+.app-shell.is-live-match .live-arena__stake--match-strip .stake-fx-overlay {
+  inset: 0;
+  border-radius: inherit;
+  filter: none;
+}
+
+.app-shell.is-live-match .live-arena__stake--match-strip .stake-fx-overlay.is-raise,
+.app-shell.is-live-match .live-arena__stake--match-strip .stake-fx-overlay.is-reraise {
+  background:
+    linear-gradient(105deg, transparent 8%, rgba(255, 214, 124, 0.24) 48%, transparent 88%),
+    radial-gradient(circle at 62% 48%, rgba(255, 233, 184, 0.2), transparent 44%);
+}
+
+.app-shell.is-live-match .live-arena__stake--match-strip .stake-fx-overlay.is-accept {
+  background:
+    radial-gradient(circle at 50% 45%, rgba(236, 255, 212, 0.2), transparent 44%),
+    linear-gradient(180deg, rgba(223, 250, 191, 0.1), transparent 76%);
+}
+
+.app-shell.is-live-match .live-arena__stake--match-strip .stake-fx-lock-burst {
+  inset: 0;
+  border-radius: inherit;
+  filter: none;
+}
+
+.app-shell.is-live-match .live-arena__stake--match-strip .stake-fx-callout-badge,
+.app-shell.is-live-match .live-arena__stake--match-strip .stake-fx-live-badge {
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.app-shell.is-live-match .live-arena__stake--match-strip.is-pending .live-arena__stake-chip-current,
+.app-shell.is-live-match .live-arena__stake--match-strip.is-raise .live-arena__stake-chip-current,
+.app-shell.is-live-match .live-arena__stake--match-strip.is-reraise .live-arena__stake-chip-current {
+  color: #ffe7bc;
+}
+
+.app-shell.is-live-match .live-arena__stake--match-strip.is-pending .live-arena__stake-chip-next,
+.app-shell.is-live-match .live-arena__stake--match-strip.is-raise .live-arena__stake-chip-next,
+.app-shell.is-live-match .live-arena__stake--match-strip.is-reraise .live-arena__stake-chip-next {
+  filter: drop-shadow(0 0 10px rgba(255, 213, 138, 0.24));
+}
+
+.app-shell.is-live-match .live-arena__stake--match-strip.is-accept .live-arena__stake-chip-current {
+  color: #f3fbe6;
+  text-shadow:
+    0 0 18px rgba(232, 255, 210, 0.26),
+    0 0 6px rgba(205, 243, 172, 0.18);
+}
+
+.app-shell.is-live-match .live-arena__match-strip-side {
+  width: var(--match-strip-side-width);
+  max-width: var(--match-strip-side-width);
+  min-width: 0;
+  flex: 0 0 auto;
+}
+
+.app-shell.is-live-match .live-arena__match-strip-side .live-arena__player-chip {
+  width: 100%;
+  min-height: 72px;
+  padding: 11px 16px 12px;
+}
+
+.app-shell.is-live-match .live-arena__match-strip-side.is-hero .live-arena__player-chip::before {
+  left: auto;
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.app-shell.is-live-match .live-arena__match-strip-side.live-arena__villain,
+.app-shell.is-live-match .live-arena__match-strip-side.live-arena__hero {
+  padding: 0;
+}
+
+.app-shell.is-live-match .live-arena__board.is-response-focus .live-arena__stake,
+.app-shell.is-live-match .live-arena__board.is-response-focus .live-arena__decision {
+  box-shadow:
+    0 0 0 1px rgba(255, 212, 126, 0.24),
+    0 18px 34px rgba(0, 0, 0, 0.28),
+    0 0 22px rgba(255, 200, 120, 0.14);
+}
+
+.app-shell.is-live-match:not([data-compact-play="true"]) .live-arena__board {
+  padding-bottom: 0;
+}
+
+.app-shell.is-live-match .live-arena__board.is-match-complete-pending {
+  isolation: isolate;
+}
+
+.app-shell.is-live-match .live-arena__board.is-match-complete-victory {
+  --match-complete-wash: rgba(255, 223, 154, 0.16);
+  --match-complete-wash-shadow: rgba(255, 208, 102, 0.18);
+  --match-complete-edge: rgba(255, 226, 160, 0.5);
+  --match-complete-frame-glow: rgba(255, 212, 118, 0.28);
+  --match-complete-frame-glow-strong: rgba(255, 212, 118, 0.16);
+  --match-complete-sweep: rgba(255, 244, 196, 0.26);
+  --match-complete-chip-edge: rgba(255, 224, 154, 0.42);
+  --match-complete-chip-glow: rgba(255, 214, 118, 0.22);
+  --match-complete-chip-top: rgba(255, 234, 178, 0.18);
+  --match-complete-score-flare: rgba(255, 228, 154, 0.18);
+}
+
+.app-shell.is-live-match .live-arena__board.is-match-complete-defeat {
+  --match-complete-wash: rgba(210, 128, 118, 0.18);
+  --match-complete-wash-shadow: rgba(176, 91, 82, 0.16);
+  --match-complete-edge: rgba(220, 150, 140, 0.44);
+  --match-complete-frame-glow: rgba(193, 113, 104, 0.26);
+  --match-complete-frame-glow-strong: rgba(193, 113, 104, 0.14);
+  --match-complete-sweep: rgba(235, 175, 167, 0.2);
+  --match-complete-chip-edge: rgba(212, 145, 136, 0.34);
+  --match-complete-chip-glow: rgba(196, 112, 104, 0.18);
+  --match-complete-chip-top: rgba(218, 159, 151, 0.14);
+  --match-complete-score-flare: rgba(226, 164, 154, 0.16);
+}
+
+.app-shell.is-live-match .live-arena__board.is-match-complete-pending::after {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  border-radius: 36px;
+  background:
+    radial-gradient(circle at 50% 42%, var(--match-complete-wash), transparent 68%);
+  box-shadow: 0 0 48px var(--match-complete-wash-shadow);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+  animation: liveMatchCompleteBoardWash 2s ease forwards;
+}
+
+.app-shell.is-live-match .live-arena__board.is-match-complete-pending .live-arena__player-chip {
+  transition:
+    transform 220ms ease,
+    opacity 220ms ease,
+    filter 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.app-shell.is-live-match .live-arena__player-chip.is-match-complete-winner {
+  border-color: var(--match-complete-chip-edge);
+  background:
+    radial-gradient(circle at top, var(--match-complete-chip-top), transparent 44%),
+    linear-gradient(180deg, rgba(32, 24, 16, 0.94), rgba(13, 10, 7, 0.98));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 241, 210, 0.08),
+    0 18px 30px rgba(0, 0, 0, 0.24),
+    0 0 26px var(--match-complete-chip-glow);
+  animation: liveMatchCompleteWinnerPulse 1.42s ease-in-out 2 120ms;
+}
+
+.app-shell.is-live-match .live-arena__player-chip.is-match-complete-loser {
+  opacity: 0.78;
+  filter: saturate(0.82) brightness(0.92);
+  transform: scale(0.985);
+}
+
+@media (max-width: 820px) {
+  .live-arena__board::before,
+    .live-arena__player-chip {
+      display: none;
+    }
+  .live-arena__match-strip {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(216, 180, 118, 0.16);
+      background:
+        linear-gradient(180deg, rgba(18, 15, 12, 0.9), rgba(8, 8, 8, 0.84));
+    }
+  .live-arena__match-strip-side {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+  .live-arena__match-strip-side.is-villain {
+      align-items: flex-start;
+    }
+  .live-arena__match-strip-side.is-hero {
+      align-items: flex-end;
+    }
+  .live-arena__match-strip-label,
+    .live-arena__match-strip-status {
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+  .live-arena__match-strip-score {
+      font-size: 1.7rem;
+      line-height: 1;
+    }
+  .live-arena__match-strip-status {
+      color: rgba(231, 223, 207, 0.68);
+    }
+  .live-arena__player-zone,
+    .live-arena__table-shell {
+      grid-template-columns: 1fr;
+    }
+  .live-arena__player-hand-wrap,
+    .live-arena__status-banner,
+    .live-arena__table,
+    .live-arena__decision-bar,
+    .live-arena__footer {
+      grid-column: 1;
+      width: 100%;
+    }
+  .live-arena__player-hand-wrap {
+      padding-left: 0;
+    }
+  .app-shell.is-live-match .live-arena__desktop-shell {
+      grid-template-columns: 1fr;
+    }
+  .app-shell.is-live-match .live-arena__score-rail {
+      display: none;
+    }
+  .app-shell.is-live-match .live-arena__match-strip {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(216, 180, 118, 0.16);
+      background:
+        linear-gradient(180deg, rgba(18, 15, 12, 0.9), rgba(8, 8, 8, 0.84));
+    }
+  .app-shell.is-live-match .live-arena__stage-column {
+      gap: 10px;
+    }
+  .app-shell.is-live-match .live-arena__player-hand-wrap,
+    .app-shell.is-live-match .live-arena__status-banner,
+    .app-shell.is-live-match .live-arena__table,
+    .app-shell.is-live-match .live-arena__decision-bar,
+    .app-shell.is-live-match .live-arena__footer {
+      width: 100%;
+    }
+}
+
+@media (max-width: 1040px) {
+  .live-arena {
+      --match-rail-width: 194px;
+      --arena-shell-gap: 14px;
+    }
+}
+
+@media (max-width: 980px) {
+  .live-arena {
+      --arena-pad: 12px;
+      --arena-zone-gap: 8px;
+    }
+  .live-arena__player-zone {
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas:
+        "chip status"
+        "hand hand";
+      padding-inline: 8px;
+      row-gap: 10px;
+    }
+  .live-arena__player-chip {
+      justify-self: start;
+    }
+  .live-arena__player-status {
+      justify-self: end;
+      max-width: min(100%, 320px);
+    }
+  .app-shell.is-live-match .live-arena__board {
+      padding-bottom: 88px;
+    }
+  .app-shell.is-live-match .live-arena__match-strip {
+      gap: 10px;
+    }
+}
+
+@media (max-width: 640px) {
+  .live-arena {
+      --arena-pad: 10px;
+      --arena-card-w: clamp(48px, 15vw, 58px);
+      --arena-card-h: calc(var(--arena-card-w) * 1.439);
+      --arena-card-table-w: clamp(56px, 18vw, 68px);
+      --arena-card-table-h: calc(var(--arena-card-table-w) * 1.435);
+      --arena-card-trace-w: clamp(20px, 6vw, 24px);
+      --arena-card-trace-h: calc(var(--arena-card-trace-w) * 1.412);
+      --arena-card-turnup-w: clamp(38px, 11vw, 46px);
+      --arena-card-turnup-h: calc(var(--arena-card-turnup-w) * 1.4);
+      --arena-trace-column-gap: 5px;
+      --arena-stage-gap: 6px;
+    }
+  .live-arena__player-zone {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas:
+        "chip"
+        "status"
+        "hand";
+      padding: 10px 4px;
+      gap: 10px;
+    }
+  .live-arena__player-chip,
+    .live-arena__player-status {
+      justify-self: stretch;
+      width: 100%;
+      max-width: none;
+    }
+  .live-arena__player-chip {
+      min-width: 0;
+    }
+  .live-arena__player-status {
+      justify-content: center;
+    }
+  .live-arena__provider-note {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 10px 12px;
+    }
+  .app-shell.is-live-match .live-arena__board {
+      gap: 8px;
+    }
+  .app-shell.is-live-match .live-arena__match-strip {
+      gap: 8px;
+      padding: 9px 11px;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena {
+      --arena-felt-min-h: clamp(184px, 28vh, 206px);
+      --arena-felt-max-h: clamp(198px, 31vh, 220px);
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__player-zone {
+      justify-content: stretch;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__player-hand-wrap {
+      width: 100%;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__stake-meta {
+      gap: 3px;
+    }
+  .app-shell.is-live-match .live-arena__board {
+      gap: 8px;
+      padding-bottom: 0;
+    }
+  .app-shell.is-live-match .live-arena__match-strip {
+      width: 100%;
+      gap: 8px;
+      padding: 0 1px;
+    }
+  .app-shell.is-live-match .live-arena__match-strip-side .live-arena__player-chip {
+      padding: 9px 10px;
+      border-radius: 18px;
+    }
+  .app-shell.is-live-match .live-arena__match-strip-pair {
+      gap: 6px;
+    }
+  .app-shell.is-live-match .live-arena__stake--match-strip {
+      padding: 6px 8px;
+    }
+  .app-shell.is-live-match .live-arena__stage-column {
+      gap: 8px;
+    }
+  .app-shell.is-live-match .live-arena__player-hand-wrap,
+    .app-shell.is-live-match .live-arena__table,
+    .app-shell.is-live-match .live-arena__decision-bar {
+      width: 100%;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+      min-height: 0;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__board {
+      flex: 1 1 auto;
+      min-height: 0;
+      gap: 6px;
+      overflow: hidden;
+      padding-bottom: 0;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__match-strip {
+      gap: 6px;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__match-strip-side {
+      flex-basis: clamp(96px, 26vw, 118px);
+      max-width: clamp(96px, 26vw, 118px);
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__match-strip-side .live-arena__player-chip {
+      padding: 8px 10px;
+      border-radius: 16px;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__match-strip-pair {
+      gap: 4px;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__stake--match-strip {
+      padding: 5px 7px;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__stage-column {
+      gap: 6px;
+      flex: 1 1 auto;
+      min-height: 0;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__player-zone {
+      flex: 0 0 auto;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__hero {
+      margin-top: -2px;
+    }
+  .app-shell.is-live-match .live-arena__match-strip {
+      --match-strip-aside-width: 44px;
+      --match-strip-side-width: clamp(144px, 31vw, 164px);
+      --match-strip-stake-width: clamp(96px, 22vw, 120px);
+      width: 100%;
+    }
+  .app-shell.is-live-match .live-arena__match-strip-pair {
+      gap: 6px;
+    }
+  .app-shell.is-live-match .live-arena__match-strip-side {
+      width: var(--match-strip-side-width);
+      max-width: var(--match-strip-side-width);
+    }
+  .app-shell.is-live-match .live-arena__match-strip-side .live-arena__player-chip {
+      min-height: 66px;
+      padding: 9px 10px;
+      border-radius: 18px;
+    }
+  .app-shell.is-live-match .live-arena__stake--match-strip {
+      min-height: 82px;
+      padding: 8px 8px 9px;
+      border-radius: 22px;
+    }
+  .app-shell.is-live-match .live-arena__stake-chip-label {
+      font-size: 0.42rem;
+      letter-spacing: 0.18em;
+    }
+  .app-shell.is-live-match .live-arena__stake-chip-current {
+      font-size: 1.58rem;
+    }
+  .app-shell.is-live-match .live-arena__stake-chip-values.has-preview .live-arena__stake-chip-current {
+      font-size: 1.06rem;
+    }
+  .app-shell.is-live-match .live-arena__stake-chip-arrow {
+      width: 12px;
+      flex-basis: 12px;
+    }
+  .app-shell.is-live-match .live-arena__stake-chip-next {
+      padding: 0;
+      font-size: 1.14rem;
+    }
+  .app-shell.is-live-match .live-arena__stake-chip-caption {
+      font-size: 0.44rem;
+    }
+  .app-shell.is-live-match .live-arena__stake--match-strip .live-arena__stake-track {
+      min-height: 5px;
+      height: 5px;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      height: 100%;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__board {
+      flex: 1 1 auto;
+      min-height: 0;
+      gap: 5px;
+      overflow: hidden;
+      padding-bottom: 0;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__match-strip {
+      --match-strip-aside-width: 36px;
+      --match-strip-side-width: clamp(102px, 28vw, 118px);
+      --match-strip-stake-width: clamp(86px, 22vw, 98px);
+      gap: 0;
+      width: 100%;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__match-strip-pair {
+      gap: 4px;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__match-strip-side {
+      width: var(--match-strip-side-width);
+      max-width: var(--match-strip-side-width);
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__match-strip-side .live-arena__player-chip {
+      padding: 8px 9px 8px 11px;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__stake--match-strip {
+      width: clamp(86px, 22vw, 98px);
+      min-width: clamp(86px, 22vw, 98px);
+      min-height: 72px;
+      padding: 6px 6px 7px;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__stake-chip-label {
+      font-size: 0.38rem;
+      letter-spacing: 0.16em;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__stake-chip-current {
+      font-size: 1.34rem;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__stake-chip-values.has-preview .live-arena__stake-chip-current {
+      font-size: 0.92rem;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__stake-chip-arrow {
+      width: 10px;
+      flex-basis: 10px;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__stake-chip-next {
+      padding: 0;
+      font-size: 1rem;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__stake-chip-caption {
+      font-size: 0.4rem;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__stake--match-strip .live-arena__stake-track {
+      min-height: 5px;
+      height: 5px;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__stage-column {
+      flex: 1 1 auto;
+      min-height: 0;
+      gap: 5px;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__player-zone {
+      flex: 0 0 auto;
+    }
+  .app-shell.is-live-match[data-compact-play="true"] .live-arena__hero {
+      margin-top: 0;
+    }
+}
+
+@media (max-width: 1080px) {
+  .live-arena {
+      --arena-pad: 16px;
+    }
+  .live-arena__player-chip__score {
+      font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 760px) {
+  .live-arena {
+      --arena-card-w: clamp(52px, 17vw, 68px);
+      --arena-card-h: calc(var(--arena-card-w) * 1.439);
+      --arena-card-table-w: clamp(58px, 18vw, 72px);
+      --arena-card-table-h: calc(var(--arena-card-table-w) * 1.435);
+      --arena-card-trace-w: clamp(22px, 7vw, 28px);
+      --arena-card-trace-h: calc(var(--arena-card-trace-w) * 1.412);
+      --arena-card-turnup-w: clamp(42px, 12vw, 52px);
+      --arena-card-turnup-h: calc(var(--arena-card-turnup-w) * 1.4);
+      --arena-trace-pad: 5px;
+      --arena-trace-stack-gap: 4px;
+      --arena-trace-column-gap: 6px;
+      --arena-stage-gap: 6px;
+    }
+  .live-arena__player-zone {
+      grid-template-columns: 1fr;
+      min-height: 0;
+      padding: 12px 10px;
+      gap: 12px;
+    }
+  .live-arena__villain .live-arena__player-identity,
+    .live-arena__hero .live-arena__player-identity {
+      grid-column: 1;
+      justify-self: center;
+    }
+  .live-arena__player-hand-slot {
+      grid-column: 1;
+    }
+  .live-arena__player-chip__score {
+      font-size: 2.2rem;
+    }
+  .live-arena__player-chip {
+      min-width: 0;
+      padding: 10px 14px 10px 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-shell.is-live-match .live-arena__board.is-match-complete-pending::after,
+    .app-shell.is-live-match .live-arena__board.is-match-complete-pending .live-arena__table::after,
+    .app-shell.is-live-match .live-arena__board.is-match-complete-pending .live-arena__table-felt::before,
+    .app-shell.is-live-match .live-arena__player-chip.is-match-complete-winner,
+    .app-shell.is-live-match .live-arena__player-chip.is-match-complete-winner .score-number,
+    .app-shell.is-live-match .live-arena__player-chip.is-match-complete-winner .score-value::after {
+      animation: none;
+    }
+  .app-shell.is-live-match .live-arena__board.is-match-complete-pending::after {
+      opacity: 0.58;
+      transform: none;
+    }
+}

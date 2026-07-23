@@ -1,0 +1,48 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+.next
+.cache
+dist
+dist-ssr
+*.local
+*.tsbuildinfo
+__pycache__/
+*.py[cod]
+
+# Secrets. The committed development file contains safe localhost defaults.
+.env
+.env.*
+!.env.example
+!.env.development
+
+# Commercial Pro Sound Effects derivatives are fetched from private object
+# storage only on authorized local/deploy machines. They must never enter Git.
+public/audio/farol/card-hide-flip-pse-bw-bd3-ucotv.m4a
+public/audio/farol/raise-decline-card-stack-pse-bw-bd3hl-dgbny.m4a
+public/audio/farol/raise-table-slap-firm-pse-of-g9loz.m4a
+public/audio/farol/raise-wood-table-hard-pse-kcv3-sjun9.m4a
+public/audio/farol/reraise-lamp-creak-pse-gen-ys39g.m4a
+
+# Local screenshots / Playwright artifacts
+screenshots
+playwright-report
+test-results
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
