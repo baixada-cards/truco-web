@@ -16,6 +16,7 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 env:
+  CARGO_NET_GIT_FETCH_WITH_CLI: "true"
   CI: "true"
 
 jobs:
