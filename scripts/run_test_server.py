@@ -66,6 +66,7 @@ def main() -> None:
     if sfw is None:
         raise SystemExit("Socket Firewall (sfw) is required to fetch Rust dependencies")
     manifest = checkout / "Cargo.toml"
+    os.environ.setdefault("CARGO_NET_GIT_FETCH_WITH_CLI", "true")
     run(sfw, "cargo", "fetch", "--locked", "--manifest-path", str(manifest))
 
     environment = os.environ.copy()
