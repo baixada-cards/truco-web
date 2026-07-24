@@ -77,6 +77,10 @@ materializes licensed runtime audio. It uses Next.js standalone output, runs
 as the unprivileged `node` user, listens on Cloud Run's port `8080`, and
 contains no build toolchain or dependency cache.
 
+Client-visible study and developer flags are build-time inputs. Production
+passes `NEXT_PUBLIC_STUDY_MANIFEST_URL`, `NEXT_PUBLIC_STUDY_LAB_LINKS=false`,
+and `NEXT_PUBLIC_SHOW_DEV_CONTROLS=false` as Docker build arguments.
+
 ## Licensed audio boundary
 
 The five Pro Sound Effects derivatives used by the full production soundscape
