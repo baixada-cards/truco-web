@@ -21,6 +21,9 @@ importers:
 
   .:
     dependencies:
+      '@baixada-cards/design-system':
+        specifier: git+https://github.com/baixada-cards/design-system.git#82638b7cdabbb56a4bce7b953e8571847bf6fda9
+        version: https://codeload.github.com/baixada-cards/design-system/tar.gz/82638b7cdabbb56a4bce7b953e8571847bf6fda9(react@18.3.1)
       '@types/node':
         specifier: ^25.5.0
         version: 25.5.0
@@ -89,6 +92,13 @@ packages:
   '@babel/helper-validator-identifier@7.29.7':
     resolution: {integrity: sha512-qehxGkRj55h/ff8EMaJ+cYhyaKlHIxqYDn682wQD7RNp9UujOQsHog2uS0r2vzr4pW+sXf90NeeayjcNaX3fFg==}
     engines: {node: '>=6.9.0'}
+
+  '@baixada-cards/design-system@https://codeload.github.com/baixada-cards/design-system/tar.gz/82638b7cdabbb56a4bce7b953e8571847bf6fda9':
+    resolution: {tarball: https://codeload.github.com/baixada-cards/design-system/tar.gz/82638b7cdabbb56a4bce7b953e8571847bf6fda9}
+    version: 0.1.0
+    engines: {node: '>=24'}
+    peerDependencies:
+      react: '>=18 <20'
 
   '@cacheable/memory@2.2.0':
     resolution: {integrity: sha512-CTLKqLItRCEixEAewD3/j9DB3/o96gpTPD4eJ1v+DGOlxZRZncRQkGYqqnAGCscYd6RNeXfGeiuCphsPtqyIfQ==}
@@ -1569,6 +1579,10 @@ snapshots:
       picocolors: 1.1.1
 
   '@babel/helper-validator-identifier@7.29.7': {}
+
+  '@baixada-cards/design-system@https://codeload.github.com/baixada-cards/design-system/tar.gz/82638b7cdabbb56a4bce7b953e8571847bf6fda9(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
 
   '@cacheable/memory@2.2.0':
     dependencies:

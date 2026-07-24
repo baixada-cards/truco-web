@@ -10,3 +10,7 @@ minimumReleaseAgeExclude:
   - next
   - "@next/*"
   - fast-uri
+
+# Exact-commit Git dependency whose reviewed prepare hook builds its exports.
+onlyBuiltDependencies:
+  - "@baixada-cards/design-system"

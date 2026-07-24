@@ -103,5 +103,7 @@ Public audio provenance and licenses are recorded in
   `HttpOnly` cookie.
 
 Baixada's shared visual system is maintained separately from this product
-implementation. Web tokens and reusable marks are mirrored here as code under
-`src/baixada-tokens.css` and `src/components/brand/`.
+implementation. `dependencies.lock.json` and `package.json` pin the exact
+reviewed [`design-system`](https://github.com/baixada-cards/design-system)
+commit that supplies the canonical production tokens. Do not copy shared
+tokens or marks back into this repository.
