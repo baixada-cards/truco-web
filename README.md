@@ -53,6 +53,9 @@ that exact revision to avoid a second clone.
 ## Runtime configuration
 
 - `TRUCO_ENGINE_SERVICE_URL` points the BFF to `truco-server`.
+- `TRUCO_ENGINE_SERVICE_AUDIENCE` optionally enables Google-signed
+  service-to-service authentication for an IAM-protected Cloud Run server.
+  It must be the server's canonical `run.app` URL and remains unset locally.
 - `TRUCO_ANON_COOKIE_SECRET` signs anonymous live-session cookies. The
   compatibility alias `TRUCO_LIVE_COOKIE_SECRET` remains supported.
 - `STUDY_LAB_MODE=off|stealth|public` controls the study route at request time.
@@ -66,6 +69,13 @@ headers.
 Provider keys are server-side configuration. A player-supplied key is held in
 memory for the match and transits the BFF to the server; it is not persisted.
 Dev-only mutation and private-view routes are always disabled in production.
+
+## Container
+
+The production image is built by the stack integration repository after it
+materializes licensed runtime audio. It uses Next.js standalone output, runs
+as the unprivileged `node` user, listens on Cloud Run's port `8080`, and
+contains no build toolchain or dependency cache.
 
 ## Licensed audio boundary
 

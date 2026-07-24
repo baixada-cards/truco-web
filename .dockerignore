@@ -1,0 +1,16 @@
+.git
+.github
+.next
+node_modules
+playwright-report
+screenshots
+test-results
+*.log
+*.local
+*.tsbuildinfo
+__pycache__
+*.pyc
+.env
+.env.*
+!.env.example
+!.env.development
