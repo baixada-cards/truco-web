@@ -1,2 +1,2 @@
-/* Compatibility shim. Shared Baixada/Tactile tokens now live here. */
-@import './baixada-tokens.css';
+/* Compatibility shim for Farol styles that predate the shared package. */
+@import '@baixada-cards/design-system/tokens.css';

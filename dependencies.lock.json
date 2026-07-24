@@ -1,5 +1,11 @@
 {
   "schema_version": 1,
+  "design_system": {
+    "package": "@baixada-cards/design-system",
+    "repository": "https://github.com/baixada-cards/design-system.git",
+    "revision": "82638b7cdabbb56a4bce7b953e8571847bf6fda9",
+    "version": "0.1.0"
+  },
   "truco_server": {
     "repository": "https://github.com/baixada-cards/truco-server.git",
     "revision": "7f4aa14ab6b224f5db5de0c1f6e349c73eb4069b"
