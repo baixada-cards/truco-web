@@ -373,7 +373,9 @@ export function CopyEditor() {
             {vim.pending}
           </span>
         ) : null}
-        <span className={styles.hint}>fd → normal · :w write · C-c C-c write &amp; close · :q close</span>
+        <span className={styles.hint}>
+          fd → normal · :w write · C-c C-c write &amp; close · blank line = new paragraph
+        </span>
         {status ? <span className={styles.msg}>{status}</span> : null}
       </div>
     </div>

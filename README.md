@@ -113,8 +113,17 @@ packed from the same DOM, with the cover captured as its cover image.
 **Copy editor (development only).** Double-click any paragraph, heading, or
 list item in the guide to edit its raw catalog string in place, with Vim
 bindings—`fd` or Escape leaves insert mode, `:w` writes it back into
-`messages/<locale>.json`, and `:q` closes. It is disabled in production twice
-over: the write API sits behind the same switch as the other dev routes
+`messages/<locale>.json`, `C-c C-c` writes and closes, and `:q` closes.
+
+A **blank line inside a string splits it into two paragraphs** (single
+newlines are just whitespace, as in HTML), so prose can be re-cut without
+touching a component. The only inline tags the guide renders are `<b>`,
+`<i>`, `<em>`, and `<code>`—see `src/guide/rich.tsx`; the editor refuses to
+write anything else, because an unknown tag makes next-intl throw at render
+and blanks the whole paragraph.
+
+The editor is disabled in production twice over: the write API sits behind
+the same switch as the other dev routes
 (`TRUCO_ENABLE_DEV_ROUTES=false` turns it off in development too), and
 production builds alias the editor module to a no-op stub.
 

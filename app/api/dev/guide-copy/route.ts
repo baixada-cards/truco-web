@@ -89,6 +89,18 @@ export async function GET(request: Request) {
   return NextResponse.json({ locale, messages: flatten(guideSubtree(catalog)) })
 }
 
+/** the inline tags src/guide/rich.tsx knows how to render */
+const RICH_TAGS = new Set(['b', 'i', 'em', 'code'])
+
+/** an unknown tag makes next-intl throw at render and blanks the paragraph */
+function unknownTags(value: string) {
+  const seen = new Set<string>()
+  for (const match of value.matchAll(/<\/?([a-zA-Z][\w-]*)/g)) {
+    if (!RICH_TAGS.has(match[1])) seen.add(match[1])
+  }
+  return [...seen]
+}
+
 export async function PATCH(request: Request) {
   if (!areDevRoutesEnabled()) return disabledDevRouteResponse()
 
@@ -101,6 +113,17 @@ export async function PATCH(request: Request) {
   }
   if (!/^[\w-]+(\.[\w-]+)*$/.test(body.key)) {
     return NextResponse.json({ code: 'BAD_KEY', message: 'malformed key' }, { status: 400 })
+  }
+
+  const unknown = unknownTags(body.value)
+  if (unknown.length > 0) {
+    return NextResponse.json(
+      {
+        code: 'UNKNOWN_TAG',
+        message: `unknown tag ${unknown.map((tag) => `<${tag}>`).join(', ')} — use ${[...RICH_TAGS].map((tag) => `<${tag}>`).join(', ')}`,
+      },
+      { status: 400 },
+    )
   }
 
   const catalog = await readCatalog(body.locale)

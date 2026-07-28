@@ -26,6 +26,7 @@ import { ApproxFigure } from '../plates/ApproxFigure'
 import { GuideChartReader } from '../plates/GuideChartReader'
 import { LineWalkerPlate } from '../plates/LineWalkerPlate'
 import { Reveal, Section } from '../Section'
+import { Prose } from '../Prose'
 import { rich } from '../rich'
 
 const CHART_DOC = '11x11-tc0-d0.json'
@@ -128,12 +129,12 @@ export function ChartChapter() {
   return (
     <>
       <Reveal>
-        <p>{t.rich('sec.chart.intro1', rich)}</p>
-        <p>{t.rich('sec.chart.intro2', rich)}</p>
+        <Prose>{t.rich('sec.chart.intro1', rich)}</Prose>
+        <Prose>{t.rich('sec.chart.intro2', rich)}</Prose>
       </Reveal>
 
       <Section id="blocks" mark="§ 1" title={t('sec.chart.blocksHead')}>
-        <p>{t.rich('sec.chart.blocksP', rich)}</p>
+        <Prose>{t.rich('sec.chart.blocksP', rich)}</Prose>
         <GuideChartReader
           tc={FINDING_HAND_TURNUP_CLASS}
           qgapPP={doc.certificate?.assert_qgap_pp ?? 1}
@@ -142,20 +143,20 @@ export function ChartChapter() {
       </Section>
 
       <Section id="number" mark="§ 2" title={t('sec.chart.numberHead')}>
-        <p>{t.rich('sec.chart.numberP', rich)}</p>
-        <p>{t.rich('sec.chart.approxP', rich)}</p>
+        <Prose>{t.rich('sec.chart.numberP', rich)}</Prose>
+        <Prose>{t.rich('sec.chart.approxP', rich)}</Prose>
         <ApproxProps />
         <p className={styles.aside}>{t.rich('sec.chart.aside', rich)}</p>
       </Section>
 
       <Section id="list" mark="§ 3" title={t('sec.chart.listHead')}>
-        <p>{t.rich('sec.chart.listP', rich)}</p>
+        <Prose>{t.rich('sec.chart.listP', rich)}</Prose>
         <ListSnippet />
       </Section>
 
       <Section id="walk" mark="§ 4" title={t('sec.chart.walkHead')}>
-        <p>{t.rich('sec.chart.walkP1', rich)}</p>
-        <p>{t.rich('sec.chart.walkP2', rich)}</p>
+        <Prose>{t.rich('sec.chart.walkP1', rich)}</Prose>
+        <Prose>{t.rich('sec.chart.walkP2', rich)}</Prose>
         <LineWalkerPlate />
         <aside className={styles.margin}>{t.rich('sec.chart.walkAside', rich)}</aside>
       </Section>

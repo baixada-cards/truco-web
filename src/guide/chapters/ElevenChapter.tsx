@@ -13,6 +13,7 @@ import { useTranslations } from 'next-intl'
 import type { ChartNode, ChartRow } from '../../lib/study-data'
 import styles from '../guide.module.css'
 import { Reveal, Section } from '../Section'
+import { Prose } from '../Prose'
 import { rich } from '../rich'
 import { ElevenChartsPlate, type ElevenSpot } from '../plates/ElevenChartsPlate'
 
@@ -86,29 +87,29 @@ export function ElevenChapter() {
   return (
     <>
       <Reveal>
-        <p>{t.rich('sec.eleven.lede', rich)}</p>
+        <Prose>{t.rich('sec.eleven.lede', rich)}</Prose>
       </Reveal>
 
       <Section id="stakes" mark="§ 1" title={t('sec.eleven.stakesHead')}>
-        <p>{t.rich('sec.eleven.stakesP1', rich)}</p>
-        <p>{t.rich('sec.eleven.stakesP2', rich)}</p>
+        <Prose>{t.rich('sec.eleven.stakesP1', rich)}</Prose>
+        <Prose>{t.rich('sec.eleven.stakesP2', rich)}</Prose>
         <aside className={styles.margin}>{t.rich('sec.eleven.stakesAside', rich)}</aside>
       </Section>
 
       <Section id="reading" mark="§ 2" title={t('sec.eleven.readingHead')}>
-        <p>{t.rich('sec.eleven.readingP1', rich)}</p>
-        <p>{t.rich('sec.eleven.readingP2', rich)}</p>
+        <Prose>{t.rich('sec.eleven.readingP1', rich)}</Prose>
+        <Prose>{t.rich('sec.eleven.readingP2', rich)}</Prose>
       </Section>
 
       <Section id="charts" mark="§ 3" title={t('sec.eleven.chartsHead')}>
-        <p>{t.rich('sec.eleven.chartsP1', rich)}</p>
+        <Prose>{t.rich('sec.eleven.chartsP1', rich)}</Prose>
         <ElevenChartsPlate spots={spots} tc={tc} />
       </Section>
 
       <Section id="shape" mark="§ 4" title={t('sec.eleven.shapeHead')}>
-        <p>{t.rich('sec.eleven.shapeP1', rich)}</p>
-        <p>{t.rich('sec.eleven.shapeP2', rich)}</p>
-        <p>{t.rich('sec.eleven.shapeP3', rich)}</p>
+        <Prose>{t.rich('sec.eleven.shapeP1', rich)}</Prose>
+        <Prose>{t.rich('sec.eleven.shapeP2', rich)}</Prose>
+        <Prose>{t.rich('sec.eleven.shapeP3', rich)}</Prose>
         <aside className={styles.margin}>{t.rich('sec.eleven.shapeAside', rich)}</aside>
       </Section>
     </>

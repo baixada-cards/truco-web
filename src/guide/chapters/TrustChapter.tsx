@@ -7,6 +7,7 @@ import { TrustWarningFigure } from '../GuideFigures'
 import { FormulaTerms, Math } from '../Math'
 import styles from '../guide.module.css'
 import { Reveal, Section } from '../Section'
+import { Prose } from '../Prose'
 import { rich } from '../rich'
 
 const TEX = {
@@ -19,11 +20,11 @@ export function TrustChapter() {
   return (
     <>
       <Reveal>
-        <p>{t.rich('sec.trust.intro', rich)}</p>
+        <Prose>{t.rich('sec.trust.intro', rich)}</Prose>
       </Reveal>
 
       <Section id="badge" mark="§ 1" title={t('sec.trust.badgeHead')}>
-        <p>{t.rich('sec.trust.badgeP', rich)}</p>
+        <Prose>{t.rich('sec.trust.badgeP', rich)}</Prose>
         <dl className={styles.trustLevels}>
           <div>
             <dt className={styles.trustSolid}>{t('sec.trust.solidTerm')}</dt>
@@ -42,13 +43,13 @@ export function TrustChapter() {
       </Section>
 
       <Section id="warning" mark="§ 2" title={t('sec.trust.warningHead')}>
-        <p>{t.rich('sec.trust.warningP', rich)}</p>
+        <Prose>{t.rich('sec.trust.warningP', rich)}</Prose>
         <TrustWarningFigure />
         <p className={styles.takeaway}>{t('sec.trust.warningTakeaway')}</p>
       </Section>
 
       <Section id="diagnostics" mark="§ 3" title={t('sec.trust.diagnosticsHead')}>
-        <p>{t.rich('sec.trust.diagnosticsP', rich)}</p>
+        <Prose>{t.rich('sec.trust.diagnosticsP', rich)}</Prose>
         <div className={styles.formula}>
           <Math display tex={TEX.selfLoss} />
           <FormulaTerms
@@ -70,11 +71,11 @@ export function TrustChapter() {
           />
           <p className={styles.formulaNote}>{t('sec.trust.ownReachNote')}</p>
         </div>
-        <p>{t.rich('sec.trust.pruningP', rich)}</p>
+        <Prose>{t.rich('sec.trust.pruningP', rich)}</Prose>
       </Section>
 
       <Section id="certificate" mark="§ 4" title={t('sec.trust.certificateHead')}>
-        <p>{t.rich('sec.trust.certificateP', rich)}</p>
+        <Prose>{t.rich('sec.trust.certificateP', rich)}</Prose>
         <p className={styles.takeaway}>{t('sec.trust.certificateTakeaway')}</p>
       </Section>
     </>

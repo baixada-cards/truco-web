@@ -8,6 +8,7 @@ import { useTranslations } from 'next-intl'
 
 import styles from '../guide.module.css'
 import { Reveal, Section } from '../Section'
+import { Prose } from '../Prose'
 import { rich } from '../rich'
 
 // Exact TC0/dealer-0 census (SOLVER_BENCHMARKS.md 2026-07-15/16, pre-prune
@@ -48,12 +49,12 @@ export function NumbersChapter() {
   return (
     <>
       <Reveal>
-        <p>{t.rich('sec.numbers.lede', rich)}</p>
+        <Prose>{t.rich('sec.numbers.lede', rich)}</Prose>
       </Reveal>
 
       <Section id="census" mark="§ 1" title={t('sec.numbers.censusHead')}>
-        <p>{t.rich('sec.numbers.censusP1', rich)}</p>
-        <p>{t.rich('sec.numbers.censusPruneP', rich)}</p>
+        <Prose>{t.rich('sec.numbers.censusP1', rich)}</Prose>
+        <Prose>{t.rich('sec.numbers.censusPruneP', rich)}</Prose>
         <div className={styles.treeTableWrap}>
           <table className={styles.treeTable}>
             <colgroup>
@@ -86,7 +87,7 @@ export function NumbersChapter() {
           </table>
         </div>
         <p className={styles.treeNote}>{t('sec.numbers.treeNote')}</p>
-        <p>{t.rich('sec.numbers.censusP2', rich)}</p>
+        <Prose>{t.rich('sec.numbers.censusP2', rich)}</Prose>
         <aside className={styles.margin}>{t.rich('sec.numbers.censusAside', rich)}</aside>
       </Section>
 
@@ -101,13 +102,13 @@ export function NumbersChapter() {
           </span>
           <small>{t('sec.numbers.coverageRemaining')}</small>
         </div>
-        <p>{t.rich('sec.numbers.coverageP1', rich)}</p>
-        <p>{t.rich('sec.numbers.coverageP2', rich)}</p>
+        <Prose>{t.rich('sec.numbers.coverageP1', rich)}</Prose>
+        <Prose>{t.rich('sec.numbers.coverageP2', rich)}</Prose>
         <aside className={styles.coverageNote}>{t.rich('sec.numbers.coverageNote', rich)}</aside>
       </Section>
 
       <Section id="certificates" mark="§ 3" title={t('sec.numbers.certHead')}>
-        <p>{t.rich('sec.numbers.certP1', rich)}</p>
+        <Prose>{t.rich('sec.numbers.certP1', rich)}</Prose>
         <div className={styles.treeTableWrap}>
           <table className={`${styles.treeTable} ${styles.statTable} ${styles.statTable5}`}>
             <colgroup>
@@ -139,12 +140,12 @@ export function NumbersChapter() {
             </tbody>
           </table>
         </div>
-        <p>{t.rich('sec.numbers.certP2', rich)}</p>
+        <Prose>{t.rich('sec.numbers.certP2', rich)}</Prose>
         <aside className={styles.margin}>{t.rich('sec.numbers.certAside', rich)}</aside>
       </Section>
 
       <Section id="similarity" mark="§ 4" title={t('sec.numbers.simHead')}>
-        <p>{t.rich('sec.numbers.simP1', rich)}</p>
+        <Prose>{t.rich('sec.numbers.simP1', rich)}</Prose>
         <div className={styles.treeTableWrap}>
           <table className={`${styles.treeTable} ${styles.statTable} ${styles.statTable5}`}>
             <colgroup>
@@ -176,12 +177,12 @@ export function NumbersChapter() {
             </tbody>
           </table>
         </div>
-        <p>{t.rich('sec.numbers.simP2', rich)}</p>
+        <Prose>{t.rich('sec.numbers.simP2', rich)}</Prose>
         <aside className={styles.margin}>{t.rich('sec.numbers.simAside', rich)}</aside>
       </Section>
 
       <Section id="purity" mark="§ 5" title={t('sec.numbers.purityHead')}>
-        <p>{t.rich('sec.numbers.purityP1', rich)}</p>
+        <Prose>{t.rich('sec.numbers.purityP1', rich)}</Prose>
         <div className={styles.treeTableWrap}>
           <table className={`${styles.treeTable} ${styles.statTable}`}>
             <colgroup>
@@ -210,12 +211,12 @@ export function NumbersChapter() {
             </tbody>
           </table>
         </div>
-        <p>{t.rich('sec.numbers.purityP2', rich)}</p>
+        <Prose>{t.rich('sec.numbers.purityP2', rich)}</Prose>
       </Section>
 
       <Section id="effort" mark="§ 6" title={t('sec.numbers.effortHead')}>
-        <p>{t.rich('sec.numbers.effortP1', rich)}</p>
-        <p>{t.rich('sec.numbers.effortP2', rich)}</p>
+        <Prose>{t.rich('sec.numbers.effortP1', rich)}</Prose>
+        <Prose>{t.rich('sec.numbers.effortP2', rich)}</Prose>
         <aside className={styles.margin}>{t.rich('sec.numbers.effortAside', rich)}</aside>
       </Section>
     </>

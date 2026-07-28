@@ -6,6 +6,7 @@ import { findNode, loadStudyDoc } from '../GuideFigures'
 import { BlockerFigure } from '../plates/BlockerFigure'
 import { RangeTool } from '../plates/RangeTool'
 import { Reveal, Section } from '../Section'
+import { Prose } from '../Prose'
 import { rich } from '../rich'
 import { useTranslations } from 'next-intl'
 
@@ -23,14 +24,14 @@ export function RangeChapter() {
   return (
     <>
       <Reveal>
-        <p>{t.rich('sec.ranges.intro', rich)}</p>
+        <Prose>{t.rich('sec.ranges.intro', rich)}</Prose>
       </Reveal>
       <Section id="range-tool" mark="§ 1" title={t('sec.ranges.toolHead')}>
-        <p>{t.rich('sec.ranges.toolP', rich)}</p>
+        <Prose>{t.rich('sec.ranges.toolP', rich)}</Prose>
         <RangeTool tc={doc.tc} rows={rows} />
       </Section>
       <Section id="blockers" mark="§ 2" title={t('sec.ranges.blockersHead')}>
-        <p>{t.rich('sec.ranges.blockersP', rich)}</p>
+        <Prose>{t.rich('sec.ranges.blockersP', rich)}</Prose>
         <BlockerFigure />
       </Section>
     </>
