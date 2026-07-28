@@ -963,11 +963,11 @@
       "sec": {
         "rules": {
           "title": "The exact game the solver plays",
-          "intro1": "There are many trucos — and even “truco paulista” has no single standard. This page is the variant the solver actually plays, read straight out of the engine's code. Where the truco you grew up with differs, <b>the engine wins</b>: every chart in the lab is exact for these rules and no others.",
-          "intro2": "Two absences up front: <b>no envido, no flor</b>. The solved game is the three-round card fight plus the truco ladder — nothing else rides on it.",
+          "intro1": "Not only truco has many variants, but the ruleset for each variant is not all that standardized. The solutions presented in the lab are only optimal for the specific rules the engine implements, which are explained below.\n",
+          "intro2": "The game being analyzed here is heads-up truco paulista: a turn-up card identifies the manilhas for the current hand.",
           "cardsHead": "The deck, the turn-up, the manilhas",
-          "cardsP1": "A 40-card deck: ranks <code>4 5 6 7 Q J K A 2 3</code> in the four suits — the 8s, 9s and 10s are out. Off the manilhas, that listing IS the order, weakest to strongest: <code>4</code> lowest, <code>3</code> highest, <b>suits never matter</b>, and two cards of the same rank tie.",
-          "cardsP2": "After dealing, one card is turned face up: the <b>turn-up</b> (vira). The rank right above it — wrapping <code>3 → 4</code> — becomes the <b>manilha</b> rank: those four cards outrank everything else, and only among them does the suit decide, strongest to weakest <b>♣ > ♥ > ♠ > ♦</b>. So each manilha is one specific card: under a 4 turn-up, the 5♣ is the strongest card in the game.",
+          "cardsP1": "A 40-card deck: ranks <code>4 5 6 7 Q J K A 2 3</code> in the four suits. The 8s, 9s and 10s are out. Apart from the manilhas, that listing IS the order, weakest to strongest: <code>4</code> lowest, <code>3</code> highest, <b>suits never matter</b>, and two cards of the same rank tie.",
+          "cardsP2": "After dealing, one card is turned face up and held below the deck: the <b>turn-up</b> (<em>vira</em> in Portuguese). The rank right above it becomes the <b>manilha</b> rank: those four cards outrank everything else, and only among them does the suit decide, weakest to strongest <b>♦ > ♠ > ♥ > ♣</b>. \n\nSo each manilha is one specific card: under a 4 turn-up, the 5♣ is the strongest card in the game, then the 5♥ and so on. When the turn-up is a <code>3</code>, manilha rank is <code>4</code>.\n",
           "roundsHead": "Rounds, leads, and every tie",
           "roundsP1": "Three cards each, up to three rounds, one card per round; <b>best of three</b> wins the hand. The <b>Leader</b> — the Dealer's opponent — leads round 1; after that the round's winner leads, and a tied round keeps the same leader. Ties are where home rules diverge, so here is the engine's complete table:",
           "tie1": {
