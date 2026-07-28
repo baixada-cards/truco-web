@@ -20,7 +20,7 @@
     "test:e2e:run": "STUDY_LAB_MODE=public NEXT_PUBLIC_STUDY_LAB_LINKS=true playwright test"
   },
   "dependencies": {
-    "@baixada-cards/design-system": "git+https://github.com/baixada-cards/design-system.git#82638b7cdabbb56a4bce7b953e8571847bf6fda9",
+    "@baixada-cards/design-system": "git+https://github.com/baixada-cards/design-system.git#93c9afef9ac2fa3756f12fe22bc35a079ec87aff",
     "@types/node": "^25.9.5",
     "framer-motion": "^12.42.2",
     "katex": "^0.18.0",

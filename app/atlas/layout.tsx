@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import '@baixada-cards/design-system/tokens.css'
+import '../../src/baixada-product.css'
 
 export const metadata: Metadata = {
   title: 'Solution Atlas — Baixada',

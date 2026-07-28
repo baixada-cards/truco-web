@@ -174,7 +174,8 @@
 
 .stepOn {
   border-color: rgba(236, 217, 153, 0.75);
-  background: linear-gradient(178deg, #f2e9d5, var(--paper-0, #ede4d0) 55%, var(--paper-1, #e4d9bf));
+  background-color: var(--paper-0);
+  background-image: var(--paper-surface-image);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
 }
 

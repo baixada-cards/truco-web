@@ -1,0 +1,64 @@
+/*
+ * Truco product material binding.
+ *
+ * The palette and fallback surfaces come from @baixada-cards/design-system.
+ * This file supplies the reviewed, product-local photographic asset and a
+ * small set of composition tokens shared by play, Lab, Guide, and overlays.
+ */
+
+:root {
+  --walnut-surface-image:
+    radial-gradient(ellipse 92% 88% at 50% 44%, rgba(112, 59, 19, 0.04), rgba(9, 5, 2, 0.45)),
+    url('/brand/rich-walnut.webp');
+  --walnut-surface-position: center;
+  --walnut-surface-size: cover;
+  --walnut-scrim: rgba(15, 8, 4, 0.72);
+  --walnut-scrim-strong: rgba(10, 5, 2, 0.86);
+  --paper-border: rgba(126, 88, 39, 0.34);
+  --paper-highlight: rgba(255, 248, 228, 0.48);
+  --paper-shadow: 0 18px 38px rgba(7, 3, 1, 0.44);
+  --paper-shadow-raised: 0 28px 64px rgba(7, 3, 1, 0.52);
+  --utility-dark: rgba(28, 16, 8, 0.88);
+  --utility-dark-hover: rgba(45, 25, 11, 0.94);
+}
+
+html,
+body {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+  color: var(--paper-0);
+  background-color: var(--wood-1);
+  background-image: var(--walnut-surface-image);
+  background-position: var(--walnut-surface-position);
+  background-size: var(--walnut-surface-size);
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--brass-hi);
+  outline-offset: 2px;
+}

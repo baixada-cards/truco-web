@@ -1,0 +1,190 @@
+/*
+ * Production binding for the approved rich-walnut material system. Shared
+ * palette/material tokens come from the design system; selectors here are
+ * limited to Farol's physical pieces and table-specific choreography.
+ */
+
+.ft-root-rich-walnut {
+  background-color: #1a1009;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ft-root-rich-walnut {
+  background-image:
+    radial-gradient(ellipse 90% 88% at 50% 45%, rgba(79, 40, 12, 0.05), rgba(9, 5, 2, 0.44)),
+    url('/brand/rich-walnut.webp');
+}
+
+.ft-root-rich-walnut .ft-table-surface.walnut {
+  background-image:
+    radial-gradient(ellipse 90% 88% at 50% 45%, rgba(79, 40, 12, 0.05), rgba(9, 5, 2, 0.44)),
+    url('/brand/rich-walnut.webp');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ft-root-rich-walnut::before {
+  /* The default table adds synthetic vertical grain here. The preview's
+     photographic surface supplies its own grain, so do not stack both. */
+  display: none;
+}
+
+.ft-root-rich-walnut .ft-vignette {
+  background: radial-gradient(ellipse 78% 72% at 48% 44%, transparent 40%, rgba(10, 5, 2, 0.2) 100%);
+}
+
+/* The paper pieces are separate objects in the room, but belong to the same
+   stock: warm, lightly fibrous, and edged in muted brass rather than white. */
+.ft-root-rich-walnut .scorepad,
+.ft-root-rich-walnut .sg3-paper,
+.ft-root-rich-walnut .sg3-peek-paper,
+.ft-root-rich-walnut .td-rail-hint {
+  border-color: rgba(126, 88, 39, 0.34);
+  background-color: var(--paper-0);
+  background-image:
+    radial-gradient(circle at 18% 22%, rgba(121, 83, 37, 0.07) 0%, transparent 46%),
+    radial-gradient(circle at 82% 78%, rgba(126, 83, 31, 0.06) 0%, transparent 44%),
+    repeating-linear-gradient(0deg, transparent 0 27px, rgba(117, 81, 38, 0.065) 28px 29px),
+    linear-gradient(135deg, var(--paper-0), var(--paper-1));
+}
+
+.ft-root-rich-walnut .scorepad {
+  box-shadow:
+    0 1px 0 rgba(255, 248, 228, 0.48) inset,
+    0 -1px 0 rgba(96, 62, 24, 0.16) inset,
+    0 2px 2px rgba(0, 0, 0, 0.2),
+    0 18px 34px rgba(0, 0, 0, 0.5);
+}
+
+.ft-root-rich-walnut .sg3-paper {
+  background-image:
+    radial-gradient(circle at 18% 22%, rgba(121, 83, 37, 0.07) 0%, transparent 46%),
+    radial-gradient(circle at 82% 78%, rgba(126, 83, 31, 0.06) 0%, transparent 44%),
+    linear-gradient(135deg, var(--paper-0), var(--paper-1));
+  box-shadow:
+    0 1px 0 rgba(255, 248, 228, 0.48),
+    0 16px 30px rgba(0, 0, 0, 0.46),
+    0 30px 64px rgba(0, 0, 0, 0.34),
+    inset 0 0 0 1px rgba(126, 88, 39, 0.12);
+}
+
+.ft-root-rich-walnut .sg3-paper::before {
+  opacity: 0.62;
+}
+
+.ft-root-rich-walnut .sg3-rcard,
+.ft-root-rich-walnut .sg3-mcard {
+  background: linear-gradient(135deg, var(--card-0), var(--card-1));
+}
+
+.ft-root-rich-walnut .ft-score-rail-unroll-icon {
+  background: linear-gradient(90deg, var(--paper-0) 0%, var(--paper-1) 80%, var(--paper-2) 100%);
+}
+
+/* Transient game state is utility UI, never handwriting. */
+.ft-root-rich-walnut .ft-stake-caption,
+.ft-root-rich-walnut .ft-stake-whose,
+.ft-root-rich-walnut .ft-stake-refuse-zone,
+.ft-root-rich-walnut .ft-stake[data-stake-tooltip]::after,
+.ft-root-rich-walnut .ft-stake-fx-callout,
+.ft-root-rich-walnut .ft-stake-fx-live-badge,
+.ft-root-rich-walnut .ft-whisper,
+.ft-root-rich-walnut .td-rail-hint-text,
+.ft-root-rich-walnut .td-rail-hint .td-rail-hint-dismiss,
+.ft-root-rich-walnut .td-rail-hint .td-rail-hint-dismiss-all {
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+}
+
+.ft-root-rich-walnut .ft-stake-caption,
+.ft-root-rich-walnut .ft-stake-whose,
+.ft-root-rich-walnut .ft-stake-refuse-zone,
+.ft-root-rich-walnut .ft-stake[data-stake-tooltip]::after,
+.ft-root-rich-walnut .ft-stake-fx-callout,
+.ft-root-rich-walnut .ft-stake-fx-live-badge {
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.ft-root-rich-walnut .ft-stake-fx-callout,
+.ft-root-rich-walnut .ft-stake-fx-live-badge {
+  letter-spacing: 0.12em;
+}
+
+.ft-root-rich-walnut .ft-stake-fx-callout.is-raise,
+.ft-root-rich-walnut .ft-stake-fx-callout.is-reraise,
+.ft-root-rich-walnut .ft-stake.is-by-villain .ft-stake-fx-callout.is-raise,
+.ft-root-rich-walnut .ft-stake.is-by-villain .ft-stake-fx-callout.is-reraise {
+  font-size: 12px;
+}
+
+.ft-root-rich-walnut .ft-whisper {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.ft-root-rich-walnut .td-rail-hint-text {
+  color: var(--ink-0);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.ft-root-rich-walnut .td-rail-hint .td-rail-hint-dismiss,
+.ft-root-rich-walnut .td-rail-hint .td-rail-hint-dismiss-all {
+  letter-spacing: 0.04em;
+}
+
+.ft-root-rich-walnut .td-rail {
+  height: 96px;
+  border-top-color: rgba(223, 172, 93, 0.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 240, 205, 0.16),
+    inset 0 14px 24px rgba(0, 0, 0, 0.5),
+    0 -10px 32px rgba(0, 0, 0, 0.2);
+}
+
+.ft-root-rich-walnut .td-rail {
+  background-image:
+    linear-gradient(180deg, rgba(11, 5, 2, 0.3), rgba(11, 5, 2, 0.74)),
+    url('/brand/rich-walnut.webp');
+  background-position: center bottom;
+  background-size: cover;
+}
+
+.ft-root-rich-walnut .td-rail::before {
+  width: min(920px, calc(100% - 64px));
+  background: linear-gradient(90deg, transparent, rgba(235, 191, 111, 0.44), transparent);
+}
+
+.ft-root-rich-walnut .td-rail-slot-label,
+.ft-root-rich-walnut .td-rail-fx-ribbon {
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.ft-root-rich-walnut .td-rail-slot-label,
+.ft-root-rich-walnut .td-rail-fx-ribbon {
+  color: rgba(255, 232, 191, 0.82);
+}
+
+.ft-root-rich-walnut .td-rail-slot {
+  gap: 7px;
+}
+
+@media (max-width: 640px) {
+  .ft-root-rich-walnut .td-rail {
+    height: 92px;
+  }
+}

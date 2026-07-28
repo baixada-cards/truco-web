@@ -200,7 +200,9 @@
   pointer-events: auto;
   padding: 16px 18px 14px;
   border-radius: 5px;
-  background: linear-gradient(178deg, #f4ecd9, var(--paper-0, #ede4d0) 45%, var(--paper-1, #e4d9bf));
+  border: 1px solid var(--paper-border);
+  background-color: var(--paper-0);
+  background-image: var(--paper-surface-image);
   color: var(--ink-1, #4a4032);
   box-shadow: 0 18px 44px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.4);
   animation: tipIn 220ms ease backwards 80ms;
@@ -215,10 +217,10 @@
   height: 12px;
   margin-left: -6px;
   transform: rotate(45deg);
-  background: #f2e9d5;
+  background: var(--paper-0);
 }
 .below::before { top: -6px; }
-.above::before { bottom: -6px; background: var(--paper-1, #e4d9bf); }
+.above::before { bottom: -6px; background: var(--paper-1, #e8d8b8); }
 .center::before { display: none; }
 .side::before { display: none; }
 
