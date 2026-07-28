@@ -57,7 +57,12 @@
   caret-color: transparent;
 }
 .area:focus { outline: 0; }
-.area::selection { background: rgba(236, 217, 153, 0.45); color: #17110c; }
+/* the block cursor IS the one-character selection, so it has to stay legible:
+   the guide's page-wide bordeaux ::selection would put black on dark red */
+.panel .area::selection {
+  background: var(--brass-hi, #ecd999);
+  color: #17110c;
+}
 
 .status {
   display: flex;
@@ -69,6 +74,12 @@
   color: rgba(246, 237, 215, 0.5);
 }
 .mode { color: rgba(246, 237, 215, 0.8); }
+.pending {
+  padding: 1px 5px;
+  border: 1px solid rgba(212, 179, 106, 0.4);
+  border-radius: 2px;
+  color: var(--brass-hi, #ecd999);
+}
 .modeInsert { color: #7fd18b; }
 .cmdline { color: var(--brass-hi, #ecd999); }
 .hint { margin-left: auto; }

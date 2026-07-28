@@ -300,11 +300,14 @@ async function main() {
           path: file,
           format: 'A4',
           printBackground: true,
-          margin: { top: '18mm', bottom: '20mm', left: '18mm', right: '18mm' },
+          // a book's proportions: generous outer margins, a running head, and
+          // the folio centred at the foot
+          margin: { top: '22mm', bottom: '24mm', left: '26mm', right: '26mm' },
           displayHeaderFooter: true,
-          headerTemplate: '<span></span>',
+          headerTemplate:
+            '<div style="width:100%;font-family:Georgia,serif;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:#8a8272;padding:0 26mm;text-align:center">Baixada · Study</div>',
           footerTemplate:
-            '<div style="width:100%;font-family:Inter,sans-serif;font-size:8px;color:#7a6d56;padding:0 18mm;display:flex;justify-content:space-between"><span>Baixada · Study · Field guide</span><span class="pageNumber"></span></div>',
+            '<div style="width:100%;font-family:Georgia,serif;font-size:9px;color:#6f6656;padding:0 26mm;text-align:center"><span class="pageNumber"></span></div>',
         })
         await page.emulateMedia({ media: 'screen' })
         written.push(file)

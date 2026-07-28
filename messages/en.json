@@ -901,18 +901,19 @@
     "guide": {
       "back": "back to the lab",
       "kicker": "Baixada · Study · Field guide",
-      "title": "Reading the solution charts",
-      "lede": "This is <b>solved</b> truco. For a handful of exact match situations it shows the way to play that <b>can’t be exploited</b> — worked out by a machine playing itself billions of hands. Not a bot’s opinion; the arithmetic of the game. Here is how to read it.",
+      "title": "Optimal Truco",
+      "lede": "This is <b>solved</b> heads-up truco paulista. For a selection of spots, it shows a way to play that <b>can’t be exploited</b>, worked out by a machine playing billions of hands.",
       "contents": "Contents",
       "parts": {
         "theory": {
           "kicker": "Part I",
-          "head": "The solve, and how to read it"
+          "head": "The solve, and how to read it",
+          "lede": "Where we explain what a solution is, how to read its charts, and how far to trust them."
         },
         "handbook": {
           "kicker": "Part II",
           "head": "The player's handbook",
-          "lede": "Part I explains what the solve is; this volume says what it teaches: the hand of eleven, the opening lead, the truco from both sides, and the habits that cost the most — each priced in match equity. It grows as more of the game is solved."
+          "lede": "Where we distill lessons from the solutions to aid us in making better decisions when playing heads-up truco."
         },
         "reference": {
           "kicker": "Back matter",

@@ -30,6 +30,7 @@ export default async function GuidePrintPage({
     id: part.id,
     kicker: t(`parts.${part.id}.kicker`),
     head: t(`parts.${part.id}.head`),
+    lede: t.has(`parts.${part.id}.lede`) ? t(`parts.${part.id}.lede`) : null,
     chapters: part.chapters.map((id) => ({
       id,
       roman: chapterRoman(id),

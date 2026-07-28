@@ -907,7 +907,8 @@
       "parts": {
         "theory": {
           "kicker": "Parte I",
-          "head": "A solução, e como lê-la"
+          "head": "A solução, e como lê-la",
+          "lede": "Onde explicamos o que é uma solução, como ler seus gráficos e até onde confiar neles."
         },
         "handbook": {
           "kicker": "Parte II",

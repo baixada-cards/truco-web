@@ -52,8 +52,8 @@ export function GuideLanding() {
               <div className={styles.tocPartHead}>
                 <div className={styles.tocPartKicker}>{t(`parts.${part.id}.kicker`)}</div>
                 <h2 className={styles.tocPartName}>{t(`parts.${part.id}.head`)}</h2>
-                {part.id === 'handbook' ? (
-                  <p className={styles.tocPartLede}>{t.rich('parts.handbook.lede', rich)}</p>
+                {t.has(`parts.${part.id}.lede`) ? (
+                  <p className={styles.tocPartLede}>{t.rich(`parts.${part.id}.lede`, rich)}</p>
                 ) : null}
               </div>
               {part.chapters.length > 0 ? (

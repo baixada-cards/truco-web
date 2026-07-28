@@ -21,6 +21,8 @@ export interface BookPart {
   id: string
   kicker: string
   head: string
+  /** the part's blurb, shown on its half-title page */
+  lede: string | null
   chapters: BookChapter[]
 }
 
@@ -79,6 +81,7 @@ export function GuideBookPage({
           <div className={styles.bookPartPage}>
             <div className={styles.tocPartKicker}>{part.kicker}</div>
             <h2 className={styles.bookPartName}>{part.head}</h2>
+            {part.lede ? <p className={styles.tocPartLede}>{part.lede}</p> : null}
           </div>
           {part.chapters.map((chapter) => (
             <article
