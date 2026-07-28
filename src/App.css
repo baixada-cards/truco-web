@@ -707,6 +707,11 @@ html {
   min-height: 100vh;
 }
 
+body:has(.app-shell.is-live-match) {
+  background-color: #0a0705;
+  background-image: none;
+}
+
 /* ---------------- Settings drawer ---------------- */
 
 @keyframes liveDrawerScrim {
