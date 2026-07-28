@@ -908,12 +908,12 @@
         "theory": {
           "kicker": "Part I",
           "head": "The solve, and how to read it",
-          "lede": "Where we explain what a solution is, how to read its charts, and how far to trust them."
+          "lede": "What a solution is, how its charts are drawn, and how far they can be trusted."
         },
         "handbook": {
           "kicker": "Part II",
           "head": "The player's handbook",
-          "lede": "Where we distill lessons from the solutions to aid us in making better decisions when playing heads-up truco."
+          "lede": "What the solutions teach: the hand of eleven, the opening lead, the truco from both sides, and the habits that cost the most."
         },
         "reference": {
           "kicker": "Back matter",
