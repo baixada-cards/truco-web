@@ -1790,7 +1790,11 @@
         "measuredBr": "Medida por mejor respuesta adversarial: {pp} pp de victoria de partida explotables en esta mano.",
         "caption": "Datos reales — 11x11 v4, un rincón que la solución rara vez visita: mano salió con el 4, pie se llevó la ronda con un 3 y salió en la ronda 2 tapado. La grilla exacta de dos cartas de mano tiene {n} de 87 celdas con ≈ — poco alcance les dio casi nada de entrenamiento."
       },
-      "labSpot": "Recorré esta jugada en el lab:"
+      "labSpot": "Recorré esta jugada en el lab:",
+      "downloads": {
+        "head": "Llevate la guía",
+        "note": "La guía entera, en un solo archivo."
+      }
     }
   }
 }

@@ -1790,7 +1790,11 @@
         "measuredBr": "Measured by adversarial best response: {pp} match-win pp exploitable at this holding.",
         "caption": "Real data — 11x11 v4, a corner the solve rarely visits: mão led the 4, pé took the round with a 3 and led round 2 face down. Mão's exact two-card grid has {n} of 87 cells flagged ≈ — low reach earned them almost no training."
       },
-      "labSpot": "Walk this spot in the lab:"
+      "labSpot": "Walk this spot in the lab:",
+      "downloads": {
+        "head": "Take it with you",
+        "note": "The whole guide, one file."
+      }
     }
   }
 }

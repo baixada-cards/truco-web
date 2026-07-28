@@ -46,3 +46,6 @@ test-results
 *.njsproj
 *.sln
 *.sw?
+
+# built guide books (scripts/build_guide_book.mjs)
+public/downloads/

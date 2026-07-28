@@ -1790,7 +1790,11 @@
         "measuredBr": "Medida por melhor resposta adversarial: {pp} pp de vitória na partida exploráveis nesta mão.",
         "caption": "Dados reais — 11x11 v4, um canto que a solução raramente visita: a mão saiu com o 4, o pé levou a rodada com um 3 e saiu na rodada 2 encoberto. A grade exata de duas cartas da mão tem {n} de 87 células com ≈ — pouco alcance rendeu quase nenhum treino."
       },
-      "labSpot": "Percorra esta situação no lab:"
+      "labSpot": "Percorra esta situação no lab:",
+      "downloads": {
+        "head": "Leve o guia com você",
+        "note": "O guia inteiro, num arquivo só."
+      }
     }
   }
 }

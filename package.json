@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "book": "node scripts/build_guide_book.mjs",
     "check:dependencies": "node scripts/check_dependencies.mjs",
     "lint": "eslint .",
     "lint:css": "stylelint \"src/components/live/*.css\"",

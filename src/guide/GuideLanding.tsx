@@ -7,6 +7,7 @@ import { useLocale, useTranslations } from 'next-intl'
 import Link from 'next/link'
 
 import { LanguagePicker } from '../components/live/LanguagePicker'
+import { guideBooks } from '../server/guide-downloads'
 import { CopyEditor } from './CopyEditor'
 import { chapterRoman, GUIDE_PARTS } from './chapters'
 import styles from './guide.module.css'
@@ -18,6 +19,7 @@ export function GuideLanding() {
   const locale = useLocale()
   const labHref = `/${locale}/lab/study`
   const base = `/${locale}/lab/study/guide`
+  const books = guideBooks(locale)
 
   return (
     <div className={styles.page}>
@@ -69,6 +71,22 @@ export function GuideLanding() {
               ) : null}
             </section>
           ))}
+
+          {/* built books, when this deploy carries them */}
+          {books.length > 0 ? (
+            <section className={styles.colophon} aria-label={t('downloads.head')}>
+              <div className={styles.colophonHead}>{t('downloads.head')}</div>
+              <p className={styles.colophonNote}>{t('downloads.note')}</p>
+              <div className={styles.colophonLinks}>
+                {books.map((book) => (
+                  <a key={book.format} className={styles.colophonLink} href={book.href} download>
+                    {book.format.toUpperCase()}
+                    <span className={styles.colophonSize}>{book.size}</span>
+                  </a>
+                ))}
+              </div>
+            </section>
+          ) : null}
         </div>
       </div>
 

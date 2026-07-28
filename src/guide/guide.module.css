@@ -1430,6 +1430,52 @@ em.matchCut { background: linear-gradient(90deg, #e9d3a4, #c9a96c); }
 .tocEntry:hover .tocNo { color: var(--card-back-a, #5a2a26); }
 .tocEntry:hover .tocDots { border-bottom-color: var(--card-back-a, #5a2a26); }
 
+/* colophon: the built books, offered at the foot of the contents leaf */
+.colophon {
+  margin: 60px auto 0;
+  max-width: 660px;
+  padding-top: 30px;
+  border-top: 1px solid var(--study-stock-edge, #cfcdc5);
+  text-align: center;
+}
+.colophonHead {
+  font: 700 10px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--card-back-a, #5a2a26);
+}
+.colophonNote {
+  margin: 10px 0 0;
+  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink-2, #7a6d56);
+}
+.colophonLinks {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 16px;
+}
+.colophonLink {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--brass-1, #a88540);
+  color: var(--ink-0, #2a241b);
+  font: 600 12px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  transition: color 150ms ease, border-color 150ms ease;
+}
+.colophonLink:hover { color: var(--card-back-a, #5a2a26); border-bottom-color: var(--card-back-a, #5a2a26); }
+.colophonSize {
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--ink-2, #7a6d56);
+}
+
 /* the current chapter's in-page sections, hanging under its index entry */
 .railSubs {
   display: flex;
@@ -3428,4 +3474,81 @@ em.matchCut { background: linear-gradient(90deg, #e9d3a4, #c9a96c); }
     gap: 1px;
     padding-inline: 2px;
   }
+}
+
+/* ------------------------------------------------------------------ */
+/* the book: the whole guide on one page, for print, PDF and EPUB      */
+/* ------------------------------------------------------------------ */
+
+.book {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 56px) 80px;
+  background: var(--study-stock, #e9e7e1);
+  color: var(--ink-1, #4a4032);
+  /* App.css centres the app shell's body; a book is set flush left */
+  text-align: left;
+  font-family: var(--font-sans, Inter, system-ui, sans-serif);
+}
+
+/* nothing reveals on scroll in a book — every section is simply there */
+.book .section {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+.bookTitlePage {
+  padding: 120px 0 90px;
+  text-align: center;
+}
+
+.bookToc { padding-bottom: 40px; }
+.bookToc .contentsHead { margin-top: 0; }
+
+.bookPartPage {
+  margin: 60px 0 40px;
+  padding-top: 40px;
+  border-top: 1px solid var(--study-stock-edge, #cfcdc5);
+  text-align: center;
+}
+
+.bookPartName {
+  margin: 10px 0 0;
+  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 30px;
+  color: var(--ink-0, #2a241b);
+}
+
+.bookChapter {
+  margin-top: 56px;
+}
+.bookChapter .chapTitle { max-width: none; }
+/* the drop cap belongs to the routed chapter pages, not to the book */
+.bookChapter .main > .section:first-child > p:first-of-type::first-letter {
+  float: none;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 0;
+  color: inherit;
+}
+
+@media print {
+  /* the wood table is a screen material; paper prints on paper. index.css
+     puts color-scheme: dark on :root, which also darkens the sheet outside
+     the body box when Chromium prints backgrounds — hence the reset. */
+  :global(html) { background: #fff !important; color-scheme: light !important; }
+  :global(body) { background: #fff !important; }
+  .book { max-width: none; padding: 0; background: transparent; }
+  .bookTitlePage,
+  .bookPartPage { break-after: page; }
+  .bookChapter { break-before: page; break-inside: auto; }
+  /* keep figures and their captions whole; let prose flow across pages */
+  .section { break-inside: auto; }
+  .secHead { break-after: avoid-page; }
+  .section figure,
+  .section table { break-inside: avoid-page; }
 }
