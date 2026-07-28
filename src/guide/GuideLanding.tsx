@@ -7,6 +7,7 @@ import { useLocale, useTranslations } from 'next-intl'
 import Link from 'next/link'
 
 import { LanguagePicker } from '../components/live/LanguagePicker'
+import { CopyEditor } from './CopyEditor'
 import { chapterRoman, GUIDE_PARTS } from './chapters'
 import styles from './guide.module.css'
 import { HashRedirect } from './HashRedirect'
@@ -81,6 +82,8 @@ export function GuideLanding() {
           </a>
         </div>
       </footer>
+
+      <CopyEditor />
     </div>
   )
 }

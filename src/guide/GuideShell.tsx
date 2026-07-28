@@ -10,6 +10,7 @@ import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 
 import { LanguagePicker } from '../components/live/LanguagePicker'
+import { CopyEditor } from './CopyEditor'
 import {
   GUIDE_CHAPTERS,
   GUIDE_PARTS,
@@ -192,6 +193,8 @@ export function GuideShell({
           </a>
         </div>
       </footer>
+
+      <CopyEditor />
     </div>
   )
 }
