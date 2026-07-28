@@ -288,6 +288,30 @@ async function startMockedMatch(page: Page) {
   await dismissFirstRunDeckPickerIfVisible(page)
 }
 
+test('Farol keeps the walnut on the table and the surrounding stage dark', async ({ page }) => {
+  await startMockedMatch(page)
+
+  const materials = await page.evaluate(() => {
+    const stage = document.querySelector('.ft-root-rich-walnut')
+    const table = document.querySelector('.ft-root-rich-walnut .ft-table-surface.walnut')
+    if (!stage || !table) {
+      throw new Error('Missing Farol stage or walnut table surface.')
+    }
+
+    return {
+      bodyBackgroundColor: window.getComputedStyle(document.body).backgroundColor,
+      bodyBackgroundImage: window.getComputedStyle(document.body).backgroundImage,
+      stageBackgroundImage: window.getComputedStyle(stage).backgroundImage,
+      tableBackgroundImage: window.getComputedStyle(table).backgroundImage,
+    }
+  })
+
+  expect(materials.bodyBackgroundColor).toBe('rgb(10, 7, 5)')
+  expect(materials.bodyBackgroundImage).toBe('none')
+  expect(materials.stageBackgroundImage).not.toContain('rich-walnut.webp')
+  expect(materials.tableBackgroundImage).toContain('rich-walnut.webp')
+})
+
 async function openSettingsDrawer(page: Page) {
   await dismissFirstRunDeckPickerIfVisible(page)
   await page.getByTestId('live-game-settings-button').click()
