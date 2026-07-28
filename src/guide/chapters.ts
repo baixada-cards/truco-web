@@ -28,6 +28,12 @@ export const GUIDE_PARTS = [
 
 export type GuidePart = (typeof GUIDE_PARTS)[number]['id']
 
+/** which part a chapter belongs to — the running head and the margin index */
+export function partForChapter(chapter: GuideChapter): GuidePart {
+  const part = GUIDE_PARTS.find((p) => (p.chapters as readonly string[]).includes(chapter))
+  return (part ?? GUIDE_PARTS[0]).id
+}
+
 export const GUIDE_CHAPTERS = [...THEORY, ...HANDBOOK, ...REFERENCE] as const
 
 export type GuideChapter = (typeof GUIDE_CHAPTERS)[number]
