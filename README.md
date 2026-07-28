@@ -100,6 +100,16 @@ commit them). The guide's landing page links whatever formats it finds there
 for the current locale, so a deploy without the files simply shows no
 downloads. The dev server must be running; point elsewhere with `--base`.
 
+The PDF is paginated by [Paged.js](https://pagedjs.org) (a development
+dependency the build injects into the page—the app never ships it), which is
+what gives the book its real page furniture: 176 × 250 mm pages, running
+heads that name the current chapter, folios, chapters opening on a recto, and
+a contents that resolves `target-counter()` into actual page numbers. Those
+`@page` rules live in `scripts/build_guide_book.mjs`, not in
+`guide.module.css`, because Turbopack's CSS parser rejects named pages and
+margin boxes; they select through the book's `data-*` hooks. The EPUB is
+packed from the same DOM, with the cover captured as its cover image.
+
 **Copy editor (development only).** Double-click any paragraph, heading, or
 list item in the guide to edit its raw catalog string in place, with Vim
 bindings—`fd` or Escape leaves insert mode, `:w` writes it back into

@@ -43,7 +43,19 @@ export function GuideBookPage({
 }) {
   return (
     <div className={styles.book} data-book={locale}>
-      <section className={styles.bookTitlePage}>
+      {/* the cover: printed full-bleed, and grabbed as the EPUB's cover image */}
+      <section className={styles.bookCover} data-cover>
+        <div className={styles.bookCoverMark}>Baixada</div>
+        <h1 className={styles.bookCoverTitle}>{title}</h1>
+        <div className={styles.bookCoverOrn} aria-hidden>
+          <i />
+          <em>❧</em>
+          <i />
+        </div>
+        <div className={styles.bookCoverFoot}>{kicker}</div>
+      </section>
+
+      <section className={styles.bookTitlePage} data-title-page>
         <div className={styles.kicker}>{kicker}</div>
         <h1 className={styles.title}>{title}</h1>
         <div className={styles.orn} aria-hidden>
@@ -53,7 +65,7 @@ export function GuideBookPage({
         </div>
       </section>
 
-      <nav className={styles.bookToc} aria-label={contents}>
+      <nav className={styles.bookToc} aria-label={contents} data-toc>
         <div className={styles.contentsHead}>{contents}</div>
         {parts.map((part) => (
           <section key={part.id} className={styles.tocPart}>
@@ -78,7 +90,7 @@ export function GuideBookPage({
 
       {parts.map((part) => (
         <section key={part.id} className={styles.bookPart} data-part={part.id}>
-          <div className={styles.bookPartPage}>
+          <div className={styles.bookPartPage} data-part-page>
             <div className={styles.tocPartKicker}>{part.kicker}</div>
             <h2 className={styles.bookPartName}>{part.head}</h2>
             {part.lede ? <p className={styles.tocPartLede}>{part.lede}</p> : null}

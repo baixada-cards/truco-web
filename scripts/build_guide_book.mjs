@@ -11,7 +11,7 @@
 // never committed). The guide's landing page links whatever it finds there.
 
 import { createHash } from 'node:crypto'
-import { mkdir, writeFile } from 'node:fs/promises'
+import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
 import { deflateRawSync } from 'node:zlib'
@@ -29,7 +29,81 @@ const LOCALES = flags('locale').length > 0 ? flags('locale') : ['en']
 const FORMATS = (flags('formats')[0] ?? 'pdf,epub').split(',').map((f) => f.trim())
 const OUT = path.resolve(flags('out')[0] ?? 'public/downloads')
 
-const TITLE_FALLBACK = 'Reading the solution charts'
+const TITLE_FALLBACK = 'Optimal Truco'
+const PAGEDJS = 'node_modules/pagedjs/dist/paged.polyfill.js'
+
+// ------------------------------------------------------------- paged media
+
+// Injected into the page just before Paged.js runs. It lives here rather than
+// in guide.module.css because Turbopack's CSS parser rejects named pages and
+// margin boxes, so it selects through the book's stable data-* hooks instead
+// of CSS-module class names.
+const PAGED_CSS = `
+@page {
+  size: 176mm 250mm;
+  margin: 20mm 18mm 22mm;
+}
+@page :left {
+  margin-left: 15mm;
+  margin-right: 21mm;
+  @top-left {
+    content: string(bookTitle);
+    font: 400 8pt/1 'EB Garamond', Georgia, serif;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #8a8272;
+  }
+  @bottom-left {
+    content: counter(page);
+    font: 400 9pt/1 'EB Garamond', Georgia, serif;
+    color: #6f6656;
+  }
+}
+@page :right {
+  margin-left: 21mm;
+  margin-right: 15mm;
+  @top-right {
+    content: string(chapterTitle);
+    font: 400 8pt/1 'EB Garamond', Georgia, serif;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #8a8272;
+  }
+  @bottom-right {
+    content: counter(page);
+    font: 400 9pt/1 'EB Garamond', Georgia, serif;
+    color: #6f6656;
+  }
+}
+/* the cover bleeds; front matter carries neither running head nor folio */
+@page :first {
+  margin: 0;
+  @top-left { content: none }
+  @top-right { content: none }
+  @bottom-left { content: none }
+  @bottom-right { content: none }
+}
+@page front:left { @top-left { content: none } @bottom-left { content: none } }
+@page front:right { @top-right { content: none } @bottom-right { content: none } }
+[data-cover] { break-after: page; }
+[data-title-page] { page: front; break-before: right; break-after: page; }
+[data-toc] { page: front; break-after: page; }
+[data-part-page] { page: front; break-before: right; break-after: page; }
+[data-chapter] { break-before: right; }
+
+[data-title-page] h1 { string-set: bookTitle content(text); }
+[data-chapter] h1 { string-set: chapterTitle content(text); }
+
+/* the contents prints folios, not chapter numerals */
+[data-toc] a > span:last-child { display: none; }
+[data-toc] a::after {
+  content: target-counter(attr(href url), page);
+  flex: 0 0 auto;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 10.5pt;
+  color: #5f5545;
+}
+`
 
 // ---------------------------------------------------------------- zip writer
 
@@ -156,7 +230,7 @@ async function extractBook(page) {
       xhtml: clean(element),
     }))
 
-    const titlePage = document.querySelector('[data-book] > section')
+    const titlePage = document.querySelector('[data-book] > section:not([data-cover])')
     return {
       locale: document.querySelector('[data-book]')?.getAttribute('data-book') ?? 'en',
       title: document.querySelector('h1')?.textContent?.trim() ?? '',
@@ -188,7 +262,7 @@ ${body}
 `
 }
 
-function buildEpub(book) {
+function buildEpub(book, coverPng) {
   const { locale, title, chapters } = book
   // a stable id: same content in, same book id out
   const uid = `urn:uuid:${createHash('sha1').update(`baixada-guide-${locale}-${title}`).digest('hex').slice(0, 32).replace(/(.{8})(.{4})(.{4})(.{4})(.{12}).*/, '$1-$2-$3-$4-$5')}`
@@ -201,6 +275,12 @@ function buildEpub(book) {
   const manifest = [
     '<item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>',
     '<item id="style" href="style.css" media-type="text/css"/>',
+    ...(coverPng
+      ? [
+          '<item id="cover-image" href="cover.png" media-type="image/png" properties="cover-image"/>',
+          '<item id="cover" href="cover.xhtml" media-type="application/xhtml+xml"/>',
+        ]
+      : []),
     '<item id="title" href="title.xhtml" media-type="application/xhtml+xml"/>',
     ...files.map(
       (file, index) =>
@@ -208,7 +288,12 @@ function buildEpub(book) {
     ),
   ].join('\n    ')
 
-  const spine = ['<itemref idref="title"/>', '<itemref idref="nav"/>', ...files.map((_, i) => `<itemref idref="c${i + 1}"/>`)].join(
+  const spine = [
+    ...(coverPng ? ['<itemref idref="cover"/>'] : []),
+    '<itemref idref="title"/>',
+    '<itemref idref="nav"/>',
+    ...files.map((_, i) => `<itemref idref="c${i + 1}"/>`),
+  ].join(
     '\n    ',
   )
 
@@ -267,6 +352,19 @@ button, input, select, textarea { pointer-events: none; }
     { name: 'OEBPS/nav.xhtml', data: nav },
     { name: 'OEBPS/style.css', data: css },
     { name: 'OEBPS/title.xhtml', data: xhtmlDoc({ locale, title: title || TITLE_FALLBACK, body: book.titleXhtml }) },
+    ...(coverPng
+      ? [
+          { name: 'OEBPS/cover.png', data: coverPng },
+          {
+            name: 'OEBPS/cover.xhtml',
+            data: xhtmlDoc({
+              locale,
+              title: title || TITLE_FALLBACK,
+              body: `<div style="margin:0;padding:0;text-align:center"><img src="cover.png" alt="${xmlEscape(title || TITLE_FALLBACK)}" style="max-width:100%;height:auto"/></div>`,
+            }),
+          },
+        ]
+      : []),
     ...files.map((file) => ({
       name: `OEBPS/${file.name}`,
       data: xhtmlDoc({ locale, title: file.chapter.title, body: file.chapter.xhtml }),
@@ -283,7 +381,7 @@ async function main() {
 
   try {
     for (const locale of LOCALES) {
-      const page = await browser.newPage({ viewport: { width: 900, height: 1200 } })
+      const page = await browser.newPage({ viewport: { width: 900, height: 1200 }, deviceScaleFactor: 2 })
       const url = `${BASE}/${locale}/lab/study/guide/print`
       process.stdout.write(`rendering ${url}\n`)
       const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 180_000 })
@@ -293,31 +391,39 @@ async function main() {
 
       const stem = `baixada-truco-guide-${locale}`
 
-      if (FORMATS.includes('pdf')) {
-        const file = path.join(OUT, `${stem}.pdf`)
-        await page.emulateMedia({ media: 'print' })
-        await page.pdf({
-          path: file,
-          format: 'A4',
-          printBackground: true,
-          // a book's proportions: generous outer margins, a running head, and
-          // the folio centred at the foot
-          margin: { top: '22mm', bottom: '24mm', left: '26mm', right: '26mm' },
-          displayHeaderFooter: true,
-          headerTemplate:
-            '<div style="width:100%;font-family:Georgia,serif;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:#8a8272;padding:0 26mm;text-align:center">Baixada · Study</div>',
-          footerTemplate:
-            '<div style="width:100%;font-family:Georgia,serif;font-size:9px;color:#6f6656;padding:0 26mm;text-align:center"><span class="pageNumber"></span></div>',
-        })
-        await page.emulateMedia({ media: 'screen' })
-        written.push(file)
-      }
-
+      // The EPUB (and its cover image) come first: paginating rewrites the DOM.
       if (FORMATS.includes('epub')) {
+        const cover = await page.locator('[data-cover]').screenshot({ type: 'png' })
         const book = await extractBook(page)
         if (book.chapters.length === 0) throw new Error(`no chapters found at ${url}`)
         const file = path.join(OUT, `${stem}.epub`)
-        await writeFile(file, buildEpub(book))
+        await writeFile(file, buildEpub(book, cover))
+        written.push(file)
+      }
+
+      if (FORMATS.includes('pdf')) {
+        const file = path.join(OUT, `${stem}.pdf`)
+        // Paged.js paginates the DOM against the @page rules — running heads
+        // that name the chapter, folios, recto chapter openings, and a
+        // contents whose target-counter() resolves to real page numbers.
+        await page.emulateMedia({ media: 'print' })
+        await page.addStyleTag({ content: PAGED_CSS })
+        await page.evaluate(() => {
+          window.PagedConfig = { auto: true, after: () => { window.__pagedDone = true } }
+        })
+        await page.addScriptTag({ content: await readFile(PAGEDJS, 'utf8') })
+        await page.waitForFunction(() => window.__pagedDone === true, undefined, { timeout: 600_000 })
+        const pages = await page.locator('.pagedjs_page').count()
+        process.stdout.write(`  paginated: ${pages} pages\n`)
+        await page.pdf({
+          path: file,
+          printBackground: true,
+          preferCSSPageSize: true,
+          margin: { top: '0', bottom: '0', left: '0', right: '0' },
+          displayHeaderFooter: false,
+          outline: true,
+          tagged: true,
+        })
         written.push(file)
       }
 
