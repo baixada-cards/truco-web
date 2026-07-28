@@ -351,7 +351,7 @@ export function CopyEditor() {
       </div>
       <textarea
         ref={areaRef}
-        className={styles.area}
+        className={vim.mode === 'insert' ? `${styles.area} ${styles.areaInsert}` : styles.area}
         value={vim.text}
         spellCheck
         onChange={(event) => {

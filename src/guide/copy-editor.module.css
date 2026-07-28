@@ -54,8 +54,11 @@
   color: #f2e9d6;
   font: 400 13px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace;
   resize: vertical;
+  /* normal and visual draw their own block cursor as a selection, so the
+     native caret is hidden there — insert mode gets it back, in brass */
   caret-color: transparent;
 }
+.areaInsert { caret-color: var(--brass-hi, #ecd999); }
 .area:focus { outline: 0; }
 /* the block cursor IS the one-character selection, so it has to stay legible:
    the guide's page-wide bordeaux ::selection would put black on dark red */
