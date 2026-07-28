@@ -5,9 +5,9 @@
  */
 
 :root {
-  --ts-stage-base: #3d2e20;
-  --ts-stage-deep: #1f1610;
-  --ts-stage-mid: #785538;
+  --ts-stage-base: var(--wood-2);
+  --ts-stage-deep: var(--wood-0);
+  --ts-stage-mid: var(--wood-4);
   --ts-menu-wood-vignette: radial-gradient(
     ellipse 80% 70% at 50% 50%,
     rgba(0, 0, 0, 0) 30%,
@@ -19,36 +19,13 @@
     rgba(255, 220, 160, 0.04) 40%,
     rgba(0, 0, 0, 0) 75%
   );
-  --ts-menu-wood-fine-grain: repeating-linear-gradient(
-    92deg,
-    rgba(0, 0, 0, 0.00) 0,
-    rgba(0, 0, 0, 0.00) 3px,
-    rgba(0, 0, 0, 0.06) 4px,
-    rgba(0, 0, 0, 0.00) 8px,
-    rgba(0, 0, 0, 0.00) 14px,
-    rgba(0, 0, 0, 0.04) 15px,
-    rgba(0, 0, 0, 0.00) 22px
-  );
-  --ts-menu-wood-broad-grain: repeating-linear-gradient(
-    89deg,
-    rgba(120, 85, 56, 0.00) 0,
-    rgba(120, 85, 56, 0.00) 40px,
-    rgba(120, 85, 56, 0.05) 42px,
-    rgba(120, 85, 56, 0.00) 80px
-  );
-  --ts-menu-wood-warm-blob: radial-gradient(
-    ellipse 120% 80% at 30% 20%,
-    rgba(120, 85, 56, 0.18) 0%,
-    rgba(120, 85, 56, 0.00) 60%
-  );
-  --ts-menu-wood-dark-blob: radial-gradient(
-    ellipse 100% 60% at 80% 90%,
-    rgba(0, 0, 0, 0.22) 0%,
-    rgba(0, 0, 0, 0.00) 60%
-  );
+  --ts-menu-wood-fine-grain: var(--walnut-surface-image);
+  --ts-menu-wood-broad-grain: linear-gradient(transparent, transparent);
+  --ts-menu-wood-warm-blob: linear-gradient(transparent, transparent);
+  --ts-menu-wood-dark-blob: linear-gradient(transparent, transparent);
 
-  --ts-paper: #e8d8b0;
-  --ts-paper-edge: rgba(140, 90, 40, 0.22);
+  --ts-paper: var(--paper-0);
+  --ts-paper-edge: rgba(126, 88, 39, 0.24);
   --ts-paper-foxing: rgba(140, 80, 30, 0.14);
 
   --ts-ink: #2a1d10;
@@ -80,6 +57,8 @@
     var(--ts-menu-wood-broad-grain),
     var(--ts-menu-wood-warm-blob),
     var(--ts-menu-wood-dark-blob);
+  background-position: center;
+  background-size: cover;
 }
 
 .menu-wood {
@@ -96,6 +75,8 @@
     var(--ts-menu-wood-broad-grain),
     var(--ts-menu-wood-warm-blob),
     var(--ts-menu-wood-dark-blob);
+  background-position: center;
+  background-size: cover;
 }
 
 .menu-wood.is-lamp {
@@ -115,16 +96,8 @@
 .ts-atlas-paper {
   background-color: var(--ts-paper);
   background-image:
-    radial-gradient(circle at 16% 24%, var(--ts-paper-foxing) 0%, transparent 3%),
-    radial-gradient(circle at 86% 18%, rgba(140, 80, 30, 0.10) 0%, transparent 3%),
-    radial-gradient(circle at 76% 86%, rgba(140, 80, 30, 0.10) 0%, transparent 3%),
-    radial-gradient(circle at 8% 70%, rgba(140, 80, 30, 0.08) 0%, transparent 2%),
     radial-gradient(ellipse 100% 100% at 50% 50%, transparent 50%, var(--ts-paper-edge) 100%),
-    repeating-linear-gradient(45deg,
-      rgba(80, 50, 20, 0.00) 0,
-      rgba(80, 50, 20, 0.00) 2px,
-      rgba(80, 50, 20, 0.025) 3px,
-      rgba(80, 50, 20, 0.00) 4px);
+    var(--paper-surface-image);
   box-shadow: var(--ts-paper-shadow);
 }
 

@@ -796,10 +796,13 @@
 }
 
 .app-shell.is-live-match .live-settings-drawer__kicker {
-  font-family: var(--font-hand);
+  font-family: var(--font-sans);
   font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 600;
   letter-spacing: 0.3em;
   color: var(--ink-2);
+  text-transform: uppercase;
 }
 
 .app-shell.is-live-match .live-settings-drawer__title {
@@ -863,17 +866,19 @@
 }
 
 .app-shell.is-live-match .live-settings-drawer__section-kicker {
-  font-family: var(--font-hand);
+  font-family: var(--font-sans);
   font-size: 0.68rem;
+  font-style: normal;
+  font-weight: 600;
   letter-spacing: 0.25em;
   color: var(--ink-2);
-  text-transform: lowercase;
+  text-transform: uppercase;
 }
 
 .app-shell.is-live-match .live-settings-drawer__section-summary {
   color: var(--ink-2);
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-sans);
+  font-style: normal;
 }
 
 .app-shell.is-live-match .live-settings-drawer__section-icon {
@@ -1026,16 +1031,9 @@
   border: 0;
   border-radius: 3px;
   background-color: var(--paper-0);
-  background-image:
-    radial-gradient(circle at 18% 22%, rgba(90,70,40,0.04) 0%, transparent 45%),
-    radial-gradient(circle at 82% 78%, rgba(90,70,40,0.05) 0%, transparent 45%),
-    repeating-linear-gradient(
-      0deg,
-      rgba(90,70,40,0) 0 26px,
-      rgba(90,70,40,0.05) 27px
-    );
+  background-image: var(--paper-surface-image);
   color: var(--ink-0);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   transform: translateX(-50%);
   transform-origin: 50% 0%;
   animation: none;
@@ -1107,7 +1105,7 @@
 .app-shell.is-live-match .live-settings-drawer__kicker {
   margin-bottom: 2px;
   color: var(--ink-2);
-  font-family: var(--font-hand);
+  font-family: var(--font-sans);
   font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.28em;
@@ -1138,11 +1136,12 @@
   box-shadow: 0 1px 2px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,200,180,0.15);
   color: #f3e3c8;
   cursor: pointer;
-  font-family: var(--font-serif);
-  font-size: 13px;
-  font-style: italic;
-  letter-spacing: 0.08em;
-  text-transform: lowercase;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: none;
   transition: filter 150ms ease, box-shadow 150ms ease;
 }
 
@@ -1193,9 +1192,10 @@
 .app-shell.is-live-match .sp-group-label {
   padding: 12px 24px 8px;
   color: var(--ink-2);
-  font-family: var(--font-hand);
+  font-family: var(--font-sans);
   font-size: 10px;
-  font-weight: 400;
+  font-style: normal;
+  font-weight: 600;
   letter-spacing: 0.32em;
   line-height: 1;
   text-transform: uppercase;
@@ -1225,14 +1225,14 @@
     0 1px 2px rgba(0,0,0,0.4);
   color: #fdf4dc;
   cursor: pointer;
-  font-family: var(--font-serif);
-  font-size: 16px;
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: 0.18em;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0,0,0,0.45);
-  text-transform: lowercase;
+  text-transform: none;
   transition: transform 90ms ease, box-shadow 90ms ease, filter 90ms ease;
 }
 
@@ -1284,15 +1284,16 @@
   border-radius: 3px;
   background: rgba(139,46,38,0.08);
   color: var(--ink-0);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   text-align: left;
 }
 
 .app-shell.is-live-match .live-settings-drawer__alert-title {
   color: #6a201a;
-  font-family: var(--font-hand);
+  font-family: var(--font-sans);
   font-size: 10px;
-  font-weight: 400;
+  font-style: normal;
+  font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
 }
@@ -1300,7 +1301,7 @@
 .app-shell.is-live-match .live-settings-drawer__alert-copy {
   color: var(--ink-1);
   font-size: 12px;
-  font-style: italic;
+  font-style: normal;
   letter-spacing: 0.02em;
 }
 
@@ -1346,10 +1347,12 @@
 
 .app-shell.is-live-match .sp-section-marker {
   color: var(--brass-0);
-  font-family: var(--font-hand);
+  font-family: var(--font-sans);
   font-size: 11px;
+  font-style: normal;
+  font-weight: 600;
   letter-spacing: 0.22em;
-  text-transform: lowercase;
+  text-transform: uppercase;
 }
 
 .app-shell.is-live-match .live-settings-drawer .sp-section-title {
@@ -1369,9 +1372,9 @@
   max-width: 160px;
   overflow: hidden;
   color: var(--ink-2);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 12px;
-  font-style: italic;
+  font-style: normal;
   letter-spacing: 0.02em;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1463,22 +1466,22 @@
 .app-shell.is-live-match .live-settings-drawer .settings-panel__toggle-label,
 .app-shell.is-live-match .live-settings-drawer .match-setup-field__label {
   color: var(--ink-1);
-  font-family: var(--font-serif);
-  font-size: 13px;
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: 0.01em;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   line-height: 1.2;
-  text-transform: lowercase;
+  text-transform: none;
 }
 
 .app-shell.is-live-match .sp-field-hint {
   display: block;
   margin-top: 2px;
   color: var(--ink-2);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 11px;
-  font-style: italic;
+  font-style: normal;
   letter-spacing: 0.02em;
   line-height: 1.25;
 }
@@ -1494,26 +1497,28 @@
 .app-shell.is-live-match .sp-current-eyebrow {
   margin-bottom: 2px;
   color: var(--ink-2);
-  font-family: var(--font-hand);
+  font-family: var(--font-sans);
   font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
 }
 
 .app-shell.is-live-match .sp-current-name {
   color: var(--ink-0);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
 }
 
 .app-shell.is-live-match .sp-current-meta {
   color: var(--ink-2);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 12px;
-  font-style: italic;
-  letter-spacing: 0.04em;
+  font-style: normal;
+  letter-spacing: 0.01em;
   line-height: 1.35;
 }
 
@@ -1538,9 +1543,9 @@
   background-size: 4px 4px;
   box-shadow: none;
   color: var(--ink-0);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 13px;
-  font-style: italic;
+  font-style: normal;
   text-align: left;
 }
 
@@ -1560,9 +1565,9 @@
 .app-shell.is-live-match .live-settings-drawer .match-setup-select__value,
 .app-shell.is-live-match .live-settings-drawer .match-setup-select__option-label {
   color: var(--ink-0);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 13px;
-  font-style: italic;
+  font-style: normal;
   font-weight: 500;
   line-height: 1.2;
 }
@@ -1570,9 +1575,9 @@
 .app-shell.is-live-match .live-settings-drawer .match-setup-select__meta,
 .app-shell.is-live-match .live-settings-drawer .match-setup-select__option-copy {
   color: var(--ink-2);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 11px;
-  font-style: italic;
+  font-style: normal;
   line-height: 1.25;
 }
 
@@ -1684,9 +1689,10 @@
   background: transparent;
   color: var(--ink-1);
   cursor: pointer;
-  font-family: var(--font-hand);
+  font-family: var(--font-sans);
   font-size: 12px;
-  font-weight: 400;
+  font-style: normal;
+  font-weight: 600;
   letter-spacing: 0.04em;
   text-align: right;
 }
@@ -1703,9 +1709,9 @@
   border-radius: 0;
   background: transparent;
   color: var(--ink-1);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 12px;
-  font-style: italic;
+  font-style: normal;
   line-height: 1.45;
 }
 

@@ -6,10 +6,14 @@
   padding: 28px clamp(16px, 4vw, 56px) 64px;
   font-family: var(--font-sans, Inter, system-ui, sans-serif);
   color: var(--paper-0, #ede4d0);
-  background:
+  background-color: var(--wood-1, #29160d);
+  background-image:
     radial-gradient(1200px 700px at 50% -10%, rgba(236, 217, 153, 0.1), transparent 60%),
     radial-gradient(900px 500px at 85% 110%, rgba(0, 0, 0, 0.45), transparent 60%),
-    linear-gradient(170deg, var(--wood-2, #3d2e20) 0%, var(--wood-1, #2a1e15) 55%, var(--wood-0, #1f1610) 100%);
+    var(--walnut-surface-image);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .shell {
@@ -155,7 +159,9 @@
   overflow-y: auto;
   padding: 26px 30px 28px;
   border-radius: 4px;
-  background: linear-gradient(178deg, #f2e9d5, var(--paper-0, #ede4d0) 40%, var(--paper-1, #e4d9bf));
+  border: 1px solid var(--paper-border);
+  background-color: var(--paper-0);
+  background-image: var(--paper-surface-image);
   color: var(--ink-1, #4a4032);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
   font-size: 13px;
@@ -316,7 +322,9 @@
   max-width: 380px;
   padding: 20px 22px;
   border-radius: 4px;
-  background: linear-gradient(178deg, #f2e9d5, var(--paper-0, #ede4d0) 40%, var(--paper-1, #e4d9bf));
+  border: 1px solid var(--paper-border);
+  background-color: var(--paper-0);
+  background-image: var(--paper-surface-image);
   color: var(--ink-0, #2a241b);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
   font-size: 13.5px;
@@ -738,14 +746,16 @@
 
 /* the paper sheet */
 .sheet {
-  background: linear-gradient(178deg, #f2e9d5, var(--paper-0, #ede4d0) 40%, var(--paper-1, #e4d9bf));
+  border: 1px solid var(--paper-border);
+  background-color: var(--paper-0);
+  background-image: var(--paper-surface-image);
   color: var(--ink-0, #2a241b);
   border-radius: 3px;
   padding: 20px 22px 24px;
   position: relative;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.25) inset,
-    0 14px 34px rgba(0, 0, 0, 0.5),
+    var(--paper-shadow),
     0 3px 8px rgba(0, 0, 0, 0.35);
 }
 

@@ -1,12 +1,15 @@
-/* Solution Atlas — poker-range-chart style viewer for solved Truco strategies.
-   Inherits Baixada / Tactile tokens from baixada-tokens.css. Clean, flat, airy. */
+/* Solution Atlas — a paper analysis folio laid on the Baixada walnut table. */
 
 .page {
   min-height: 100vh;
-  background: var(--paper-0);
+  background-color: var(--wood-1);
+  background-image: var(--walnut-surface-image);
+  background-position: var(--walnut-surface-position, center);
+  background-size: var(--walnut-surface-size, cover);
+  background-attachment: fixed;
   color: var(--ink-0);
   font-family: var(--font-sans);
-  padding: 32px clamp(16px, 5vw, 64px) 80px;
+  padding: clamp(18px, 4vw, 56px) clamp(12px, 4vw, 52px) 80px;
   box-sizing: border-box;
 }
 
@@ -16,6 +19,24 @@
   display: flex;
   flex-direction: column;
   gap: 36px;
+  box-sizing: border-box;
+  padding: clamp(24px, 4vw, 52px);
+  border: var(--paper-border);
+  border-radius: 2px;
+  background-color: var(--paper-0);
+  background-image: var(--paper-surface-image);
+  box-shadow: var(--paper-shadow);
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 10px 8px 40px;
+  }
+
+  .shell {
+    gap: 28px;
+    padding: 24px 16px 36px;
+  }
 }
 
 /* ---- Header ---- */

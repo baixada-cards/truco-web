@@ -35,6 +35,7 @@ import { Peg } from './Peg'
 import { toFarolSuit, toFarolRank, nextManilhaRank } from './farol-card-utils'
 
 import './FarolTable.css'
+import './FarolMaterialSystem.css'
 
 type FarolIntroPhase = 'tilted' | 'settling' | null
 
@@ -823,6 +824,7 @@ export function FarolTable({
           stakeCalloutText ? 'ft-root-has-stake-callout' : '',
           `ft-root-callout-${stakeCalloutStyle}`,
           deckSwitchFx ? `ft-root-deck-switch-${deckSwitchFx.phase}` : '',
+          'ft-root-rich-walnut',
         ].filter(Boolean).join(' ')}
         data-lamp-tension={lampTension}
         data-deck-switch-animation={deckSwitchAnimation}

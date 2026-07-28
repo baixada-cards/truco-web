@@ -12,7 +12,7 @@
     var(--ts-menu-wood-broad-grain),
     var(--ts-menu-wood-warm-blob),
     var(--ts-menu-wood-dark-blob);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   color: var(--paper-0);
   display: grid;
   place-items: center;
@@ -25,23 +25,14 @@
   width: min(380px, calc(100vw - 48px));
   box-sizing: border-box;
   background-color: var(--paper-0);
-  background-image:
-    radial-gradient(circle at 18% 22%, rgba(90, 70, 40, 0.05) 0%, transparent 45%),
-    radial-gradient(circle at 82% 78%, rgba(90, 70, 40, 0.06) 0%, transparent 45%),
-    repeating-linear-gradient(
-      0deg,
-      rgba(90, 70, 40, 0) 0,
-      rgba(90, 70, 40, 0) 26px,
-      rgba(90, 70, 40, 0.18) 27px,
-      rgba(90, 70, 40, 0) 28px
-    );
+  background-image: var(--paper-surface-image);
   border-radius: 3px;
   box-shadow:
     0 1px 0 rgba(255, 235, 200, 0.12) inset,
     0 -1px 0 rgba(60, 40, 20, 0.1) inset,
     0 2px 2px rgba(0, 0, 0, 0.18),
     0 24px 60px rgba(0, 0, 0, 0.6);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   color: var(--ink-0);
   text-align: left;
   transform: rotate(-1.1deg);
@@ -78,9 +69,10 @@
 }
 
 .mnfa-folio {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 12px;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 600;
   letter-spacing: 0.18em;
   color: var(--ink-2);
   text-transform: uppercase;
@@ -91,8 +83,8 @@
 }
 
 .mnfa-folio code {
-  font-family: var(--font-hand);
-  font-size: 13px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
   letter-spacing: 0.06em;
   color: var(--ink-1);
   text-transform: none;
@@ -166,8 +158,8 @@
 }
 
 .mnfa-verdict {
-  font-family: var(--font-hand);
-  font-size: 28px;
+  font-family: var(--font-serif);
+  font-size: 30px;
   line-height: 1.05;
   color: var(--ink-0);
   font-weight: 700;
@@ -176,17 +168,17 @@
 }
 
 .mnfa-explain {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 16px;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 14px;
   line-height: 1.45;
   color: var(--ink-1);
   margin-bottom: 22px;
 }
 
 .mnfa-explain code {
-  font-family: var(--font-hand);
-  font-size: 16px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 13px;
   font-style: normal;
   color: var(--ink-0);
   background: rgba(160, 50, 40, 0.06);
@@ -210,8 +202,8 @@
   border: 0;
   border-radius: 0;
   box-shadow: none;
-  font-family: var(--font-hand);
-  font-size: 14px;
+  font-family: var(--font-sans);
+  font-size: 12px;
   color: var(--ink-1);
   letter-spacing: 0.02em;
   margin: 0 0 18px;
@@ -226,9 +218,10 @@
 }
 
 .mnfa-recent-label {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 12px;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 600;
   letter-spacing: 0.16em;
   color: var(--ink-2);
   text-transform: uppercase;
@@ -269,12 +262,12 @@
   border: 1px solid rgba(168, 133, 64, 0.55);
   border-radius: 3px;
   color: #fdf4dc;
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-sans);
+  font-style: normal;
   font-weight: 600;
-  font-size: 16px;
-  letter-spacing: 0.16em;
-  text-transform: lowercase;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  text-transform: none;
   cursor: pointer;
   box-shadow:
     0 1px 2px rgba(0, 0, 0, 0.25),
@@ -303,8 +296,8 @@
   border: 1px dashed rgba(90, 70, 40, 0.4);
   border-radius: 3px;
   padding: 11px 18px 9px;
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-sans);
+  font-style: normal;
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 0.06em;
@@ -327,7 +320,7 @@
   background: transparent;
   border: 0;
   color: var(--ink-2);
-  font-family: var(--font-hand);
+  font-family: var(--font-sans);
   font-size: 13px;
   letter-spacing: 0.06em;
   cursor: pointer;
@@ -359,7 +352,7 @@
   border-radius: 3px;
   background: rgba(255, 247, 226, 0.42);
   color: var(--ink-0);
-  font-family: var(--font-hand);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 14px;
   padding: 8px 10px 6px;
 }
@@ -373,8 +366,8 @@
   border-radius: 3px;
   background: rgba(168, 133, 64, 0.12);
   color: var(--ink-1);
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-sans);
+  font-style: normal;
   font-size: 14px;
   padding: 8px 12px 6px;
   cursor: pointer;
@@ -388,7 +381,7 @@
 .mnfa-paste-error {
   grid-column: 1 / -1;
   color: #b03828;
-  font-family: var(--font-hand);
+  font-family: var(--font-sans);
   font-size: 13px;
 }
 

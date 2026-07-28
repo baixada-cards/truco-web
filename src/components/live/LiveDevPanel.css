@@ -2122,6 +2122,39 @@
   color: var(--ink-0);
 }
 
+/* Keep the internal workbench on the same material contract as the product:
+   editorial serif for its folio title, sans for every operation and status. */
+.app-shell.is-live-match:not([data-compact-play="true"]) .live-dev-controls {
+  font-family: var(--font-sans);
+}
+
+.app-shell.is-live-match:not([data-compact-play="true"]) .live-dev-controls
+  :where(button, input, select, textarea, label, summary) {
+  font-family: var(--font-sans);
+  font-style: normal;
+}
+
+.app-shell.is-live-match:not([data-compact-play="true"]) .live-dev-controls__title h3 {
+  font-family: var(--font-serif);
+}
+
+.app-shell.is-live-match:not([data-compact-play="true"]) .live-dev-controls__eyebrow,
+.app-shell.is-live-match:not([data-compact-play="true"]) .live-dev-controls__segmented-label,
+.app-shell.is-live-match:not([data-compact-play="true"]) .live-dev-controls__section-marker {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.app-shell.is-live-match:not([data-compact-play="true"]) .live-dev-controls__primary-action {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
 @media (max-width: 640px) {
   .app-shell.is-live-match:not([data-compact-play="true"]) .live-dev-controls.is-open {
     width: calc(100vw - 16px);
