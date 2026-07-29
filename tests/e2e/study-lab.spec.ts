@@ -11,8 +11,12 @@ const guideFixture = JSON.parse(gunzipSync(readFileSync(new URL(
   import.meta.url,
 ))).toString('utf8')) as StudyGuideFixture
 const chartFixture = guideFixture.docs['11x11-tc0-d0.json']
+const STUDY_LAB_TEST_URL = process.env.STUDY_LAB_BASE_URL ?? '/en/lab/study'
 
 test('Study Lab route loads a deterministic solution fixture', async ({ page }) => {
+  await page.addInitScript(() => {
+    window.localStorage.setItem('truco-study-tour-v2', '1')
+  })
   await page.route('**/study/manifest.json', async (route) => {
     await route.fulfill({
       status: 200,
@@ -36,10 +40,20 @@ test('Study Lab route loads a deterministic solution fixture', async ({ page }) 
       body: JSON.stringify(chartFixture),
     })
   })
-  await page.goto('/en/lab/study')
+  await page.goto(STUDY_LAB_TEST_URL)
 
   await expect(page.getByRole('heading', { name: 'Solution charts' })).toBeVisible()
   await expect(page.getByRole('toolbar', { name: 'Spot selector' })).toBeVisible()
+  const labBackground = await page.getByTestId('study-lab-page').evaluate((labPage) => {
+    const style = window.getComputedStyle(labPage)
+    return {
+      image: style.backgroundImage,
+      attachment: style.backgroundAttachment,
+    }
+  })
+  expect(labBackground.image).not.toContain('rich-walnut.webp')
+  expect(labBackground.image).toContain('linear-gradient')
+  expect(labBackground.attachment.split(', ')).toEqual(Array(3).fill('scroll'))
 
   // The lab can resume the viewed position as a live match; with no draft the
   // engine deals unspecified cards, so the action is available immediately.

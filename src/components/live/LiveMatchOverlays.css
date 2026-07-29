@@ -2072,6 +2072,9 @@
     var(--ts-menu-wood-broad-grain),
     var(--ts-menu-wood-warm-blob),
     var(--ts-menu-wood-dark-blob);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: var(--ts-ink);
   font-family: var(--ts-font-serif);
 }

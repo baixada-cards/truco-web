@@ -133,15 +133,17 @@
   border-top-color: rgba(223, 172, 93, 0.28);
   box-shadow:
     inset 0 1px 0 rgba(255, 240, 205, 0.16),
-    inset 0 14px 24px rgba(0, 0, 0, 0.5),
+    inset 0 14px 24px rgba(0, 0, 0, 0.26),
     0 -10px 32px rgba(0, 0, 0, 0.2);
 }
 
 .ft-root-rich-walnut .td-rail {
+  background-color: #24130a;
   background-image:
-    linear-gradient(180deg, rgba(11, 5, 2, 0.3), rgba(11, 5, 2, 0.74)),
+    linear-gradient(180deg, rgba(24, 12, 6, 0.12), rgba(16, 8, 4, 0.38)),
     url('/brand/rich-walnut.webp');
-  background-position: center bottom;
+  background-position: center, center 62%;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 

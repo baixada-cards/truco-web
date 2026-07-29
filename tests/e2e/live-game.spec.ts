@@ -294,8 +294,9 @@ test('Farol keeps the walnut on the table and the surrounding stage dark', async
   const materials = await page.evaluate(() => {
     const stage = document.querySelector('.ft-root-rich-walnut')
     const table = document.querySelector('.ft-root-rich-walnut .ft-table-surface.walnut')
-    if (!stage || !table) {
-      throw new Error('Missing Farol stage or walnut table surface.')
+    const rail = document.querySelector('.ft-root-rich-walnut .td-rail')
+    if (!stage || !table || !rail) {
+      throw new Error('Missing Farol stage, walnut table surface, or action rail.')
     }
 
     return {
@@ -303,6 +304,10 @@ test('Farol keeps the walnut on the table and the surrounding stage dark', async
       bodyBackgroundImage: window.getComputedStyle(document.body).backgroundImage,
       stageBackgroundImage: window.getComputedStyle(stage).backgroundImage,
       tableBackgroundImage: window.getComputedStyle(table).backgroundImage,
+      railBackgroundColor: window.getComputedStyle(rail).backgroundColor,
+      railBackgroundImage: window.getComputedStyle(rail).backgroundImage,
+      railBackgroundPosition: window.getComputedStyle(rail).backgroundPosition,
+      railBackgroundRepeat: window.getComputedStyle(rail).backgroundRepeat,
     }
   })
 
@@ -310,6 +315,37 @@ test('Farol keeps the walnut on the table and the surrounding stage dark', async
   expect(materials.bodyBackgroundImage).toBe('none')
   expect(materials.stageBackgroundImage).not.toContain('rich-walnut.webp')
   expect(materials.tableBackgroundImage).toContain('rich-walnut.webp')
+  expect(materials.railBackgroundColor).toBe('rgb(36, 19, 10)')
+  expect(materials.railBackgroundImage).toContain('rich-walnut.webp')
+  expect(materials.railBackgroundPosition).toBe('50% 50%, 50% 62%')
+  expect(materials.railBackgroundRepeat).toBe('no-repeat, no-repeat')
+})
+
+test('launcher walnut is one continuous full-screen surface', async ({ page }) => {
+  await page.goto(LIVE_GAME_TEST_URL)
+  await ensureLauncherReady(page)
+
+  const launcherMaterial = await page.getByTestId('live-game-launcher-screen').evaluate((launcher) => {
+    const style = window.getComputedStyle(launcher)
+    const bounds = launcher.getBoundingClientRect()
+    return {
+      backgroundImage: style.backgroundImage,
+      backgroundPosition: style.backgroundPosition,
+      backgroundRepeat: style.backgroundRepeat,
+      backgroundSize: style.backgroundSize,
+      height: bounds.height,
+      width: bounds.width,
+      viewportHeight: window.innerHeight,
+      viewportWidth: window.innerWidth,
+    }
+  })
+
+  expect(launcherMaterial.backgroundImage).toContain('rich-walnut.webp')
+  expect(launcherMaterial.backgroundPosition.split(', ')).toEqual(Array(6).fill('50% 50%'))
+  expect(launcherMaterial.backgroundRepeat.split(', ')).toEqual(Array(6).fill('no-repeat'))
+  expect(launcherMaterial.backgroundSize.split(', ')).toEqual(Array(6).fill('cover'))
+  expect(launcherMaterial.height).toBe(launcherMaterial.viewportHeight)
+  expect(launcherMaterial.width).toBe(launcherMaterial.viewportWidth)
 })
 
 async function openSettingsDrawer(page: Page) {

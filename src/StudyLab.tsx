@@ -1856,7 +1856,7 @@ export default function StudyLab({ manifestUrl }: { manifestUrl: string }) {
 
   if (error) {
     return (
-      <div className={styles.page}>
+      <div className={styles.page} data-testid="study-lab-page">
         <div className={styles.shell}>
           <p className={styles.status}>{error}</p>
         </div>
@@ -1866,7 +1866,7 @@ export default function StudyLab({ manifestUrl }: { manifestUrl: string }) {
 
   if (!manifest || !doc || !ctx) {
     return (
-      <div className={styles.page}>
+      <div className={styles.page} data-testid="study-lab-page">
         <div className={styles.shell}>
           <p className={styles.status}>{t('unrolling')}</p>
         </div>
@@ -2369,7 +2369,7 @@ export default function StudyLab({ manifestUrl }: { manifestUrl: string }) {
   }
 
   return (
-    <div className={styles.page}>
+    <div className={styles.page} data-testid="study-lab-page">
       <div className={styles.shell}>
         <header className={styles.masthead}>
           <span className={styles.kicker}>{t('mastheadKicker')}</span>
