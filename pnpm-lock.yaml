@@ -22,8 +22,8 @@ importers:
   .:
     dependencies:
       '@baixada-cards/design-system':
-        specifier: git+https://github.com/baixada-cards/design-system.git#93c9afef9ac2fa3756f12fe22bc35a079ec87aff
-        version: https://codeload.github.com/baixada-cards/design-system/tar.gz/93c9afef9ac2fa3756f12fe22bc35a079ec87aff(react@18.3.1)
+        specifier: git+https://github.com/baixada-cards/design-system.git#5e032f5fe91a92f43794a43599ed51c8aa7e9dbd
+        version: https://codeload.github.com/baixada-cards/design-system/tar.gz/5e032f5fe91a92f43794a43599ed51c8aa7e9dbd(react@18.3.1)
       '@types/node':
         specifier: ^25.9.5
         version: 25.9.5
@@ -93,8 +93,8 @@ packages:
     resolution: {integrity: sha512-qehxGkRj55h/ff8EMaJ+cYhyaKlHIxqYDn682wQD7RNp9UujOQsHog2uS0r2vzr4pW+sXf90NeeayjcNaX3fFg==}
     engines: {node: '>=6.9.0'}
 
-  '@baixada-cards/design-system@https://codeload.github.com/baixada-cards/design-system/tar.gz/93c9afef9ac2fa3756f12fe22bc35a079ec87aff':
-    resolution: {tarball: https://codeload.github.com/baixada-cards/design-system/tar.gz/93c9afef9ac2fa3756f12fe22bc35a079ec87aff}
+  '@baixada-cards/design-system@https://codeload.github.com/baixada-cards/design-system/tar.gz/5e032f5fe91a92f43794a43599ed51c8aa7e9dbd':
+    resolution: {tarball: https://codeload.github.com/baixada-cards/design-system/tar.gz/5e032f5fe91a92f43794a43599ed51c8aa7e9dbd}
     version: 0.1.0
     engines: {node: '>=24'}
     peerDependencies:
@@ -1574,7 +1574,7 @@ snapshots:
 
   '@babel/helper-validator-identifier@7.29.7': {}
 
-  '@baixada-cards/design-system@https://codeload.github.com/baixada-cards/design-system/tar.gz/93c9afef9ac2fa3756f12fe22bc35a079ec87aff(react@18.3.1)':
+  '@baixada-cards/design-system@https://codeload.github.com/baixada-cards/design-system/tar.gz/5e032f5fe91a92f43794a43599ed51c8aa7e9dbd(react@18.3.1)':
     dependencies:
       react: 18.3.1
 

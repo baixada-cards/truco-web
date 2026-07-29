@@ -288,7 +288,7 @@ async function startMockedMatch(page: Page) {
   await dismissFirstRunDeckPickerIfVisible(page)
 }
 
-test('Farol keeps the walnut on the table and the surrounding stage dark', async ({ page }) => {
+test('Farol keeps the photographic walnut on the table and a separate dark-walnut rail', async ({ page }) => {
   await startMockedMatch(page)
 
   const materials = await page.evaluate(() => {
@@ -306,8 +306,6 @@ test('Farol keeps the walnut on the table and the surrounding stage dark', async
       tableBackgroundImage: window.getComputedStyle(table).backgroundImage,
       railBackgroundColor: window.getComputedStyle(rail).backgroundColor,
       railBackgroundImage: window.getComputedStyle(rail).backgroundImage,
-      railBackgroundPosition: window.getComputedStyle(rail).backgroundPosition,
-      railBackgroundRepeat: window.getComputedStyle(rail).backgroundRepeat,
     }
   })
 
@@ -315,10 +313,9 @@ test('Farol keeps the walnut on the table and the surrounding stage dark', async
   expect(materials.bodyBackgroundImage).toBe('none')
   expect(materials.stageBackgroundImage).not.toContain('rich-walnut.webp')
   expect(materials.tableBackgroundImage).toContain('rich-walnut.webp')
-  expect(materials.railBackgroundColor).toBe('rgb(36, 19, 10)')
-  expect(materials.railBackgroundImage).toContain('rich-walnut.webp')
-  expect(materials.railBackgroundPosition).toBe('50% 50%, 50% 62%')
-  expect(materials.railBackgroundRepeat).toBe('no-repeat, no-repeat')
+  expect(materials.railBackgroundColor).toBe('rgb(22, 13, 8)')
+  expect(materials.railBackgroundImage).not.toContain('rich-walnut.webp')
+  expect(materials.railBackgroundImage).toContain('repeating-linear-gradient')
 })
 
 test('launcher walnut is one continuous full-screen surface', async ({ page }) => {
