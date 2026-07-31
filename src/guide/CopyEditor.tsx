@@ -17,18 +17,11 @@ import { useLocale } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
+import { renderedCatalogText } from './catalog-text'
 import styles from './copy-editor.module.css'
 import { applyNormalKey, initialVimState, type VimState } from './vim'
 
 const EDITABLE = 'p, li, dd, dt, h1, h2, h3, figcaption, blockquote, aside, span, b, i, em, td, th'
-
-/** rendered text of a raw catalog string: tags out, whitespace collapsed */
-function renderedText(raw: string) {
-  return raw
-    .replace(/<[^>]+>/g, '')
-    .replace(/\s+/g, ' ')
-    .trim()
-}
 
 function domText(el: Element) {
   return (el.textContent ?? '').replace(/\s+/g, ' ').trim()
@@ -100,7 +93,7 @@ export function CopyEditor() {
     if (!messages) return map
     for (const [key, raw] of Object.entries(messages)) {
       if (/\{[a-zA-Z]/.test(raw)) continue // ICU placeholders can't be matched
-      const text = renderedText(raw)
+      const text = renderedCatalogText(raw)
       if (text.length < 2 || map.has(text)) continue
       map.set(text, key)
     }
