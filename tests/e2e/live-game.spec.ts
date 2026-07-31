@@ -4636,8 +4636,22 @@ test('strength guide shows the v3 pocket paper and recovers from the folded peek
   await expect(guide.locator('.sg3-mcard')).toHaveCount(4)
   await expect(guide.locator('.sg3-rcard.is-turnup')).toContainText('A')
   await expect(guide.locator('.sg3-rcard.is-strike')).toContainText('2')
-  await expect(guide.locator('.sg3-rcard').first()).toContainText('J')
-  await expect(guide.locator('.sg3-rcard').last()).toContainText('Q')
+  await expect(guide.locator('.sg3-rcard').first()).toContainText('3')
+  await expect(guide.locator('.sg3-rcard').last()).toContainText('4')
+  const overflowingGuideElements = await guide.evaluate((element) => {
+    const panel = element.getBoundingClientRect()
+    const watched = Array.from(element.querySelectorAll(
+      '.sg3-head-title, .sg3-head-sub, .sg3-rank-direction span, .sg3-rcard, .sg3-mcard',
+    ))
+
+    return watched
+      .filter((child) => {
+        const bounds = child.getBoundingClientRect()
+        return bounds.left < panel.left - 1 || bounds.right > panel.right + 1
+      })
+      .map((child) => child.className)
+  })
+  expect(overflowingGuideElements).toEqual([])
   await testInfo.attach('strength-guide-v3-desktop', {
     body: await page.screenshot({ fullPage: true }),
     contentType: 'image/png',
@@ -4676,6 +4690,10 @@ test('strength guide shows the v3 pocket paper and recovers from the folded peek
   await page.getByTestId('deck-longpress').click()
   await expect(page.getByTestId('strength-guide-overlay')).toBeVisible()
   await expect(page.getByTestId('strength-guide-panel')).toBeVisible()
+  const mobileGuideBox = await page.getByTestId('strength-guide-panel').boundingBox()
+  if (!mobileGuideBox) throw new Error('Missing mobile strength guide geometry.')
+  expect(mobileGuideBox.x).toBeGreaterThanOrEqual(0)
+  expect(mobileGuideBox.x + mobileGuideBox.width).toBeLessThanOrEqual(430)
 })
 
 test('strength guide tab shortcut yields to an active user gameplay shortcut', async ({ page }) => {
