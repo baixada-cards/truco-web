@@ -4636,8 +4636,8 @@ test('strength guide shows the v3 pocket paper and recovers from the folded peek
   await expect(guide.locator('.sg3-mcard')).toHaveCount(4)
   await expect(guide.locator('.sg3-rcard.is-turnup')).toContainText('A')
   await expect(guide.locator('.sg3-rcard.is-strike')).toContainText('2')
-  await expect(guide.locator('.sg3-rcard').first()).toContainText('3')
-  await expect(guide.locator('.sg3-rcard').last()).toContainText('4')
+  await expect(guide.locator('.sg3-rcard').first()).toContainText('J')
+  await expect(guide.locator('.sg3-rcard').last()).toContainText('Q')
   const overflowingGuideElements = await guide.evaluate((element) => {
     const panel = element.getBoundingClientRect()
     const watched = Array.from(element.querySelectorAll(
@@ -4656,6 +4656,17 @@ test('strength guide shows the v3 pocket paper and recovers from the folded peek
     body: await page.screenshot({ fullPage: true }),
     contentType: 'image/png',
   })
+
+  await guide.click({ position: { x: 20, y: 20 } })
+  await expect(guide).toBeVisible()
+
+  const guideHost = page.getByTestId('strength-guide-host')
+  const guideHostBox = await guideHost.boundingBox()
+  if (!guideHostBox) throw new Error('Missing strength guide host geometry.')
+  await guideHost.click({ position: { x: 20, y: guideHostBox.height - 20 } })
+  await expect(guide).toHaveCount(0)
+  await page.getByTestId('deck-longpress').click()
+  await expect(guide).toBeVisible()
 
   await page.keyboard.press('Escape')
   await expect(guide).toHaveCount(0)
@@ -4694,6 +4705,8 @@ test('strength guide shows the v3 pocket paper and recovers from the folded peek
   if (!mobileGuideBox) throw new Error('Missing mobile strength guide geometry.')
   expect(mobileGuideBox.x).toBeGreaterThanOrEqual(0)
   expect(mobileGuideBox.x + mobileGuideBox.width).toBeLessThanOrEqual(430)
+  await page.getByTestId('strength-guide-overlay').click({ position: { x: 8, y: 8 } })
+  await expect(page.getByTestId('strength-guide-panel')).toHaveCount(0)
 })
 
 test('strength guide tab shortcut yields to an active user gameplay shortcut', async ({ page }) => {
