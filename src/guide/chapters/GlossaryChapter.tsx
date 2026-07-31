@@ -4,6 +4,7 @@
 import { useTranslations } from 'next-intl'
 
 import styles from '../guide.module.css'
+import { Prose } from '../Prose'
 import { Reveal } from '../Section'
 import { rich } from '../rich'
 
@@ -33,7 +34,7 @@ export function GlossaryChapter() {
   const t = useTranslations('Study.guide')
   return (
     <Reveal>
-      <p>{t.rich('sec.glossary.p1', rich)}</p>
+      <Prose>{t.rich('sec.glossary.p1', rich)}</Prose>
       <dl className={styles.glossary}>
         {GLOSSARY.map((g) => (
           <div key={g} id={`g-${g}`} className={styles.gTerm}>

@@ -10,6 +10,7 @@ import { useTranslations } from 'next-intl'
 import styles from '../guide.module.css'
 import { LabSpotLink } from '../LabSpotLink'
 import { Reveal, Section } from '../Section'
+import { Prose } from '../Prose'
 import { rich } from '../rich'
 
 const HABIT_ROWS = [
@@ -27,11 +28,11 @@ export function LeaksChapter() {
   return (
     <>
       <Reveal>
-        <p>{t.rich('sec.leaks.lede', rich)}</p>
+        <Prose>{t.rich('sec.leaks.lede', rich)}</Prose>
       </Reveal>
 
       <Section id="pricing" mark="§ 1" title={t('sec.leaks.pricingHead')}>
-        <p>{t.rich('sec.leaks.pricingP1', rich)}</p>
+        <Prose>{t.rich('sec.leaks.pricingP1', rich)}</Prose>
         <aside className={styles.margin}>{t.rich('sec.leaks.pricingAside', rich)}</aside>
       </Section>
 
@@ -61,12 +62,12 @@ export function LeaksChapter() {
             </tbody>
           </table>
         </div>
-        <p>{t.rich('sec.leaks.tableP1', rich)}</p>
+        <Prose>{t.rich('sec.leaks.tableP1', rich)}</Prose>
       </Section>
 
       <Section id="reading" mark="§ 3" title={t('sec.leaks.readingHead')}>
-        <p>{t.rich('sec.leaks.readingP1', rich)}</p>
-        <p>{t.rich('sec.leaks.readingP2', rich)}</p>
+        <Prose>{t.rich('sec.leaks.readingP1', rich)}</Prose>
+        <Prose>{t.rich('sec.leaks.readingP2', rich)}</Prose>
         <aside className={styles.margin}>{t.rich('sec.leaks.readingAside', rich)}</aside>
         {/* the bundled 11×9 eleven spot: the side on eleven deals, so the
             role-ordered string is mão 9 × pé 11 */}

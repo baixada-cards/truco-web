@@ -81,6 +81,52 @@ Client-visible study and developer flags are build-time inputs. Production
 passes `NEXT_PUBLIC_STUDY_MANIFEST_URL`, `NEXT_PUBLIC_STUDY_LAB_LINKS=false`,
 and `NEXT_PUBLIC_SHOW_DEV_CONTROLS=false` as Docker build arguments.
 
+## The field guide
+
+The Study field guide lives at `/[locale]/lab/study/guide`. Its prose is in
+`messages/<locale>.json` under `Study.guide`; its structure and figures are in
+`src/guide/chapters/`.
+
+**Books.** `/[locale]/lab/study/guide/print` renders the whole guide on one
+page, and that route is what the PDF and EPUB are built from—same catalog,
+same chapter components, so the books cannot drift from the site:
+
+```bash
+pnpm book --locale en --locale pt-BR --locale es
+```
+
+Output goes to `public/downloads/` (git-ignored—build the binaries, never
+commit them). The guide's landing page links whatever formats it finds there
+for the current locale, so a deploy without the files simply shows no
+downloads. The dev server must be running; point elsewhere with `--base`.
+
+The PDF is paginated by [Paged.js](https://pagedjs.org) (a development
+dependency the build injects into the page—the app never ships it), which is
+what gives the book its real page furniture: 176 × 250 mm pages, running
+heads that name the current chapter, folios, chapters opening on a recto, and
+a contents that resolves `target-counter()` into actual page numbers. Those
+`@page` rules live in `scripts/build_guide_book.mjs`, not in
+`guide.module.css`, because Turbopack's CSS parser rejects named pages and
+margin boxes; they select through the book's `data-*` hooks. The EPUB is
+packed from the same DOM, with the cover captured as its cover image.
+
+**Copy editor (development only).** Double-click any paragraph, heading, or
+list item in the guide to edit its raw catalog string in place, with Vim
+bindings—`fd` or Escape leaves insert mode, `:w` writes it back into
+`messages/<locale>.json`, `C-c C-c` writes and closes, and `:q` closes.
+
+A **blank line inside a string splits it into two paragraphs** (single
+newlines are just whitespace, as in HTML), so prose can be re-cut without
+touching a component. The only inline tags the guide renders are `<b>`,
+`<i>`, `<em>`, and `<code>`—see `src/guide/rich.tsx`; the editor refuses to
+write anything else, because an unknown tag makes next-intl throw at render
+and blanks the whole paragraph.
+
+The editor is disabled in production twice over: the write API sits behind
+the same switch as the other dev routes
+(`TRUCO_ENABLE_DEV_ROUTES=false` turns it off in development too), and
+production builds alias the editor module to a no-op stub.
+
 ## Licensed audio boundary
 
 The five Pro Sound Effects derivatives used by the full production soundscape

@@ -10,6 +10,7 @@ import { ScoreDependencyPlate } from '../plates/ScoreDependencyPlate'
 import { SubgameBacksolvePlate } from '../plates/SubgameBacksolvePlate'
 import { ViraClassPlate } from '../plates/ViraClassPlate'
 import { Reveal, Section } from '../Section'
+import { Prose } from '../Prose'
 import { rich } from '../rich'
 
 export function AbstractionsChapter() {
@@ -20,12 +21,12 @@ export function AbstractionsChapter() {
   return (
     <>
       <Reveal>
-        <p>{t.rich('sec.abstractions.intro1', rich)}</p>
-        <p>{t.rich('sec.abstractions.intro2', rich)}</p>
+        <Prose>{t.rich('sec.abstractions.intro1', rich)}</Prose>
+        <Prose>{t.rich('sec.abstractions.intro2', rich)}</Prose>
       </Reveal>
 
       <Section id="suits" mark="§ 1" title={t('sec.abstractions.suitsHead')}>
-        <p>{t.rich('sec.abstractions.suitsP1', rich)}</p>
+        <Prose>{t.rich('sec.abstractions.suitsP1', rich)}</Prose>
         <div className={styles.abstractionExample} aria-label={t('sec.abstractions.suitsAria')}>
           <span className={styles.abstractionCards}>3♦&ensp;3♠&ensp;3♥&ensp;3♣</span>
           <span className={styles.abstractionArrow}>→</span>
@@ -40,7 +41,7 @@ export function AbstractionsChapter() {
       </Section>
 
       <Section id="copies" mark="§ 2" title={t('sec.abstractions.copiesHead')}>
-        <p>{t.rich('sec.abstractions.copiesP1', rich)}</p>
+        <Prose>{t.rich('sec.abstractions.copiesP1', rich)}</Prose>
         <div className={styles.abstractionExample} aria-label={t('sec.abstractions.copiesAria')}>
           <span className={styles.abstractionSource}>
             <small>{t('sec.abstractions.oneSevenVisible')}</small>
@@ -52,36 +53,36 @@ export function AbstractionsChapter() {
       </Section>
 
       <Section id="roles" mark="§ 3" title={t('sec.abstractions.rolesHead')}>
-        <p>{t.rich('sec.abstractions.rolesP1', rich)}</p>
+        <Prose>{t.rich('sec.abstractions.rolesP1', rich)}</Prose>
         <div className={styles.subgameFactors} aria-label={t('sec.abstractions.factorsAria')}>
           <div>
             <small>{t('sec.abstractions.factorOne')}</small>
             <span>{t('sec.abstractions.factorScore')}</span>
             <strong>5 × 7</strong>
-            <p>{t('sec.abstractions.factorScoreWhy')}</p>
+            <Prose>{t('sec.abstractions.factorScoreWhy')}</Prose>
           </div>
           <b aria-hidden>+</b>
           <div>
             <small>{t('sec.abstractions.factorTwo')}</small>
             <span>{t('sec.abstractions.factorDealer')}</span>
             <strong>{t('sec.abstractions.dealerSeat', { seat: 0 })}</strong>
-            <p>{t('sec.abstractions.factorDealerWhy')}</p>
+            <Prose>{t('sec.abstractions.factorDealerWhy')}</Prose>
           </div>
           <b aria-hidden>+</b>
           <div>
             <small>{t('sec.abstractions.factorThree')}</small>
             <span>{t('sec.abstractions.factorTurnup')}</span>
             <strong>{t('sec.abstractions.factorTurnupValue')}</strong>
-            <p>{t('sec.abstractions.factorTurnupWhy')}</p>
+            <Prose>{t('sec.abstractions.factorTurnupWhy')}</Prose>
           </div>
           <b aria-hidden>→</b>
           <div className={styles.subgameFactorResult}>
             <small>{t('sec.abstractions.factorResultLabel')}</small>
             <strong>{t('sec.abstractions.factorResult')}</strong>
-            <p>{t('sec.abstractions.factorResultValue')}</p>
+            <Prose>{t('sec.abstractions.factorResultValue')}</Prose>
           </div>
         </div>
-        <p>{t.rich('sec.abstractions.rolesP2', rich)}</p>
+        <Prose>{t.rich('sec.abstractions.rolesP2', rich)}</Prose>
         <div className={styles.roleEquivalence} aria-label={t('sec.abstractions.rolesAria')}>
           <div>
             <span>{t('sec.abstractions.dealerSeat', { seat: 0 })}</span>
@@ -96,7 +97,7 @@ export function AbstractionsChapter() {
         <p className={styles.roleExampleNote}>{t('sec.abstractions.roleExampleNote')}</p>
 
         <h3 className={styles.abstractionSubhead}>{t('sec.abstractions.censusHead')}</h3>
-        <p>{t.rich('sec.abstractions.subgamesP1', rich)}</p>
+        <Prose>{t.rich('sec.abstractions.subgamesP1', rich)}</Prose>
         <div className={styles.subgameEquation} aria-label={t('sec.abstractions.censusAria')}>
           <div>
             <strong>12 × 12</strong>
@@ -113,26 +114,26 @@ export function AbstractionsChapter() {
             <span>{t('sec.abstractions.censusTotal')}</span>
           </div>
         </div>
-        <p>{t.rich('sec.abstractions.subgamesP2', rich)}</p>
-        <p>{t.rich('sec.abstractions.simTakeaway', rich)}</p>
+        <Prose>{t.rich('sec.abstractions.subgamesP2', rich)}</Prose>
+        <Prose>{t.rich('sec.abstractions.simTakeaway', rich)}</Prose>
         <a className={styles.anTry} href={`${numbersHref}#similarity`}>
           {t('sec.abstractions.seeAppendix')} →
         </a>
       </Section>
 
       <Section id="vira-classes" mark="§ 4" title={t('sec.abstractions.viraHead')}>
-        <p>{t.rich('sec.abstractions.viraP1', rich)}</p>
+        <Prose>{t.rich('sec.abstractions.viraP1', rich)}</Prose>
         <ViraClassPlate />
-        <p>{t.rich('sec.abstractions.viraP2', rich)}</p>
+        <Prose>{t.rich('sec.abstractions.viraP2', rich)}</Prose>
         <aside className={styles.margin}>{t('sec.abstractions.exactNote')}</aside>
       </Section>
 
       <Section id="subgames" mark="§ 5" title={t('sec.abstractions.subgamesHead')}>
-        <p>{t.rich('sec.abstractions.backsolveP1', rich)}</p>
+        <Prose>{t.rich('sec.abstractions.backsolveP1', rich)}</Prose>
         <SubgameBacksolvePlate />
-        <p>{t.rich('sec.abstractions.backsolveP2', rich)}</p>
+        <Prose>{t.rich('sec.abstractions.backsolveP2', rich)}</Prose>
         <ScoreDependencyPlate />
-        <p>{t.rich('sec.abstractions.sizesTakeaway', rich)}</p>
+        <Prose>{t.rich('sec.abstractions.sizesTakeaway', rich)}</Prose>
         <a className={styles.anTry} href={`${numbersHref}#census`}>
           {t('sec.abstractions.seeAppendix')} →
         </a>

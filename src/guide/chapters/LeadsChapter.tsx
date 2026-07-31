@@ -13,6 +13,7 @@ import { useTranslations } from 'next-intl'
 import type { ChartNode } from '../../lib/study-data'
 import styles from '../guide.module.css'
 import { Reveal, Section } from '../Section'
+import { Prose } from '../Prose'
 import { rich } from '../rich'
 import { LeadsChartsPlate, type LeadsSpot } from '../plates/LeadsChartsPlate'
 
@@ -80,29 +81,29 @@ export function LeadsChapter() {
   return (
     <>
       <Reveal>
-        <p>{t.rich('sec.leads.lede', rich)}</p>
+        <Prose>{t.rich('sec.leads.lede', rich)}</Prose>
       </Reveal>
 
       <Section id="question" mark="§ 1" title={t('sec.leads.questionHead')}>
-        <p>{t.rich('sec.leads.questionP1', rich)}</p>
-        <p>{t.rich('sec.leads.questionP2', rich)}</p>
+        <Prose>{t.rich('sec.leads.questionP1', rich)}</Prose>
+        <Prose>{t.rich('sec.leads.questionP2', rich)}</Prose>
       </Section>
 
       <Section id="charts" mark="§ 2" title={t('sec.leads.chartsHead')}>
-        <p>{t.rich('sec.leads.chartsP1', rich)}</p>
+        <Prose>{t.rich('sec.leads.chartsP1', rich)}</Prose>
         <LeadsChartsPlate spots={spots} tc={tc} />
       </Section>
 
       <Section id="patterns" mark="§ 3" title={t('sec.leads.patternsHead')}>
-        <p>{t.rich('sec.leads.patternsP1', rich)}</p>
-        <p>{t.rich('sec.leads.patternsP2', rich)}</p>
-        <p>{t.rich('sec.leads.patternsP3', rich)}</p>
+        <Prose>{t.rich('sec.leads.patternsP1', rich)}</Prose>
+        <Prose>{t.rich('sec.leads.patternsP2', rich)}</Prose>
+        <Prose>{t.rich('sec.leads.patternsP3', rich)}</Prose>
         <aside className={styles.margin}>{t.rich('sec.leads.patternsAside', rich)}</aside>
       </Section>
 
       <Section id="prices" mark="§ 4" title={t('sec.leads.pricesHead')}>
-        <p>{t.rich('sec.leads.pricesP1', rich)}</p>
-        <p>{t.rich('sec.leads.pricesP2', rich)}</p>
+        <Prose>{t.rich('sec.leads.pricesP1', rich)}</Prose>
+        <Prose>{t.rich('sec.leads.pricesP2', rich)}</Prose>
       </Section>
     </>
   )

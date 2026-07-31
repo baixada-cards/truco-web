@@ -15,6 +15,7 @@ import {
 } from '../GuideFigures'
 import { FormulaTerms, Math } from '../Math'
 import { Reveal, Section } from '../Section'
+import { Prose } from '../Prose'
 import { ViewsSummaryTable } from '../ViewsSummaryTable'
 import { rich } from '../rich'
 
@@ -38,7 +39,7 @@ export function ViewsChapter() {
   return (
     <>
       <Reveal>
-        <p>{t.rich('sec.views.intro', rich)}</p>
+        <Prose>{t.rich('sec.views.intro', rich)}</Prose>
       </Reveal>
 
       <Section id="table" mark="§" title={t('sec.views.tableHead')}>
@@ -46,7 +47,7 @@ export function ViewsChapter() {
       </Section>
 
       <Section id="strategy" mark="§ 1" title={t('sec.views.strategy.head')}>
-        <p>{t.rich('sec.views.strategy.p1', rich)}</p>
+        <Prose>{t.rich('sec.views.strategy.p1', rich)}</Prose>
         <div className={styles.formula}>
           <Math display tex={TEX.strategyNumber} />
           <FormulaTerms
@@ -63,7 +64,7 @@ export function ViewsChapter() {
       </Section>
 
       <Section id="range" mark="§ 2" title={t('sec.views.range.head')}>
-        <p>{t.rich('sec.views.range.p1', rich)}</p>
+        <Prose>{t.rich('sec.views.range.p1', rich)}</Prose>
         <div className={styles.formula}>
           <Math display tex={TEX.range} />
           <FormulaTerms
@@ -76,13 +77,13 @@ export function ViewsChapter() {
           />
           <p className={styles.formulaNote}>{t('sec.views.range.fnote')}</p>
         </div>
-        <p>{t.rich('sec.views.range.p2', rich)}</p>
+        <Prose>{t.rich('sec.views.range.p2', rich)}</Prose>
         <p className={styles.takeaway}>{t('sec.views.range.takeaway')}</p>
         <RangeGridFigure />
       </Section>
 
       <Section id="cost" mark="§ 3" title={t('sec.views.cost.head')}>
-        <p>{t.rich('sec.views.cost.p1', rich)}</p>
+        <Prose>{t.rich('sec.views.cost.p1', rich)}</Prose>
         <div className={styles.formula}>
           <Math display tex={TEX.cost} />
           <Math display tex={TEX.costUnits} />
@@ -95,13 +96,13 @@ export function ViewsChapter() {
             ]}
           />
         </div>
-        <p>{t.rich('sec.views.cost.p2', rich)}</p>
+        <Prose>{t.rich('sec.views.cost.p2', rich)}</Prose>
         <p className={styles.takeaway}>{t('sec.views.cost.takeaway')}</p>
         <CostBlockFigure />
       </Section>
 
       <Section id="compare" mark="§ 4" title={t('sec.views.compare.head')}>
-        <p>{t.rich('sec.views.compare.p1', rich)}</p>
+        <Prose>{t.rich('sec.views.compare.p1', rich)}</Prose>
         <div className={styles.formula}>
           <Math display tex={TEX.compareAccept} />
           <Math display tex={TEX.compareTv} />
@@ -113,7 +114,7 @@ export function ViewsChapter() {
       </Section>
 
       <Section id="selectors" mark="§ 5" title={t('sec.views.selHead')}>
-        <p>{t('sec.views.selIntro')}</p>
+        <Prose>{t('sec.views.selIntro')}</Prose>
         <dl className={styles.views}>
           <div>
             <dt>{t('sec.views.points.term')}</dt>
@@ -142,7 +143,7 @@ export function ViewsChapter() {
       </Section>
 
       <Section id="header" mark="§ 6" title={t('sec.views.headHead')}>
-        <p>{t('sec.views.headIntro')}</p>
+        <Prose>{t('sec.views.headIntro')}</Prose>
         <dl className={styles.views}>
           <div>
             <dt>{t('sec.views.equity.term')}</dt>

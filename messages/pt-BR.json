@@ -907,12 +907,13 @@
       "parts": {
         "theory": {
           "kicker": "Parte I",
-          "head": "A solução, e como lê-la"
+          "head": "A solução, e como lê-la",
+          "lede": "O que é uma solução, como seus gráficos são desenhados e até onde se pode confiar neles."
         },
         "handbook": {
           "kicker": "Parte II",
           "head": "O manual do jogador",
-          "lede": "A Parte I explica o que é a solução; este volume diz o que ela ensina: a mão de onze, a carta de saída, o truco pelos dois lados, e os hábitos que mais custam — cada um precificado em equity da partida. Ele cresce conforme mais do jogo é resolvido."
+          "lede": "O que as soluções ensinam: a mão de onze, a carta de saída, o truco dos dois lados e os hábitos que mais custam."
         },
         "reference": {
           "kicker": "Apêndice",
@@ -1790,7 +1791,11 @@
         "measuredBr": "Medida por melhor resposta adversarial: {pp} pp de vitória na partida exploráveis nesta mão.",
         "caption": "Dados reais — 11x11 v4, um canto que a solução raramente visita: a mão saiu com o 4, o pé levou a rodada com um 3 e saiu na rodada 2 encoberto. A grade exata de duas cartas da mão tem {n} de 87 células com ≈ — pouco alcance rendeu quase nenhum treino."
       },
-      "labSpot": "Percorra esta situação no lab:"
+      "labSpot": "Percorra esta situação no lab:",
+      "downloads": {
+        "head": "Leve o guia com você",
+        "note": "O guia inteiro, num arquivo só."
+      }
     }
   }
 }

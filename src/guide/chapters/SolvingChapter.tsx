@@ -10,6 +10,7 @@ import styles from '../guide.module.css'
 import { Math } from '../Math'
 import { ToyGameWidget } from '../plates/ToyGameWidget'
 import { Reveal, Section } from '../Section'
+import { Prose } from '../Prose'
 import { rich } from '../rich'
 
 const TEX = {
@@ -26,24 +27,24 @@ export function SolvingChapter() {
   return (
     <>
       <Reveal>
-        <p>{t.rich('sec.solving.p1', rich)}</p>
+        <Prose>{t.rich('sec.solving.p1', rich)}</Prose>
       </Reveal>
 
       <Section id="toy" mark="§ 1" title={t('sec.solving.toyHead')}>
-        <p>{t.rich('sec.solving.toySetup', rich)}</p>
+        <Prose>{t.rich('sec.solving.toySetup', rich)}</Prose>
         <ToyGameWidget />
-        <p>{t.rich('sec.solving.toyP2', rich)}</p>
+        <Prose>{t.rich('sec.solving.toyP2', rich)}</Prose>
         <div className={styles.formula}>
           <Math display tex={TEX.evCall} />
           <Math display tex={TEX.indiff} />
           <p className={styles.formulaNote}>{t('sec.solving.toyFnote')}</p>
         </div>
-        <p>{t.rich('sec.solving.toyP3', rich)}</p>
+        <Prose>{t.rich('sec.solving.toyP3', rich)}</Prose>
       </Section>
 
       <Section id="mixing" mark="§ 2" title={t('sec.solving.mixHead')}>
-        <p>{t.rich('sec.solving.mixP1', rich)}</p>
-        <p>{t.rich('sec.solving.mixP2', rich)}</p>
+        <Prose>{t.rich('sec.solving.mixP1', rich)}</Prose>
+        <Prose>{t.rich('sec.solving.mixP2', rich)}</Prose>
         <div className={styles.formula}>
           <Math display tex={TEX.posterior} />
           <Math display tex={TEX.bluffEv} />
@@ -53,13 +54,13 @@ export function SolvingChapter() {
       </Section>
 
       <Section id="cfr" mark="§ 3" title={t('sec.solving.cfrHead')}>
-        <p>{t.rich('sec.solving.cfrP1', rich)}</p>
+        <Prose>{t.rich('sec.solving.cfrP1', rich)}</Prose>
         <div className={styles.formula}>
           <Math display tex={TEX.regretSum} />
           <Math display tex={TEX.regretMatch} />
           <p className={styles.formulaNote}>{t('sec.solving.cfrFnote')}</p>
         </div>
-        <p>{t.rich('sec.solving.cfrP2', rich)}</p>
+        <Prose>{t.rich('sec.solving.cfrP2', rich)}</Prose>
         <p className={styles.aside}>{t('sec.solving.aside')}</p>
       </Section>
 

@@ -9,6 +9,7 @@ const productionTurbopackDevAliases = process.env.NODE_ENV === 'production'
       './lib/use-live-dev-actions': './src/lib/use-live-dev-actions.prod.ts',
       './lib/use-live-dev-controls': './src/lib/use-live-dev-controls.prod.ts',
       './lib/session-dev-api': './src/lib/session-dev-api.prod.ts',
+      './CopyEditor': './src/guide/CopyEditor.prod.tsx',
     }
   : {}
 const productionWebpackDevAliases = process.env.NODE_ENV === 'production'
@@ -29,6 +30,7 @@ const productionWebpackDevAliases = process.env.NODE_ENV === 'production'
         dirname,
         'src/lib/session-dev-api.prod.ts',
       ),
+      './CopyEditor': path.join(dirname, 'src/guide/CopyEditor.prod.tsx'),
     }
   : {}
 const extraAllowedDevOrigins = (process.env.TRUCO_ALLOWED_DEV_ORIGINS ?? '')

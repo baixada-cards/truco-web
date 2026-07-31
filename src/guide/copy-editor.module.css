@@ -1,0 +1,89 @@
+/* Dev-only copy editor. Deliberately looks like a tool, not like the guide:
+   it should never be mistaken for part of the page. */
+
+.panel {
+  position: fixed;
+  z-index: 9000;
+  left: 50%;
+  bottom: 22px;
+  width: min(860px, calc(100vw - 32px));
+  transform: translateX(-50%);
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--brass-1, #a88540);
+  border-radius: 4px;
+  background: #17110c;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(212, 179, 106, 0.35);
+  font-size: 11px;
+  color: rgba(246, 237, 215, 0.72);
+}
+
+.key { color: var(--brass-hi, #ecd999); }
+.locale {
+  padding: 1px 6px;
+  border: 1px solid rgba(212, 179, 106, 0.4);
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.dirty { color: #e8a33c; }
+.close {
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  color: rgba(246, 237, 215, 0.6);
+  font-size: 13px;
+  cursor: pointer;
+}
+.close:hover { color: var(--brass-hi, #ecd999); }
+
+.area {
+  width: 100%;
+  padding: 12px;
+  border: 0;
+  background: transparent;
+  color: #f2e9d6;
+  font: 400 13px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace;
+  resize: vertical;
+  /* normal and visual draw their own block cursor as a selection, so the
+     native caret is hidden there — insert mode gets it back, in brass */
+  caret-color: transparent;
+}
+.areaInsert { caret-color: var(--brass-hi, #ecd999); }
+.area:focus { outline: 0; }
+/* the block cursor IS the one-character selection, so it has to stay legible:
+   the guide's page-wide bordeaux ::selection would put black on dark red */
+.panel .area::selection {
+  background: var(--brass-hi, #ecd999);
+  color: #17110c;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 6px 10px;
+  border-top: 1px solid rgba(212, 179, 106, 0.28);
+  font-size: 11px;
+  color: rgba(246, 237, 215, 0.5);
+}
+.mode { color: rgba(246, 237, 215, 0.8); }
+.pending {
+  padding: 1px 5px;
+  border: 1px solid rgba(212, 179, 106, 0.4);
+  border-radius: 2px;
+  color: var(--brass-hi, #ecd999);
+}
+.modeInsert { color: #7fd18b; }
+.cmdline { color: var(--brass-hi, #ecd999); }
+.hint { margin-left: auto; }
+.msg { color: #7fd18b; }

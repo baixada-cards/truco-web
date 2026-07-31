@@ -10,6 +10,7 @@ import { useTranslations } from 'next-intl'
 import styles from '../guide.module.css'
 import { LabSpotLink } from '../LabSpotLink'
 import { Reveal, Section } from '../Section'
+import { Prose } from '../Prose'
 import { rich } from '../rich'
 
 // Measured 2026-07-18 off the 10x10-tc0-d0 shallow+deep windows.
@@ -27,16 +28,16 @@ export function RaisingChapter() {
   return (
     <>
       <Reveal>
-        <p>{t.rich('sec.raising.lede', rich)}</p>
+        <Prose>{t.rich('sec.raising.lede', rich)}</Prose>
       </Reveal>
 
       <Section id="ladder" mark="§ 1" title={t('sec.raising.ladderHead')}>
-        <p>{t.rich('sec.raising.ladderP1', rich)}</p>
-        <p>{t.rich('sec.raising.ladderP2', rich)}</p>
+        <Prose>{t.rich('sec.raising.ladderP1', rich)}</Prose>
+        <Prose>{t.rich('sec.raising.ladderP2', rich)}</Prose>
       </Section>
 
       <Section id="timing" mark="§ 2" title={t('sec.raising.timingHead')}>
-        <p>{t.rich('sec.raising.timingP1', rich)}</p>
+        <Prose>{t.rich('sec.raising.timingP1', rich)}</Prose>
         <div className={styles.treeTableWrap}>
           <table className={`${styles.treeTable} ${styles.statTable}`}>
             <colgroup>
@@ -59,18 +60,18 @@ export function RaisingChapter() {
             </tbody>
           </table>
         </div>
-        <p>{t.rich('sec.raising.timingP2', rich)}</p>
+        <Prose>{t.rich('sec.raising.timingP2', rich)}</Prose>
         <aside className={styles.margin}>{t.rich('sec.raising.timingAside', rich)}</aside>
       </Section>
 
       <Section id="range" mark="§ 3" title={t('sec.raising.rangeHead')}>
-        <p>{t.rich('sec.raising.rangeP1', rich)}</p>
-        <p>{t.rich('sec.raising.rangeP2', rich)}</p>
+        <Prose>{t.rich('sec.raising.rangeP1', rich)}</Prose>
+        <Prose>{t.rich('sec.raising.rangeP2', rich)}</Prose>
       </Section>
 
       <Section id="answering" mark="§ 4" title={t('sec.raising.answerHead')}>
-        <p>{t.rich('sec.raising.answerP1', rich)}</p>
-        <p>{t.rich('sec.raising.answerP2', rich)}</p>
+        <Prose>{t.rich('sec.raising.answerP1', rich)}</Prose>
+        <Prose>{t.rich('sec.raising.answerP2', rich)}</Prose>
         <aside className={styles.margin}>{t.rich('sec.raising.answerAside', rich)}</aside>
         <LabSpotLink spot="10x10 v4 : 3 3 /" />
       </Section>
