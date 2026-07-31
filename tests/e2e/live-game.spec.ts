@@ -318,6 +318,30 @@ test('Farol keeps the photographic walnut on the table and a separate dark-walnu
   expect(materials.railBackgroundImage).toContain('repeating-linear-gradient')
 })
 
+test('round numerals remain legible across the photographic walnut grain', async ({ page }) => {
+  await startMockedMatch(page)
+
+  const markerStyles = await page.evaluate(() => {
+    const markers = Array.from(document.querySelectorAll('.ft-played-marker'))
+    if (markers.length !== 3) {
+      throw new Error(`Expected three round markers, found ${markers.length}.`)
+    }
+
+    const style = window.getComputedStyle(markers[0])
+    return {
+      color: style.color,
+      fontSize: style.fontSize,
+      fontWeight: style.fontWeight,
+      textShadow: style.textShadow,
+    }
+  })
+
+  expect(markerStyles.color).toBe('rgba(243, 231, 207, 0.88)')
+  expect(markerStyles.fontSize).toBe('15px')
+  expect(markerStyles.fontWeight).toBe('600')
+  expect(markerStyles.textShadow).not.toBe('none')
+})
+
 test('launcher walnut is one continuous full-screen surface', async ({ page }) => {
   await page.goto(LIVE_GAME_TEST_URL)
   await ensureLauncherReady(page)

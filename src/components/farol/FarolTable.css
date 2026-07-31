@@ -1493,13 +1493,17 @@
 .ft-played-marker {
   font-family: var(--font-serif, serif);
   font-style: italic;
-  font-size: 13px;
-  color: rgba(255, 240, 210, 0.35);
-  letter-spacing: 0.3em;
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(243, 231, 207, 0.88);
+  letter-spacing: 0.2em;
+  text-shadow:
+    0 1px 2px rgba(8, 4, 2, 0.92),
+    0 0 7px rgba(8, 4, 2, 0.66);
 }
-.ft-played-marker-won  { color: rgba(168, 133, 64, 0.9); }
-.ft-played-marker-lost { color: rgba(162, 60, 44, 0.75); }
-.ft-played-marker-pending { color: rgba(255, 240, 210, 0.55); }
+.ft-played-marker-won  { color: rgba(236, 217, 153, 1); }
+.ft-played-marker-lost { color: rgba(210, 116, 94, 0.98); }
+.ft-played-marker-pending { color: rgba(243, 231, 207, 0.96); }
 
 /* ─── Stake ─── */
 .ft-stake {
