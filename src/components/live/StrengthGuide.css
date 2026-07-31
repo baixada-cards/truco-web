@@ -47,6 +47,10 @@
   pointer-events: none;
 }
 
+.sg3-table-host.is-dismiss-layer {
+  pointer-events: auto;
+}
+
 .sg3-anchor {
   --sg3-unfold-x: 22px;
   --sg3-unfold-y: 74px;
@@ -231,8 +235,8 @@
   height: 1px;
   background: linear-gradient(
     90deg,
-    rgba(98, 69, 32, 0.58),
-    rgba(98, 69, 32, 0.2)
+    rgba(98, 69, 32, 0.2),
+    rgba(98, 69, 32, 0.58)
   );
 }
 
@@ -243,8 +247,8 @@
   top: 50%;
   width: 5px;
   height: 5px;
-  border-top: 1px solid rgba(98, 69, 32, 0.42);
-  border-right: 1px solid rgba(98, 69, 32, 0.42);
+  border-top: 1px solid rgba(98, 69, 32, 0.58);
+  border-right: 1px solid rgba(98, 69, 32, 0.58);
   transform: translateY(-50%) rotate(45deg);
 }
 

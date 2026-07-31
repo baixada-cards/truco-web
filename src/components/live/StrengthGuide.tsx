@@ -21,8 +21,8 @@ type StrengthGuideCorner = 'tr' | 'tl' | 'br' | 'bl'
 type RankCardState = '' | 'strike' | 'turnup'
 
 const SG3_DISPLAY_ROWS = [
-  [...STRENGTH_RANK_ORDER].reverse().slice(0, 5),
-  [...STRENGTH_RANK_ORDER].reverse().slice(5),
+  STRENGTH_RANK_ORDER.slice(5),
+  STRENGTH_RANK_ORDER.slice(0, 5),
 ]
 
 function strengthGuideLocale(locale: string) {
@@ -136,9 +136,9 @@ function SG3RankRow({
         ))}
       </div>
       <div className="sg3-rank-direction">
-        <span>{t('strongest')}</span>
-        <span className="sg3-rank-direction-line" aria-hidden="true" />
         <span>{t('weakest')}</span>
+        <span className="sg3-rank-direction-line" aria-hidden="true" />
+        <span>{t('strongest')}</span>
       </div>
     </div>
   )
@@ -376,12 +376,16 @@ export function StrengthGuidePanel({
   return (
     <div
       ref={hostRef}
-      className="sg3-table-host"
+      className={`sg3-table-host ${showAnchored ? 'is-dismiss-layer' : ''}`}
       data-testid="strength-guide-host"
       style={paperStyle}
+      onClick={showAnchored ? handleClose : undefined}
     >
       {showAnchored && (
-        <div className={`sg3-anchor sg3-anchor-${corner}`}>
+        <div
+          className={`sg3-anchor sg3-anchor-${corner}`}
+          onClick={(event) => { event.stopPropagation() }}
+        >
           <SG3Paper
             ranking={ranking}
             deckSystem={deckSystem}
