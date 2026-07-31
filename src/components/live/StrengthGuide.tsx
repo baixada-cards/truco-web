@@ -21,8 +21,8 @@ type StrengthGuideCorner = 'tr' | 'tl' | 'br' | 'bl'
 type RankCardState = '' | 'strike' | 'turnup'
 
 const SG3_DISPLAY_ROWS = [
-  STRENGTH_RANK_ORDER.slice(5),
-  STRENGTH_RANK_ORDER.slice(0, 5),
+  [...STRENGTH_RANK_ORDER].reverse().slice(0, 5),
+  [...STRENGTH_RANK_ORDER].reverse().slice(5),
 ]
 
 function strengthGuideLocale(locale: string) {
@@ -109,32 +109,37 @@ function SG3RankRow({
   const t = useTranslations('Live.strengthGuide')
 
   return (
-    <div className="sg3-rank-row">
-      <span className="sg3-rank-end-label sg3-rank-end-label-strong">{t('strongest')}</span>
-      <span className="sg3-rank-end-label sg3-rank-end-label-weak">{t('weakest')}</span>
-      {SG3_DISPLAY_ROWS.flatMap((row, rowIndex) => (
-        row.map((rank, columnIndex) => {
-          const state: RankCardState = rank === ranking.manilhaRank
-            ? 'strike'
-            : rank === ranking.turnup.rank
-              ? 'turnup'
-              : ''
-          const gridStyle = {
-            gridColumn: columnIndex + 2,
-            gridRow: rowIndex + 1,
-          } as CSSProperties
+    <div className="sg3-rank-section" aria-label={t('cardStrengthAria')}>
+      <div className="sg3-rank-row">
+        {SG3_DISPLAY_ROWS.flatMap((row, rowIndex) => (
+          row.map((rank, columnIndex) => {
+            const state: RankCardState = rank === ranking.manilhaRank
+              ? 'strike'
+              : rank === ranking.turnup.rank
+                ? 'turnup'
+                : ''
+            const gridStyle = {
+              gridColumn: columnIndex + 1,
+              gridRow: rowIndex + 1,
+            } as CSSProperties
 
-          return (
-            <SG3RankCard
-              key={rank}
-              rank={rank}
-              deckSystem={deckSystem}
-              state={state}
-              style={gridStyle}
-            />
-          )
-        })
-      ))}
+            return (
+              <SG3RankCard
+                key={rank}
+                rank={rank}
+                deckSystem={deckSystem}
+                state={state}
+                style={gridStyle}
+              />
+            )
+          })
+        ))}
+      </div>
+      <div className="sg3-rank-direction">
+        <span>{t('strongest')}</span>
+        <span className="sg3-rank-direction-line" aria-hidden="true" />
+        <span>{t('weakest')}</span>
+      </div>
     </div>
   )
 }
@@ -178,7 +183,7 @@ function SG3Paper({
   return (
     <aside
       id="strength-guide-panel"
-      className="strength-guide sg3-paper layout-pocket has-fold"
+      className="strength-guide sg3-paper layout-pocket"
       data-testid="strength-guide-panel"
       aria-label={t('panelAria')}
       data-locale={locale}
@@ -205,10 +210,6 @@ function SG3Paper({
 
         <div className="sg3-manilha-block sg3-manilha-block-top">
           <SG3ManilhaCluster ranking={ranking} deckSystem={deckSystem} />
-          <div className="sg3-manilha-note sg3-manilha-note-down">
-            <span aria-hidden="true">↑ </span>
-            {t('note')}
-          </div>
         </div>
 
         <SG3RankRow ranking={ranking} deckSystem={deckSystem} />
@@ -282,7 +283,7 @@ export function StrengthGuidePanel({
   pulse = false,
   corner = 'tr',
   breakpoint = 720,
-  paperWidth = 300,
+  paperWidth = 336,
   peekPortalRef,
   peekDisabled = false,
   onOpen,
