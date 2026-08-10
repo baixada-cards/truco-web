@@ -58,6 +58,9 @@ that exact revision to avoid a second clone.
   It must be the server's canonical `run.app` URL and remains unset locally.
 - `TRUCO_ANON_COOKIE_SECRET` signs anonymous live-session cookies. The
   compatibility alias `TRUCO_LIVE_COOKIE_SECRET` remains supported.
+- `TRUCO_SITE_URL` is the public origin used to build absolute URLs in
+  `sitemap.xml` and `robots.txt`. It defaults to `https://truco.baixada.cards`
+  and nothing else in the app reads it.
 - `STUDY_LAB_MODE=off|stealth|public` controls the study route at request time.
   Only `off` changes behavior: it makes the routes 404. `stealth` and `public`
   are the same request-time path, and both are reachable by anyone with a URL.
@@ -67,7 +70,10 @@ that exact revision to avoid a second clone.
 Production study data is public derived output in object storage. The study
 lab is a public surface: production links to it and search engines may index
 it. The one exception is `guide/print`, which stays `noindex` because it
-duplicates the routed chapters.
+duplicates the routed chapters. `sitemap.xml` lists every locale of the home
+page, the lab and the guide chapters, cross-linked by hreflang, and omits
+`guide/print` for the same reason. Both it and `robots.txt` render per request
+because they depend on `STUDY_LAB_MODE`, which the image build never sees.
 
 Provider keys are server-side configuration. A player-supplied key is held in
 memory for the match and transits the BFF to the server; it is not persisted.
