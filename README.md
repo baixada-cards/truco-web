@@ -59,12 +59,15 @@ that exact revision to avoid a second clone.
 - `TRUCO_ANON_COOKIE_SECRET` signs anonymous live-session cookies. The
   compatibility alias `TRUCO_LIVE_COOKIE_SECRET` remains supported.
 - `STUDY_LAB_MODE=off|stealth|public` controls the study route at request time.
+  Only `off` changes behavior: it makes the routes 404. `stealth` and `public`
+  are the same request-time path, and both are reachable by anyone with a URL.
 - `STUDY_MANIFEST_URL` pins an immutable public study-data release.
 - `NEXT_PUBLIC_STUDY_LAB_LINKS=true` exposes study links in a production build.
 
-Production study data is public derived output in object storage. Stealth mode
-is routing, not authentication; study routes emit `noindex` metadata and
-headers.
+Production study data is public derived output in object storage. The study
+lab is a public surface: production links to it and search engines may index
+it. The one exception is `guide/print`, which stays `noindex` because it
+duplicates the routed chapters.
 
 Provider keys are server-side configuration. A player-supplied key is held in
 memory for the match and transits the BFF to the server; it is not persisted.

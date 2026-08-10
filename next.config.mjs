@@ -53,19 +53,6 @@ const baixadaApexRedirects = baixadaApexHosts.map((host) => ({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
-  async headers() {
-    return [
-      {
-        source: '/:locale/lab/study/:path*',
-        headers: [
-          {
-            key: 'X-Robots-Tag',
-            value: 'noindex, nofollow',
-          },
-        ],
-      },
-    ]
-  },
   async redirects() {
     return baixadaApexRedirects
   },

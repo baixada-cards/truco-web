@@ -3,6 +3,7 @@
 // usable "print this" view in its own right. Same catalog, same chapter
 // components as the routed guide, so the book can never drift from the site.
 
+import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 
@@ -12,6 +13,12 @@ import { GuideBookPage } from '../../../../../../src/guide/GuideBookPage'
 import { studyLabRouteEnabled } from '../../../../../../src/server/study-lab-config'
 
 export const dynamic = 'force-dynamic'
+
+// Every word here also lives on the routed chapter pages, so keep the
+// one-page view out of the index and let the chapters be the canonical copy.
+export const metadata: Metadata = {
+  robots: { index: false, follow: true },
+}
 
 export default async function GuidePrintPage({
   params,
