@@ -56,7 +56,9 @@ that exact revision to avoid a second clone.
 - `TRUCO_ENGINE_SERVICE_AUDIENCE` optionally enables Google-signed
   service-to-service authentication for an IAM-protected Cloud Run server.
   It must be the server's canonical `run.app` URL and remains unset locally.
-- `TRUCO_ANON_COOKIE_SECRET` signs anonymous live-session cookies. The
+- `TRUCO_ANON_COOKIE_SECRET` signs anonymous live-session cookies. Production
+  requires a secret of at least 32 characters; generate one with a secure
+  random source and store it in the deployment's secret manager. The
   compatibility alias `TRUCO_LIVE_COOKIE_SECRET` remains supported.
 - `TRUCO_SITE_URL` is the public origin used to build absolute URLs in
   `sitemap.xml` and `robots.txt`. It defaults to `https://truco.baixada.cards`

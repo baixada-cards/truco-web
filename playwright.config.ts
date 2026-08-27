@@ -11,6 +11,7 @@ function positiveInteger(value: string | undefined) {
 }
 
 const workers = positiveInteger(process.env.PLAYWRIGHT_WORKERS) ?? 2
+const playwrightCookieSecret = 'x'.repeat(32)
 
 export default defineConfig({
   testDir: './tests/e2e',
@@ -39,6 +40,11 @@ export default defineConfig({
     {
       command: 'pnpm exec next build && pnpm exec next start --port 3002',
       cwd: configDir,
+      env: {
+        ...process.env,
+        TRUCO_ANON_COOKIE_SECRET:
+          process.env.TRUCO_ANON_COOKIE_SECRET ?? playwrightCookieSecret,
+      },
       url: 'http://127.0.0.1:3002',
       reuseExistingServer: !process.env.CI,
       timeout: 120_000,
