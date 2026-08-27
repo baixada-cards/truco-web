@@ -5,6 +5,14 @@ import { NextResponse } from 'next/server.js'
 const LIVE_SUBJECT_COOKIE_NAME = 'truco_live_subject'
 const LIVE_SUBJECT_COOKIE_VERSION = 'v1'
 const LIVE_SUBJECT_COOKIE_MAX_AGE_SECONDS = 60 * 60 * 24 * 365
+const MINIMUM_LIVE_SUBJECT_SECRET_LENGTH = 32
+const DOCUMENTED_PLACEHOLDER_SECRET = 'replace-me-with-a-long-random-secret'
+
+type LiveSubjectSecretEnvironment = {
+  NODE_ENV?: string
+  TRUCO_ANON_COOKIE_SECRET?: string
+  TRUCO_LIVE_COOKIE_SECRET?: string
+}
 
 // The no-env fallback secret must be shared process-wide, not per module
 // instance: the dev server bundles routes separately, and a cookie signed by
@@ -146,11 +154,33 @@ function signAnonymousSubject(subject: string) {
 }
 
 function getLiveSubjectSecret() {
-  return (
-    process.env.TRUCO_ANON_COOKIE_SECRET ??
-    process.env.TRUCO_LIVE_COOKIE_SECRET ??
-    fallbackLiveSubjectSecret
-  )
+  return resolveLiveSubjectSecret(process.env, fallbackLiveSubjectSecret)
+}
+
+export function resolveLiveSubjectSecret(
+  env: LiveSubjectSecretEnvironment,
+  fallbackSecret: string,
+) {
+  const configuredSecret =
+    env.TRUCO_ANON_COOKIE_SECRET ?? env.TRUCO_LIVE_COOKIE_SECRET
+
+  if (configuredSecret !== undefined) {
+    if (
+      configuredSecret === DOCUMENTED_PLACEHOLDER_SECRET ||
+      configuredSecret.length < MINIMUM_LIVE_SUBJECT_SECRET_LENGTH
+    ) {
+      throw new Error(
+        `TRUCO_ANON_COOKIE_SECRET must be a generated secret of at least ${MINIMUM_LIVE_SUBJECT_SECRET_LENGTH} characters.`,
+      )
+    }
+    return configuredSecret
+  }
+
+  if (env.NODE_ENV === 'production') {
+    throw new Error('TRUCO_ANON_COOKIE_SECRET is required in production.')
+  }
+
+  return fallbackSecret
 }
 
 function isAnonymousSubject(value: string | undefined): value is string {
