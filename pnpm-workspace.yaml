@@ -4,13 +4,6 @@ packages:
 # Equivalent to npm min-release-age=7 (days); value is minutes.
 minimumReleaseAge: 10080
 
-# Temporary security exceptions for the Next.js and fast-uri fixes. Their exact
-# versions remain lockfile-pinned; remove these names after the seven-day gate.
-minimumReleaseAgeExclude:
-  - next
-  - "@next/*"
-  - fast-uri
-
 # Exact-commit Git dependency whose reviewed prepare hook builds its exports.
 onlyBuiltDependencies:
   - "@baixada-cards/design-system"
