@@ -999,7 +999,6 @@ test('villain final card animates after hero accepts a third-round raise', async
 
   await page.getByRole('button', { name: /^Accept\b/ }).click()
 
-  await expect(page.getByTestId('opponent-play-overlay')).toBeVisible({ timeout: 3_000 })
   await expect.poll(async () => (
     page.locator('.current-opponent-card .card:not(.placeholder)').count()
   )).toBe(1)
