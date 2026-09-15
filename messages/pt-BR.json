@@ -1105,7 +1105,7 @@
         "chart": {
           "title": "Lendo um gráfico",
           "intro1": "Cada gráfico mostra como a solução joga <b>toda mão possível</b> numa decisão. Com as três cartas desconhecidas o lab nunca as espreme numa grade única: ele desenha <b>blocos exatos</b> — uma carta fixada por bloco, as outras duas nos eixos — então cada célula é exatamente uma mão, nunca uma família.",
-          "intro2": "O leitor abaixo vira um 5 (<code>v5</code>), então os 6 são as manilhas: vencem tudo, carregam o naipe — 6♣ > 6♥ > 6♠ > 6♦ — e cada uma é uma <b>carta única</b>, então uma linha ou coluna de manilha guarda exatamente uma cópia e aparece sozinha. Ranks comuns ignoram naipe por completo: um 3 é qualquer 3.",
+          "intro2": "O leitor abaixo vira um 4 (<code>v4</code>), então os 5 são as manilhas: vencem tudo, carregam o naipe — 5♣ > 5♥ > 5♠ > 5♦ — e cada uma é uma <b>carta única</b>, então uma linha ou coluna de manilha guarda exatamente uma cópia e aparece sozinha. Ranks comuns ignoram naipe por completo: um 3 é qualquer 3.",
           "blocksHead": "Achando uma mão",
           "blocksP": "Fixe a sua carta mais fraca para escolher o bloco (este leitor começa em <code>L = 7</code>), depois corra a mais alta pelas linhas e a do meio pelas colunas. O próprio rótulo de latão é o controle — clique nele para trocar tanto a posição fixada quanto a carta única deste gráfico. Passe o mouse ou toque em qualquer célula —",
           "numberHead": "O número, as faixas e o ≈",
@@ -1627,7 +1627,7 @@
       "gcr": {
         "hint": "Passe o mouse ou toque numa célula. O bloco fixa uma carta; os eixos nomeiam as outras duas.",
         "badgeTitle": "Escolha a posição (H·M·L) e a carta fixadas. Esta figura didática sempre mostra um gráfico.",
-        "caption": "Dados reais — 11x11 v5, saída da mão, desenhado com as próprias células do lab. O rótulo de latão escolhe a carta fixada; o leitor imprime a mistura completa da mão apontada e o % de vitória de cada ação."
+        "caption": "Dados reais — 11×9 v4, a mão de onze vista por quem está com onze: aceitar ou correr, desenhado com as próprias células do lab. O rótulo de latão escolhe a carta fixada; o leitor imprime a mistura completa da mão apontada e o % de vitória de cada ação."
       },
       "footer": {
         "openLab": "Abrir o lab",

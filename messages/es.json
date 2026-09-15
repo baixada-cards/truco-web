@@ -1105,7 +1105,7 @@
         "chart": {
           "title": "Leyendo un gráfico",
           "intro1": "Cada gráfico muestra cómo juega la solución <b>cada mano posible</b> en una decisión. Con las tres cartas desconocidas el lab nunca las aprieta en una sola grilla: dibuja <b>bloques exactos</b> — una carta fijada por bloque, las otras dos en los ejes — así cada celda es exactamente una mano, nunca una familia.",
-          "intro2": "El lector de abajo da vuelta un 5 (<code>v5</code>), así que los 6 son las manilhas: le ganan a todo, cargan su palo — 6♣ > 6♥ > 6♠ > 6♦ — y cada una es una <b>carta única</b>, así que una fila o columna de manilha guarda exactamente una copia y aparece sola. Los valores comunes ignoran el palo por completo: un 3 es cualquier 3.",
+          "intro2": "El lector de abajo da vuelta un 4 (<code>v4</code>), así que los 5 son las manilhas: le ganan a todo, cargan su palo — 5♣ > 5♥ > 5♠ > 5♦ — y cada una es una <b>carta única</b>, así que una fila o columna de manilha guarda exactamente una copia y aparece sola. Los valores comunes ignoran el palo por completo: un 3 es cualquier 3.",
           "blocksHead": "Encontrar una mano",
           "blocksP": "Fijá tu carta más débil para elegir el bloque (este lector empieza en <code>L = 7</code>), después corré la más alta por las filas y la del medio por las columnas. La propia etiqueta de latón es el control — hacé clic para cambiar tanto la posición fijada como la única carta de este gráfico. Pasá el mouse o tocá cualquier celda —",
           "numberHead": "El número, las bandas y el ≈",
@@ -1627,7 +1627,7 @@
       "gcr": {
         "hint": "Pasá el mouse o tocá una celda. El bloque fija una carta; los ejes nombran las otras dos.",
         "badgeTitle": "Elegí la posición (H·M·L) y la carta fijadas. Esta figura didáctica siempre muestra un gráfico.",
-        "caption": "Datos reales — 11x11 v5, salida de la mano, dibujado con las mismas celdas del lab. La etiqueta de latón elige la carta fijada; el lector imprime la mezcla completa de la mano apuntada y el % de victoria de cada acción."
+        "caption": "Datos reales — 11×9 v4, la mano de once vista por el lado que tiene once: aceptar o irse, dibujado con las mismas celdas del lab. La etiqueta de latón elige la carta fijada; el lector imprime la mezcla completa de la mano apuntada y el % de victoria de cada acción."
       },
       "footer": {
         "openLab": "Abrir el lab",

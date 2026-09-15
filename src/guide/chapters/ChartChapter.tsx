@@ -1,9 +1,11 @@
-// Chapter III — reading a chart, rebuilt on the REAL cell component (plan 77
-// C): exact blocks with one card pinned per block, the printed number, the ≈
-// flag, and the LIST as the same data sorted into rows. The old "Grid, List
-// & H·M·L" section is gone (plan 77 K-1): the lab's brass block badge is now
-// the control and explains itself. The interactive and the list snippet both
-// draw the same real solved node the lab charts.
+// Reading a chart, on the REAL cell component (plan 77 C): exact blocks
+// with one card pinned per block, the printed number, the ≈ flag, and the
+// LIST as the same data sorted into rows. The lab's brass block badge is the
+// control and explains itself. The reader and the list snippet both draw the
+// same real solved node: the hand of eleven against nine, whose only actions
+// are accept and fold, so a first chart has two colours and no hidden
+// opponent action to reason about. The ≈ figure keeps its rarely-visited
+// opening-lead corner, where the flag actually occurs.
 
 import { useTranslations } from 'next-intl'
 
@@ -20,6 +22,7 @@ import {
   roleOrder,
   type ChartRow,
 } from '../../lib/study-data'
+import { CHART_CHAPTER_SPOT, loadElevenFixture } from '../eleven-data'
 import { findNode, loadStudyDoc } from '../GuideFigures'
 import styles from '../guide.module.css'
 import { ApproxFigure } from '../plates/ApproxFigure'
@@ -28,16 +31,12 @@ import { Reveal, Section } from '../Section'
 import { Prose } from '../Prose'
 import { rich } from '../rich'
 
-const CHART_DOC = '11x11-tc0-d0.json'
-// The game tree is rank-isomorphic across turn-ups: the same certified class
-// strategy can be rendered under another vira without changing a row's class
-// or action. This reader uses v5 so its default L = 7 example has real room.
-const FINDING_HAND_TURNUP_CLASS = 1
-
-/** the real node the whole chapter reads: mão's opening lead at 11×11, v4 */
+/** the real node the reader and the list read: the eleven side's accept-or-
+ *  fold at 11×9, turn-up 4. The fixture carries no certificate, so the ≈
+ *  tolerance falls back to the lab's default. */
 function chapterNode() {
-  const doc = loadStudyDoc(CHART_DOC)
-  return { doc, node: findNode(doc, []) }
+  const spot = loadElevenFixture().spots[CHART_CHAPTER_SPOT]
+  return { tc: spot.tc, qgapPP: 1, node: spot.node }
 }
 
 /** compact copy of the node's rows for the client-side reader */
@@ -56,8 +55,8 @@ function readerRows(rows: ChartRow[]): ChartRow[] {
 /** the first rows of the L=4 block, exactly as the lab's LIST sorts them */
 function ListSnippet() {
   const t = useTranslations('Study.guide')
-  const { doc, node } = chapterNode()
-  const infos = classInfos(doc.tc, 'cards')
+  const { tc, node } = chapterNode()
+  const infos = classInfos(tc, 'cards')
   const labels = infos.map((c) => c.label)
   const entries = node.rows
     .filter((r) => r.hand[2] === 0)
@@ -124,7 +123,7 @@ function ApproxProps() {
 
 export function ChartChapter() {
   const t = useTranslations('Study.guide')
-  const { doc, node } = chapterNode()
+  const { tc, qgapPP, node } = chapterNode()
   return (
     <>
       <Reveal>
@@ -134,11 +133,7 @@ export function ChartChapter() {
 
       <Section id="blocks" mark="§ 1" title={t('sec.chart.blocksHead')}>
         <Prose>{t.rich('sec.chart.blocksP', rich)}</Prose>
-        <GuideChartReader
-          tc={FINDING_HAND_TURNUP_CLASS}
-          qgapPP={doc.certificate?.assert_qgap_pp ?? 1}
-          rows={readerRows(node.rows)}
-        />
+        <GuideChartReader tc={tc} qgapPP={qgapPP} rows={readerRows(node.rows)} />
       </Section>
 
       <Section id="number" mark="§ 2" title={t('sec.chart.numberHead')}>

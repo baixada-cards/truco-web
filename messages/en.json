@@ -1105,7 +1105,7 @@
         "chart": {
           "title": "Reading a chart",
           "intro1": "Each chart shows how the solve plays <b>every possible holding</b> at one decision. With all three cards unknown the lab never squeezes them into one flat grid: it draws <b>exact blocks</b> — one card pinned per block, the other two on the axes — so every cell is exactly one holding, never a family.",
-          "intro2": "The reader below turns up a 5 (<code>v5</code>), so the 6s are the manilhas: they beat everything, they carry their suit — 6♣ > 6♥ > 6♠ > 6♦ — and each is a <b>single card</b>, so a manilha row or column holds exactly one copy and appears alone. Plain ranks ignore suit entirely: a 3 is any 3.",
+          "intro2": "The reader below turns up a 4 (<code>v4</code>), so the 5s are the manilhas: they beat everything, they carry their suit — 5♣ > 5♥ > 5♠ > 5♦ — and each is a <b>single card</b>, so a manilha row or column holds exactly one copy and appears alone. Plain ranks ignore suit entirely: a 3 is any 3.",
           "blocksHead": "Finding a hand",
           "blocksP": "Pin your weakest card to pick the block (this reader begins at <code>L = 7</code>), then run your highest card down the rows and your middle card across the columns. The brass label is itself the control — click it to change both the pinned slot and the one card this chart holds fixed. Hover or tap any cell —",
           "numberHead": "The number, the bands, and ≈",
@@ -1627,7 +1627,7 @@
       "gcr": {
         "hint": "Hover or tap a cell. The block pins one card; the axes name the other two.",
         "badgeTitle": "Choose the pinned slot (H·M·L) and card. This teaching figure always shows one chart.",
-        "caption": "Real data — 11x11 v5, mão's opening lead, drawn with the lab's own cells. The brass label chooses the pinned card; the readout prints the pointed holding's full mix and each action's win %."
+        "caption": "Real data — 11×9 v4, the hand of eleven seen from the side on eleven: accept or fold, drawn with the lab's own cells. The brass label chooses the pinned card; the readout prints the pointed holding's full mix and each action's win %."
       },
       "footer": {
         "openLab": "Open the lab",
