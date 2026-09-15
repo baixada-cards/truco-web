@@ -903,6 +903,7 @@
       "kicker": "Baixada · Estudo · Guia de campo",
       "title": "Lendo os gráficos da solução",
       "lede": "Isto é truco <b>resolvido</b>. Para um punhado de situações exatas de partida, ele mostra o jeito de jogar que <b>não pode ser explorado</b> — calculado por uma máquina jogando contra si mesma bilhões de mãos. Não é a opinião de um bot; é a aritmética do jogo. Veja como lê-lo.",
+      "written": "O texto deste guia foi redigido com um assistente de IA e revisado pelo autor. Cada número, gráfico e figura vem da saída do solucionador.",
       "contents": "Conteúdo",
       "parts": {
         "theory": {
@@ -1779,10 +1780,6 @@
           "term": "explorabilidade · ε",
           "def": "quanto uma melhor resposta perfeita ganha contra uma estratégia, na média dos dois assentos — o número que o certificado de um spot limita. ε 0,01 ≈ 0,5 pp de chance de vencer."
         }
-      },
-      "landing": {
-        "viewsIntro": "As quatro lentes do lab sobre uma decisão resolvida — a página mais importante deste guia.",
-        "viewsCta": "Ler o capítulo das quatro visões"
       },
       "gax": {
         "hint": "Passe o mouse ou toque numa célula. Células sólidas carregam misturas treinadas; as células pálidas com ≈ estão sinalizadas.",

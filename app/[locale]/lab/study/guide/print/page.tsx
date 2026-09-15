@@ -58,6 +58,7 @@ export default async function GuidePrintPage({
       kicker={t('kicker')}
       title={t('title')}
       contents={t('contents')}
+      written={t('written')}
       parts={parts}
     />
   )

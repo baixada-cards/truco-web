@@ -46,6 +46,7 @@ export function GuideLanding() {
             <i />
           </div>
           <p className={styles.lede}>{t.rich('lede', rich)}</p>
+          <p className={styles.written}>{t('written')}</p>
           <div className={styles.contentsHead}>{t('contents')}</div>
         </header>
 

@@ -903,6 +903,7 @@
       "kicker": "Baixada · Estudio · Guía de campo",
       "title": "Leyendo los gráficos de la solución",
       "lede": "Esto es truco <b>resuelto</b>. Para un puñado de situaciones exactas de partida, muestra la forma de jugar que <b>no se puede explotar</b> — calculada por una máquina que juega contra sí misma miles de millones de manos. No es la opinión de un bot; es la aritmética del juego. Así se lee.",
+      "written": "El texto de esta guía fue redactado con un asistente de IA y revisado por el autor. Cada número, gráfico y figura sale de la salida del solucionador.",
       "contents": "Contenido",
       "parts": {
         "theory": {
@@ -1779,10 +1780,6 @@
           "term": "explotabilidad · ε",
           "def": "cuánto gana una mejor respuesta perfecta contra una estrategia, promediado entre los dos asientos — el número que acota el certificado de un spot. ε 0,01 ≈ 0,5 pp de chance de ganar."
         }
-      },
-      "landing": {
-        "viewsIntro": "Las cuatro lentes del lab sobre una decisión resuelta — la página más importante de esta guía.",
-        "viewsCta": "Leé el capítulo de las cuatro vistas"
       },
       "gax": {
         "hint": "Pasá el mouse o tocá una celda. Las celdas sólidas llevan mezclas entrenadas; las celdas pálidas con ≈ están señaladas.",

@@ -903,6 +903,7 @@
       "kicker": "Baixada · Study · Field guide",
       "title": "Optimal Truco",
       "lede": "This is <b>solved</b> heads-up truco paulista. For a selection of spots, it shows a way to play that <b>can’t be exploited</b>, worked out by a machine playing billions of hands.",
+      "written": "The text of this guide was drafted with an AI assistant and reviewed by the author. Every number, chart, and figure in it is read from the solver’s output.",
       "contents": "Contents",
       "parts": {
         "theory": {
@@ -1779,10 +1780,6 @@
           "term": "exploitability · ε",
           "def": "how much a perfect best response gains against a strategy, averaged over both seats — the number a spot's certificate bounds. ε 0.01 ≈ 0.5 pp of match-win chance."
         }
-      },
-      "landing": {
-        "viewsIntro": "The lab's four lenses on one solved decision — the most important page of this guide.",
-        "viewsCta": "Read the four views chapter"
       },
       "gax": {
         "hint": "Hover or tap a cell. Solid cells carry trained mixes; the pale ≈ cells are flagged.",

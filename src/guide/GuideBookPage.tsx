@@ -34,12 +34,16 @@ export function GuideBookPage({
   kicker,
   title,
   contents,
+  written,
   parts,
 }: {
   locale: string
   kicker: string
   title: string
   contents: string
+  /** how the text was made: drafted with an AI assistant, reviewed by the
+   *  author. Said once on the title page, as on the landing. */
+  written: string
   parts: BookPart[]
 }) {
   return (
@@ -64,6 +68,7 @@ export function GuideBookPage({
           <em>❧</em>
           <i />
         </div>
+        <p className={styles.bookWritten}>{written}</p>
       </section>
 
       <nav className={styles.bookToc} aria-label={contents} data-toc>
