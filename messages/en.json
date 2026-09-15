@@ -916,7 +916,7 @@
           "lede": "What the solutions teach: the hand of eleven, the opening lead, the truco from both sides, and the habits that cost the most."
         },
         "reference": {
-          "kicker": "Back matter",
+          "kicker": "Appendices",
           "head": "Reference"
         }
       },
@@ -956,6 +956,7 @@
         "backToContents": "guide contents",
         "openLabShort": "open the lab",
         "chapter": "Chapter {no}",
+        "appendix": "Appendix {no}",
         "previous": "Previous",
         "next": "Next",
         "pagerAria": "Chapter navigation"

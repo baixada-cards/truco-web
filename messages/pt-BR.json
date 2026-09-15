@@ -916,7 +916,7 @@
           "lede": "O que as soluções ensinam: a mão de onze, a carta de saída, o truco dos dois lados e os hábitos que mais custam."
         },
         "reference": {
-          "kicker": "Apêndice",
+          "kicker": "Apêndices",
           "head": "Referência"
         }
       },
@@ -956,6 +956,7 @@
         "backToContents": "sumário do guia",
         "openLabShort": "abrir o lab",
         "chapter": "Capítulo {no}",
+        "appendix": "Apêndice {no}",
         "previous": "Anterior",
         "next": "Próximo",
         "pagerAria": "Navegação de capítulos"

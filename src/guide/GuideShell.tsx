@@ -14,9 +14,9 @@ import { CopyEditor } from './CopyEditor'
 import {
   GUIDE_CHAPTERS,
   GUIDE_PARTS,
-  ROMAN,
+  chapterLabelKey,
   chapterNeighbours,
-  chapterRoman,
+  chapterNumber,
   partForChapter,
   type ChapterSection,
   type GuideChapter,
@@ -113,7 +113,7 @@ export function GuideShell({
                       href={`${base}/${id}`}
                       className={id === chapter ? styles.railOn : styles.railItem}
                     >
-                      <span className={styles.railNo}>{ROMAN[GUIDE_CHAPTERS.indexOf(id)]}</span>
+                      <span className={styles.railNo}>{chapterNumber(id)}</span>
                       {t(`toc.${id}`)}
                     </Link>
                     {id === chapter && sections.length > 1 ? (
@@ -147,7 +147,7 @@ export function GuideShell({
           <div className={styles.body}>
             <header ref={headRef}>
               <div className={styles.chapNo}>
-                {t('nav.chapter', { no: chapterRoman(chapter) })}
+                {t(chapterLabelKey(chapter), { no: chapterNumber(chapter) })}
               </div>
               <h1 className={styles.chapTitle}>{t(`sec.${chapter}.title`)}</h1>
             </header>

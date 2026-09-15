@@ -9,7 +9,7 @@ import Link from 'next/link'
 import { LanguagePicker } from '../components/live/LanguagePicker'
 import { guideBooks } from '../server/guide-downloads'
 import { CopyEditor } from './CopyEditor'
-import { chapterRoman, GUIDE_PARTS } from './chapters'
+import { chapterNumber, GUIDE_PARTS } from './chapters'
 import styles from './guide.module.css'
 import { HashRedirect } from './HashRedirect'
 import { rich } from './rich'
@@ -63,7 +63,7 @@ export function GuideLanding() {
                       <Link href={`${base}/${id}`} className={styles.tocEntry}>
                         <span className={styles.tocName}>{t(`toc.${id}`)}</span>
                         <i className={styles.tocDots} aria-hidden />
-                        <span className={styles.tocNo}>{chapterRoman(id)}</span>
+                        <span className={styles.tocNo}>{chapterNumber(id)}</span>
                       </Link>
                     </li>
                   ))}

@@ -225,7 +225,7 @@ async function extractBook(page) {
     const chapters = [...document.querySelectorAll('[data-chapter]')].map((element) => ({
       id: element.getAttribute('data-chapter'),
       title: element.getAttribute('data-chapter-title'),
-      roman: element.getAttribute('data-chapter-roman'),
+      label: element.getAttribute('data-chapter-label'),
       part: element.getAttribute('data-chapter-part'),
       xhtml: clean(element),
     }))
