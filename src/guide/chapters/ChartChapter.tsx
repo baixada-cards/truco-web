@@ -24,7 +24,6 @@ import { findNode, loadStudyDoc } from '../GuideFigures'
 import styles from '../guide.module.css'
 import { ApproxFigure } from '../plates/ApproxFigure'
 import { GuideChartReader } from '../plates/GuideChartReader'
-import { LineWalkerPlate } from '../plates/LineWalkerPlate'
 import { Reveal, Section } from '../Section'
 import { Prose } from '../Prose'
 import { rich } from '../rich'
@@ -152,13 +151,6 @@ export function ChartChapter() {
       <Section id="list" mark="§ 3" title={t('sec.chart.listHead')}>
         <Prose>{t.rich('sec.chart.listP', rich)}</Prose>
         <ListSnippet />
-      </Section>
-
-      <Section id="walk" mark="§ 4" title={t('sec.chart.walkHead')}>
-        <Prose>{t.rich('sec.chart.walkP1', rich)}</Prose>
-        <Prose>{t.rich('sec.chart.walkP2', rich)}</Prose>
-        <LineWalkerPlate />
-        <aside className={styles.margin}>{t.rich('sec.chart.walkAside', rich)}</aside>
       </Section>
     </>
   )

@@ -1114,24 +1114,7 @@
           "aside": "the number = the biggest slice. the tooltip = the whole mix.",
           "listHead": "The list — same data, sorted",
           "listP": "<b>LIST</b> lays the very same holdings out as rows, strongest first: the cards up front, the mix as a labeled bar. Nothing changes but the shape — the grid is for seeing regions at a glance, the list is for reading one hand at a time.",
-          "listCaption": "Real data — the first eight holdings of the same L = 4 block, exactly as the lab's LIST draws them; each bar segment is labeled with its action and share.",
-          "walkHead": "Walking one hand through the decisions",
-          "walkP1": "Pin the hand as it was actually played in the left rail, then walk the decisions with <b>← →</b>. A chart cell fills two of your three cards; the panel’s card list or a card’s own menu fills the rest, and cells that are impossible with your picks grey out.",
-          "walkP2": "<b>Pinning</b> the hand (⚑) fixes it for the whole hand: that player’s rail decisions then show the pinned cards’ own mix, and only those cards stay playable. Click a card to clear it, double-click for its menu.",
-          "walkAside": "Think of it as replaying one deal in slow motion, asking at every fork: <i>what does the solve do here?</i>",
-          "walkerAria": "A miniature hand-history rail",
-          "walkerCaption": "Click a point in the rail: focus moves there, while the already observed cards stay in the line.",
-          "walker": {
-            "focus": "Rail focus",
-            "deal": "Deal",
-            "dealP": "Before a play, every hand is still possible. The chart describes that full starting distribution.",
-            "lead": "Mão leads",
-            "leadP": "The first open card is now history. It stays visible while you inspect the next player’s decision.",
-            "reply": "Pé replies",
-            "replyP": "This reply filters Pé’s range: hands that would rarely show it shrink in the next chart.",
-            "next": "Next decision",
-            "nextP": "The focus has moved, not rewritten the deal. Pin a hand to keep asking what that same hand does here."
-          }
+          "listCaption": "Real data — the first eight holdings of the same L = 4 block, exactly as the lab's LIST draws them; each bar segment is labeled with its action and share."
         },
         "ranges": {
           "title": "Ranges — the hands still possible",
@@ -1385,6 +1368,23 @@
             "check": "Check",
             "writeCorrect": "The parser accepts it. That is a valid pinned range draft.",
             "writeAgain": "Not quite. Include mao, !, three bracketed slots, 5d, 3, and ? — in that strength order."
+          },
+          "walkHead": "Walking one hand through the decisions",
+          "walkP1": "Pin the hand as it was actually played in the left rail, then walk the decisions with <b>← →</b>. A chart cell fills two of your three cards; the panel’s card list or a card’s own menu fills the rest, and cells that are impossible with your picks grey out.",
+          "walkP2": "<b>Pinning</b> the hand (⚑) fixes it for the whole hand: that player’s rail decisions then show the pinned cards’ own mix, and only those cards stay playable. Click a card to clear it, double-click for its menu.",
+          "walkAside": "Think of it as replaying one deal in slow motion, asking at every fork: <i>what does the solve do here?</i>",
+          "walkerAria": "A miniature hand-history rail",
+          "walkerCaption": "Click a point in the rail: focus moves there, while the already observed cards stay in the line.",
+          "walker": {
+            "focus": "Rail focus",
+            "deal": "Deal",
+            "dealP": "Before a play, every hand is still possible. The chart describes that full starting distribution.",
+            "lead": "Mão leads",
+            "leadP": "The first open card is now history. It stays visible while you inspect the next player’s decision.",
+            "reply": "Pé replies",
+            "replyP": "This reply filters Pé’s range: hands that would rarely show it shrink in the next chart.",
+            "next": "Next decision",
+            "nextP": "The focus has moved, not rewritten the deal. Pin a hand to keep asking what that same hand does here."
           }
         },
         "trust": {

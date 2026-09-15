@@ -1114,24 +1114,7 @@
           "aside": "o número = a maior fatia. o tooltip = a mistura inteira.",
           "listHead": "A lista — os mesmos dados, ordenados",
           "listP": "<b>LISTA</b> dispõe exatamente as mesmas mãos como linhas, da mais forte para a mais fraca: as cartas na frente, a mistura como uma barra rotulada. Só a forma muda — a grade é para enxergar regiões de relance, a lista é para ler uma mão de cada vez.",
-          "listCaption": "Dados reais — as oito primeiras mãos do mesmo bloco L = 4, exatamente como a LISTA do lab as desenha; cada segmento da barra é rotulado com sua ação e fatia.",
-          "walkHead": "Percorrendo uma mão pelas decisões",
-          "walkP1": "Fixe a mão como ela foi de fato jogada na barra lateral esquerda, depois percorra as decisões com <b>← →</b>. Uma célula do gráfico preenche duas das suas três cartas; a lista de cartas do painel ou o menu da própria carta preenche o resto, e as células impossíveis com as suas escolhas ficam em cinza.",
-          "walkP2": "<b>Fixar</b> a mão (⚑) a trava pela mão inteira: as decisões daquele jogador na barra lateral passam a mostrar a mistura das próprias cartas fixadas, e só essas cartas seguem jogáveis. Clique numa carta para limpá-la, dê dois cliques para o menu dela.",
-          "walkAside": "Pense nisso como reprisar uma distribuição em câmera lenta, perguntando a cada bifurcação: <i>o que a solução faz aqui?</i>",
-          "walkerAria": "Uma barra de histórico de mão em miniatura",
-          "walkerCaption": "Clique num ponto da barra: o foco vai até ele, e as cartas já observadas continuam na linha.",
-          "walker": {
-            "focus": "Foco da barra",
-            "deal": "Distribuição",
-            "dealP": "Antes de uma jogada, toda mão ainda é possível. O gráfico descreve essa distribuição inicial completa.",
-            "lead": "Mão sai",
-            "leadP": "A primeira carta aberta agora é histórico. Ela continua visível enquanto você inspeciona a decisão do próximo jogador.",
-            "reply": "Pé responde",
-            "replyP": "Esta resposta filtra o range do Pé: mãos que quase nunca a mostrariam encolhem no próximo gráfico.",
-            "next": "Próxima decisão",
-            "nextP": "O foco mudou, não a distribuição. Fixe uma mão para continuar perguntando o que essa mesma mão faz aqui."
-          }
+          "listCaption": "Dados reais — as oito primeiras mãos do mesmo bloco L = 4, exatamente como a LISTA do lab as desenha; cada segmento da barra é rotulado com sua ação e fatia."
         },
         "ranges": {
           "title": "Ranges — as mãos que ainda são possíveis",
@@ -1385,6 +1368,23 @@
             "check": "Conferir",
             "writeCorrect": "O analisador aceitou. É uma faixa fixada válida.",
             "writeAgain": "Ainda não. Inclua mao, !, três posições entre colchetes, 5d, 3 e ? — nessa ordem de força."
+          },
+          "walkHead": "Percorrendo uma mão pelas decisões",
+          "walkP1": "Fixe a mão como ela foi de fato jogada na barra lateral esquerda, depois percorra as decisões com <b>← →</b>. Uma célula do gráfico preenche duas das suas três cartas; a lista de cartas do painel ou o menu da própria carta preenche o resto, e as células impossíveis com as suas escolhas ficam em cinza.",
+          "walkP2": "<b>Fixar</b> a mão (⚑) a trava pela mão inteira: as decisões daquele jogador na barra lateral passam a mostrar a mistura das próprias cartas fixadas, e só essas cartas seguem jogáveis. Clique numa carta para limpá-la, dê dois cliques para o menu dela.",
+          "walkAside": "Pense nisso como reprisar uma distribuição em câmera lenta, perguntando a cada bifurcação: <i>o que a solução faz aqui?</i>",
+          "walkerAria": "Uma barra de histórico de mão em miniatura",
+          "walkerCaption": "Clique num ponto da barra: o foco vai até ele, e as cartas já observadas continuam na linha.",
+          "walker": {
+            "focus": "Foco da barra",
+            "deal": "Distribuição",
+            "dealP": "Antes de uma jogada, toda mão ainda é possível. O gráfico descreve essa distribuição inicial completa.",
+            "lead": "Mão sai",
+            "leadP": "A primeira carta aberta agora é histórico. Ela continua visível enquanto você inspeciona a decisão do próximo jogador.",
+            "reply": "Pé responde",
+            "replyP": "Esta resposta filtra o range do Pé: mãos que quase nunca a mostrariam encolhem no próximo gráfico.",
+            "next": "Próxima decisão",
+            "nextP": "O foco mudou, não a distribuição. Fixe uma mão para continuar perguntando o que essa mesma mão faz aqui."
           }
         },
         "trust": {

@@ -80,7 +80,7 @@ export function chapterForLegacyHash(hash: string): { chapter: GuideChapter; anc
   const raw = hash.replace(/^#/, '')
   if (!raw) return null
   if (raw === 'layout') return { chapter: 'chart', anchor: '' }
-  if (raw === 'pinned') return { chapter: 'chart', anchor: '#walk' }
+  if (raw === 'pinned') return { chapter: 'notation', anchor: '#walk' }
   if (raw.startsWith('g-')) return { chapter: 'glossary', anchor: `#${raw}` }
   if (isGuideChapter(raw)) return { chapter: raw, anchor: '' }
   return null
@@ -88,6 +88,6 @@ export function chapterForLegacyHash(hash: string): { chapter: GuideChapter; anc
 
 /** retired chapter routes → their new home, for old bookmarks and links */
 export function chapterRedirect(slug: string): { chapter: GuideChapter; anchor: string } | null {
-  if (slug === 'pinned') return { chapter: 'chart', anchor: '#walk' }
+  if (slug === 'pinned') return { chapter: 'notation', anchor: '#walk' }
   return null
 }
