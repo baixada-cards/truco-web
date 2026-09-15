@@ -299,6 +299,11 @@
   justify-content: space-between;
   gap: 12px;
 }
+.tipActionsEnd {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
 .back {
   border: 0;
   background: none;

@@ -1,7 +1,11 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 
-import { TOUR_STEPS, asList, type Step, type TourObserve } from './tour-steps.ts'
+import { TOUR_QUICK, TOUR_STEPS, asList, type Step, type TourObserve } from './tour-steps.ts'
+
+/** every step of both tours; keys must be unique across the pair since the
+ *  catalog holds them side by side */
+const ALL_STEPS = [...TOUR_STEPS, ...TOUR_QUICK]
 
 const asStrings = (s: Step) => [
   ...asList(s.target),
@@ -12,7 +16,7 @@ const asStrings = (s: Step) => [
 ]
 
 test('step keys are unique', () => {
-  const keys = TOUR_STEPS.map((s) => s.key)
+  const keys = ALL_STEPS.map((s) => s.key)
   assert.equal(new Set(keys).size, keys.length, `duplicate key in [${keys.join(', ')}]`)
 })
 
@@ -20,7 +24,7 @@ test('step keys are unique', () => {
 // so arriving from either direction shows the right thing. The 15→14 focus bug
 // was exactly a step (handOften) with no `apply` relying on the previous step.
 test('every step forces its own lab state (has an `apply`)', () => {
-  for (const s of TOUR_STEPS) {
+  for (const s of ALL_STEPS) {
     assert.ok(typeof s.apply === 'string' && s.apply.length > 0, `step "${s.key}" is missing apply`)
   }
 })
@@ -28,42 +32,49 @@ test('every step forces its own lab state (has an `apply`)', () => {
 // a step whose focus/lift/whitelist lives inside the pinned-hand panel must open
 // it (it collapses on narrow viewports) — else its target isn't in the DOM
 test('every step targeting the hand panel opens it (`hand: true`)', () => {
-  for (const s of TOUR_STEPS) {
+  for (const s of ALL_STEPS) {
     const touchesHand = asStrings(s).some((sel) => sel.includes('hand-') || sel.includes('data-tour="pinned"'))
     if (touchesHand) assert.ok(s.hand === true, `step "${s.key}" targets the hand panel but does not set hand:true`)
   }
 })
 
 test('only interactive steps auto-advance (advanceWhen ⇒ task)', () => {
-  for (const s of TOUR_STEPS) {
+  for (const s of ALL_STEPS) {
     if (s.advanceWhen) assert.ok(s.task === true, `step "${s.key}" has advanceWhen but is not marked task`)
   }
 })
 
 test('a whitelisted control (`allow`) always has a lifted section (`lift`)', () => {
-  for (const s of TOUR_STEPS) {
+  for (const s of ALL_STEPS) {
     if (s.allow?.length) assert.ok(s.lift, `step "${s.key}" allows a control but sets no lift`)
   }
 })
 
 test('a beacon step always has a glowed control to put the beacon on', () => {
-  for (const s of TOUR_STEPS) {
+  for (const s of ALL_STEPS) {
     if (s.beacon) assert.ok(s.glow?.length, `step "${s.key}" sets beacon without glow`)
   }
 })
 
 test('a card side preference names the section to clear (cardAnchor)', () => {
-  for (const s of TOUR_STEPS) {
+  for (const s of ALL_STEPS) {
     if (s.cardSide) assert.ok(s.cardAnchor, `step "${s.key}" sets cardSide without cardAnchor`)
   }
 })
 
 test('every target/lift/allow/glow selector is a non-empty string', () => {
-  for (const s of TOUR_STEPS) {
+  for (const s of ALL_STEPS) {
     for (const sel of asStrings(s)) {
       assert.ok(typeof sel === 'string' && sel.trim().length > 0, `step "${s.key}" has an empty selector`)
     }
   }
+})
+
+// the quick tour is the one a first visitor sits through: four cards, none
+// of them a task
+test('the quick tour is four cards with no tasks', () => {
+  assert.equal(TOUR_QUICK.length, 4)
+  for (const s of TOUR_QUICK) assert.ok(!s.task && !s.advanceWhen, `quick step "${s.key}" is a task`)
 })
 
 // spot-check a couple of advanceWhen predicates so a refactor can't silently

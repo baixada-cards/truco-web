@@ -614,7 +614,8 @@
       "grid": "grid",
       "gridTitle": "Every hand charted: exact blocks in round 1, one 2D chart once your first card is known",
       "helpAria": "Help: tour & guide",
-      "menuTour": "Take the tour",
+      "menuTour": "Take the quick tour",
+      "menuTourFull": "Take the full tour",
       "menuGuide": "Open the guide — theory & handbook",
       "menuPlayHand": "Play this hand live",
       "menuPlayHandAria": "Resume this exact position as a live match",
@@ -744,7 +745,8 @@
       "titleRoundAnswer": "Round {n}: answer {card} after {recap}",
       "titleRoundLead": "Round {n}: choose first card after {recap}",
       "toAct": "to act",
-      "tourTitle": "Take a quick guided tour of the lab",
+      "tourTitle": "Four cards: the spot, the hand, the chart, and where to go next",
+      "tourFullTitle": "The guided tour of every control, with things to try",
       "trainWarnUntrained": "Untrained: {role}'s own strategy plays this line holding these cards {pct}% of the time, so the averaged mix here never accumulated — it is initialization noise. Trust the win % and point values, not the frequencies.",
       "trainWarnWeak": "Weakly trained: this mix loses {pp} pp against its own best action, so the solve never really visited this holding here. Trust the win % and point values, not the frequencies.",
       "unitEquity": "equity",
@@ -806,6 +808,7 @@
       "back": "back",
       "next": "Next",
       "start": "Start studying",
+      "fullTour": "Take the full tour",
       "tryIt": "try it",
       "steps": {
         "intro": {
@@ -895,6 +898,22 @@
         "done": {
           "title": "That is the tour",
           "body": "That is it. The <b>?</b> button reopens this anytime, and every <g>underlined term</g> opens the guide in a new tab — Part I is the theory of the solve, Part II the player's handbook. Now go read some charts."
+        },
+        "quickStage": {
+          "title": "Set the stage",
+          "body": "The <b>score</b>, the turn-up, and who deals name the spot. Change any of them and the whole chart re-solves for the new stakes. This tour stays on one spot: 11 × 11 with a 4 turned up, so the 5s are the manilhas."
+        },
+        "quickHand": {
+          "title": "The hand so far",
+          "body": "The rail is the hand as it has been played. Every play is a decision with a chart of its own: the arrows walk them, a plate jumps to one, and any past play can be rewritten."
+        },
+        "quickChart": {
+          "title": "The chart",
+          "body": "One chart per decision. Each <g>block</g> pins one card and the rows and columns are the other two, so every cell is one exact hand, coloured by what the solve plays with it. The header keeps the score: <g2>match equity</g2>, and how often a deal even gets here."
+        },
+        "quickMore": {
+          "title": "Going deeper",
+          "body": "Click a cell to open the hand panel. Blank one of its cards and it becomes a <g>range</g>. Pin a hand to carry it across scores. The full tour walks each of these with things to try, and the <g2>guide</g2> explains what the numbers mean."
         }
       }
     },

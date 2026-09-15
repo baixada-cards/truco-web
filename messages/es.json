@@ -614,7 +614,8 @@
       "grid": "cuadrícula",
       "gridTitle": "Toda mano en el gráfico: bloques exactos en la ronda 1, un gráfico 2D en cuanto se conoce tu primera carta",
       "helpAria": "Ayuda: recorrido y guía",
-      "menuTour": "Hacer el recorrido",
+      "menuTour": "Hacer el recorrido rápido",
+      "menuTourFull": "Hacer el recorrido completo",
       "menuGuide": "Abrir la guía — teoría & manual (en inglés)",
       "menuPlayHand": "Jugar esta mano en vivo",
       "menuPlayHandAria": "Retomar esta posición exacta como partida en vivo",
@@ -744,7 +745,8 @@
       "titleRoundAnswer": "Ronda {n}: respondé a {card} tras {recap}",
       "titleRoundLead": "Ronda {n}: elegí la primera carta tras {recap}",
       "toAct": "en turno",
-      "tourTitle": "Hacé un tour rápido guiado por el laboratorio",
+      "tourTitle": "Cuatro tarjetas: el spot, la mano, el gráfico y por dónde seguir",
+      "tourFullTitle": "El recorrido guiado por cada control, con cosas para probar",
       "trainWarnUntrained": "No entrenado: la propia estrategia de {role} juega esta línea con estas cartas el {pct}% de las veces, así que la mezcla promedio acá nunca se acumuló — es ruido de inicialización. Confiá en el % de victoria y en los valores en puntos, no en las frecuencias.",
       "trainWarnWeak": "Mal entrenado: esta mezcla pierde {pp} pp frente a su propia mejor acción, así que la solución nunca visitó de verdad esta mano acá. Confiá en el % de victoria y en los valores en puntos, no en las frecuencias.",
       "unitEquity": "equity",
@@ -806,6 +808,7 @@
       "back": "atrás",
       "next": "Siguiente",
       "start": "Empezar a estudiar",
+      "fullTour": "Hacer el recorrido completo",
       "tryIt": "probarlo",
       "steps": {
         "intro": {
@@ -895,6 +898,22 @@
         "done": {
           "title": "Eso fue el tour",
           "body": "Eso es todo. El botón <b>?</b> reabre esto cuando quieras, y cada <g>término subrayado</g> abre la guía en una pestaña nueva — la Parte I es la teoría de la solución, la Parte II el manual del jugador. Ahora andá a leer algunos gráficos."
+        },
+        "quickStage": {
+          "title": "Preparar la escena",
+          "body": "El <b>marcador</b>, la vira y quién reparte nombran el spot. Cambiá cualquiera de los tres y el gráfico entero se vuelve a resolver para la nueva apuesta. Este recorrido se queda en un solo spot: 11 × 11 con un 4 dado vuelta, así que los 5 son las manilhas."
+        },
+        "quickHand": {
+          "title": "La mano hasta acá",
+          "body": "El riel es la mano tal como se jugó. Cada jugada es una decisión con su propio gráfico: las flechas las recorren, una placa salta a una de ellas, y cualquier jugada pasada se puede reescribir."
+        },
+        "quickChart": {
+          "title": "El gráfico",
+          "body": "Un gráfico por decisión. Cada <g>bloque</g> fija una carta y las filas y columnas son las otras dos, así que cada celda es una mano exacta, coloreada según lo que la solución juega con ella. El encabezado lleva la cuenta: la <g2>equidad</g2> en el partido y con qué frecuencia una mano siquiera llega acá."
+        },
+        "quickMore": {
+          "title": "Yendo más a fondo",
+          "body": "Hacé clic en una celda para abrir el panel de la mano. Borrá una de sus cartas y se convierte en un <g>rango</g>. Fijá una mano para llevarla por los marcadores. El recorrido completo pasa por cada uno de estos con cosas para probar, y la <g2>guía</g2> explica qué significan los números."
         }
       }
     },

@@ -54,6 +54,8 @@ export type Step = {
   advanceWhen?: (now: TourObserve, entry: TourObserve) => boolean
 }
 
+export type TourMode = 'quick' | 'full'
+
 export const tid = (id: string) => `[data-tour-id="${id}"]`
 /** normalize a step target to a list of hole groups (each group = selectors
  *  whose rects merge into one hole) */
@@ -244,3 +246,17 @@ export const TOUR_STEPS: Step[] = [
   { key: 'pinSee', target: tid('rail-pins'), apply: S_PINNED, cardSide: 'right', cardAnchor: RAIL },
   { key: 'done', target: '[data-tour="help"]', apply: S_LEAD, guide: 'glossary' },
 ]
+
+// The quick tour: four cards, no tasks, what a first visitor will actually
+// sit through. Where the spot is set, the hand so far, the chart, and where
+// to go deeper (the full tour above, or the guide). Same fixed teaching spot.
+export const TOUR_QUICK: Step[] = [
+  { key: 'quickStage', target: '[data-tour="score"]', apply: S_BASE, layout: 'grid' },
+  { key: 'quickHand', target: RAIL, apply: S_RAIL2, cardSide: 'right', cardAnchor: RAIL },
+  { key: 'quickChart', target: CHART, apply: S_LEAD, layout: 'grid', guide: 'chart#blocks', guide2: 'views#header' },
+  { key: 'quickMore', target: '[data-tour="help"]', apply: S_LEAD, guide: 'ranges#range-tool', guide2: 'glossary' },
+]
+
+export function tourSteps(mode: TourMode): Step[] {
+  return mode === 'quick' ? TOUR_QUICK : TOUR_STEPS
+}

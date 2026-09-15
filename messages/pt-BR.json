@@ -614,7 +614,8 @@
       "grid": "grade",
       "gridTitle": "Toda mão no gráfico: blocos exatos na rodada 1, um gráfico 2D assim que sua primeira carta é conhecida",
       "helpAria": "Ajuda: tour e guia",
-      "menuTour": "Fazer o tour",
+      "menuTour": "Fazer o tour rápido",
+      "menuTourFull": "Fazer o tour completo",
       "menuGuide": "Abrir o guia — teoria & manual (em inglês)",
       "menuPlayHand": "Jogar esta mão ao vivo",
       "menuPlayHandAria": "Retomar esta posição exata como partida ao vivo",
@@ -744,7 +745,8 @@
       "titleRoundAnswer": "Rodada {n}: responda a {card} após {recap}",
       "titleRoundLead": "Rodada {n}: escolha a primeira carta após {recap}",
       "toAct": "na vez",
-      "tourTitle": "Faça um tour rápido guiado pelo laboratório",
+      "tourTitle": "Quatro cartões: o spot, a mão, o gráfico e por onde seguir",
+      "tourFullTitle": "O tour guiado por cada controle, com coisas para experimentar",
       "trainWarnUntrained": "Não treinado: a própria estratégia do {role} joga esta linha com estas cartas {pct}% das vezes, então a mistura média aqui nunca se acumulou — é ruído de inicialização. Confie no % de vitória e nos valores em pontos, não nas frequências.",
       "trainWarnWeak": "Mal treinado: esta mistura perde {pp} pp contra sua própria melhor ação, então a solução nunca visitou de verdade esta mão aqui. Confie no % de vitória e nos valores em pontos, não nas frequências.",
       "unitEquity": "equity",
@@ -806,6 +808,7 @@
       "back": "voltar",
       "next": "Próximo",
       "start": "Começar a estudar",
+      "fullTour": "Fazer o tour completo",
       "tryIt": "experimentar",
       "steps": {
         "intro": {
@@ -895,6 +898,22 @@
         "done": {
           "title": "Esse foi o tour",
           "body": "É isso. O botão <b>?</b> reabre isso quando você quiser, e cada <g>termo sublinhado</g> abre o guia numa aba nova — a Parte I é a teoria da solução, a Parte II o manual do jogador. Agora vá ler alguns gráficos."
+        },
+        "quickStage": {
+          "title": "Prepare o cenário",
+          "body": "O <b>placar</b>, a vira e quem dá as cartas definem o spot. Mude qualquer um desses três e o gráfico inteiro é resolvido de novo para a nova aposta. Este tour fica em um só spot: 11 × 11 com um 4 virado, então os 5 são as manilhas."
+        },
+        "quickHand": {
+          "title": "A mão até aqui",
+          "body": "O trilho é a mão como foi jogada. Cada jogada é uma decisão com gráfico próprio: as setas percorrem as decisões, uma placa pula para uma delas, e qualquer jogada passada pode ser reescrita."
+        },
+        "quickChart": {
+          "title": "O gráfico",
+          "body": "Um gráfico por decisão. Cada <g>bloco</g> fixa uma carta e as linhas e colunas são as outras duas, então cada célula é uma mão exata, colorida pelo que a solução joga com ela. O cabeçalho mantém o placar: a <g2>equidade</g2> na partida e com que frequência uma mão sequer chega aqui."
+        },
+        "quickMore": {
+          "title": "Indo mais fundo",
+          "body": "Clique numa célula para abrir o painel da mão. Apague uma das cartas e ela vira um <g>range</g>. Fixe uma mão para carregá-la pelos placares. O tour completo percorre cada um desses com coisas para experimentar, e o <g2>guia</g2> explica o que os números significam."
         }
       }
     },
