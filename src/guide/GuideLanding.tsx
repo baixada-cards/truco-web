@@ -10,6 +10,7 @@ import { LanguagePicker } from '../components/live/LanguagePicker'
 import { guideBooks } from '../server/guide-downloads'
 import { CopyEditor } from './CopyEditor'
 import { chapterNumber, GUIDE_PARTS } from './chapters'
+import { GUIDE_LOCALES } from './guide-locales'
 import styles from './guide.module.css'
 import { HashRedirect } from './HashRedirect'
 import { rich } from './rich'
@@ -28,9 +29,11 @@ export function GuideLanding() {
         <a className={styles.back} href={labHref}>
           ← {t('back')}
         </a>
-        <div className={styles.guideTools}>
-          <LanguagePicker variant="guide" />
-        </div>
+        {GUIDE_LOCALES.length > 1 ? (
+          <div className={styles.guideTools}>
+            <LanguagePicker variant="guide" />
+          </div>
+        ) : null}
       </div>
 
       <div className={styles.leaf}>

@@ -36,6 +36,7 @@ import {
 import { StudyTimeline, type TerminalInfo, type TimelineDecision } from './StudyTimeline'
 import { reconcileEdit, type EditReconcile } from './lib/reconcile-edit'
 import { StudyTableView } from './StudyTableView'
+import { guideHref } from './guide/guide-locales'
 import { StudyWalkthrough } from './StudyWalkthrough'
 import { resolveStudyAssetUrl } from './lib/study-assets'
 import {
@@ -2473,7 +2474,7 @@ export default function StudyLab({ manifestUrl }: { manifestUrl: string }) {
                   <a
                     role="menuitem"
                     className={styles.helpMenuItem}
-                    href={`/${locale}/lab/study/guide`}
+                    href={guideHref(locale)}
                     target="_blank"
                     rel="noreferrer"
                     aria-label={t('guideAria')}
@@ -2567,7 +2568,7 @@ export default function StudyLab({ manifestUrl }: { manifestUrl: string }) {
           </span>
           <a
             className={styles.stringHelp}
-            href={`/${locale}/lab/study/guide/notation`}
+            href={guideHref(locale, '/notation')}
             target="_blank"
             rel="noreferrer"
             aria-label={t('handHelpAria')}
@@ -2677,7 +2678,7 @@ export default function StudyLab({ manifestUrl }: { manifestUrl: string }) {
                     {viewed?.stage.kind === 'eleven' ? (
                       <a
                         className={styles.handbookLink}
-                        href={`/${locale}/lab/study/guide/eleven`}
+                        href={guideHref(locale, '/eleven')}
                         target="_blank"
                         rel="noreferrer"
                         aria-label={t('elevenHandbookAria')}
@@ -2866,7 +2867,7 @@ export default function StudyLab({ manifestUrl }: { manifestUrl: string }) {
                   )}
                   <a
                     className={styles.legendHelp}
-                    href={`/${locale}/lab/study/guide/views`}
+                    href={guideHref(locale, '/views')}
                     target="_blank"
                     rel="noreferrer"
                     aria-label={t('legendHelpAria')}

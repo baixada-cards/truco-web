@@ -5,11 +5,12 @@
 
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 
 import { GUIDE_PARTS, chapterLabelKey, chapterNumber } from '../../../../../../src/guide/chapters'
 import { CHAPTER_BODIES } from '../../../../../../src/guide/chapters/registry'
 import { GuideBookPage } from '../../../../../../src/guide/GuideBookPage'
+import { guideHref, isGuideLocale } from '../../../../../../src/guide/guide-locales'
 import { studyLabRouteEnabled } from '../../../../../../src/server/study-lab-config'
 
 export const dynamic = 'force-dynamic'
@@ -30,6 +31,9 @@ export default async function GuidePrintPage({
   }
 
   const { locale } = await params
+  if (!isGuideLocale(locale)) {
+    redirect(guideHref(locale, '/print'))
+  }
   setRequestLocale(locale)
   const t = await getTranslations({ locale, namespace: 'Study.guide' })
 

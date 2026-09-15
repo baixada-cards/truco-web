@@ -19,6 +19,7 @@ import { useLocale, useTranslations } from 'next-intl'
 
 import styles from './StudyWalkthrough.module.css'
 import { clearDecorations, clearTourDom, markStepDom, type StepSelectors } from './lib/tour-dom'
+import { guideHref } from './guide/guide-locales'
 import { TOUR_STEPS, asGroups, type TourObserve } from './lib/tour-steps'
 
 /** what the tour may do to the lab (see StudyLab's mount site) */
@@ -395,7 +396,7 @@ export function StudyWalkthrough({
     path ? (
       <a
         className={styles.guideLink}
-        href={`/${locale}/lab/study/guide/${path}`}
+        href={guideHref(locale, `/${path}`)}
         target="_blank"
         rel="noreferrer"
       >

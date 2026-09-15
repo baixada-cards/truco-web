@@ -4,6 +4,7 @@ import { notFound, redirect } from 'next/navigation'
 
 import { GUIDE_CHAPTERS, chapterRedirect, isGuideChapter } from '../../../../../../src/guide/chapters'
 import { CHAPTER_BODIES, chapterSections } from '../../../../../../src/guide/chapters/registry'
+import { guideHref, isGuideLocale } from '../../../../../../src/guide/guide-locales'
 import { GuideShell } from '../../../../../../src/guide/GuideShell'
 import { studyLabRouteEnabled } from '../../../../../../src/server/study-lab-config'
 
@@ -26,9 +27,12 @@ export default async function GuideChapterPage({
   if (!isGuideChapter(chapter)) {
     const moved = chapterRedirect(chapter)
     if (moved) {
-      redirect(`/${locale}/lab/study/guide/${moved.chapter}${moved.anchor}`)
+      redirect(guideHref(locale, `/${moved.chapter}${moved.anchor}`))
     }
     notFound()
+  }
+  if (!isGuideLocale(locale)) {
+    redirect(guideHref(locale, `/${chapter}`))
   }
   setRequestLocale(locale)
 

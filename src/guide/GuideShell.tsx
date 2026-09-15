@@ -21,6 +21,7 @@ import {
   type ChapterSection,
   type GuideChapter,
 } from './chapters'
+import { GUIDE_LOCALES } from './guide-locales'
 import styles from './guide.module.css'
 import { useReveal } from './useReveal'
 
@@ -87,7 +88,7 @@ export function GuideShell({
           <a className={styles.backAlt} href={labHref}>
             {t('nav.openLabShort')} →
           </a>
-          <LanguagePicker variant="guide" />
+          {GUIDE_LOCALES.length > 1 ? <LanguagePicker variant="guide" /> : null}
         </div>
       </div>
 
