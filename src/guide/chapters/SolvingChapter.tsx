@@ -76,7 +76,7 @@ export function SolvingChapter() {
           <p className={styles.formulaNote}>{t('sec.solving.cfrFnote')}</p>
         </div>
         <Prose>{t.rich('sec.solving.cfrP2', rich)}</Prose>
-        <p className={styles.aside}>{t('sec.solving.aside')}</p>
+        <p className={styles.aside}>{t.rich('sec.solving.aside', rich)}</p>
       </Section>
 
       <ChapterRefs

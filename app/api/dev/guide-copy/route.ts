@@ -11,6 +11,7 @@ import path from 'node:path'
 
 import { NextResponse } from 'next/server.js'
 
+import { RICH_TAG_NAMES } from '../../../../src/guide/rich-tags'
 import { areDevRoutesEnabled, disabledDevRouteResponse } from '../../../../src/server/dev-routes'
 
 export const dynamic = 'force-dynamic'
@@ -90,7 +91,7 @@ export async function GET(request: Request) {
 }
 
 /** the inline tags src/guide/rich.tsx knows how to render */
-const RICH_TAGS = new Set(['b', 'i', 'em', 'code'])
+const RICH_TAGS = new Set(RICH_TAG_NAMES)
 
 /** an unknown tag makes next-intl throw at render and blanks the paragraph */
 function unknownTags(value: string) {

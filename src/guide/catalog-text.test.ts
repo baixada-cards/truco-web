@@ -10,6 +10,13 @@ test('supported rich-text tokens are removed for DOM text matching', () => {
   )
 })
 
+test('a cross-reference tag leaves only the words it links', () => {
+  assert.equal(
+    renderedCatalogText('as <chart>the chart chapter</chart> showed, <numbers>Appendix B</numbers> lists it.'),
+    'as the chart chapter showed, Appendix B lists it.',
+  )
+})
+
 test('catalog whitespace collapses to the same shape as DOM text', () => {
   assert.equal(renderedCatalogText('  first\n\n second\tthird  '), 'first second third')
 })

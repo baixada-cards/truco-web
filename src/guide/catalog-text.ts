@@ -1,23 +1,15 @@
-// Guide catalogs support exactly the inline tags rendered by rich.tsx.
+// Guide catalogs support exactly the inline tags rendered by rich.tsx, which
+// all render their text as text: dropping the tags leaves what the DOM shows.
 // This is display-text normalization for matching DOM text, not an HTML
 // sanitizer: unsupported or malformed markup remains literal text.
-const RICH_TEXT_TOKENS = [
-  '<b>',
-  '</b>',
-  '<i>',
-  '</i>',
-  '<em>',
-  '</em>',
-  '<code>',
-  '</code>',
-] as const
+
+// explicit extension: the node test runner resolves this chain itself
+import { RICH_TAG_NAMES } from './rich-tags.ts'
+
+const RICH_TEXT_TOKEN = new RegExp(`</?(?:${RICH_TAG_NAMES.join('|')})>`, 'g')
 
 export function renderedCatalogText(raw: string) {
-  let text = raw
-  for (const token of RICH_TEXT_TOKENS) {
-    text = text.replaceAll(token, '')
-  }
-  return text.replace(/\s+/g, ' ').trim()
+  return raw.replace(RICH_TEXT_TOKEN, '').replace(/\s+/g, ' ').trim()
 }
 
 /** an ICU placeholder like {rank} or {pp}, which renders as unknown text */
