@@ -1,1 +1,47 @@
-[]
+[
+  {
+    "id": "c20260916T2213-5859",
+    "locale": "en",
+    "key": "sec.solving.p1",
+    "quote": "one for each side",
+    "body": "What is a \"side\"? (I know, I understood it, but I had to think more than I ideally would).\nMaybe \"one for each of the players\"?",
+    "createdAt": "2026-09-16T22:13:42.439Z",
+    "resolved": true
+  },
+  {
+    "id": "c20260916T2214-74af",
+    "locale": "en",
+    "key": "sec.solving.p1",
+    "quote": "the solve",
+    "body": "Feels like quotes are warranted here, or maybe a different style to indicate that this is a definition. if we do use that, we should of course standardize.",
+    "createdAt": "2026-09-16T22:14:35.830Z",
+    "resolved": true
+  },
+  {
+    "id": "c20260916T2217-bc38",
+    "locale": "en",
+    "key": "sec.solving.p2",
+    "quote": "In a game of hidden cards there is usually no single best move, because a move that is always right becomes readable.",
+    "body": "Awkward phrasing. My interpretation: you are trying to avoid technical terminology (\"imperfect information\") but are using terms (\"game of hidden cards\") as if they were technical anyway, so the prose reads unnaturally. Instead of coming up with a fake category (\"a game of hidden cards\") and talk about this abstraction, be specific. For example, \"because a player doesn't know the other's cards, always playing the same way is bad\". Except phrase it much better please.",
+    "createdAt": "2026-09-16T22:17:29.065Z",
+    "resolved": true
+  },
+  {
+    "id": "c20260916T2219-6a31",
+    "locale": "en",
+    "key": "sec.solving.p2",
+    "quote": "tuned so that reading you gains nothing",
+    "body": "I think this is a lie? \"Reading you\" sounds like it is referring to \"reads\" or \"tells\", which doesn't play any role here. I do think we should offer some justification, not sure if here, about why very precise mixing is chosen at equilibrium. This sentence ain't doing it.",
+    "createdAt": "2026-09-16T22:19:12.821Z",
+    "resolved": true
+  },
+  {
+    "id": "c20260916T2220-e332",
+    "locale": "en",
+    "key": "sec.solving.p2",
+    "quote": "The smallest truco endgame",
+    "body": "I read this and what comes to mind is \"what is he referring to? Is it 11 x 11?\". Next paragraph makes it clear that that's not it. I think you can simply be more explicit here. Say you will introduce a toy game that can be analyzed by hand to explain the principles, or something.",
+    "createdAt": "2026-09-16T22:20:25.846Z",
+    "resolved": true
+  }
+]
