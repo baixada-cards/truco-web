@@ -1,6 +1,6 @@
 'use client'
 
-// Plate VII — a deliberately small rail. It teaches the interaction contract
+// Plate VI — a deliberately small rail. It teaches the interaction contract
 // before the reader reaches the full Study timeline: focus moves through a
 // single line; it does not rewrite the whole hand.
 
@@ -20,7 +20,7 @@ export function LineWalkerPlate() {
   return (
     <figure className={styles.plate}>
       <div className={`${styles.figCanvas} ${styles.walkerPlate}`}>
-        <div className={styles.walkerRail} aria-label={t('sec.chart.walkerAria')}>
+        <div className={styles.walkerRail} aria-label={t('sec.notation.walkerAria')}>
           {STEPS.map((key, index) => (
             <button
               key={key}
@@ -30,14 +30,14 @@ export function LineWalkerPlate() {
               onClick={() => setStep(index)}
             >
               <span>{index + 1}</span>
-              {t(`sec.chart.walker.${key}`)}
+              {t(`sec.notation.walker.${key}`)}
             </button>
           ))}
         </div>
         <div className={styles.walkerReadout} aria-live="polite">
-          <span className={styles.rangeEyebrow}>{t('sec.chart.walker.focus')}</span>
-          <h3>{t(`sec.chart.walker.${STEPS[step]}`)}</h3>
-          <p>{t(`sec.chart.walker.${STEPS[step]}P`)}</p>
+          <span className={styles.rangeEyebrow}>{t('sec.notation.walker.focus')}</span>
+          <h3>{t(`sec.notation.walker.${STEPS[step]}`)}</h3>
+          <p>{t(`sec.notation.walker.${STEPS[step]}P`)}</p>
           <div className={styles.walkerCards} aria-hidden>
             {step >= 1 ? <MiniCard info={infos[0]} /> : <span className={styles.walkerUnknown}>?</span>}
             {step >= 2 ? <MiniCard info={infos[2]} /> : <span className={styles.walkerUnknown}>?</span>}
@@ -45,7 +45,7 @@ export function LineWalkerPlate() {
         </div>
       </div>
       <figcaption className={styles.plateCaption}>
-        <span className={styles.plateNo}>VII</span> {t('sec.chart.walkerCaption')}
+        <span className={styles.plateNo}>{t('plate', { no: 'VI' })}</span> {t('sec.notation.walkerCaption')}
       </figcaption>
     </figure>
   )

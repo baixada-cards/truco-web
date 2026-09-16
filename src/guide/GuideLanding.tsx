@@ -9,7 +9,8 @@ import Link from 'next/link'
 import { LanguagePicker } from '../components/live/LanguagePicker'
 import { guideBooks } from '../server/guide-downloads'
 import { CopyEditor } from './CopyEditor'
-import { chapterRoman, GUIDE_PARTS } from './chapters'
+import { chapterNumber, GUIDE_PARTS } from './chapters'
+import { GUIDE_LOCALES } from './guide-locales'
 import styles from './guide.module.css'
 import { HashRedirect } from './HashRedirect'
 import { rich } from './rich'
@@ -28,9 +29,11 @@ export function GuideLanding() {
         <a className={styles.back} href={labHref}>
           ← {t('back')}
         </a>
-        <div className={styles.guideTools}>
-          <LanguagePicker variant="guide" />
-        </div>
+        {GUIDE_LOCALES.length > 1 ? (
+          <div className={styles.guideTools}>
+            <LanguagePicker variant="guide" />
+          </div>
+        ) : null}
       </div>
 
       <div className={styles.leaf}>
@@ -43,6 +46,7 @@ export function GuideLanding() {
             <i />
           </div>
           <p className={styles.lede}>{t.rich('lede', rich)}</p>
+          <p className={styles.written}>{t('written')}</p>
           <div className={styles.contentsHead}>{t('contents')}</div>
         </header>
 
@@ -63,7 +67,7 @@ export function GuideLanding() {
                       <Link href={`${base}/${id}`} className={styles.tocEntry}>
                         <span className={styles.tocName}>{t(`toc.${id}`)}</span>
                         <i className={styles.tocDots} aria-hidden />
-                        <span className={styles.tocNo}>{chapterRoman(id)}</span>
+                        <span className={styles.tocNo}>{chapterNumber(id)}</span>
                       </Link>
                     </li>
                   ))}

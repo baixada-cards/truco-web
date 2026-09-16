@@ -6,6 +6,7 @@
 
 import { useTranslations } from 'next-intl'
 
+import { FormulaTerms, Math } from '../Math'
 import styles from '../guide.module.css'
 import { Reveal, Section } from '../Section'
 import { Prose } from '../Prose'
@@ -42,6 +43,13 @@ const PURITY_ROWS = [
   { key: 'purityMao', rows: '20.4%', play: '56.1%', maxProb: '0.609 / 0.873' },
   { key: 'purityBig', rows: '26.8%', play: '52.4%', maxProb: '0.655 / 0.836' },
 ] as const
+
+// The legacy warning machinery (self-loss and own reach), moved here from
+// the trust chapter: it explains training coverage, not quality.
+const TEX = {
+  selfLoss: String.raw`L_{\mathrm{self}}(h) = 50\sum_a \sigma(a\mid h)\bigl(\max_{a'}q(a'\mid h)-q(a\mid h)\bigr)`,
+  ownReach: String.raw`\rho_{\mathrm{own}}(h) = \prod_{d\,\in\,\ell_{\mathrm{own}}}\sigma(a_d\mid h)`,
+} as const
 
 export function NumbersChapter() {
   const t = useTranslations('Study.guide')
@@ -144,7 +152,33 @@ export function NumbersChapter() {
         <aside className={styles.margin}>{t.rich('sec.numbers.certAside', rich)}</aside>
       </Section>
 
-      <Section id="similarity" mark="§ 4" title={t('sec.numbers.simHead')}>
+      <Section id="diagnostics" mark="§ 4" title={t('sec.numbers.diagnosticsHead')}>
+        <Prose>{t.rich('sec.numbers.diagnosticsP', rich)}</Prose>
+        <div className={styles.formula}>
+          <Math display tex={TEX.selfLoss} />
+          <FormulaTerms
+            items={[
+              { tex: String.raw`\sigma(a\mid h)`, text: t('symbols.sigma') },
+              { tex: String.raw`q(a\mid h)`, text: t('sec.numbers.selfLossQ') },
+              { tex: String.raw`50`, text: t('sec.numbers.selfLossScale') },
+            ]}
+          />
+          <p className={styles.formulaNote}>{t('sec.numbers.selfLossNote')}</p>
+        </div>
+        <div className={styles.formula}>
+          <Math display tex={TEX.ownReach} />
+          <FormulaTerms
+            items={[
+              { tex: String.raw`\ell_{\mathrm{own}}`, text: t('sec.numbers.ownLine') },
+              { tex: String.raw`\rho_{\mathrm{own}}`, text: t('sec.numbers.ownReach') },
+            ]}
+          />
+          <p className={styles.formulaNote}>{t('sec.numbers.ownReachNote')}</p>
+        </div>
+        <Prose>{t.rich('sec.numbers.pruningP', rich)}</Prose>
+      </Section>
+
+      <Section id="similarity" mark="§ 5" title={t('sec.numbers.simHead')}>
         <Prose>{t.rich('sec.numbers.simP1', rich)}</Prose>
         <div className={styles.treeTableWrap}>
           <table className={`${styles.treeTable} ${styles.statTable} ${styles.statTable5}`}>
@@ -181,7 +215,7 @@ export function NumbersChapter() {
         <aside className={styles.margin}>{t.rich('sec.numbers.simAside', rich)}</aside>
       </Section>
 
-      <Section id="purity" mark="§ 5" title={t('sec.numbers.purityHead')}>
+      <Section id="purity" mark="§ 6" title={t('sec.numbers.purityHead')}>
         <Prose>{t.rich('sec.numbers.purityP1', rich)}</Prose>
         <div className={styles.treeTableWrap}>
           <table className={`${styles.treeTable} ${styles.statTable}`}>
@@ -214,7 +248,7 @@ export function NumbersChapter() {
         <Prose>{t.rich('sec.numbers.purityP2', rich)}</Prose>
       </Section>
 
-      <Section id="effort" mark="§ 6" title={t('sec.numbers.effortHead')}>
+      <Section id="effort" mark="§ 7" title={t('sec.numbers.effortHead')}>
         <Prose>{t.rich('sec.numbers.effortP1', rich)}</Prose>
         <Prose>{t.rich('sec.numbers.effortP2', rich)}</Prose>
         <aside className={styles.margin}>{t.rich('sec.numbers.effortAside', rich)}</aside>

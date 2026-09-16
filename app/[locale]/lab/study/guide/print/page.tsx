@@ -5,11 +5,12 @@
 
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 
-import { GUIDE_PARTS, chapterRoman } from '../../../../../../src/guide/chapters'
+import { GUIDE_PARTS, chapterLabelKey, chapterNumber } from '../../../../../../src/guide/chapters'
 import { CHAPTER_BODIES } from '../../../../../../src/guide/chapters/registry'
 import { GuideBookPage } from '../../../../../../src/guide/GuideBookPage'
+import { guideHref, isGuideLocale } from '../../../../../../src/guide/guide-locales'
 import { studyLabRouteEnabled } from '../../../../../../src/server/study-lab-config'
 
 export const dynamic = 'force-dynamic'
@@ -30,6 +31,9 @@ export default async function GuidePrintPage({
   }
 
   const { locale } = await params
+  if (!isGuideLocale(locale)) {
+    redirect(guideHref(locale, '/print'))
+  }
   setRequestLocale(locale)
   const t = await getTranslations({ locale, namespace: 'Study.guide' })
 
@@ -40,7 +44,8 @@ export default async function GuidePrintPage({
     lede: t.has(`parts.${part.id}.lede`) ? t(`parts.${part.id}.lede`) : null,
     chapters: part.chapters.map((id) => ({
       id,
-      roman: chapterRoman(id),
+      number: chapterNumber(id),
+      label: t(chapterLabelKey(id), { no: chapterNumber(id) }),
       title: t(`sec.${id}.title`),
       tocName: t(`toc.${id}`),
       Body: CHAPTER_BODIES[id],
@@ -53,7 +58,7 @@ export default async function GuidePrintPage({
       kicker={t('kicker')}
       title={t('title')}
       contents={t('contents')}
-      chapterLabel={(roman) => t('nav.chapter', { no: roman })}
+      written={t('written')}
       parts={parts}
     />
   )

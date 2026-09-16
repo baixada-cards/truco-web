@@ -61,7 +61,6 @@ export const CHAPTER_SECTION_DEFS: Record<GuideChapter, Array<{ id: string; labe
     { id: 'blocks', labelKey: 'Study.guide.sec.chart.blocksHead' },
     { id: 'number', labelKey: 'Study.guide.sec.chart.numberHead' },
     { id: 'list', labelKey: 'Study.guide.sec.chart.listHead' },
-    { id: 'walk', labelKey: 'Study.guide.sec.chart.walkHead' },
   ],
   ranges: [
     { id: 'range-tool', labelKey: 'Study.guide.sec.ranges.toolHead' },
@@ -78,6 +77,7 @@ export const CHAPTER_SECTION_DEFS: Record<GuideChapter, Array<{ id: string; labe
   ],
   notation: [
     { id: 'histories', labelKey: 'Study.guide.sec.notation.historiesHead' },
+    { id: 'walk', labelKey: 'Study.guide.sec.notation.walkHead' },
     { id: 'grammar', labelKey: 'Study.guide.sec.notation.grammarHead' },
     { id: 'quizzes', labelKey: 'Study.guide.sec.notation.quizHead' },
   ],
@@ -109,6 +109,7 @@ export const CHAPTER_SECTION_DEFS: Record<GuideChapter, Array<{ id: string; labe
     { id: 'census', labelKey: 'Study.guide.sec.numbers.censusHead' },
     { id: 'coverage', labelKey: 'Study.guide.sec.numbers.coverageHead' },
     { id: 'certificates', labelKey: 'Study.guide.sec.numbers.certHead' },
+    { id: 'diagnostics', labelKey: 'Study.guide.sec.numbers.diagnosticsHead' },
     { id: 'similarity', labelKey: 'Study.guide.sec.numbers.simHead' },
     { id: 'purity', labelKey: 'Study.guide.sec.numbers.purityHead' },
     { id: 'effort', labelKey: 'Study.guide.sec.numbers.effortHead' },

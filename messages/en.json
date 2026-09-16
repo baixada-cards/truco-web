@@ -614,12 +614,13 @@
       "grid": "grid",
       "gridTitle": "Every hand charted: exact blocks in round 1, one 2D chart once your first card is known",
       "helpAria": "Help: tour & guide",
-      "menuTour": "Take the tour",
+      "menuTour": "Take the quick tour",
+      "menuTourFull": "Take the full tour",
       "menuGuide": "Open the guide — theory & handbook",
       "menuPlayHand": "Play this hand live",
       "menuPlayHandAria": "Resume this exact position as a live match",
-      "menuPlayHandTitle": "Resume this exact position live: the vira and the line carry over, drafted cards stay fixed, and anything undrafted is dealt from its range at this spot. The opponent plays the solution.",
-      "menuPlayHandHeuristicTitle": "Resume this exact position live: the vira and the line carry over, drafted cards stay fixed, and anything undrafted is dealt from its range at this spot. The solved opponent isn't available here, so you'll face the heuristic.",
+      "menuPlayHandTitle": "Resume this exact position live: the turn-up and the line carry over, drafted cards stay fixed, and anything undrafted is dealt from its range at this spot. The opponent plays the solution.",
+      "menuPlayHandHeuristicTitle": "Resume this exact position live: the turn-up and the line carry over, drafted cards stay fixed, and anything undrafted is dealt from its range at this spot. The solved opponent isn't available here, so you'll face the heuristic.",
       "menuPlayHandOver": "This line already ends the hand: there is nothing left to play.",
       "menuPlayHandBusy": "Dealing",
       "menuPlayHandFailed": "Could not start the match.",
@@ -669,7 +670,7 @@
       "open": "open",
       "openTitle": "Load a spot from a .truco file",
       "outOfOrder": "{card} — out of order for the {slot} slot; the hand re-sorts",
-      "peScoreAria": "Pé's score",
+      "peScoreAria": "Dealer's score",
       "pickSlotCard": "Pick the {slot} card",
       "pin": "pin",
       "pinAsSlot": "{action} {card} as the {slot} card — {mix}",
@@ -744,7 +745,8 @@
       "titleRoundAnswer": "Round {n}: answer {card} after {recap}",
       "titleRoundLead": "Round {n}: choose first card after {recap}",
       "toAct": "to act",
-      "tourTitle": "Take a quick guided tour of the lab",
+      "tourTitle": "Four cards: the spot, the hand, the chart, and where to go next",
+      "tourFullTitle": "The guided tour of every control, with things to try",
       "trainWarnUntrained": "Untrained: {role}'s own strategy plays this line holding these cards {pct}% of the time, so the averaged mix here never accumulated — it is initialization noise. Trust the win % and point values, not the frequencies.",
       "trainWarnWeak": "Weakly trained: this mix loses {pp} pp against its own best action, so the solve never really visited this holding here. Trust the win % and point values, not the frequencies.",
       "unitEquity": "equity",
@@ -806,6 +808,7 @@
       "back": "back",
       "next": "Next",
       "start": "Start studying",
+      "fullTour": "Take the full tour",
       "tryIt": "try it",
       "steps": {
         "intro": {
@@ -886,7 +889,7 @@
         },
         "pin": {
           "title": "Pin it",
-          "body": "<b>Pin</b> the hand to carry it as you change the score or vira — the chart re-solves around it while everything else moves. Pin it now."
+          "body": "<b>Pin</b> the hand to carry it as you change the score or turn-up — the chart re-solves around it while everything else moves. Pin it now."
         },
         "pinSee": {
           "title": "Pinned hands travel",
@@ -895,6 +898,22 @@
         "done": {
           "title": "That is the tour",
           "body": "That is it. The <b>?</b> button reopens this anytime, and every <g>underlined term</g> opens the guide in a new tab — Part I is the theory of the solve, Part II the player's handbook. Now go read some charts."
+        },
+        "quickStage": {
+          "title": "Set the stage",
+          "body": "The <b>score</b>, the turn-up, and who deals name the spot. Change any of them and the whole chart re-solves for the new stakes. This tour stays on one spot: 11 × 11 with a 4 turned up, so the 5s are the manilhas."
+        },
+        "quickHand": {
+          "title": "The hand so far",
+          "body": "The rail is the hand as it has been played. Every play is a decision with a chart of its own: the arrows walk them, a plate jumps to one, and any past play can be rewritten."
+        },
+        "quickChart": {
+          "title": "The chart",
+          "body": "One chart per decision. Each <g>block</g> pins one card and the rows and columns are the other two, so every cell is one exact hand, coloured by what the solve plays with it. The header keeps the score: <g2>match equity</g2>, and how often a deal even gets here."
+        },
+        "quickMore": {
+          "title": "Going deeper",
+          "body": "Click a cell to open the hand panel. Blank one of its cards and it becomes a <g>range</g>. Pin a hand to carry it across scores. The full tour walks each of these with things to try, and the <g2>guide</g2> explains what the numbers mean."
         }
       }
     },
@@ -903,6 +922,7 @@
       "kicker": "Baixada · Study · Field guide",
       "title": "Optimal Truco",
       "lede": "This is <b>solved</b> heads-up truco paulista. For a selection of spots, it shows a way to play that <b>can’t be exploited</b>, worked out by a machine playing billions of hands.",
+      "written": "Most of the text in this guide was written by an AI assistant and reviewed by the author. Every number, chart, and figure in it comes from the solver’s output.",
       "contents": "Contents",
       "parts": {
         "theory": {
@@ -916,8 +936,8 @@
           "lede": "What the solutions teach: the hand of eleven, the opening lead, the truco from both sides, and the habits that cost the most."
         },
         "reference": {
-          "kicker": "Back matter",
-          "head": "Reference"
+          "kicker": "Appendices",
+          "head": "Abstractions, numbers, and terms"
         }
       },
       "toc": {
@@ -956,6 +976,7 @@
         "backToContents": "guide contents",
         "openLabShort": "open the lab",
         "chapter": "Chapter {no}",
+        "appendix": "Appendix {no}",
         "previous": "Previous",
         "next": "Next",
         "pagerAria": "Chapter navigation"
@@ -967,7 +988,7 @@
           "intro2": "The game being analyzed here is heads-up truco paulista: a turn-up card identifies the manilhas for the current hand.",
           "cardsHead": "The deck, the turn-up, the manilhas",
           "cardsP1": "A 40-card deck: ranks <code>4 5 6 7 Q J K A 2 3</code> in the four suits. The 8s, 9s and 10s are out. Apart from the manilhas, that listing IS the order, weakest to strongest: <code>4</code> lowest, <code>3</code> highest, <b>suits never matter</b>, and two cards of the same rank tie.",
-          "cardsP2": "After dealing, one card is turned face up and held below the deck: the <b>turn-up</b> (<em>vira</em> in Portuguese). The rank right above it becomes the <b>manilha</b> rank: those four cards outrank everything else, and only among them does the suit decide, weakest to strongest <b>♦ > ♠ > ♥ > ♣</b>. \n\nSo each manilha is one specific card: under a 4 turn-up, the 5♣ is the strongest card in the game, then the 5♥ and so on. When the turn-up is a <code>3</code>, manilha rank is <code>4</code>.\n",
+          "cardsP2": "After dealing, one card is turned face up and held below the deck: the <b>turn-up</b> (<em>vira</em> in Portuguese). The rank right above it becomes the <b>manilha</b> rank: those four cards outrank everything else, and only among them does the suit decide, strongest to weakest <b>♣ > ♥ > ♠ > ♦</b>. \n\nSo each manilha is one specific card: under a 4 turn-up, the 5♣ is the strongest card in the game, then the 5♥ and so on. When the turn-up is a <code>3</code>, manilha rank is <code>4</code>.\n",
           "roundsHead": "Rounds, leads, and every tie",
           "roundsP1": "Three cards each, up to three rounds, one card per round; <b>best of three</b> wins the hand. The <b>Leader</b> — the Dealer's opponent — leads round 1; after that the round's winner leads, and a tied round keeps the same leader. Ties are where home rules diverge, so here is the engine's complete table:",
           "tie1": {
@@ -992,7 +1013,7 @@
           "stakesP1": "A hand starts at <b>1 point</b>. Calling <b>truco</b> offers 3; the later raises climb one rung at a time up the ladder <code>1 → 3 → 6 → 9 → 12</code>. A raise pauses the cards until it is answered: <b>accept</b> and play continues at the new value; <b>decline</b> and the raiser scores the <i>previous</i> value on the spot (decline the first truco and it's 1 point).",
           "stakesP2": "Raises strictly <b>alternate</b>: whoever made the last raise cannot make the next one — only the opponent can escalate, whether by re-raising over a pending offer or by raising later in the hand. Conceding the hand is legal on any turn and pays the opponent exactly what a decline would — never less.",
           "elevenHead": "The hand of eleven — and 11 × 11",
-          "elevenP1": "When one player reaches <b>11 points</b>, the next hand is a <b>mão de onze</b>: before any card is played, the player at 11 — and only them, even when the other seat would lead — chooses. <b>Accept</b>, and the hand is played for <b>3</b>; <b>fold</b>, and the opponent collects <b>1</b>. The truco ladder is locked for the whole hand, for both players.",
+          "elevenP1": "When one player reaches <b>11 points</b>, the next hand is a <b>hand of eleven</b> (<em>mão de onze</em>): before any card is played, the player at 11 — and only them, even when the other seat would lead — chooses. <b>Accept</b>, and the hand is played for <b>3</b>; <b>fold</b>, and the opponent collects <b>1</b>. The truco ladder is locked for the whole hand, for both players.",
           "elevenP2": "At <b>11 × 11</b> there is no decision to make: the hand is automatically worth 3, raises stay locked, and the cards are dealt and seen <b>normally</b>. The folklore “iron hand” — playing blind at 11 × 11 — is <b>not</b> part of this variant.",
           "matchHead": "The match",
           "matchP1": "First to <b>12 points</b> wins the match, and scores cap there — winning 3 at 11 lands exactly on 12. A hand ends the moment its outcome is fixed: if round 3 can no longer change the result, it isn't played out.",
@@ -1066,7 +1087,7 @@
               "caption": "Follow the exchange: the responder alone can accept, fold for the previous value, or re-raise; control then passes across the table."
             },
             "eleven": {
-              "aria": "The mão de onze illustrated: at 11 × 7 the player at 11 chooses between accepting for 3 and folding for 1; at 11 × 11 the hand is automatically worth 3; the raise ladder is locked at 3 in both cases",
+              "aria": "The hand of eleven illustrated: at 11 × 7 the player at 11 chooses between accepting for 3 and folding for 1; at 11 × 11 the hand is automatically worth 3; the raise ladder is locked at 3 in both cases",
               "chooseSub": "the player at 11 sees their cards, then chooses",
               "acceptNote": "accept — the hand plays for 3",
               "foldNote": "fold — the opponent collects 1",
@@ -1086,14 +1107,14 @@
           "title": "What “solving” a game like truco even means",
           "p1": "A solve is a pair of strategies — one per side — where neither can do better by changing, whatever the other does. Game theory calls it a <b>Nash equilibrium</b>. In a game of hidden cards and bluffing that can't be a single “best move”: it's a <b>mix</b>, tuned so the opponent can't read you. The whole idea fits in one tiny endgame you can solve by hand —",
           "toyHead": "A bluff you can solve by hand",
-          "toySetup": "Final round, real stakes. Mão — the leader — has led a plain <b>3</b> — it's on the table, nothing left behind it. Pé, the dealer, arrives holding the top manilha (<b>m♣</b>, the 5♣ under <code>v4</code>) or a dead <b>4</b>, equally often, and calls <b>truco</b>: the hand rises from 1 point to 3. Mão can <b>fold</b> — conceding the base point — or <b>call</b> and play the round out for 3. One deal, one bluff, one decision:",
-          "toyP2": "Should mão call? That depends on one number: <b>p</b>, the share of manilhas behind pé's truco. Calling collects 3 when the raise was air and loses 3 when the manilha shows; folding costs 1 for sure:",
-          "toyFnote": "Payoffs are points for mão, at the engine's real stakes: folding a truco concedes the previously accepted value (1); calling plays the raised hand (3). p is the probability the raise hides m♣.",
-          "toyP3": "At <b>p* = 2/3</b> mão is exactly indifferent. A raising range richer than two-thirds manilha makes folding right; leaner, and calling prints. Everything the lab's charts show is this same arithmetic, repeated at scale.",
+          "toySetup": "Final round, real stakes. The leader has led a plain <b>3</b> — it's on the table, nothing left behind it. The dealer arrives holding the top manilha (<b>m♣</b>, the 5♣ under <code>v4</code>) or a dead <b>4</b>, equally often, and calls <b>truco</b>: the hand rises from 1 point to 3. The leader can <b>fold</b> — conceding the base point — or <b>accept</b> and play the round out for 3. One deal, one bluff, one decision:",
+          "toyP2": "Should the leader accept? That depends on one number: <b>p</b>, the share of manilhas behind the dealer's truco. Accepting collects 3 when the raise was air and loses 3 when the manilha shows; folding costs 1 for sure:",
+          "toyFnote": "Payoffs are points for the leader, at the engine's real stakes: folding a truco concedes the previously accepted value (1); accepting plays the raised hand (3). p is the probability the raise hides m♣.",
+          "toyP3": "At <b>p* = 2/3</b> the leader is exactly indifferent. A raising range richer than two-thirds manilha makes folding right; leaner, and accepting pays. Everything the lab's charts show is this same arithmetic, repeated at scale.",
           "mixHead": "Why the solve mixes",
-          "mixP1": "Now hand the knob to pé. Raising the manilha is automatic — the choice is <b>b</b>, how often pé also raises the dead 4. Never bluff and every truco means the manilha: mão learns to fold, and pé's monster earns a single point. Always bluff and half the raises are air: mão calls every one and cashes 3 whenever the 4 turns up. Both pure habits are exploited the moment the opponent notices.",
-          "mixP2": "The equilibrium sits where nobody can be read. Pé bluffs just enough that the raising range lands exactly on mão's indifference point, and mão calls just enough that bluffing neither prints money nor burns it:",
-          "mixFnote": "b is pé's bluff frequency with the dead 4; c is mão's calling frequency. The 50/50 deal plus b* = ½ puts 2 manilhas behind every 3 raises — the p* above.",
+          "mixP1": "Now hand the knob to the dealer. Raising the manilha is automatic — the choice is <b>b</b>, how often the dealer also raises the dead 4. Never bluff and every truco means the manilha: the leader learns to fold, and the dealer's manilha earns a single point. Always bluff and half the raises are air: the leader accepts every one and cashes 3 whenever the 4 turns up. Both pure habits are exploited the moment the opponent notices.",
+          "mixP2": "The equilibrium sits where nobody can be read. The dealer bluffs just enough that the raising range lands exactly on the leader's indifference point, and the leader accepts just enough that bluffing neither prints money nor burns it:",
+          "mixFnote": "b is the dealer's bluff frequency with the dead 4; c is the leader's accept frequency. The 50/50 deal plus b* = ½ puts 2 manilhas behind every 3 raises — the p* above.",
           "mixTakeaway": "A solved strategy randomizes on purpose — at exactly the rate that makes reading it worthless. Every mixed cell in the lab is doing this.",
           "cfrHead": "How the machine solves the real thing",
           "cfrP1": "The real game tree is far too large for hand arithmetic, so the solve is computed with <b>counterfactual regret minimization</b>: the program plays itself for billions of hands and, at every decision, leans a little more toward what it regretted not doing —",
@@ -1104,33 +1125,16 @@
         "chart": {
           "title": "Reading a chart",
           "intro1": "Each chart shows how the solve plays <b>every possible holding</b> at one decision. With all three cards unknown the lab never squeezes them into one flat grid: it draws <b>exact blocks</b> — one card pinned per block, the other two on the axes — so every cell is exactly one holding, never a family.",
-          "intro2": "The reader below turns up a 5 (<code>v5</code>), so the 6s are the manilhas: they beat everything, they carry their suit — 6♣ > 6♥ > 6♠ > 6♦ — and each is a <b>single card</b>, so a manilha row or column holds exactly one copy and appears alone. Plain ranks ignore suit entirely: a 3 is any 3.",
+          "intro2": "The reader below turns up a 4 (<code>v4</code>), so the 5s are the manilhas: they beat everything, they carry their suit — 5♣ > 5♥ > 5♠ > 5♦ — and each is a <b>single card</b>, so a manilha row or column holds exactly one copy and appears alone. Plain ranks ignore suit entirely: a 3 is any 3.",
           "blocksHead": "Finding a hand",
           "blocksP": "Pin your weakest card to pick the block (this reader begins at <code>L = 7</code>), then run your highest card down the rows and your middle card across the columns. The brass label is itself the control — click it to change both the pinned slot and the one card this chart holds fixed. Hover or tap any cell —",
           "numberHead": "The number, the bands, and ≈",
           "numberP": "Only one number fits in a cell, so a mixed cell prints its <b>biggest slice</b> — the most-played action's percentage. The color bands carry the whole mix, each sized by its probability; the readout here (in the lab: the tooltip) spells out every action with its exact share.",
-          "approxP": "A cell wearing <b>≈</b> instead of a number is weak: where a per-node BR measurement ships, an adversarial best response gains more than 5 match-win points. Older exports use the legacy self-loss/reach alarm. Either way, read ≈ as a warning, not a tactic — the trust chapter shows the machinery.",
+          "approxP": "A cell wearing <b>≈</b> instead of a number is weak: where a per-node BR measurement ships, an adversarial best response gains more than 5 match-win points. Older exports use the legacy self-loss/reach alarm. Either way, read ≈ as a warning, not a tactic. The trust chapter explains the badge, and Appendix B shows the legacy alarm’s machinery.",
           "aside": "the number = the biggest slice. the tooltip = the whole mix.",
           "listHead": "The list — same data, sorted",
           "listP": "<b>LIST</b> lays the very same holdings out as rows, strongest first: the cards up front, the mix as a labeled bar. Nothing changes but the shape — the grid is for seeing regions at a glance, the list is for reading one hand at a time.",
-          "listCaption": "Real data — the first eight holdings of the same L = 4 block, exactly as the lab's LIST draws them; each bar segment is labeled with its action and share.",
-          "walkHead": "Walking one hand through the decisions",
-          "walkP1": "Pin the hand as it was actually played in the left rail, then walk the decisions with <b>← →</b>. A chart cell fills two of your three cards; the panel’s card list or a card’s own menu fills the rest, and cells that are impossible with your picks grey out.",
-          "walkP2": "<b>Pinning</b> the hand (⚑) fixes it for the whole hand: that player’s rail decisions then show the pinned cards’ own mix, and only those cards stay playable. Click a card to clear it, double-click for its menu.",
-          "walkAside": "Think of it as replaying one deal in slow motion, asking at every fork: <i>what does the solve do here?</i>",
-          "walkerAria": "A miniature hand-history rail",
-          "walkerCaption": "Click a point in the rail: focus moves there, while the already observed cards stay in the line.",
-          "walker": {
-            "focus": "Rail focus",
-            "deal": "Deal",
-            "dealP": "Before a play, every hand is still possible. The chart describes that full starting distribution.",
-            "lead": "Mão leads",
-            "leadP": "The first open card is now history. It stays visible while you inspect the next player’s decision.",
-            "reply": "Pé replies",
-            "replyP": "This reply filters Pé’s range: hands that would rarely show it shrink in the next chart.",
-            "next": "Next decision",
-            "nextP": "The focus has moved, not rewritten the deal. Pin a hand to keep asking what that same hand does here."
-          }
+          "listCaption": "Real data — the first eight holdings of the same L = 4 block, exactly as the lab's LIST draws them; each bar segment is labeled with its action and share."
         },
         "ranges": {
           "title": "Ranges — the hands still possible",
@@ -1138,19 +1142,19 @@
           "toolHead": "Build a range, then read it",
           "toolP": "Start with <code>[? ? ?]</code> for every legal three-card hand. Fix cards by typing their notation, clicking a slot and selecting a card, or dragging it onto a slot; all three inputs stay synchronized. GRID always draws <b>every matching block</b>. Its brass badge changes only the split — H, M, or L — while LIST gives the same arriving range as rows. Choose any holding to make it exact.",
           "blockersHead": "Blockers — why hands disappear",
-          "blockersP": "A <b>blocker</b> is just a card that is already visible, so it cannot also be in a hand. The vira removes one copy before anybody acts; each open card in the line removes another. That is a physical deck constraint, not a solver preference. The lab greys choices with no copies left, and the range editor refuses them too.",
+          "blockersP": "A <b>blocker</b> is just a card that is already visible, so it cannot also be in a hand. The turn-up removes one copy before anybody acts; each open card in the line removes another. That is a physical deck constraint, not a solver preference. The lab greys choices with no copies left, and the range editor refuses them too.",
           "blockerWidget": {
             "eyebrow": "A visible deal",
-            "question": "Chance Pé holds at least one 3",
-            "opponent": "Pé · hidden hand",
-            "opponentHidden": "Pé's three hidden cards",
-            "yourHand": "Mão · your range",
-            "turnUp": "Vira",
+            "question": "Chance the dealer holds at least one 3",
+            "opponent": "Dealer · hidden hand",
+            "opponentHidden": "The dealer's three hidden cards",
+            "yourHand": "Leader · your range",
+            "turnUp": "Turn-up",
             "chooseTurnUp": "Choose the turn-up card",
             "chooseSlot": "Choose the {slot} card",
             "chance": "opponent has a 3",
-            "takeaway": "Click a card in Mão's hand to pin or clear it. The visible vira and every pinned card are removed from the deck before Pé's hidden hand is counted.",
-            "caption": "This percentage is conditioned on the cards visible at this table — not an abstract deck baseline. The vira picker deliberately excludes 2."
+            "takeaway": "Click a card in the leader's hand to pin or clear it. The visible turn-up and every pinned card are removed from the deck before the dealer's hidden hand is counted.",
+            "caption": "This percentage is conditioned on the cards visible at this table — not an abstract deck baseline. The turn-up picker deliberately excludes 2."
           }
         },
         "views": {
@@ -1170,16 +1174,16 @@
             "p1": "Fix one holding and the solve's answer is not a card but a <b>probability for every legal action</b>: σ(a | h), the average strategy at this decision. A cell draws that mix as color bands, each as wide as its action's share, and prints only the <b>biggest slice</b> as its number. The full mix is always one hover away — the tooltip and the hand panel spell out every action; the number alone never does.",
             "fnote": "The printed number is the modal share of the displayed mix. Every cell is one exact holding, so the bands are that hand's own σ — nothing is averaged.",
             "note": "Housekeeping, so tiny slices don't read as noise: an action displayed under 3% that also loses more than 1 pp of match equity is dropped and the rest renormalized. The export keeps the raw mix — the chart is just tidier than the raw decimals.",
-            "figCaption": "Real data — 11x11 v4, mão's opening lead, the L = 4 block: every exact holding whose weakest card is a 4. 23 of these 87 cells mix; the number is the biggest slice, and the ≈ treatment would mark any under-trained cell (this block has none)."
+            "figCaption": "Real data — 11x11 v4, the leader's opening lead, the L = 4 block: every exact holding whose weakest card is a 4. 23 of these 87 cells mix; the number is the biggest slice, and the ≈ treatment would mark any under-trained cell (this block has none)."
           },
           "range": {
             "head": "Range — who actually arrives",
             "shows": "each holding's share of the acting player's arriving range; shading tracks the heaviest cell",
             "takeaway": "Ranges are earned, not dealt — every action a player survives filters what they can still be holding.",
             "p1": "A range is every hand a player could still hold at a decision, each weighted by how often it is <b>actually held here</b>. That weight is Bayes' arithmetic: start from how often the deal produces the holding, then multiply in σ for every observed action along the line. The chart normalizes those weights into shares of the arriving range.",
-            "p2": "This is why ranges move as you walk. Each decision multiplies in another σ, and holdings that would rarely have played the observed line quietly drain out of the picture — fold-happy hands vanish after an accept, weak hands vanish after a confident lead. The toy tree in the solving chapter is the smallest case: one truco from pé instantly reweights his range to two-thirds manilha.",
+            "p2": "This is why ranges move as you walk. Each decision multiplies in another σ, and holdings that would rarely have played the observed line quietly drain out of the picture — fold-happy hands vanish after an accept, weak hands vanish after a confident lead. The toy tree in the solving chapter is the smallest case: one truco from the dealer instantly reweights the dealer's range to two-thirds manilha.",
             "fnote": "The export ships w(h) precomputed per node — the lab only normalizes and shades.",
-            "figCaption": "Real data — 11x11 v4 : 4 6 — pé answered mão's 4 with a 6 and now leads round 2. Each cell is one exact pair of remaining cards; the % is its share of pé's arriving range, shaded against the heaviest cell. The weights carry σ(reply 6 | h): holdings that would rather have answered differently sit pale."
+            "figCaption": "Real data — 11x11 v4 : 4 6 — the dealer answered the leader's 4 with a 6 and now leads round 2. Each cell is one exact pair of remaining cards; the % is its share of the dealer's arriving range, shaded against the heaviest cell. The weights carry σ(reply 6 | h): holdings that would rather have answered differently sit pale."
           },
           "cost": {
             "head": "Cost — the price of a habit",
@@ -1193,9 +1197,9 @@
             "head": "Compare — same decision, another spot",
             "shows": "how far the same decision drifts between two solved spots — accept gap at bids, total variation elsewhere",
             "takeaway": "If Compare lights up, the score changed the play — don't carry one chart across scoreboards.",
-            "p1": "Compare loads the same decision from a second solved spot and colors the disagreement. At bid decisions — the mão de onze, a pending raise — each cell shows the <b>signed accept gap</b>: green where the other spot accepts more, red where it folds more. At card decisions it shows <b>total-variation distance</b>: the share of play that would have to move to turn one mix into the other, from 0 (identical) to 100 (opposite).",
+            "p1": "Compare loads the same decision from a second solved spot and colors the disagreement. At bid decisions — the hand of eleven, a pending raise — each cell shows the <b>signed accept gap</b>: green where the other spot accepts more, red where it folds more. At card decisions it shows <b>total-variation distance</b>: the share of play that would have to move to turn one mix into the other, from 0 (identical) to 100 (opposite).",
             "fnote": "σ′ is the other spot's mix. The cell picks Δaccept exactly when the decision offers accept / fold; otherwise TV.",
-            "figCaption": "Real data — the opening lead after the accept, mão at 10 (11x10 v4) versus mão at 2 (11x2 v4), block L = 4. Gold marks holdings the trailing mão plays differently. At the mão-de-onze accept itself this comparison is nearly blank — between these scores the accept threshold barely moves."
+            "figCaption": "Real data — the opening lead after the accept, the leader at 10 (11x10 v4) versus the leader at 2 (11x2 v4), block L = 4. Gold marks holdings the trailing leader plays differently. At the hand-of-eleven accept itself this comparison is nearly blank — between these scores the accept threshold barely moves."
           },
           "selHead": "The toolbar’s selectors",
           "selIntro": "The toolbar's selectors don't change the machinery — they change which question Cost answers, and which actions count.",
@@ -1223,7 +1227,7 @@
           },
           "reach": {
             "term": "Reach",
-            "desc": "how often a match in this band walks exactly this line — the node's total weight over the band root's. Low-reach corners earn little training, which is where the ≈ flag lives (see the trust chapter)."
+            "desc": "how often a match in this band walks exactly this line — the node's total weight over the band root's. Low-reach corners earn little training, which is where the ≈ flag lives (see the trust chapter and Appendix B)."
           }
         },
         "abstractions": {
@@ -1246,40 +1250,40 @@
           "factorTwo": "2",
           "factorThree": "3",
           "factorScore": "Match score",
-          "factorScoreWhy": "Sets mão de onze, the legal raise ladder, and the value of every score reached next.",
+          "factorScoreWhy": "Sets the hand of eleven, the legal raise ladder, and the value of every score reached next.",
           "factorDealer": "Dealer assignment",
-          "factorDealerWhy": "Determines mão and pé: who leads now, whose score sits in each role, and who deals next.",
+          "factorDealerWhy": "Determines leader and dealer: who leads now, whose score sits in each role, and who deals next.",
           "factorTurnup": "Turn-up card",
-          "factorTurnupValue": "vira 4 · 5s are manilhas",
+          "factorTurnupValue": "turn-up 4 · 5s are manilhas",
           "factorTurnupWhy": "Fixes card strength, the reduced deck class, and the probabilities of abstract deals.",
           "factorResultLabel": "Selected subgame",
-          "factorResult": "mão 7 × pé 5",
-          "factorResultValue": "vira 4 · dealer seat 0",
-          "rolesP2": "The solver then rewrites the first two facts in <b>role order</b>. Seat 0 and seat 1 are service identifiers; <b>mão</b> leads round one and <b>pé</b> dealt the hand. Dealer assignment is therefore not discarded and not an extra ×2: it decides which physical player's score occupies each role slot. Rotate the dealer without changing either player's points and the ordered score swaps.",
+          "factorResult": "leader 7 × dealer 5",
+          "factorResultValue": "turn-up 4 · dealer seat 0",
+          "rolesP2": "The solver then rewrites the first two facts in <b>role order</b>. Seat 0 and seat 1 are service identifiers; the <b>leader</b> leads round one and the <b>dealer</b> dealt the hand. Dealer assignment is therefore not discarded and not an extra ×2: it decides which physical player's score occupies each role slot. Rotate the dealer without changing either player's points and the ordered score swaps.",
           "rolesAria": "With seat zero on five and seat one on seven, changing the dealer changes the role-ordered score and selects a different subgame",
           "dealerSeat": "Dealer is seat {seat}",
-          "roleScore": "mão {mao} × pé {pe}",
+          "roleScore": "leader {mao} × dealer {pe}",
           "roleExampleNote": "Same physical score in both cases: seat 0 has 5 · seat 1 has 7. The dealer assignment changes which ordered subgame is solved.",
           "subgamesHead": "Solve from the finish backward",
-          "backsolveP1": "Here is the real dependency. At <b>10 × 11</b>, the player on 11 faces the mão-de-onze choice: accept and play the hand for 3, or fold and concede 1. Accepting makes this hand match-deciding either way. Folding instead creates the next hand at <b>11 × 11</b>, with the dealer rotated. So the correct fold value is whatever the already-solved 11 × 11 game is worth to this player — not simply “minus one point.”",
+          "backsolveP1": "Here is the real dependency. At <b>10 × 11</b>, the player on 11 faces the hand-of-eleven choice: accept and play the hand for 3, or fold and concede 1. Accepting makes this hand match-deciding either way. Folding instead creates the next hand at <b>11 × 11</b>, with the dealer rotated. So the correct fold value is whatever the already-solved 11 × 11 game is worth to this player — not simply “minus one point.”",
           "backsolveP2": "The solver therefore solves both dealer orientations of <b>11 × 11</b> first, across the nine turn-up classes, and stores their chance-weighted continuation values. It substitutes the appropriate stored value into the fold leaf of every 10 × 11 tree, then solves the accept-or-fold decision. Repeating that substitution moves the solution backward through the match. The current turn-up affects the accept branch; after a fold, the deck is reshuffled and the next turn-up is sampled afresh. This is exact dynamic programming, not a truncated horizon.",
           "censusHead": "How many subgames does that create?",
-          "subgamesP1": "That normalization gives the grid immediately. Mão and pé can each have 0 through 11 points, so dealer-oriented score produces <b>12 × 12 = 144</b> role-ordered states. The deck has ten concrete turn-up ranks but only <b>nine exact structural classes</b>; the next section proves the one merge, vira 2 ≡ vira 3. Dealer is not another ×2 because it has already decided which physical score belongs to pé.",
-          "censusAria": "Twelve mão scores times twelve pé scores times nine turn-up classes equals one thousand two hundred ninety-six exact subgames",
+          "subgamesP1": "That normalization gives the grid immediately. The leader and the dealer can each have 0 through 11 points, so dealer-oriented score produces <b>12 × 12 = 144</b> role-ordered states. The deck has ten concrete turn-up ranks but only <b>nine exact structural classes</b>; the next section proves the one merge, turn-up 2 ≡ turn-up 3. Dealer is not another ×2 because it has already decided which physical score belongs to the dealer.",
+          "censusAria": "Twelve leader scores times twelve dealer scores times nine turn-up classes equals one thousand two hundred ninety-six exact subgames",
           "censusScores": "role-ordered score states",
           "censusTurnups": "turn-up classes",
           "censusTotal": "exact subgames",
           "subgamesP2": "Together these are <b>1,296 exact one-hand subgames</b>. This is what the lab's Score, Dealer, and Turn-up controls select: the score and dealer choose the role-ordered state, and the turn-up chooses one of its nine card trees. They are coordinates of a policy, not cosmetic labels.",
           "viraHead": "Two turn-ups can be one exact class",
-          "viraP1": "The surprising case is <code>vira 2 ≡ vira 3</code>. With vira 2, the 3s become manilhas and only three plain 2s remain. With vira 3, the 4s become manilhas and only three plain 3s remain. Rename every strength one step around the deck and the structures match exactly: <b>eight full plain ranks, one three-copy top plain rank, and four suit-ordered manilhas</b>.",
+          "viraP1": "The surprising case is <code>turn-up 2 ≡ turn-up 3</code>. With turn-up 2, the 3s become manilhas and only three plain 2s remain. With turn-up 3, the 4s become manilhas and only three plain 3s remain. Rename every strength one step around the deck and the structures match exactly: <b>eight full plain ranks, one three-copy top plain rank, and four suit-ordered manilhas</b>.",
           "viraP2": "That is why the picker may show either <code>2</code> or <code>3</code> while loading the same exact solution. Your chosen or typed rank is still remembered in every concrete card label; only the strategically identical structure is shared.",
           "exactNote": "Nothing is averaged together here. If two deals would ever permit a different action or payoff, they cannot share this class.",
           "visual": {
-            "aria": "Compare the concrete vira 2 and vira 3 decks that share one exact strategic class",
+            "aria": "Compare the concrete turn-up 2 and turn-up 3 decks that share one exact strategic class",
             "kicker": "Two horizontal rows, one inventory",
             "title": "Why two turn-ups share one class",
             "concrete": "Concrete turn-up",
-            "viraChoice": "vira {rank}",
+            "viraChoice": "turn-up {rank}",
             "manilhaValue": "{rank}s are manilhas",
             "plain": "Plain strengths · weakest to strongest",
             "manilhas": "Manilhas",
@@ -1289,9 +1293,9 @@
             "aria": "A solved ten-to-eleven decision tree showing that accepting has a different match-win percentage for each hand while folding always enters the same continuation",
             "kicker": "One public decision, many private hands",
             "title": "Accept changes with the hand; fold stays at 44.7%",
-            "context": "vira 4",
+            "context": "turn-up 4",
             "rootLabel": "decision node",
-            "rootValue": "mão 10 × pé 11",
+            "rootValue": "leader 10 × dealer 11",
             "acceptEdge": "accept",
             "foldEdge": "fold",
             "acceptLabel": "play the current hand for 3",
@@ -1302,14 +1306,14 @@
             "sampleFourHand": "A · Q · 4",
             "sampleFourChance": "28.3%",
             "moreHands": "many other hands",
-            "acceptNote": "Match-win rate if pé accepts; it changes with pé’s cards.",
+            "acceptNote": "Match-win rate if the dealer accepts; it changes with the dealer’s cards.",
             "foldLabel": "concede 1 and enter 11 × 11",
             "foldChance": "44.7%",
             "foldChanceNote": "win rate if the 11 × 11 hand is played",
-            "foldNext": "mão 11 × pé 11 · dealer rotates",
+            "foldNext": "leader 11 × dealer 11 · dealer rotates",
             "verdict": "Compare each hand with 44.7%",
             "legend": "below → fold · above → accept · equal → mix",
-            "caption": "The two accept percentages are real hands from the shipped solve with vira 4 and seat 0 dealing; the final dots stand for the many other possible holdings. Folding ignores the current cards and loads the same freshly dealt 11 × 11 continuation."
+            "caption": "The two accept percentages are real hands from the shipped solve with turn-up 4 and seat 0 dealing; the final dots stand for the many other possible holdings. Folding ignores the current cards and loads the same freshly dealt 11 × 11 continuation."
           },
           "dependencies": {
             "aria": "A score dependency tree showing how solved future scores unlock earlier role-ordered scores",
@@ -1319,9 +1323,9 @@
             "edge": "arrow: solved continuation → newly solvable score",
             "first": "solve first",
             "hoverHint": "Hover or focus a score to inspect its stored match equity.",
-            "storedEquity": "{score}. Stored match-win chance: mão {mao}; pé {pe}.",
+            "storedEquity": "{score}. Stored match-win chance: leader {mao}; dealer {pe}.",
             "missingEquity": "{score}. Match equity is not stored in the current solution set yet.",
-            "caption": "Scores are mão × pé. Dealer rotation flips the roles after every hand, so solved 11 × 10 unlocks 9 × 11, while 10 × 11 unlocks 11 × 9. A node with two incoming arrows — such as 10 × 10 or 9 × 9 — waits for both continuations. The dotted branches continue backward beyond this slice."
+            "caption": "Scores are leader × dealer. Dealer rotation flips the roles after every hand, so solved 11 × 10 unlocks 9 × 11, while 10 × 11 unlocks 11 × 9. A node with two incoming arrows — such as 10 × 10 or 9 × 9 — waits for both continuations. The dotted branches continue backward beyond this slice."
           },
           "simTakeaway": "How much do the coordinates matter? It has been measured, over converged neighboring solutions: neighboring <b>turn-up classes</b> are nearly interchangeable wherever play actually goes, while neighboring <b>scores</b> disagree on about a seventh of actual play, concentrated in the hand's first moves. That asymmetry is why solutions transfer across turn-ups far more cheaply than across scores.",
           "sizesTakeaway": "How large those trees get — and how much of the 1,296-subgame grid is solved so far, at what cost — is ledger material, kept with the rest of the measurements.",
@@ -1384,11 +1388,28 @@
             "check": "Check",
             "writeCorrect": "The parser accepts it. That is a valid pinned range draft.",
             "writeAgain": "Not quite. Include mao, !, three bracketed slots, 5d, 3, and ? — in that strength order."
+          },
+          "walkHead": "Walking one hand through the decisions",
+          "walkP1": "Pin the hand as it was actually played in the left rail, then walk the decisions with <b>← →</b>. A chart cell fills two of your three cards; the panel’s card list or a card’s own menu fills the rest, and cells that are impossible with your picks grey out.",
+          "walkP2": "<b>Pinning</b> the hand (⚑) fixes it for the whole hand: that player’s rail decisions then show the pinned cards’ own mix, and only those cards stay playable. Click a card to clear it, double-click for its menu.",
+          "walkAside": "Think of it as replaying one deal in slow motion, asking at every fork: <i>what does the solve do here?</i>",
+          "walkerAria": "A miniature hand-history rail",
+          "walkerCaption": "Click a point in the rail: focus moves there, while the already observed cards stay in the line.",
+          "walker": {
+            "focus": "Rail focus",
+            "deal": "Deal",
+            "dealP": "Before a play, every hand is still possible. The chart describes that full starting distribution.",
+            "lead": "Leader leads",
+            "leadP": "The first open card is now history. It stays visible while you inspect the next player’s decision.",
+            "reply": "Dealer replies",
+            "replyP": "This reply filters the dealer’s range: hands that would rarely show it shrink in the next chart.",
+            "next": "Next decision",
+            "nextP": "The focus has moved, not rewritten the deal. Pin a hand to keep asking what that same hand does here."
           }
         },
         "trust": {
           "title": "How far to trust it",
-          "intro": "A solution is not a promise that every printed mix is equally polished. The lab now measures the important question at a node: <b>how much can a perfectly adapting opponent gain from the strategy shown here?</b> The answer is the quality badge; the older reach and self-loss numbers explain why a corner went bad.",
+          "intro": "A solution is not a promise that every printed mix is equally polished. The lab now measures the important question at a node: <b>how much can a perfectly adapting opponent gain from the strategy shown here?</b> The answer is the quality badge; the older reach and self-loss numbers, kept in Appendix B, explain why a corner went bad.",
           "badgeHead": "The quality badge is the headline",
           "badgeP": "The badge is a <b>per-node adversarial best-response gap</b>, expressed in match-win percentage points. It compares the exported mix with a genuine opponent best response, rather than asking the solve to grade itself.",
           "solidTerm": "solid · ≤ 1 pp",
@@ -1400,17 +1421,8 @@
           "badgeAside": "A BR table is shipped with the solved spot when this measurement is available. Older exports keep the legacy warning as a compatibility fallback.",
           "warningHead": "Recognising a weak corner",
           "warningP": "This is an actual 11×10 pilot continuation from the lab. The pale <b>≈</b> cells are not merely low probability: each has a measured best-response gap above 5 pp. Hover or tap a cell to see its own measurement.",
-          "warningCaption": "Real lab data — 11×10 v4, after the mão de onze is accepted and a low-reach first-round continuation. {n} of the exact two-card grid’s 87 cells are weak by their measured BR gap, so the lab renders ≈ instead of a strategy number.",
+          "warningCaption": "Real lab data — 11×10 v4, after the hand of eleven is accepted and a low-reach first-round continuation. {n} of the exact two-card grid’s 87 cells are weak by their measured BR gap, so the lab renders ≈ instead of a strategy number.",
           "warningTakeaway": "Don’t infer a tactic from an ≈ cell. Step back to the last solid decision, or explore a different line.",
-          "diagnosticsHead": "Why an off-path mix gets noisy",
-          "diagnosticsP": "Before the BR table, the lab's warning came from two diagnostics. They stay here because they explain how a corner went bad — they describe training coverage, not quality.",
-          "selfLossQ": "the solve’s equilibrium value after action a at holding h",
-          "selfLossScale": "converts the solver’s −1…1 value scale into match-win percentage points",
-          "selfLossNote": "Self-loss asks whether the mix is close to its own best action under the solve's q values — an alarm, not an adversarial guarantee.",
-          "ownLine": "the acting player’s earlier decisions on the line",
-          "ownReach": "how often that player’s own exported strategy walks this holding to the node",
-          "ownReachNote": "Near-zero own reach means the averaging almost never collected experience here; the legacy alarm uses ε = 0.001.",
-          "pruningP": "The cause is concrete: once a non-owner action's probability reaches zero, CFR stops descending into that branch — correct for a truly dominated action, but it freezes whatever early random values sit below. Low own reach records that history; the BR gap says whether the result is actually exploitable.",
           "certificateHead": "What the certificate does — and doesn’t — say",
           "certificateP": "The solve’s certificate is a <b>whole-game, reach-weighted</b> bound against exact best responses. It says the strategy profile is close to equilibrium on average across the deal tree. A tiny off-path branch contributes almost nothing to that average, so the certificate alone cannot certify every cell. That is why the per-node BR measurement belongs on the chart.",
           "certificateTakeaway": "Trust the node’s own badge first. Use the global certificate to understand the solve as a whole, and self-loss plus own reach to understand how a warning arose."
@@ -1439,7 +1451,7 @@
           "plateCaption": "Every solved eleven decision, rendered from the same certified exports as the lab.",
           "shapeHead": "The shape of the range",
           "shapeP1": "From 11×0 through 11×8 the range barely moves: the solve accepts roughly <b>60%</b> of dealt hands at every one of those scores. What changes is the price of sloppiness. At 11×0 even the worst possible error costs about 2 pp — folding everything still wins you 97.6% of matches from there. By 11×8 the same bad habits cost up to 31 pp.",
-          "shapeP2": "<b>11×9 is the tight corner.</b> A lost accept hands the match away — nine plus three is twelve — while folding still leaves a comfortable 63.4%. So the range snaps shut: only 44% of hands accept, the tightest chart on this page, and calling with the very worst holding (4 · 4 · 4) is the dearest single mistake anywhere in the chapter, 63 pp of match-win chance.",
+          "shapeP2": "<b>11×9 is the tight corner.</b> A lost accept hands the match away — nine plus three is twelve — while folding still leaves a comfortable 63.4%. So the range snaps shut: only 44% of hands accept, the tightest chart on this page, and accepting with the very worst holding (4 · 4 · 4) is the dearest single mistake anywhere in the chapter, 63 pp of match-win chance.",
           "shapeP3": "<b>11×10 splits on the deal.</b> Folding sends the match to 11×11, and that hand's value swings on who deals it. When the side on eleven is dealing here, the fold is under water — 44.7% — so the solve gambles, accepting 62% of hands. Leading instead, it can fold its way to 55.3% and tightens to 37%.",
           "shapeAside": "Three manilhas are never a fold — walking them away at 11×10 burns 55 pp. The expensive habits all live at 11×9 and 11×10; those two charts are the ones worth memorizing first."
         },
@@ -1488,11 +1500,11 @@
           "timingP2": "Two patterns stand out. <b>A tied first round is truco weather</b> — the rate jumps from 5% to 32%, because a tie converts round 2 into sudden death and the pressure play prices best exactly there. And the rate climbs as the hand ages: information arrived, ranges narrowed, and the threat has more to lean on.",
           "timingAside": "Holding a manilha roughly doubles the urge: at the round-2 lead, manilha hands raise 12.5% against 5.1% for plain hands.",
           "rangeHead": "What the raising range holds",
-          "rangeP1": "Add up everything that raises across the window and look inside the range: <b>51.8% of the raising mass holds a manilha</b>, against a 28% base rate. In other words, the solve's trucos are roughly <b>half value, half pressure</b> — enough strength that the call is honest, enough air that folding everything to it is exploitable.",
+          "rangeP1": "Add up everything that raises across the window and look inside the range: <b>51.8% of the raising mass holds a manilha</b>, against a 28% base rate. In other words, the solve's trucos are roughly <b>half value, half pressure</b> — enough strength that the truco is honest, enough air that folding everything to it is exploitable.",
           "rangeP2": "That mixture is the practical lesson. A truco from the equilibrium is not an announcement of the best hand; it is a priced threat that happens to be backed by one about half the time. Both pure readings — “truco means manilha” and “truco means bluff” — lose to it.",
           "answerHead": "When to let a hand go",
           "answerP1": "The answering side is where the money is. Facing a truco, the solve <b>folds 63% and accepts 37%</b> of its reach mass (re-raising is moot here — the higher rungs are score-irrelevant). Folding a majority of the time is not timidity; at these stakes conceding one point is routinely cheaper than playing three behind.",
-          "answerP2": "The habits are priced in the leaks chapter, but the headline belongs here: <b>accepting every truco costs 10.4 pp</b> of match-win chance per deal on average, and the single worst call in the window — accepting on <code>4 4 4</code> after leading a 4 into the raise — burns <b>36.6 pp</b>. The mirror habit, folding everything, costs 6.2 pp: expensive, but the cheaper of the two sins.",
+          "answerP2": "The habits are priced in the leaks chapter, but the headline belongs here: <b>accepting every truco costs 10.4 pp</b> of match-win chance per deal on average, and the single worst accept in the window — accepting on <code>4 4 4</code> after leading a 4 into the raise — burns <b>36.6 pp</b>. The mirror habit, folding everything, costs 6.2 pp: expensive, but the cheaper of the two sins.",
           "answerAside": "All prices here are one-shot deviation prices: what the habit loses against the equilibrium opponent at that node, in match-win percentage points. Deeper trucos — round 3, and every line past the export window — are walked live in the lab."
         },
         "leaks": {
@@ -1507,11 +1519,11 @@
           "colWorst": "Worst single hand, pp",
           "habitAcceptTruco": "Accept every truco (10×10)",
           "habitFoldTruco": "Fold every truco (10×10)",
-          "habitAcceptEleven": "Accept every mão de onze at 11×9",
-          "habitFoldEleven": "Fold every mão de onze at 11×10, dealing",
+          "habitAcceptEleven": "Accept every hand of eleven at 11×9",
+          "habitFoldEleven": "Fold every hand of eleven at 11×10, dealing",
           "habitLeadManilha": "Open with the manilha when you hold one (10×10)",
           "habitLeadStrongest": "Always open with your strongest card (10×10)",
-          "tableP1": "The ordering is the finding. The dear habits are <b>answering habits</b> — how you respond to a truco or a mão de onze — and the cheap ones are <b>leading habits</b>. Always opening with your strongest card, the folk rule most often repeated, costs barely a point per deal; calling every truco costs eight times as much, and auto-accepting the eleven at 11×9 costs twenty times as much.",
+          "tableP1": "The ordering is the finding. The dear habits are <b>answering habits</b> — how you respond to a truco or a hand of eleven — and the cheap ones are <b>leading habits</b>. Always opening with your strongest card, the folk rule most often repeated, costs barely a point per deal; accepting every truco costs eight times as much, and auto-accepting the eleven at 11×9 costs twenty times as much.",
           "readingHead": "Reading the bill",
           "readingP1": "The two eleven rows point opposite ways on purpose: at <b>11×9</b> the range snaps shut and the leak is accepting too much, while at <b>11×10 dealing</b> the fold is under water (44.7%) and the leak is folding too much. The same instinct — “be careful at eleven” — is a virtue at one score and a 19 pp tax at the other. Score first, then cards.",
           "readingP2": "The lead habits are cheap for a structural reason the opening-leads chapter charts: most hands have several openings within a point of each other, so even a dogmatic rule usually lands near the frontier. The traps are concentrated — the zap-led hands at ~20 pp — rather than spread. Answering decisions have no such cushion: accept and fold diverge by whole hands, not fractions.",
@@ -1536,6 +1548,15 @@
           "certFallback": "Solved natively (transfer rejected)",
           "certP2": "Transfers had to clear hard gates — raw ε ≤ 0.01, purified ε ≤ 0.004, weighted mean per-node best-response gap ≤ 0.25 pp — or the worker discarded the candidate and solved the spot natively. Native solves converge much tighter globally (median ε 0.00001), but 28 of them carry broader per-node profiles — which is exactly what the lab's per-cell ≈ badges exist to surface.",
           "certAside": "<i>Purified</i> ε is measured after near-zero mixture tails are snapped to the best action for export — it usually tightens the bound. The per-node column is the reach-weighted mean of the same per-cell best-response gaps behind the trust chapter's badges.",
+          "diagnosticsHead": "Why an off-path mix gets noisy",
+          "diagnosticsP": "Before the BR table, the lab's warning came from two diagnostics. They are kept here because they explain how a corner went bad — they describe training coverage, not quality.",
+          "selfLossQ": "the solve’s equilibrium value after action a at holding h",
+          "selfLossScale": "converts the solver’s −1…1 value scale into match-win percentage points",
+          "selfLossNote": "Self-loss asks whether the mix is close to its own best action under the solve's q values — an alarm, not an adversarial guarantee.",
+          "ownLine": "the acting player’s earlier decisions on the line",
+          "ownReach": "how often that player’s own exported strategy walks this holding to the node",
+          "ownReachNote": "Near-zero own reach means the averaging almost never collected experience here; the legacy alarm uses ε = 0.001.",
+          "pruningP": "The cause is concrete: once a non-owner action's probability reaches zero, CFR stops descending into that branch — correct for a truly dominated action, but it freezes whatever early random values sit below. Low own reach records that history; the BR gap says whether the result is actually exploitable.",
           "simHead": "How alike neighboring solutions are",
           "simP1": "Solve two neighboring subgames independently to convergence and compare them row by row. Two averages tell different stories: over <i>all table rows</i>, and weighted by <i>how often play actually reaches</i> each row. TV is total-variation distance — the share of probability mass that would have to move to turn one row's mix into the other's (0 = identical).",
           "simColPair": "Neighbors compared",
@@ -1561,13 +1582,13 @@
           "effortP1": "The solver is synchronous CFR+, adopted after measuring a ~10× cut in iteration count at the same certified ε. The 225-spot release was built by four preemptible cloud workers in 3–4.5 hours each — transferring a neighbor's solution wherever the certificate allowed (85% of spots) and re-solving natively where it didn't — for on the order of <b>$5</b> of compute. A truco-band warm solve now peaks at ~16 GiB and ~18 minutes; a chain of memory work brought the same job down from a 75-GiB machine class.",
           "effortP2": "Certifying is cheap next to solving: one exact whole-game best response of the deepest tier — the full raise ladder from 0×0, 14.6 billion node visits — fits in <b>8.1 GiB</b> and under three hours. The frontier is the deep solve itself: merely building the 0×0 tree in memory needs over <b>150 GiB</b>, which is why the lattice below the shipped bands is approached bottom-up, subgame by subgame.",
           "effortAside": "Sources: the project benchmark log's dated entries, 2026-07-15 → 2026-07-17 — tree censuses, compare-policies, policy-stats, the 225-profile release fleet, and the deep-band scouts.",
-          "censusPruneP": "Except during mão de onze, the engine still permits the ordinary raise ladder. The solver removes a higher re-raise only once <code>lower score + current stake ≥ 12</code>: at that point the current hand already decides the match for either winner, so escalating adds no prize and no rational fold leverage. This is <b>value-exact pruning</b>, not a claim that those buttons are illegal. The diagonal endpoints are compact anchors: <code>0 × 0 → 2 × 2</code> also covers unequal scores such as 2 × 10 and the mirrored 10 × 2. The table shows what the solver keeps with vira 4, for one dealer orientation, across every abstract deal.",
+          "censusPruneP": "Except during the hand of eleven, the engine still permits the ordinary raise ladder. The solver removes a higher re-raise only once <code>lower score + current stake ≥ 12</code>: at that point the current hand already decides the match for either winner, so escalating adds no prize and no rational fold leverage. This is <b>value-exact pruning</b>, not a claim that those buttons are illegal. The diagonal endpoints are compact anchors: <code>0 × 0 → 2 × 2</code> also covers unequal scores such as 2 × 10 and the mirrored 10 × 2. The table shows what the solver keeps with turn-up 4, for one dealer orientation, across every abstract deal.",
           "treeTier": "subgame tier",
           "treeScore": "score interaction",
           "treeLadder": "solver keeps",
           "treeNodes": "tree nodes",
           "treeInfos": "information sets",
-          "treeOnze": "Mão de onze",
+          "treeOnze": "Hand of eleven",
           "treeOnzeScore": "0 × 11 → 11 × 11",
           "treeTruco": "Truco only",
           "treeTrucoScore": "9 × 9 → 10 × 10",
@@ -1577,13 +1598,13 @@
           "treeNineScore": "3 × 3 → 5 × 5",
           "treeFull": "Full ladder",
           "treeFullScore": "0 × 0 → 2 × 2",
-          "treeNote": "Exact vira-4 counts; other turn-up classes have not all been counted at every tier.",
+          "treeNote": "Exact turn-up-4 counts; other turn-up classes have not all been counted at every tier.",
           "coverageHead": "What is actually solved",
           "coverageAria": "Two hundred sixteen of one thousand two hundred ninety-six exact tabular subgames are solved as of July 2026",
           "coverageLabel": "Exact tabular coverage · July 2026",
           "coverageRemaining": "1,080 subgames remain outside the exact tabular solution",
-          "coverageP1": "Exact strategies exist for <b>216 of 1,296</b> subgames: all 23 role-ordered score states where mão or pé is on 11, across all nine turn-up classes (207), plus 10 × 10 across all nine classes (9). The other <b>1,080</b> have not been solved as a full tabular grid.",
-          "coverageP2": "The release behind that coverage stores <b>225 artifacts</b> — one per (score, turn-up, dealer seat): every 11 × N score in both dealer orientations, plus 10 × 10 in one. The two counts differ by exactly the symmetric 11 × 11, whose two orientations are the same game with the seats renamed — nine artifacts covering nine subgames counted once. The Study Lab itself bundles a <b>15-chart subset</b> of the release, all with vira 4.",
+          "coverageP1": "Exact strategies exist for <b>216 of 1,296</b> subgames: all 23 role-ordered score states where the leader or the dealer is on 11, across all nine turn-up classes (207), plus 10 × 10 across all nine classes (9). The other <b>1,080</b> have not been solved as a full tabular grid.",
+          "coverageP2": "The release behind that coverage stores <b>225 artifacts</b> — one per (score, turn-up, dealer seat): every 11 × N score in both dealer orientations, plus 10 × 10 in one. The two counts differ by exactly the symmetric 11 × 11, whose two orientations are the same game with the seats renamed — nine artifacts covering nine subgames counted once. The Study Lab itself bundles a <b>15-chart subset</b> of the release, all with turn-up 4.",
           "coverageNote": "The remaining grid is <b>parked, not quietly computing</b>. The measured census estimates about $505K spot / $1.12M on-demand to finish it tabularly, with a full-ladder job needing roughly 1.54 TB of RAM. The current direction uses exact subgames as teacher data, then extends coverage with a distilled neural policy and self-play; those later stages are not solved or certified yet."
         },
         "glossary": {
@@ -1601,12 +1622,12 @@
         "cantTell": "the leader can't tell these apart",
         "raiseBubble": "truco!",
         "giveBubble": "plays the 4",
-        "callBubble": "call!",
+        "callBubble": "accept!",
         "foldBubble": "fold",
         "resGive": "Dealer just plays the 4 — leader +1.",
         "resFold": "Leader folds: −1, card unseen.",
-        "resCallManilha": "Leader calls — manilha shows: −3.",
-        "resCallBluff": "Leader calls — bluff caught: +3.",
+        "resCallManilha": "Leader accepts — manilha shows: −3.",
+        "resCallBluff": "Leader accepts — bluff caught: +3.",
         "targetTitle": "the equilibrium share: 2 of every 3 raises hold the manilha",
         "tallyHands": "{hands, plural, one {# hand} other {# hands}} · {raises} raises",
         "tallyShare": "manilha behind the raise: <b>{pct}%</b> <dim>(→ 67%)</dim>",
@@ -1626,7 +1647,7 @@
       "gcr": {
         "hint": "Hover or tap a cell. The block pins one card; the axes name the other two.",
         "badgeTitle": "Choose the pinned slot (H·M·L) and card. This teaching figure always shows one chart.",
-        "caption": "Real data — 11x11 v5, mão's opening lead, drawn with the lab's own cells. The brass label chooses the pinned card; the readout prints the pointed holding's full mix and each action's win %."
+        "caption": "Real data — 11×9 v4, the hand of eleven seen from the side on eleven: accept or fold, drawn with the lab's own cells. The brass label chooses the pinned card; the readout prints the pointed holding's full mix and each action's win %."
       },
       "footer": {
         "openLab": "Open the lab",
@@ -1685,7 +1706,7 @@
           },
           "play2": {
             "term": "The answer",
-            "desc": "pé answers with a jack. Two cards down — that completes the round."
+            "desc": "the dealer answers with a jack. Two cards down — that completes the round."
           },
           "round": {
             "term": "A round mark",
@@ -1779,17 +1800,13 @@
           "def": "how much a perfect best response gains against a strategy, averaged over both seats — the number a spot's certificate bounds. ε 0.01 ≈ 0.5 pp of match-win chance."
         }
       },
-      "landing": {
-        "viewsIntro": "The lab's four lenses on one solved decision — the most important page of this guide.",
-        "viewsCta": "Read the four views chapter"
-      },
       "gax": {
         "hint": "Hover or tap a cell. Solid cells carry trained mixes; the pale ≈ cells are flagged.",
         "flagged": "≈ flagged: this mix loses {pp} pp of match equity against its own best action — over the certificate's {tol} pp per-spot tolerance. The solve almost never comes here, so the numbers are initialization noise, not strategy.",
         "trained": "Trained: self-loss {pp} pp, inside the {tol} pp tolerance — the mix below is safe to read.",
         "flaggedBr": "≈ weak: an adversarial best response gains {pp} match-win pp against this mix. The lab will not present that as strategy.",
         "measuredBr": "Measured by adversarial best response: {pp} match-win pp exploitable at this holding.",
-        "caption": "Real data — 11x11 v4, a corner the solve rarely visits: mão led the 4, pé took the round with a 3 and led round 2 face down. Mão's exact two-card grid has {n} of 87 cells flagged ≈ — low reach earned them almost no training."
+        "caption": "Real data — 11x11 v4, a corner the solve rarely visits: the leader led the 4, the dealer took the round with a 3 and led round 2 face down. The leader's exact two-card grid has {n} of 87 cells flagged ≈ — low reach earned them almost no training."
       },
       "labSpot": "Walk this spot in the lab:",
       "downloads": {

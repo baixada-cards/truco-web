@@ -96,15 +96,25 @@ and `NEXT_PUBLIC_SHOW_DEV_CONTROLS=false` as Docker build arguments.
 
 The Study field guide lives at `/[locale]/lab/study/guide`. Its prose is in
 `messages/<locale>.json` under `Study.guide`; its structure and figures are in
-`src/guide/chapters/`.
+`src/guide/chapters/`. Chapters are grouped into Part I (reading the solve),
+Part II (the player's handbook), and lettered appendices (the solver's own
+documentation and the glossary) by `src/guide/chapters.ts`.
+
+**Published locales.** While the English text is being rewritten the guide
+is English-only: `src/guide/guide-locales.ts` lists the locales that carry
+it, and every other locale's guide route redirects to the English edition,
+the lab's guide links point there, and the sitemap lists only those locales.
+Add a locale to that list once its translation lands.
 
 **Books.** `/[locale]/lab/study/guide/print` renders the whole guide on one
 page, and that route is what the PDF and EPUB are built from—same catalog,
 same chapter components, so the books cannot drift from the site:
 
 ```bash
-pnpm book --locale en --locale pt-BR --locale es
+pnpm book --locale en
 ```
+
+(The builder refuses a locale the guide is not published in.)
 
 Output goes to `public/downloads/` (git-ignored—build the binaries, never
 commit them). The guide's landing page links whatever formats it finds there

@@ -125,6 +125,18 @@
 
 .masthead b, .section b { color: var(--ink-0, #2a241b); font-weight: 600; }
 
+/* how the text was made, said once under the lede */
+.written {
+  max-width: 56ch;
+  margin: 14px auto 0;
+  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-2, #7a6d56);
+  text-align: left;
+}
+
 /* running head: the leaf's top line — the guide left, the part right */
 .running {
   display: flex;
@@ -1691,28 +1703,6 @@ em.matchCut { background: linear-gradient(90deg, #e9d3a4, #c9a96c); }
   display: inline-block;
   margin-right: 5px;
   vertical-align: -1px;
-}
-
-/* the landing's teaser section around the summary table */
-.landingViews {
-  margin-top: 40px;
-  padding-top: 22px;
-  border-top: 1px solid rgba(138, 106, 40, 0.3);
-  max-width: 900px;
-}
-.landingViews h2 {
-  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
-  font-weight: 500;
-  font-size: 24px;
-  color: var(--ink-0, #2a241b);
-  margin: 0 0 8px;
-}
-.landingViewsIntro {
-  max-width: 62ch;
-  margin: 0 0 6px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--ink-1, #4a4032);
 }
 
 /* ------------------------------------------------------------------ */
@@ -3502,6 +3492,15 @@ em.matchCut { background: linear-gradient(90deg, #e9d3a4, #c9a96c); }
 .bookTitlePage {
   padding: 120px 0 90px;
   text-align: center;
+}
+.bookWritten {
+  max-width: 44ch;
+  margin: 48px auto 0;
+  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-2, #7a6d56);
 }
 
 .bookToc { padding-bottom: 40px; }

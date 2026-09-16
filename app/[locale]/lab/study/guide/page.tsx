@@ -1,6 +1,7 @@
 import { setRequestLocale } from 'next-intl/server'
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 
+import { guideHref, isGuideLocale } from '../../../../../src/guide/guide-locales'
 import { GuideLanding } from '../../../../../src/guide/GuideLanding'
 import { studyLabRouteEnabled } from '../../../../../src/server/study-lab-config'
 
@@ -16,6 +17,9 @@ export default async function StudyGuidePage({
   }
 
   const { locale } = await params
+  if (!isGuideLocale(locale)) {
+    redirect(guideHref(locale))
+  }
   setRequestLocale(locale)
 
   return <GuideLanding />

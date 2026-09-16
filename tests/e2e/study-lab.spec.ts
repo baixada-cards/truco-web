@@ -15,7 +15,7 @@ const STUDY_LAB_TEST_URL = process.env.STUDY_LAB_BASE_URL ?? '/en/lab/study'
 
 test('Study Lab route loads a deterministic solution fixture', async ({ page }) => {
   await page.addInitScript(() => {
-    window.localStorage.setItem('truco-study-tour-v2', '1')
+    window.localStorage.setItem('truco-study-tour-v3', '1')
   })
   await page.route('**/study/manifest.json', async (route) => {
     await route.fulfill({

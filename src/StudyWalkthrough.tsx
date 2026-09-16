@@ -13,13 +13,14 @@
 // strand a style and leave the page inert. NEXT stays the skip path; every
 // step re-forces the state it needs, so skipping never strands the story.
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useLocale, useTranslations } from 'next-intl'
 
 import styles from './StudyWalkthrough.module.css'
 import { clearDecorations, clearTourDom, markStepDom, type StepSelectors } from './lib/tour-dom'
-import { TOUR_STEPS, asGroups, type TourObserve } from './lib/tour-steps'
+import { guideHref } from './guide/guide-locales'
+import { asGroups, tourSteps, type TourMode, type TourObserve } from './lib/tour-steps'
 
 /** what the tour may do to the lab (see StudyLab's mount site) */
 export interface TourApi {
@@ -33,7 +34,6 @@ export interface TourApi {
   ready: boolean
 }
 
-const STEPS = TOUR_STEPS
 const CONFIRM = '[data-tour="confirm"]'
 
 type Rect = { top: number; left: number; width: number; height: number }
@@ -53,22 +53,31 @@ const sameRects = (a: Rect[], b: Rect[]) =>
 
 export function StudyWalkthrough({
   open,
+  mode,
+  onModeChange,
   onClose,
   tour,
   observe,
 }: {
   open: boolean
+  /** the quick four-card tour, or the full guided one */
+  mode: TourMode
+  /** the quick tour's last card hands over to the full tour */
+  onModeChange: (mode: TourMode) => void
   onClose: () => void
   tour: TourApi
   observe: TourObserve
 }) {
   const t = useTranslations('Study.walkthrough')
   const locale = useLocale()
+  // the step list only changes with the mode, so effects can depend on it directly
+  const STEPS = useMemo(() => tourSteps(mode), [mode])
   const [step, setStep] = useState(0)
   const [rects, setRects] = useState<Rect[]>([])
   const [glowRects, setGlowRects] = useState<Rect[]>([])
   const [tick, setTick] = useState(0)
-  const appliedFor = useRef(-1)
+  /** `${mode}:${step}` — a mode switch re-forces the state even at step 0 */
+  const appliedFor = useRef('')
   /** lab state as it stood once this step's setup settled */
   const entryRef = useRef<{ obs: TourObserve; at: number }>({ obs: observe, at: 0 })
   const advanceTimer = useRef<number | null>(null)
@@ -87,15 +96,19 @@ export function StudyWalkthrough({
       clearTourDom(document)
       setStep(0)
       setRects([])
-      appliedFor.current = -1
+      appliedFor.current = ''
     }
   }, [open])
+  // handing over from the quick tour to the full one starts it from its first card
+  useEffect(() => {
+    setStep(0)
+  }, [mode])
 
   // fixed teaching conditions: force each step's lab state on entry, once per
   // visit, deferred until the manifest is in
   useEffect(() => {
-    if (!open || !tour.ready || appliedFor.current === step) return
-    appliedFor.current = step
+    if (!open || !tour.ready || appliedFor.current === `${mode}:${step}`) return
+    appliedFor.current = `${mode}:${step}`
     const def = STEPS[step]
     if (def.apply) tour.apply(def.apply)
     if (def.layout) tour.setLayout(def.layout)
@@ -104,9 +117,9 @@ export function StudyWalkthrough({
     if (def.cursorK !== undefined) tour.focusDecision(def.cursorK)
     entryRef.current = { obs: observe, at: Date.now() }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open, step, tour.ready])
+  }, [open, mode, step, tour.ready])
   useEffect(() => {
-    if (!open) appliedFor.current = -1
+    if (!open) appliedFor.current = ''
   }, [open])
 
   // auto-advance: watch the lab state; while the step's setup is still settling
@@ -127,7 +140,7 @@ export function StudyWalkthrough({
         setStep((s) => Math.min(s + 1, STEPS.length - 1))
       }, 600)
     }
-  }, [open, step, observe, tick])
+  }, [open, STEPS, step, observe, tick])
   // a scheduled advance survives state churn; it only dies with the step
   useEffect(
     () => () => {
@@ -194,7 +207,7 @@ export function StudyWalkthrough({
       window.clearInterval(iv)
       clearTourDom(document)
     }
-  }, [open, step])
+  }, [open, STEPS, step])
 
   // final safety net: whatever the unmount path, leave zero residue
   useEffect(() => () => clearTourDom(document), [])
@@ -284,7 +297,7 @@ export function StudyWalkthrough({
       window.removeEventListener('resize', track)
       window.removeEventListener('scroll', track, true)
     }
-  }, [open, step])
+  }, [open, STEPS, step])
 
   // keyboard: Esc closes the tour — unless a lab dialog is up, which owns it
   useEffect(() => {
@@ -395,7 +408,7 @@ export function StudyWalkthrough({
     path ? (
       <a
         className={styles.guideLink}
-        href={`/${locale}/lab/study/guide/${path}`}
+        href={guideHref(locale, `/${path}`)}
         target="_blank"
         rel="noreferrer"
       >
@@ -507,13 +520,20 @@ export function StudyWalkthrough({
               {step > 0 ? (
                 <button type="button" className={styles.back} onClick={() => setStep((s) => s - 1)}>← {t('back')}</button>
               ) : <span />}
-              <button
-                type="button"
-                className={styles.next}
-                onClick={() => (last ? finish() : setStep((s) => s + 1))}
-              >
-                {last ? t('start') : <>{t('next')} →</>}
-              </button>
+              <span className={styles.tipActionsEnd}>
+                {last && mode === 'quick' ? (
+                  <button type="button" className={styles.back} onClick={() => onModeChange('full')}>
+                    {t('fullTour')}
+                  </button>
+                ) : null}
+                <button
+                  type="button"
+                  className={styles.next}
+                  onClick={() => (last ? finish() : setStep((s) => s + 1))}
+                >
+                  {last ? t('start') : <>{t('next')} →</>}
+                </button>
+              </span>
             </div>
           </div>
         </div>,

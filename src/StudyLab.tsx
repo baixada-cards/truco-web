@@ -36,6 +36,8 @@ import {
 import { StudyTimeline, type TerminalInfo, type TimelineDecision } from './StudyTimeline'
 import { reconcileEdit, type EditReconcile } from './lib/reconcile-edit'
 import { StudyTableView } from './StudyTableView'
+import { guideHref } from './guide/guide-locales'
+import type { TourMode } from './lib/tour-steps'
 import { StudyWalkthrough } from './StudyWalkthrough'
 import { resolveStudyAssetUrl } from './lib/study-assets'
 import {
@@ -283,25 +285,33 @@ export default function StudyLab({ manifestUrl }: { manifestUrl: string }) {
   const locale = useLocale()
   const t = useTranslations('Study.lab')
   const tt = useTranslations('Study.terms')
-  // First-visit tour: auto-open once (localStorage-gated), or on demand via a
-  // ?tour=1 link (e.g. the "take the tour" affordance and the guide page).
+  // First-visit tour: the quick four-card tour auto-opens once (localStorage-
+  // gated; the key moved to v3 when the quick tour replaced the full one as
+  // the default), or on demand via ?tour=1 (quick) / ?tour=full (e.g. the
+  // "take the tour" affordance and the guide page).
   const [tourOpen, setTourOpen] = useState(false)
+  const [tourMode, setTourMode] = useState<TourMode>('quick')
   const [helpOpen, setHelpOpen] = useState(false)
+  const openTour = (mode: TourMode) => {
+    setTourMode(mode)
+    setTourOpen(true)
+  }
   useEffect(() => {
     if (typeof window === 'undefined') return
     const params = new URLSearchParams(window.location.search)
-    const forced = params.get('tour') === '1'
-    const seen = window.localStorage.getItem('truco-study-tour-v2') === '1'
+    const requested = params.get('tour')
+    const forced = requested === '1' || requested === 'full'
+    const seen = window.localStorage.getItem('truco-study-tour-v3') === '1'
     // an explicit ?s= deep link outranks the first-visit auto-tour — the
     // tour's baseline step would silently replace the linked spot
     if (!forced && (seen || params.get('s'))) return
-    const t = window.setTimeout(() => setTourOpen(true), forced ? 200 : 900)
+    const t = window.setTimeout(() => openTour(requested === 'full' ? 'full' : 'quick'), forced ? 200 : 900)
     return () => window.clearTimeout(t)
   }, [])
   const closeTour = () => {
     setTourOpen(false)
     try {
-      window.localStorage.setItem('truco-study-tour-v2', '1')
+      window.localStorage.setItem('truco-study-tour-v3', '1')
     } catch {
       /* ignore private-mode storage errors */
     }
@@ -2465,15 +2475,27 @@ export default function StudyLab({ manifestUrl }: { manifestUrl: string }) {
                     title={t('tourTitle')}
                     onClick={() => {
                       setHelpOpen(false)
-                      setTourOpen(true)
+                      openTour('quick')
                     }}
                   >
                     {t('menuTour')}
                   </button>
+                  <button
+                    type="button"
+                    role="menuitem"
+                    className={styles.helpMenuItem}
+                    title={t('tourFullTitle')}
+                    onClick={() => {
+                      setHelpOpen(false)
+                      openTour('full')
+                    }}
+                  >
+                    {t('menuTourFull')}
+                  </button>
                   <a
                     role="menuitem"
                     className={styles.helpMenuItem}
-                    href={`/${locale}/lab/study/guide`}
+                    href={guideHref(locale)}
                     target="_blank"
                     rel="noreferrer"
                     aria-label={t('guideAria')}
@@ -2567,7 +2589,7 @@ export default function StudyLab({ manifestUrl }: { manifestUrl: string }) {
           </span>
           <a
             className={styles.stringHelp}
-            href={`/${locale}/lab/study/guide/notation`}
+            href={guideHref(locale, '/notation')}
             target="_blank"
             rel="noreferrer"
             aria-label={t('handHelpAria')}
@@ -2677,7 +2699,7 @@ export default function StudyLab({ manifestUrl }: { manifestUrl: string }) {
                     {viewed?.stage.kind === 'eleven' ? (
                       <a
                         className={styles.handbookLink}
-                        href={`/${locale}/lab/study/guide/eleven`}
+                        href={guideHref(locale, '/eleven')}
                         target="_blank"
                         rel="noreferrer"
                         aria-label={t('elevenHandbookAria')}
@@ -2866,7 +2888,7 @@ export default function StudyLab({ manifestUrl }: { manifestUrl: string }) {
                   )}
                   <a
                     className={styles.legendHelp}
-                    href={`/${locale}/lab/study/guide/views`}
+                    href={guideHref(locale, '/views')}
                     target="_blank"
                     rel="noreferrer"
                     aria-label={t('legendHelpAria')}
@@ -2962,6 +2984,8 @@ export default function StudyLab({ manifestUrl }: { manifestUrl: string }) {
 
       <StudyWalkthrough
         open={tourOpen}
+        mode={tourMode}
+        onModeChange={setTourMode}
         onClose={closeTour}
         tour={{
           apply: applyStudyStringInput,

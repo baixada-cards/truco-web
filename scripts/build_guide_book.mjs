@@ -26,6 +26,15 @@ function flags(name) {
 }
 const BASE = flags('base')[0] ?? 'http://localhost:3002'
 const LOCALES = flags('locale').length > 0 ? flags('locale') : ['en']
+// keep in step with src/guide/guide-locales.ts: an unpublished locale's print
+// route redirects to English, which would bind an English book under its name
+const PUBLISHED_LOCALES = ['en']
+for (const locale of LOCALES) {
+  if (!PUBLISHED_LOCALES.includes(locale)) {
+    console.error(`the guide is not published in "${locale}" yet (see src/guide/guide-locales.ts)`)
+    process.exit(2)
+  }
+}
 const FORMATS = (flags('formats')[0] ?? 'pdf,epub').split(',').map((f) => f.trim())
 const OUT = path.resolve(flags('out')[0] ?? 'public/downloads')
 
@@ -225,7 +234,7 @@ async function extractBook(page) {
     const chapters = [...document.querySelectorAll('[data-chapter]')].map((element) => ({
       id: element.getAttribute('data-chapter'),
       title: element.getAttribute('data-chapter-title'),
-      roman: element.getAttribute('data-chapter-roman'),
+      label: element.getAttribute('data-chapter-label'),
       part: element.getAttribute('data-chapter-part'),
       xhtml: clean(element),
     }))

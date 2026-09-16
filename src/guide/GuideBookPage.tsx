@@ -11,7 +11,10 @@ import styles from './guide.module.css'
 
 export interface BookChapter {
   id: string
-  roman: string
+  /** the printed number: a roman numeral, or a letter for an appendix */
+  number: string
+  /** the heading label above the title: "Chapter iii", "Appendix A" */
+  label: string
   title: string
   tocName: string
   Body: React.ComponentType
@@ -31,14 +34,16 @@ export function GuideBookPage({
   kicker,
   title,
   contents,
-  chapterLabel,
+  written,
   parts,
 }: {
   locale: string
   kicker: string
   title: string
   contents: string
-  chapterLabel: (roman: string) => string
+  /** how the text was made: drafted with an AI assistant, reviewed by the
+   *  author. Said once on the title page, as on the landing. */
+  written: string
   parts: BookPart[]
 }) {
   return (
@@ -63,6 +68,7 @@ export function GuideBookPage({
           <em>❧</em>
           <i />
         </div>
+        <p className={styles.bookWritten}>{written}</p>
       </section>
 
       <nav className={styles.bookToc} aria-label={contents} data-toc>
@@ -79,7 +85,7 @@ export function GuideBookPage({
                   <a className={styles.tocEntry} href={`#ch-${chapter.id}`}>
                     <span className={styles.tocName}>{chapter.tocName}</span>
                     <i className={styles.tocDots} aria-hidden />
-                    <span className={styles.tocNo}>{chapter.roman}</span>
+                    <span className={styles.tocNo}>{chapter.number}</span>
                   </a>
                 </li>
               ))}
@@ -102,10 +108,10 @@ export function GuideBookPage({
               className={styles.bookChapter}
               data-chapter={chapter.id}
               data-chapter-title={chapter.title}
-              data-chapter-roman={chapter.roman}
+              data-chapter-label={chapter.label}
               data-chapter-part={part.head}
             >
-              <div className={styles.chapNo}>{chapterLabel(chapter.roman)}</div>
+              <div className={styles.chapNo}>{chapter.label}</div>
               <h1 className={styles.chapTitle}>{chapter.title}</h1>
               <div className={styles.main}>
                 <chapter.Body />

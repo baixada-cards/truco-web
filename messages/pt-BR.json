@@ -614,8 +614,9 @@
       "grid": "grade",
       "gridTitle": "Toda mão no gráfico: blocos exatos na rodada 1, um gráfico 2D assim que sua primeira carta é conhecida",
       "helpAria": "Ajuda: tour e guia",
-      "menuTour": "Fazer o tour",
-      "menuGuide": "Abrir o guia — teoria & manual",
+      "menuTour": "Fazer o tour rápido",
+      "menuTourFull": "Fazer o tour completo",
+      "menuGuide": "Abrir o guia — teoria & manual (em inglês)",
       "menuPlayHand": "Jogar esta mão ao vivo",
       "menuPlayHandAria": "Retomar esta posição exata como partida ao vivo",
       "menuPlayHandTitle": "Retome esta posição exata ao vivo: a vira e a linha continuam, cartas definidas ficam fixas, e o que não foi definido sai do range deste lance. O oponente joga a solução.",
@@ -623,12 +624,12 @@
       "menuPlayHandOver": "Esta linha já encerra a mão: não há mais nada a jogar.",
       "menuPlayHandBusy": "Dando as cartas",
       "menuPlayHandFailed": "Não foi possível iniciar a partida.",
-      "guideAria": "Abrir o guia numa nova aba: a Parte I é a teoria da solução, a Parte II o manual do jogador",
-      "guideTitle": "Parte I: a teoria · Parte II: o manual do jogador (abre numa nova aba)",
+      "guideAria": "Abrir o guia numa nova aba: a Parte I é a teoria da solução, a Parte II o manual do jogador (em inglês)",
+      "guideTitle": "Parte I: a teoria · Parte II: o manual do jogador (abre numa nova aba) (em inglês)",
       "handLabel": "mão",
       "handOfRole": "cartas de {role}",
       "handStringAria": "String da mão",
-      "handHelpAria": "O que significa esta notação? Leia o guia (abre em nova aba)",
+      "handHelpAria": "O que significa esta notação? Leia o guia (abre em nova aba) (em inglês)",
       "here": "aqui",
       "howOften": "com que frequência",
       "howOftenTitle": "Duas formas de pesar estas cartas: sobre cada distribuição possível da partida e dentro do que este jogador poderia ter agora",
@@ -744,7 +745,8 @@
       "titleRoundAnswer": "Rodada {n}: responda a {card} após {recap}",
       "titleRoundLead": "Rodada {n}: escolha a primeira carta após {recap}",
       "toAct": "na vez",
-      "tourTitle": "Faça um tour rápido guiado pelo laboratório",
+      "tourTitle": "Quatro cartões: o spot, a mão, o gráfico e por onde seguir",
+      "tourFullTitle": "O tour guiado por cada controle, com coisas para experimentar",
       "trainWarnUntrained": "Não treinado: a própria estratégia do {role} joga esta linha com estas cartas {pct}% das vezes, então a mistura média aqui nunca se acumulou — é ruído de inicialização. Confie no % de vitória e nos valores em pontos, não nas frequências.",
       "trainWarnWeak": "Mal treinado: esta mistura perde {pp} pp contra sua própria melhor ação, então a solução nunca visitou de verdade esta mão aqui. Confie no % de vitória e nos valores em pontos, não nas frequências.",
       "unitEquity": "equity",
@@ -781,7 +783,7 @@
       "statEquitySub": "{other} {pct}%",
       "statReachLabel": "alcance",
       "statReachSub": "dos repartos chegam aqui",
-      "legendHelpAria": "O que significam as vistas, cores e seletores — leia o guia (abre em nova aba)",
+      "legendHelpAria": "O que significam as vistas, cores e seletores — leia o guia (abre em nova aba) (em inglês)",
       "tableTitle": "A mesa",
       "tableAria": "A linha percorrida, posta como mesa",
       "tableExpandAria": "Ampliar a mesa",
@@ -792,8 +794,8 @@
       "tableFaceDown": "encoberta",
       "tableUnknownCard": "carta desconhecida",
       "tableEmpty": "nada ainda: escolha uma ação no trilho",
-      "elevenHandbook": "manual: os gráficos da mão de onze",
-      "elevenHandbookAria": "Abra o capítulo do manual sobre a mão de onze (abre em outra aba)",
+      "elevenHandbook": "manual: os gráficos da mão de onze (em inglês)",
+      "elevenHandbookAria": "Abra o capítulo do manual sobre a mão de onze (abre em outra aba) (em inglês)",
       "replaceDetailPartial": "{kept, plural, one {# ação posterior sobrevive à mudança} other {# ações posteriores sobrevivem à mudança}} — {dropped, plural, one {a última # é apagada} other {as últimas # são apagadas}}: {reason}",
       "cutReasonActor": "a ordem dos turnos muda a partir dali",
       "cutReasonDeck": "uma carta jogada ali não está mais no baralho",
@@ -806,6 +808,7 @@
       "back": "voltar",
       "next": "Próximo",
       "start": "Começar a estudar",
+      "fullTour": "Fazer o tour completo",
       "tryIt": "experimentar",
       "steps": {
         "intro": {
@@ -895,6 +898,22 @@
         "done": {
           "title": "Esse foi o tour",
           "body": "É isso. O botão <b>?</b> reabre isso quando você quiser, e cada <g>termo sublinhado</g> abre o guia numa aba nova — a Parte I é a teoria da solução, a Parte II o manual do jogador. Agora vá ler alguns gráficos."
+        },
+        "quickStage": {
+          "title": "Prepare o cenário",
+          "body": "O <b>placar</b>, a vira e quem dá as cartas definem o spot. Mude qualquer um desses três e o gráfico inteiro é resolvido de novo para a nova aposta. Este tour fica em um só spot: 11 × 11 com um 4 virado, então os 5 são as manilhas."
+        },
+        "quickHand": {
+          "title": "A mão até aqui",
+          "body": "A trilha é a mão como foi jogada. Cada jogada é uma decisão com gráfico próprio: as setas percorrem as decisões, uma placa pula para uma delas, e qualquer jogada passada pode ser reescrita."
+        },
+        "quickChart": {
+          "title": "O gráfico",
+          "body": "Um gráfico por decisão. Cada <g>bloco</g> fixa uma carta e as linhas e colunas são as outras duas, então cada célula é uma mão exata, colorida pelo que a solução joga com ela. O cabeçalho mantém o placar: a <g2>equidade</g2> na partida e com que frequência uma mão sequer chega aqui."
+        },
+        "quickMore": {
+          "title": "Indo mais fundo",
+          "body": "Clique numa célula para abrir o painel da mão. Apague uma das cartas e ela vira um <g>range</g>. Fixe uma mão para carregá-la pelos placares. O tour completo percorre cada um desses com coisas para experimentar, e o <g2>guia</g2> explica o que os números significam."
         }
       }
     },
@@ -903,6 +922,7 @@
       "kicker": "Baixada · Estudo · Guia de campo",
       "title": "Lendo os gráficos da solução",
       "lede": "Isto é truco <b>resolvido</b>. Para um punhado de situações exatas de partida, ele mostra o jeito de jogar que <b>não pode ser explorado</b> — calculado por uma máquina jogando contra si mesma bilhões de mãos. Não é a opinião de um bot; é a aritmética do jogo. Veja como lê-lo.",
+      "written": "A maior parte do texto deste guia foi escrita por um assistente de IA e revisada pelo autor. Cada número, gráfico e figura vem da saída do solver.",
       "contents": "Conteúdo",
       "parts": {
         "theory": {
@@ -916,8 +936,8 @@
           "lede": "O que as soluções ensinam: a mão de onze, a carta de saída, o truco dos dois lados e os hábitos que mais custam."
         },
         "reference": {
-          "kicker": "Apêndice",
-          "head": "Referência"
+          "kicker": "Apêndices",
+          "head": "Abstrações, números e termos"
         }
       },
       "toc": {
@@ -956,6 +976,7 @@
         "backToContents": "sumário do guia",
         "openLabShort": "abrir o lab",
         "chapter": "Capítulo {no}",
+        "appendix": "Apêndice {no}",
         "previous": "Anterior",
         "next": "Próximo",
         "pagerAria": "Navegação de capítulos"
@@ -1104,33 +1125,16 @@
         "chart": {
           "title": "Lendo um gráfico",
           "intro1": "Cada gráfico mostra como a solução joga <b>toda mão possível</b> numa decisão. Com as três cartas desconhecidas o lab nunca as espreme numa grade única: ele desenha <b>blocos exatos</b> — uma carta fixada por bloco, as outras duas nos eixos — então cada célula é exatamente uma mão, nunca uma família.",
-          "intro2": "O leitor abaixo vira um 5 (<code>v5</code>), então os 6 são as manilhas: vencem tudo, carregam o naipe — 6♣ > 6♥ > 6♠ > 6♦ — e cada uma é uma <b>carta única</b>, então uma linha ou coluna de manilha guarda exatamente uma cópia e aparece sozinha. Ranks comuns ignoram naipe por completo: um 3 é qualquer 3.",
+          "intro2": "O leitor abaixo vira um 4 (<code>v4</code>), então os 5 são as manilhas: vencem tudo, carregam o naipe — 5♣ > 5♥ > 5♠ > 5♦ — e cada uma é uma <b>carta única</b>, então uma linha ou coluna de manilha guarda exatamente uma cópia e aparece sozinha. Ranks comuns ignoram naipe por completo: um 3 é qualquer 3.",
           "blocksHead": "Achando uma mão",
           "blocksP": "Fixe a sua carta mais fraca para escolher o bloco (este leitor começa em <code>L = 7</code>), depois corra a mais alta pelas linhas e a do meio pelas colunas. O próprio rótulo de latão é o controle — clique nele para trocar tanto a posição fixada quanto a carta única deste gráfico. Passe o mouse ou toque em qualquer célula —",
           "numberHead": "O número, as faixas e o ≈",
           "numberP": "Só um número cabe na célula, então uma célula mista imprime a <b>maior fatia</b> — a porcentagem da ação mais jogada. As faixas de cor carregam a mistura inteira, cada uma do tamanho da sua probabilidade; o leitor aqui (no lab: o tooltip) abre cada ação com sua fração exata.",
-          "approxP": "Uma célula com <b>≈</b> em vez de número é fraca: quando há medida de melhor resposta por nó, uma melhor resposta adversarial ganha mais de 5 pontos de vitória na partida. Exportações antigas usam o alerta legado de perda própria/alcance. Em ambos os casos, leia ≈ como aviso, não como tática — o capítulo de confiança mostra a maquinaria.",
+          "approxP": "Uma célula com <b>≈</b> em vez de número é fraca: quando há medida de melhor resposta por nó, uma melhor resposta adversarial ganha mais de 5 pontos de vitória na partida. Exportações antigas usam o alerta legado de perda própria/alcance. Em ambos os casos, leia ≈ como aviso, não como tática. O capítulo de confiança explica o selo, e o Apêndice B mostra a maquinaria do alerta legado.",
           "aside": "o número = a maior fatia. o tooltip = a mistura inteira.",
           "listHead": "A lista — os mesmos dados, ordenados",
           "listP": "<b>LISTA</b> dispõe exatamente as mesmas mãos como linhas, da mais forte para a mais fraca: as cartas na frente, a mistura como uma barra rotulada. Só a forma muda — a grade é para enxergar regiões de relance, a lista é para ler uma mão de cada vez.",
-          "listCaption": "Dados reais — as oito primeiras mãos do mesmo bloco L = 4, exatamente como a LISTA do lab as desenha; cada segmento da barra é rotulado com sua ação e fatia.",
-          "walkHead": "Percorrendo uma mão pelas decisões",
-          "walkP1": "Fixe a mão como ela foi de fato jogada na barra lateral esquerda, depois percorra as decisões com <b>← →</b>. Uma célula do gráfico preenche duas das suas três cartas; a lista de cartas do painel ou o menu da própria carta preenche o resto, e as células impossíveis com as suas escolhas ficam em cinza.",
-          "walkP2": "<b>Fixar</b> a mão (⚑) a trava pela mão inteira: as decisões daquele jogador na barra lateral passam a mostrar a mistura das próprias cartas fixadas, e só essas cartas seguem jogáveis. Clique numa carta para limpá-la, dê dois cliques para o menu dela.",
-          "walkAside": "Pense nisso como reprisar uma distribuição em câmera lenta, perguntando a cada bifurcação: <i>o que a solução faz aqui?</i>",
-          "walkerAria": "Uma barra de histórico de mão em miniatura",
-          "walkerCaption": "Clique num ponto da barra: o foco vai até ele, e as cartas já observadas continuam na linha.",
-          "walker": {
-            "focus": "Foco da barra",
-            "deal": "Distribuição",
-            "dealP": "Antes de uma jogada, toda mão ainda é possível. O gráfico descreve essa distribuição inicial completa.",
-            "lead": "Mão sai",
-            "leadP": "A primeira carta aberta agora é histórico. Ela continua visível enquanto você inspeciona a decisão do próximo jogador.",
-            "reply": "Pé responde",
-            "replyP": "Esta resposta filtra o range do Pé: mãos que quase nunca a mostrariam encolhem no próximo gráfico.",
-            "next": "Próxima decisão",
-            "nextP": "O foco mudou, não a distribuição. Fixe uma mão para continuar perguntando o que essa mesma mão faz aqui."
-          }
+          "listCaption": "Dados reais — as oito primeiras mãos do mesmo bloco L = 4, exatamente como a LISTA do lab as desenha; cada segmento da barra é rotulado com sua ação e fatia."
         },
         "ranges": {
           "title": "Ranges — as mãos que ainda são possíveis",
@@ -1223,7 +1227,7 @@
           },
           "reach": {
             "term": "Alcance",
-            "desc": "com que frequência uma partida desta banda percorre exatamente esta linha — o peso total do nó sobre o da raiz da banda. Cantos de pouco alcance recebem pouco treino, e é onde vive a marca ≈ (veja o capítulo de confiança)."
+            "desc": "com que frequência uma partida desta banda percorre exatamente esta linha — o peso total do nó sobre o da raiz da banda. Cantos de pouco alcance recebem pouco treino, e é onde vive a marca ≈ (veja o capítulo de confiança e o Apêndice B)."
           }
         },
         "abstractions": {
@@ -1384,11 +1388,28 @@
             "check": "Conferir",
             "writeCorrect": "O analisador aceitou. É uma faixa fixada válida.",
             "writeAgain": "Ainda não. Inclua mao, !, três posições entre colchetes, 5d, 3 e ? — nessa ordem de força."
+          },
+          "walkHead": "Percorrendo uma mão pelas decisões",
+          "walkP1": "Fixe a mão como ela foi de fato jogada na barra lateral esquerda, depois percorra as decisões com <b>← →</b>. Uma célula do gráfico preenche duas das suas três cartas; a lista de cartas do painel ou o menu da própria carta preenche o resto, e as células impossíveis com as suas escolhas ficam em cinza.",
+          "walkP2": "<b>Fixar</b> a mão (⚑) a trava pela mão inteira: as decisões daquele jogador na barra lateral passam a mostrar a mistura das próprias cartas fixadas, e só essas cartas seguem jogáveis. Clique numa carta para limpá-la, dê dois cliques para o menu dela.",
+          "walkAside": "Pense nisso como reprisar uma distribuição em câmera lenta, perguntando a cada bifurcação: <i>o que a solução faz aqui?</i>",
+          "walkerAria": "Uma barra de histórico de mão em miniatura",
+          "walkerCaption": "Clique num ponto da barra: o foco vai até ele, e as cartas já observadas continuam na linha.",
+          "walker": {
+            "focus": "Foco da barra",
+            "deal": "Distribuição",
+            "dealP": "Antes de uma jogada, toda mão ainda é possível. O gráfico descreve essa distribuição inicial completa.",
+            "lead": "Mão sai",
+            "leadP": "A primeira carta aberta agora é histórico. Ela continua visível enquanto você inspeciona a decisão do próximo jogador.",
+            "reply": "Pé responde",
+            "replyP": "Esta resposta filtra o range do Pé: mãos que quase nunca a mostrariam encolhem no próximo gráfico.",
+            "next": "Próxima decisão",
+            "nextP": "O foco mudou, não a distribuição. Fixe uma mão para continuar perguntando o que essa mesma mão faz aqui."
           }
         },
         "trust": {
           "title": "Até onde confiar",
-          "intro": "Uma solução não promete que toda mistura impressa foi polida do mesmo jeito. O lab agora mede a pergunta importante em cada nó: <b>quanto um adversário perfeitamente adaptado pode ganhar contra a estratégia mostrada aqui?</b> A resposta é o selo de qualidade; os números antigos de alcance e perda própria explicam por que um canto ficou ruim.",
+          "intro": "Uma solução não promete que toda mistura impressa foi polida do mesmo jeito. O lab agora mede a pergunta importante em cada nó: <b>quanto um adversário perfeitamente adaptado pode ganhar contra a estratégia mostrada aqui?</b> A resposta é o selo de qualidade; os números antigos de alcance e perda própria, guardados no Apêndice B, explicam por que um canto ficou ruim.",
           "badgeHead": "O selo de qualidade é o sinal principal",
           "badgeP": "O selo é uma <b>lacuna de melhor resposta adversarial por nó</b>, em pontos percentuais de vitória na partida. Ele compara a mistura exportada a uma melhor resposta real do oponente, em vez de pedir que a solução se avalie sozinha.",
           "solidTerm": "sólido · ≤ 1 pp",
@@ -1402,15 +1423,6 @@
           "warningP": "Esta é uma continuação real do piloto 11×10 no lab. As células pálidas com <b>≈</b> não são apenas improváveis: cada uma tem lacuna medida de melhor resposta acima de 5 pp. Passe o mouse ou toque numa célula para ver a própria medida.",
           "warningCaption": "Dados reais do lab — 11×10 v4, depois de aceitar a mão de onze e uma continuação de primeira rodada de pouco alcance. {n} das 87 células da grade exata de duas cartas são fracas pela lacuna de melhor resposta medida, então o lab mostra ≈ no lugar de um número de estratégia.",
           "warningTakeaway": "Não deduza uma tática de uma célula ≈. Volte à última decisão sólida ou explore outra linha.",
-          "diagnosticsHead": "Por que uma mistura fora do caminho fica ruidosa",
-          "diagnosticsP": "Antes da tabela de melhor resposta, o alerta do lab vinha de dois diagnósticos. Seguem aqui porque explicam como um canto degradou — descrevem a cobertura do treino, não a qualidade.",
-          "selfLossQ": "o valor de equilíbrio da solução depois da ação a na mão h",
-          "selfLossScale": "converte a escala de valor −1…1 do solver em pontos percentuais de vitória na partida",
-          "selfLossNote": "A perda própria pergunta se a mistura está perto da própria melhor ação segundo os valores q da solução — um alarme, não uma garantia adversarial.",
-          "ownLine": "as decisões anteriores do jogador atuante na linha",
-          "ownReach": "com que frequência a estratégia exportada do próprio jogador leva esta mão até o nó",
-          "ownReachNote": "Alcance próprio perto de zero significa que a média quase não acumulou experiência aqui; o alerta legado usa ε = 0,001.",
-          "pruningP": "A causa é concreta: quando uma ação de quem não é dono chega a probabilidade zero, o CFR para de descer por esse ramo — correto para uma ação realmente dominada, mas isso congela os valores aleatórios iniciais abaixo dela. Alcance próprio baixo registra essa história; a lacuna de melhor resposta diz se o resultado é de fato explorável.",
           "certificateHead": "O que o certificado diz — e o que não diz",
           "certificateP": "O certificado da solução é um limite <b>do jogo inteiro, pesado por alcance</b>, contra melhores respostas exatas. Ele diz que o perfil está perto do equilíbrio, em média, na árvore de distribuições. Um ramo minúsculo fora do caminho quase não contribui para essa média, então o certificado sozinho não pode certificar cada célula. Por isso a medida de melhor resposta por nó fica no gráfico.",
           "certificateTakeaway": "Confie primeiro no selo do próprio nó. Use o certificado global para entender a solução inteira, e perda própria mais alcance próprio para entender como surgiu um alerta."
@@ -1536,6 +1548,15 @@
           "certFallback": "Resolvida do zero (transferência rejeitada)",
           "certP2": "Transferências tinham que passar por portões duros — ε cru ≤ 0,01, ε purificado ≤ 0,004, gap médio ponderado de melhor resposta por nó ≤ 0,25 pp — ou o worker descartava a candidata e resolvia do zero. Soluções nativas convergem bem mais apertado no global (mediana ε 0,00001), mas 28 delas carregam perfis por nó mais largos — exatamente o que os selos ≈ por célula do lab existem para mostrar.",
           "certAside": "O ε <i>purificado</i> é medido depois que caudas de mistura quase nulas são coladas na melhor ação para exportar — em geral isso aperta o limite. A coluna por nó é a média ponderada por alcance dos mesmos gaps de melhor resposta por célula por trás dos selos do capítulo de confiança.",
+          "diagnosticsHead": "Por que uma mistura fora do caminho fica ruidosa",
+          "diagnosticsP": "Antes da tabela de melhor resposta, o alerta do lab vinha de dois diagnósticos. Seguem aqui porque explicam como um canto degradou — descrevem a cobertura do treino, não a qualidade.",
+          "selfLossQ": "o valor de equilíbrio da solução depois da ação a na mão h",
+          "selfLossScale": "converte a escala de valor −1…1 do solver em pontos percentuais de vitória na partida",
+          "selfLossNote": "A perda própria pergunta se a mistura está perto da própria melhor ação segundo os valores q da solução — um alarme, não uma garantia adversarial.",
+          "ownLine": "as decisões anteriores do jogador atuante na linha",
+          "ownReach": "com que frequência a estratégia exportada do próprio jogador leva esta mão até o nó",
+          "ownReachNote": "Alcance próprio perto de zero significa que a média quase não acumulou experiência aqui; o alerta legado usa ε = 0,001.",
+          "pruningP": "A causa é concreta: quando uma ação de quem não é dono chega a probabilidade zero, o CFR para de descer por esse ramo — correto para uma ação realmente dominada, mas isso congela os valores aleatórios iniciais abaixo dela. Alcance próprio baixo registra essa história; a lacuna de melhor resposta diz se o resultado é de fato explorável.",
           "simHead": "Quão parecidas são soluções vizinhas",
           "simP1": "Resolva dois subjogos vizinhos de forma independente até a convergência e compare-os linha a linha. Duas médias contam histórias diferentes: sobre <i>todas as linhas da tabela</i>, e ponderada por <i>quantas vezes o jogo de fato chega</i> a cada linha. TV é a distância de variação total — a fração de probabilidade que teria que se mover para transformar a mistura de uma linha na da outra (0 = idênticas).",
           "simColPair": "Vizinhos comparados",
@@ -1626,7 +1647,7 @@
       "gcr": {
         "hint": "Passe o mouse ou toque numa célula. O bloco fixa uma carta; os eixos nomeiam as outras duas.",
         "badgeTitle": "Escolha a posição (H·M·L) e a carta fixadas. Esta figura didática sempre mostra um gráfico.",
-        "caption": "Dados reais — 11x11 v5, saída da mão, desenhado com as próprias células do lab. O rótulo de latão escolhe a carta fixada; o leitor imprime a mistura completa da mão apontada e o % de vitória de cada ação."
+        "caption": "Dados reais — 11×9 v4, a mão de onze vista por quem está com onze: aceitar ou correr, desenhado com as próprias células do lab. O rótulo de latão escolhe a carta fixada; o leitor imprime a mistura completa da mão apontada e o % de vitória de cada ação."
       },
       "footer": {
         "openLab": "Abrir o lab",
@@ -1778,10 +1799,6 @@
           "term": "explorabilidade · ε",
           "def": "quanto uma melhor resposta perfeita ganha contra uma estratégia, na média dos dois assentos — o número que o certificado de um spot limita. ε 0,01 ≈ 0,5 pp de chance de vencer."
         }
-      },
-      "landing": {
-        "viewsIntro": "As quatro lentes do lab sobre uma decisão resolvida — a página mais importante deste guia.",
-        "viewsCta": "Ler o capítulo das quatro visões"
       },
       "gax": {
         "hint": "Passe o mouse ou toque numa célula. Células sólidas carregam misturas treinadas; as células pálidas com ≈ estão sinalizadas.",

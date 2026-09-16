@@ -1,8 +1,11 @@
-// Chapter V — writing a spot down. Migrated from guide v2; the string
-// anatomy plate stays its interactive figure.
+// Writing a spot down, and walking one: the string anatomy plate, the
+// miniature rail (moved here from the chart chapter, since walking a hand is
+// reading its line), the grammar, and the quizzes.
 
 import { useTranslations } from 'next-intl'
 
+import styles from '../guide.module.css'
+import { LineWalkerPlate } from '../plates/LineWalkerPlate'
 import { NotationExamples, NotationGrammar, NotationQuizzes } from '../plates/NotationWorkbench'
 import { StringAnatomy } from '../plates/StringAnatomy'
 import { Reveal, Section } from '../Section'
@@ -21,11 +24,17 @@ export function NotationChapter() {
         <StringAnatomy />
         <NotationExamples />
       </Section>
-      <Section id="grammar" mark="§ 2" title={t('sec.notation.grammarHead')}>
+      <Section id="walk" mark="§ 2" title={t('sec.notation.walkHead')}>
+        <Prose>{t.rich('sec.notation.walkP1', rich)}</Prose>
+        <Prose>{t.rich('sec.notation.walkP2', rich)}</Prose>
+        <LineWalkerPlate />
+        <aside className={styles.margin}>{t.rich('sec.notation.walkAside', rich)}</aside>
+      </Section>
+      <Section id="grammar" mark="§ 3" title={t('sec.notation.grammarHead')}>
         <Prose>{t.rich('sec.notation.grammarP', rich)}</Prose>
         <NotationGrammar />
       </Section>
-      <Section id="quizzes" mark="§ 3" title={t('sec.notation.quizHead')}>
+      <Section id="quizzes" mark="§ 4" title={t('sec.notation.quizHead')}>
         <Prose>{t.rich('sec.notation.p2', rich)}</Prose>
         <NotationQuizzes />
       </Section>
