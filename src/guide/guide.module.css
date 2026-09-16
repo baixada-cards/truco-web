@@ -1190,6 +1190,27 @@ em.matchCut { background: linear-gradient(90deg, #e9d3a4, #c9a96c); }
 }
 .chapterLink:hover { color: var(--card-back-a, #5a2a26); border-color: var(--card-back-a, #5a2a26); }
 
+/* A card named in the prose: a hair smaller than the text, a touch heavier
+   and letter-spaced, on a stock-coloured bed rather than inside a rule, so a
+   sentence about the 5♣ still reads as a sentence. Red suits take the
+   guide's vermillion; black suits keep the line's ink.
+   The token keeps the paragraph's own face: the serifs here are set with
+   old-style figures, which drop a 3 or a 7 below the baseline and read as a
+   subscript at this size. */
+.cardTok {
+  padding: 0 3px;
+  border-radius: 3px;
+  background: rgba(122, 109, 86, 0.09);
+  font-size: 0.95em;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+.cardTok[data-suit='♥'], .cardTok[data-suit='♦'] { color: var(--suit-red, #a23c2c); }
+
+/* a holding: its cards keep the spaces between them, and never break a line */
+.handTok { white-space: nowrap; }
+
 /* notation — the formal grammar stays compact; the checks use the parser */
 .notationGrammar { overflow: hidden; border: 1px solid rgba(122,109,86,.3); border-radius: 5px; background: rgba(255,251,240,.5); }
 .notationGrammarLead { display: flex; align-items: baseline; gap: 10px; padding: 11px 14px; background: var(--wood-0, #1f1610); color: var(--brass-hi, #ecd999); }
@@ -3733,6 +3754,14 @@ em.matchCut { background: linear-gradient(90deg, #e9d3a4, #c9a96c); }
     padding: 0;
     font-weight: 600;
     font-size: 0.94em;
+  }
+  /* on paper a card needs no bed: the weight and the letter-spacing carry it,
+     and a red suit keeps its colour */
+  .book .cardTok {
+    padding: 0;
+    background: none;
+    font-size: 1em;
+    font-variant-numeric: lining-nums;
   }
 
   /* ---- plates as plates ---- */

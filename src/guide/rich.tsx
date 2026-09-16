@@ -2,6 +2,7 @@
 // server and client components alike. The tag names live in rich-tags.ts,
 // which the copy editor's write API and the DOM matcher read too.
 
+import { CardToken, HandToken } from './CardTokens'
 import { ChapterLink } from './ChapterLink'
 import type { GuideChapter } from './chapters'
 import { CHAPTER_TAG_NAMES } from './rich-tags'
@@ -21,5 +22,7 @@ export const rich = {
   i: (chunks: React.ReactNode) => <i>{chunks}</i>,
   em: (chunks: React.ReactNode) => <em>{chunks}</em>,
   code: (chunks: React.ReactNode) => <code>{chunks}</code>,
+  card: (chunks: React.ReactNode) => <CardToken>{chunks}</CardToken>,
+  hand: (chunks: React.ReactNode) => <HandToken>{chunks}</HandToken>,
   ...chapterTags,
 }

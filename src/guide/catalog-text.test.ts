@@ -17,6 +17,13 @@ test('a cross-reference tag leaves only the words it links', () => {
   )
 })
 
+test('card and hand tokens leave the cards as the DOM spells them', () => {
+  assert.equal(
+    renderedCatalogText('Take <hand>5♣ Q 7</hand> and lead the <card>7</card>.'),
+    'Take 5♣ Q 7 and lead the 7.',
+  )
+})
+
 test('catalog whitespace collapses to the same shape as DOM text', () => {
   assert.equal(renderedCatalogText('  first\n\n second\tthird  '), 'first second third')
 })

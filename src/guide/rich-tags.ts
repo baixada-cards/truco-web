@@ -10,6 +10,12 @@ import { GUIDE_CHAPTERS } from './chapters.ts'
 export const TEXT_TAG_NAMES = ['b', 'i', 'em', 'code'] as const
 
 /**
+ * Notation: `<card>K</card>` is one card, `<hand>5♣ Q 7</hand>` a holding,
+ * whose text is split on whitespace into one token per card.
+ */
+export const CARD_TAG_NAMES = ['card', 'hand'] as const
+
+/**
  * A cross-reference is tagged with the target chapter's own id, because
  * next-intl only accepts simple tag names: `<ranges>the ranges chapter</ranges>`
  * links to that chapter, so a new chapter in GUIDE_CHAPTERS gets its tag for
@@ -17,4 +23,8 @@ export const TEXT_TAG_NAMES = ['b', 'i', 'em', 'code'] as const
  */
 export const CHAPTER_TAG_NAMES = GUIDE_CHAPTERS
 
-export const RICH_TAG_NAMES: readonly string[] = [...TEXT_TAG_NAMES, ...CHAPTER_TAG_NAMES]
+export const RICH_TAG_NAMES: readonly string[] = [
+  ...TEXT_TAG_NAMES,
+  ...CARD_TAG_NAMES,
+  ...CHAPTER_TAG_NAMES,
+]

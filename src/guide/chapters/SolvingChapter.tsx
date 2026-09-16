@@ -51,7 +51,7 @@ export function SolvingChapter() {
         <div className={styles.formula}>
           <Math display tex={TEX.posterior} />
           <Math display tex={TEX.bluffEv} />
-          <p className={styles.formulaNote}>{t('sec.solving.mixFnote')}</p>
+          <p className={styles.formulaNote}>{t.rich('sec.solving.mixFnote', rich)}</p>
         </div>
         <p className={styles.takeaway}>{t('sec.solving.mixTakeaway')}</p>
       </Section>

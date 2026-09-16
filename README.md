@@ -139,16 +139,21 @@ bindings—`fd` or Escape leaves insert mode, `:w` writes it back into
 A **blank line inside a string splits it into two paragraphs** (single
 newlines are just whitespace, as in HTML), so prose can be re-cut without
 touching a component. The inline tags the guide renders are `<b>`, `<i>`,
-`<em>`, `<code>`, and one **cross-reference tag per chapter**, named after
-that chapter's id: `<ranges>the ranges chapter</ranges>`, `<numbers>Appendix
-B</numbers>`, `<leads>the opening leads chapter</leads>`. A cross-reference
-links to `/<locale>/lab/study/guide/<id>` and reads as ordinary prose with a
-hairline rule under it; in the printed book it prints as plain text. The list
-lives in `src/guide/rich-tags.ts` and is derived from `GUIDE_CHAPTERS`, so a
-new chapter gets its tag for free—see `src/guide/rich.tsx` for what each one
-renders. The editor refuses to write anything else, because an unknown tag
-makes next-intl throw at render and blanks the whole paragraph. A string that
-gains a tag has to be rendered with `t.rich(key, rich)` rather than `t(key)`.
+`<em>` and `<code>`; the **card notation** `<card>K</card>` for one card and
+`<hand>5♣ Q 7</hand>` for a holding, which splits its text on whitespace into
+one token per card and works over an ICU placeholder too
+(`<hand>{strongestWorstHand}</hand>`); and one **cross-reference tag per
+chapter**, named after that chapter's id, as in `<ranges>the ranges
+chapter</ranges>`, `<numbers>Appendix B</numbers>`, or `<leads>the opening
+leads chapter</leads>`. A cross-reference links to
+`/<locale>/lab/study/guide/<id>` and reads as ordinary prose under a hairline
+rule; in the printed book it prints as plain text. The names live in
+`src/guide/rich-tags.ts`, with the chapter ones derived from
+`GUIDE_CHAPTERS`, so a new chapter gets its tag for free; see
+`src/guide/rich.tsx` for what each one renders. The editor refuses to write
+anything else, because an unknown tag makes next-intl throw at render and
+blanks the whole paragraph. A string that gains a tag has to be rendered with
+`t.rich(key, rich)` rather than `t(key)`.
 
 The editor is disabled in production twice over: the write API sits behind
 the same switch as the other dev routes
