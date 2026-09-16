@@ -67,15 +67,19 @@
   color: #17110c;
 }
 
+/* the same bar serves the wide editor and the narrow comment box, so it
+   wraps by whole words rather than breaking "-- NORMAL --" in three */
 .status {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 14px;
+  gap: 4px 14px;
   padding: 6px 10px;
   border-top: 1px solid rgba(212, 179, 106, 0.28);
   font-size: 11px;
   color: rgba(246, 237, 215, 0.5);
 }
+.status > * { white-space: nowrap; }
 .mode { color: rgba(246, 237, 215, 0.8); }
 .pending {
   padding: 1px 5px;

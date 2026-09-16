@@ -19,3 +19,81 @@ export function renderedCatalogText(raw: string) {
   }
   return text.replace(/\s+/g, ' ').trim()
 }
+
+/** an ICU placeholder like {rank} or {pp}, which renders as unknown text */
+const PLACEHOLDER = /\{[a-zA-Z]/
+
+export function hasPlaceholder(raw: string) {
+  return PLACEHOLDER.test(raw)
+}
+
+/**
+ * A prefix shorter than this matches far too much of the page, so a string
+ * whose first placeholder comes early stays unanchorable.
+ */
+const MIN_PREFIX = 14
+
+export interface CatalogIndex {
+  /** rendered text of a placeholder-free string, to its catalog key */
+  byText: Map<string, string>
+  /**
+   * For strings that do carry a placeholder: the rendered text before the
+   * first one, longest first, and only where it names exactly one key.
+   */
+  byPrefix: Array<{ prefix: string; key: string }>
+}
+
+/** rendered text to catalog key, for matching an element on the page back */
+export function buildCatalogIndex(messages: Record<string, string>): CatalogIndex {
+  const byText = new Map<string, string>()
+  // a prefix two strings share anchors neither of them
+  const prefixes = new Map<string, string | null>()
+
+  for (const [key, raw] of Object.entries(messages)) {
+    if (hasPlaceholder(raw)) {
+      const prefix = renderedCatalogText(raw.slice(0, raw.search(PLACEHOLDER)))
+      if (prefix.length < MIN_PREFIX) continue
+      prefixes.set(prefix, prefixes.has(prefix) ? null : key)
+      continue
+    }
+    const text = renderedCatalogText(raw)
+    if (text.length < 2 || byText.has(text)) continue
+    byText.set(text, key)
+  }
+
+  const byPrefix: CatalogIndex['byPrefix'] = []
+  for (const [prefix, key] of prefixes) {
+    if (key == null) continue
+    // a prefix that also opens a whole string would steal that string's match
+    let shadowed = false
+    for (const text of byText.keys()) {
+      if (text.startsWith(prefix)) {
+        shadowed = true
+        break
+      }
+    }
+    if (!shadowed) byPrefix.push({ prefix, key })
+  }
+  byPrefix.sort((a, b) => b.prefix.length - a.prefix.length)
+
+  return { byText, byPrefix }
+}
+
+/**
+ * The catalog key an element's rendered text belongs to, or null. Prefix
+ * matching is opt-in: it is what lets a string with a placeholder be
+ * anchored, but it is a guess, so the copy editor leaves it off.
+ */
+export function matchCatalogKey(
+  index: CatalogIndex,
+  text: string,
+  options: { prefix?: boolean } = {},
+) {
+  const exact = index.byText.get(text)
+  if (exact != null) return exact
+  if (!options.prefix) return null
+  for (const entry of index.byPrefix) {
+    if (text.startsWith(entry.prefix)) return entry.key
+  }
+  return null
+}
