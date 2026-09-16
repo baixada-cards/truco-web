@@ -6,7 +6,7 @@
 // numbers) plus the glossary. URLs stay flat — parts are a contents-page
 // grouping, never a route segment.
 
-const THEORY = ['rules', 'solving', 'chart', 'ranges', 'views', 'notation', 'trust'] as const
+const THEORY = ['rules', 'solving', 'chart', 'ranges', 'views', 'notation', 'trust', 'method'] as const
 
 const HANDBOOK = ['eleven', 'leads', 'raising', 'leaks'] as const
 

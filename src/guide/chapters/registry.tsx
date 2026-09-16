@@ -10,6 +10,7 @@ import { RulesChapter } from './RulesChapter'
 import { GlossaryChapter } from './GlossaryChapter'
 import { LeadsChapter } from './LeadsChapter'
 import { LeaksChapter } from './LeaksChapter'
+import { MethodChapter } from './MethodChapter'
 import { NotationChapter } from './NotationChapter'
 import { NumbersChapter } from './NumbersChapter'
 import { RaisingChapter } from './RaisingChapter'
@@ -27,6 +28,7 @@ export const CHAPTER_BODIES: Record<GuideChapter, React.ComponentType> = {
   abstractions: AbstractionsChapter,
   notation: NotationChapter,
   trust: TrustChapter,
+  method: MethodChapter,
   eleven: ElevenChapter,
   leads: LeadsChapter,
   raising: RaisingChapter,
@@ -84,6 +86,14 @@ export const CHAPTER_SECTION_DEFS: Record<GuideChapter, Array<{ id: string; labe
     { id: 'quizzes', labelKey: 'Study.guide.sec.notation.quizHead' },
   ],
   trust: [],
+  method: [
+    { id: 'spot', labelKey: 'Study.guide.sec.method.spotHead' },
+    { id: 'habit', labelKey: 'Study.guide.sec.method.habitHead' },
+    { id: 'read', labelKey: 'Study.guide.sec.method.readHead' },
+    { id: 'price', labelKey: 'Study.guide.sec.method.priceHead' },
+    { id: 'scores', labelKey: 'Study.guide.sec.method.scoresHead' },
+    { id: 'rule', labelKey: 'Study.guide.sec.method.ruleHead' },
+  ],
   eleven: [
     { id: 'stakes', labelKey: 'Study.guide.sec.eleven.stakesHead' },
     { id: 'reading', labelKey: 'Study.guide.sec.eleven.readingHead' },
