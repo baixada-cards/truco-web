@@ -109,6 +109,7 @@ export const CHAPTER_SECTION_DEFS: Record<GuideChapter, Array<{ id: string; labe
     { id: 'census', labelKey: 'Study.guide.sec.numbers.censusHead' },
     { id: 'coverage', labelKey: 'Study.guide.sec.numbers.coverageHead' },
     { id: 'certificates', labelKey: 'Study.guide.sec.numbers.certHead' },
+    { id: 'diagnostics', labelKey: 'Study.guide.sec.numbers.diagnosticsHead' },
     { id: 'similarity', labelKey: 'Study.guide.sec.numbers.simHead' },
     { id: 'purity', labelKey: 'Study.guide.sec.numbers.purityHead' },
     { id: 'effort', labelKey: 'Study.guide.sec.numbers.effortHead' },

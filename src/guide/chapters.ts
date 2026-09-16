@@ -81,6 +81,7 @@ export function chapterForLegacyHash(hash: string): { chapter: GuideChapter; anc
   if (!raw) return null
   if (raw === 'layout') return { chapter: 'chart', anchor: '' }
   if (raw === 'pinned') return { chapter: 'notation', anchor: '#walk' }
+  if (raw === 'diagnostics') return { chapter: 'numbers', anchor: '#diagnostics' }
   if (raw.startsWith('g-')) return { chapter: 'glossary', anchor: `#${raw}` }
   if (isGuideChapter(raw)) return { chapter: raw, anchor: '' }
   return null
