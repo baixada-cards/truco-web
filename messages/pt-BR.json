@@ -905,7 +905,7 @@
         },
         "quickHand": {
           "title": "A mão até aqui",
-          "body": "O trilho é a mão como foi jogada. Cada jogada é uma decisão com gráfico próprio: as setas percorrem as decisões, uma placa pula para uma delas, e qualquer jogada passada pode ser reescrita."
+          "body": "A trilha é a mão como foi jogada. Cada jogada é uma decisão com gráfico próprio: as setas percorrem as decisões, uma placa pula para uma delas, e qualquer jogada passada pode ser reescrita."
         },
         "quickChart": {
           "title": "O gráfico",
@@ -922,7 +922,7 @@
       "kicker": "Baixada · Estudo · Guia de campo",
       "title": "Lendo os gráficos da solução",
       "lede": "Isto é truco <b>resolvido</b>. Para um punhado de situações exatas de partida, ele mostra o jeito de jogar que <b>não pode ser explorado</b> — calculado por uma máquina jogando contra si mesma bilhões de mãos. Não é a opinião de um bot; é a aritmética do jogo. Veja como lê-lo.",
-      "written": "O texto deste guia foi redigido com um assistente de IA e revisado pelo autor. Cada número, gráfico e figura vem da saída do solucionador.",
+      "written": "A maior parte do texto deste guia foi escrita por um assistente de IA e revisada pelo autor. Cada número, gráfico e figura vem da saída do solver.",
       "contents": "Conteúdo",
       "parts": {
         "theory": {
@@ -937,7 +937,7 @@
         },
         "reference": {
           "kicker": "Apêndices",
-          "head": "Referência"
+          "head": "Abstrações, números e termos"
         }
       },
       "toc": {
@@ -1130,7 +1130,7 @@
           "blocksP": "Fixe a sua carta mais fraca para escolher o bloco (este leitor começa em <code>L = 7</code>), depois corra a mais alta pelas linhas e a do meio pelas colunas. O próprio rótulo de latão é o controle — clique nele para trocar tanto a posição fixada quanto a carta única deste gráfico. Passe o mouse ou toque em qualquer célula —",
           "numberHead": "O número, as faixas e o ≈",
           "numberP": "Só um número cabe na célula, então uma célula mista imprime a <b>maior fatia</b> — a porcentagem da ação mais jogada. As faixas de cor carregam a mistura inteira, cada uma do tamanho da sua probabilidade; o leitor aqui (no lab: o tooltip) abre cada ação com sua fração exata.",
-          "approxP": "Uma célula com <b>≈</b> em vez de número é fraca: quando há medida de melhor resposta por nó, uma melhor resposta adversarial ganha mais de 5 pontos de vitória na partida. Exportações antigas usam o alerta legado de perda própria/alcance. Em ambos os casos, leia ≈ como aviso, não como tática — o capítulo de confiança mostra a maquinaria.",
+          "approxP": "Uma célula com <b>≈</b> em vez de número é fraca: quando há medida de melhor resposta por nó, uma melhor resposta adversarial ganha mais de 5 pontos de vitória na partida. Exportações antigas usam o alerta legado de perda própria/alcance. Em ambos os casos, leia ≈ como aviso, não como tática. O capítulo de confiança explica o selo, e o Apêndice B mostra a maquinaria do alerta legado.",
           "aside": "o número = a maior fatia. o tooltip = a mistura inteira.",
           "listHead": "A lista — os mesmos dados, ordenados",
           "listP": "<b>LISTA</b> dispõe exatamente as mesmas mãos como linhas, da mais forte para a mais fraca: as cartas na frente, a mistura como uma barra rotulada. Só a forma muda — a grade é para enxergar regiões de relance, a lista é para ler uma mão de cada vez.",
@@ -1227,7 +1227,7 @@
           },
           "reach": {
             "term": "Alcance",
-            "desc": "com que frequência uma partida desta banda percorre exatamente esta linha — o peso total do nó sobre o da raiz da banda. Cantos de pouco alcance recebem pouco treino, e é onde vive a marca ≈ (veja o capítulo de confiança)."
+            "desc": "com que frequência uma partida desta banda percorre exatamente esta linha — o peso total do nó sobre o da raiz da banda. Cantos de pouco alcance recebem pouco treino, e é onde vive a marca ≈ (veja o capítulo de confiança e o Apêndice B)."
           }
         },
         "abstractions": {
@@ -1409,7 +1409,7 @@
         },
         "trust": {
           "title": "Até onde confiar",
-          "intro": "Uma solução não promete que toda mistura impressa foi polida do mesmo jeito. O lab agora mede a pergunta importante em cada nó: <b>quanto um adversário perfeitamente adaptado pode ganhar contra a estratégia mostrada aqui?</b> A resposta é o selo de qualidade; os números antigos de alcance e perda própria explicam por que um canto ficou ruim.",
+          "intro": "Uma solução não promete que toda mistura impressa foi polida do mesmo jeito. O lab agora mede a pergunta importante em cada nó: <b>quanto um adversário perfeitamente adaptado pode ganhar contra a estratégia mostrada aqui?</b> A resposta é o selo de qualidade; os números antigos de alcance e perda própria, guardados no Apêndice B, explicam por que um canto ficou ruim.",
           "badgeHead": "O selo de qualidade é o sinal principal",
           "badgeP": "O selo é uma <b>lacuna de melhor resposta adversarial por nó</b>, em pontos percentuais de vitória na partida. Ele compara a mistura exportada a uma melhor resposta real do oponente, em vez de pedir que a solução se avalie sozinha.",
           "solidTerm": "sólido · ≤ 1 pp",

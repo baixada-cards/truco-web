@@ -922,7 +922,7 @@
       "kicker": "Baixada · Study · Field guide",
       "title": "Optimal Truco",
       "lede": "This is <b>solved</b> heads-up truco paulista. For a selection of spots, it shows a way to play that <b>can’t be exploited</b>, worked out by a machine playing billions of hands.",
-      "written": "The text of this guide was drafted with an AI assistant and reviewed by the author. Every number, chart, and figure in it is read from the solver’s output.",
+      "written": "Most of the text in this guide was written by an AI assistant and reviewed by the author. Every number, chart, and figure in it comes from the solver’s output.",
       "contents": "Contents",
       "parts": {
         "theory": {
@@ -937,7 +937,7 @@
         },
         "reference": {
           "kicker": "Appendices",
-          "head": "Reference"
+          "head": "Abstractions, numbers, and terms"
         }
       },
       "toc": {
@@ -1130,7 +1130,7 @@
           "blocksP": "Pin your weakest card to pick the block (this reader begins at <code>L = 7</code>), then run your highest card down the rows and your middle card across the columns. The brass label is itself the control — click it to change both the pinned slot and the one card this chart holds fixed. Hover or tap any cell —",
           "numberHead": "The number, the bands, and ≈",
           "numberP": "Only one number fits in a cell, so a mixed cell prints its <b>biggest slice</b> — the most-played action's percentage. The color bands carry the whole mix, each sized by its probability; the readout here (in the lab: the tooltip) spells out every action with its exact share.",
-          "approxP": "A cell wearing <b>≈</b> instead of a number is weak: where a per-node BR measurement ships, an adversarial best response gains more than 5 match-win points. Older exports use the legacy self-loss/reach alarm. Either way, read ≈ as a warning, not a tactic — the trust chapter shows the machinery.",
+          "approxP": "A cell wearing <b>≈</b> instead of a number is weak: where a per-node BR measurement ships, an adversarial best response gains more than 5 match-win points. Older exports use the legacy self-loss/reach alarm. Either way, read ≈ as a warning, not a tactic. The trust chapter explains the badge, and Appendix B shows the legacy alarm’s machinery.",
           "aside": "the number = the biggest slice. the tooltip = the whole mix.",
           "listHead": "The list — same data, sorted",
           "listP": "<b>LIST</b> lays the very same holdings out as rows, strongest first: the cards up front, the mix as a labeled bar. Nothing changes but the shape — the grid is for seeing regions at a glance, the list is for reading one hand at a time.",
@@ -1227,7 +1227,7 @@
           },
           "reach": {
             "term": "Reach",
-            "desc": "how often a match in this band walks exactly this line — the node's total weight over the band root's. Low-reach corners earn little training, which is where the ≈ flag lives (see the trust chapter)."
+            "desc": "how often a match in this band walks exactly this line — the node's total weight over the band root's. Low-reach corners earn little training, which is where the ≈ flag lives (see the trust chapter and Appendix B)."
           }
         },
         "abstractions": {
@@ -1409,7 +1409,7 @@
         },
         "trust": {
           "title": "How far to trust it",
-          "intro": "A solution is not a promise that every printed mix is equally polished. The lab now measures the important question at a node: <b>how much can a perfectly adapting opponent gain from the strategy shown here?</b> The answer is the quality badge; the older reach and self-loss numbers explain why a corner went bad.",
+          "intro": "A solution is not a promise that every printed mix is equally polished. The lab now measures the important question at a node: <b>how much can a perfectly adapting opponent gain from the strategy shown here?</b> The answer is the quality badge; the older reach and self-loss numbers, kept in Appendix B, explain why a corner went bad.",
           "badgeHead": "The quality badge is the headline",
           "badgeP": "The badge is a <b>per-node adversarial best-response gap</b>, expressed in match-win percentage points. It compares the exported mix with a genuine opponent best response, rather than asking the solve to grade itself.",
           "solidTerm": "solid · ≤ 1 pp",
@@ -1549,7 +1549,7 @@
           "certP2": "Transfers had to clear hard gates — raw ε ≤ 0.01, purified ε ≤ 0.004, weighted mean per-node best-response gap ≤ 0.25 pp — or the worker discarded the candidate and solved the spot natively. Native solves converge much tighter globally (median ε 0.00001), but 28 of them carry broader per-node profiles — which is exactly what the lab's per-cell ≈ badges exist to surface.",
           "certAside": "<i>Purified</i> ε is measured after near-zero mixture tails are snapped to the best action for export — it usually tightens the bound. The per-node column is the reach-weighted mean of the same per-cell best-response gaps behind the trust chapter's badges.",
           "diagnosticsHead": "Why an off-path mix gets noisy",
-          "diagnosticsP": "Before the BR table, the lab's warning came from two diagnostics. They stay here because they explain how a corner went bad — they describe training coverage, not quality.",
+          "diagnosticsP": "Before the BR table, the lab's warning came from two diagnostics. They are kept here because they explain how a corner went bad — they describe training coverage, not quality.",
           "selfLossQ": "the solve’s equilibrium value after action a at holding h",
           "selfLossScale": "converts the solver’s −1…1 value scale into match-win percentage points",
           "selfLossNote": "Self-loss asks whether the mix is close to its own best action under the solve's q values — an alarm, not an adversarial guarantee.",

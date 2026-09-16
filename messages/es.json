@@ -901,7 +901,7 @@
         },
         "quickStage": {
           "title": "Preparar la escena",
-          "body": "El <b>marcador</b>, la vira y quién reparte nombran el spot. Cambiá cualquiera de los tres y el gráfico entero se vuelve a resolver para la nueva apuesta. Este recorrido se queda en un solo spot: 11 × 11 con un 4 dado vuelta, así que los 5 son las manilhas."
+          "body": "El <b>marcador</b>, la muestra y quién reparte nombran el spot. Cambiá cualquiera de los tres y el gráfico entero se vuelve a resolver para la nueva apuesta. Este recorrido se queda en un solo spot: 11 × 11 con un 4 de muestra, así que los 5 son las manilhas."
         },
         "quickHand": {
           "title": "La mano hasta acá",
@@ -922,7 +922,7 @@
       "kicker": "Baixada · Estudio · Guía de campo",
       "title": "Leyendo los gráficos de la solución",
       "lede": "Esto es truco <b>resuelto</b>. Para un puñado de situaciones exactas de partida, muestra la forma de jugar que <b>no se puede explotar</b> — calculada por una máquina que juega contra sí misma miles de millones de manos. No es la opinión de un bot; es la aritmética del juego. Así se lee.",
-      "written": "El texto de esta guía fue redactado con un asistente de IA y revisado por el autor. Cada número, gráfico y figura sale de la salida del solucionador.",
+      "written": "La mayor parte del texto de esta guía fue escrita por un asistente de IA y revisada por el autor. Cada número, gráfico y figura proviene de la salida del solver.",
       "contents": "Contenido",
       "parts": {
         "theory": {
@@ -937,7 +937,7 @@
         },
         "reference": {
           "kicker": "Apéndices",
-          "head": "Referencia"
+          "head": "Abstracciones, números y términos"
         }
       },
       "toc": {
@@ -1130,7 +1130,7 @@
           "blocksP": "Fijá tu carta más débil para elegir el bloque (este lector empieza en <code>L = 7</code>), después corré la más alta por las filas y la del medio por las columnas. La propia etiqueta de latón es el control — hacé clic para cambiar tanto la posición fijada como la única carta de este gráfico. Pasá el mouse o tocá cualquier celda —",
           "numberHead": "El número, las bandas y el ≈",
           "numberP": "Solo un número entra en la celda, así que una celda mixta imprime la <b>porción más grande</b> — el porcentaje de la acción más jugada. Las bandas de color cargan la mezcla entera, cada una del tamaño de su probabilidad; el lector de acá (en el lab: el tooltip) abre cada acción con su fracción exacta.",
-          "approxP": "Una celda con <b>≈</b> en vez de número es débil: cuando hay medición de mejor respuesta por nodo, una mejor respuesta adversarial gana más de 5 puntos de victoria de partida. Las exportaciones antiguas usan la alarma heredada de pérdida propia/alcance. En ambos casos, leé ≈ como advertencia, no como táctica — el capítulo de confianza muestra la maquinaria.",
+          "approxP": "Una celda con <b>≈</b> en vez de número es débil: cuando hay medición de mejor respuesta por nodo, una mejor respuesta adversarial gana más de 5 puntos de victoria de partida. Las exportaciones antiguas usan la alarma heredada de pérdida propia/alcance. En ambos casos, leé ≈ como advertencia, no como táctica. El capítulo de confianza explica la insignia, y el Apéndice B muestra la maquinaria de la alarma heredada.",
           "aside": "el número = la tajada más grande. el tooltip = la mezcla entera.",
           "listHead": "La lista — los mismos datos, ordenados",
           "listP": "<b>LISTA</b> dispone exactamente las mismas manos como filas, de la más fuerte a la más débil: las cartas adelante, la mezcla como una barra rotulada. Solo cambia la forma — la grilla es para ver regiones de un vistazo, la lista es para leer una mano a la vez.",
@@ -1227,7 +1227,7 @@
           },
           "reach": {
             "term": "Alcance",
-            "desc": "qué tan seguido una partida de esta banda recorre exactamente esta línea — el peso total del nodo sobre el de la raíz de la banda. Los rincones de poco alcance reciben poco entrenamiento, y ahí vive la marca ≈ (mirá el capítulo de confianza)."
+            "desc": "qué tan seguido una partida de esta banda recorre exactamente esta línea — el peso total del nodo sobre el de la raíz de la banda. Los rincones de poco alcance reciben poco entrenamiento, y ahí vive la marca ≈ (mirá el capítulo de confianza y el Apéndice B)."
           }
         },
         "abstractions": {
@@ -1409,7 +1409,7 @@
         },
         "trust": {
           "title": "Hasta dónde confiar",
-          "intro": "Una solución no promete que cada mezcla impresa esté igual de pulida. El lab ahora mide la pregunta importante en cada nodo: <b>¿cuánto puede ganar contra la estrategia mostrada un rival perfectamente adaptado?</b> La respuesta es la insignia de calidad; los números antiguos de alcance y pérdida propia explican por qué un rincón salió mal.",
+          "intro": "Una solución no promete que cada mezcla impresa esté igual de pulida. El lab ahora mide la pregunta importante en cada nodo: <b>¿cuánto puede ganar contra la estrategia mostrada un rival perfectamente adaptado?</b> La respuesta es la insignia de calidad; los números antiguos de alcance y pérdida propia, guardados en el Apéndice B, explican por qué un rincón salió mal.",
           "badgeHead": "La insignia de calidad es la señal principal",
           "badgeP": "La insignia es una <b>brecha de mejor respuesta adversarial por nodo</b>, expresada en puntos porcentuales de victoria de partida. Compara la mezcla exportada con una mejor respuesta genuina del rival, en vez de pedirle a la solución que se califique sola.",
           "solidTerm": "sólido · ≤ 1 pp",
