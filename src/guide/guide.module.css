@@ -1368,7 +1368,7 @@ em.matchCut { background: linear-gradient(90deg, #e9d3a4, #c9a96c); }
 /* contents grouped into parts (plan 80): Part I theory, Part II handbook,
    back-matter — a landing-page grouping only, never a route segment */
 .tocPart {
-  margin-top: 44px;
+  margin-top: 58px;
 }
 
 .tocPartHead { text-align: center; }
@@ -1397,10 +1397,16 @@ em.matchCut { background: linear-gradient(90deg, #e9d3a4, #c9a96c); }
   color: var(--ink-2, #7a6d56);
 }
 
+/* the list is sized to its own content, not the leaf, so it reads as one
+   block sitting under the (centred) part head instead of a wide, mostly
+   empty strip; min-width keeps a short part (e.g. the appendices) from
+   shrinking to an oddly narrow sliver */
 .tocList {
   list-style: none;
-  max-width: 660px;
-  margin: 24px auto 0;
+  width: fit-content;
+  min-width: min(28rem, 100%);
+  max-width: 100%;
+  margin: 16px auto 0;
   padding: 0;
 }
 
