@@ -48,6 +48,8 @@ export const CHAPTER_SECTION_DEFS: Record<GuideChapter, Array<{ id: string; labe
   solving: [
     { id: 'toy', labelKey: 'Study.guide.sec.solving.toyHead' },
     { id: 'mixing', labelKey: 'Study.guide.sec.solving.mixHead' },
+    { id: 'unexploitable', labelKey: 'Study.guide.sec.solving.unexHead' },
+    { id: 'commands', labelKey: 'Study.guide.sec.solving.cmdHead' },
     { id: 'cfr', labelKey: 'Study.guide.sec.solving.cfrHead' },
   ],
   abstractions: [

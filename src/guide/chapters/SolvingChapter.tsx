@@ -1,7 +1,9 @@
-// Chapter — what "solving" a game like truco even means, reworked around
-// the toy game (plan 77 J-1): a one-street bluff at the engine's real
-// stakes, solved analytically in the copy, then the reason equilibria mix,
-// then how CFR computes the real thing. Ends on a references footer.
+// Chapter ii — what "optimal" means. The toy game (a one-street bluff at the
+// engine's real stakes, solved analytically in the copy), then why an
+// equilibrium mixes, then the two readings a player needs before trusting a
+// chart: unexploitable is not "best against this opponent", and a mixed cell
+// is permission rather than a command. Ends with how CFR computes the real
+// thing and a references footer.
 
 import { useTranslations } from 'next-intl'
 
@@ -14,7 +16,7 @@ import { Prose } from '../Prose'
 import { rich } from '../rich'
 
 const TEX = {
-  evCall: String.raw`\mathrm{EV}_{\text{call}} \;=\; p\,(-3) \;+\; (1-p)\,(+3) \;=\; 3 - 6p`,
+  evCall: String.raw`\mathrm{EV}_{\text{accept}} \;=\; p\,(-3) \;+\; (1-p)\,(+3) \;=\; 3 - 6p`,
   indiff: String.raw`3 - 6p \;=\; \underbrace{-1}_{\text{fold}} \quad\Longrightarrow\quad p^{\star} = \tfrac{2}{3}`,
   posterior: String.raw`P(\text{m}\clubsuit \mid \text{truco}) \;=\; \frac{\tfrac12}{\tfrac12 + \tfrac12\,b} \;=\; \frac{1}{1+b} \;\overset{!}{=}\; \tfrac{2}{3} \quad\Longrightarrow\quad b^{\star} = \tfrac{1}{2}`,
   bluffEv: String.raw`\mathrm{EV}_{\text{bluff}} \;=\; c\,(-3) \;+\; (1-c)\,(+1) \;=\; 1 - 4c \;\overset{!}{=}\; -1 \quad\Longrightarrow\quad c^{\star} = \tfrac{1}{2}`,
@@ -28,6 +30,7 @@ export function SolvingChapter() {
     <>
       <Reveal>
         <Prose>{t.rich('sec.solving.p1', rich)}</Prose>
+        <Prose>{t.rich('sec.solving.p2', rich)}</Prose>
       </Reveal>
 
       <Section id="toy" mark="§ 1" title={t('sec.solving.toyHead')}>
@@ -53,7 +56,19 @@ export function SolvingChapter() {
         <p className={styles.takeaway}>{t('sec.solving.mixTakeaway')}</p>
       </Section>
 
-      <Section id="cfr" mark="§ 3" title={t('sec.solving.cfrHead')}>
+      <Section id="unexploitable" mark="§ 3" title={t('sec.solving.unexHead')}>
+        <Prose>{t.rich('sec.solving.unexP1', rich)}</Prose>
+        <Prose>{t.rich('sec.solving.unexP2', rich)}</Prose>
+        <aside className={styles.margin}>{t.rich('sec.solving.unexAside', rich)}</aside>
+      </Section>
+
+      <Section id="commands" mark="§ 4" title={t('sec.solving.cmdHead')}>
+        <Prose>{t.rich('sec.solving.cmdP1', rich)}</Prose>
+        <Prose>{t.rich('sec.solving.cmdP2', rich)}</Prose>
+        <p className={styles.takeaway}>{t('sec.solving.cmdTakeaway')}</p>
+      </Section>
+
+      <Section id="cfr" mark="§ 5" title={t('sec.solving.cfrHead')}>
         <Prose>{t.rich('sec.solving.cfrP1', rich)}</Prose>
         <div className={styles.formula}>
           <Math display tex={TEX.regretSum} />
