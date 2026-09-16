@@ -8,6 +8,6 @@
   },
   "truco_server": {
     "repository": "https://github.com/baixada-cards/truco-server.git",
-    "revision": "bffee18bffd68654defb5d356576603cdfc39b94"
+    "revision": "3be2e443ff6f72f92d77b66ea364b74c0489670d"
   }
 }
