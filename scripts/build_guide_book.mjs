@@ -103,8 +103,11 @@ const PAGED_CSS = `
 [data-title-page] h1 { string-set: bookTitle content(text); }
 [data-chapter] h1 { string-set: chapterTitle content(text); }
 
-/* the contents prints folios, not chapter numerals */
-[data-toc] a > span:last-child { display: none; }
+/* the contents prints folios, not chapter numerals: the leading numeral
+   (the toc entry's first span) is hidden, and the name is pushed to the
+   left with the real page folio set opposite it via the counter below */
+[data-toc] a > span:first-child { display: none; }
+[data-toc] a { justify-content: space-between; }
 [data-toc] a::after {
   content: target-counter(attr(href url), page);
   flex: 0 0 auto;

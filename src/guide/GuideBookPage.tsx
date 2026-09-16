@@ -83,9 +83,8 @@ export function GuideBookPage({
               {part.chapters.map((chapter) => (
                 <li key={chapter.id}>
                   <a className={styles.tocEntry} href={`#ch-${chapter.id}`}>
-                    <span className={styles.tocName}>{chapter.tocName}</span>
-                    <i className={styles.tocDots} aria-hidden />
                     <span className={styles.tocNo}>{chapter.number}</span>
+                    <span className={styles.tocName}>{chapter.tocName}</span>
                   </a>
                 </li>
               ))}

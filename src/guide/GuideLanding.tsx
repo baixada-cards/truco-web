@@ -65,9 +65,8 @@ export function GuideLanding() {
                   {part.chapters.map((id) => (
                     <li key={id}>
                       <Link href={`${base}/${id}`} className={styles.tocEntry}>
-                        <span className={styles.tocName}>{t(`toc.${id}`)}</span>
-                        <i className={styles.tocDots} aria-hidden />
                         <span className={styles.tocNo}>{chapterNumber(id)}</span>
+                        <span className={styles.tocName}>{t(`toc.${id}`)}</span>
                       </Link>
                     </li>
                   ))}

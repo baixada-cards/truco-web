@@ -1290,11 +1290,10 @@ em.matchCut { background: linear-gradient(90deg, #e9d3a4, #c9a96c); }
   .toc { display: flex; }
 }
 
-/* narrow leaves drop the leader rules and let long titles wrap */
+/* narrow leaves keep the numeral column narrow and let long titles wrap */
 @media (max-width: 560px) {
-  .tocDots { display: none; }
   .tocEntry { gap: 12px; }
-  .tocNo { margin-left: auto; }
+  .tocNo { flex-basis: 26px; }
   .tocName { text-wrap: pretty; }
   .running { flex-direction: column; gap: 4px; }
   .main > .section:first-child > p:first-of-type::first-letter { font-size: 52px; }
@@ -1405,28 +1404,16 @@ em.matchCut { background: linear-gradient(90deg, #e9d3a4, #c9a96c); }
   padding: 0;
 }
 
-/* one contents entry: title, leader, folio — no card, no arrow */
+/* one contents entry: numeral, then title. No card, no arrow. The numeral
+   leads in a fixed-width column, the same treatment as the chapter page's
+   margin index (.railNo), so every name lines up under the next. */
 .tocEntry {
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  gap: 14px;
   padding: 9px 0;
   text-decoration: none;
   transition: color 150ms ease;
-}
-
-.tocName {
-  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
-  font-size: 22px;
-  line-height: 1.2;
-  color: var(--ink-0, #2a241b);
-}
-
-.tocDots {
-  flex: 1 1 auto;
-  align-self: center;
-  min-width: 18px;
-  border-bottom: 1px dotted rgba(122, 109, 86, 0.55);
 }
 
 .tocNo {
@@ -1436,11 +1423,19 @@ em.matchCut { background: linear-gradient(90deg, #e9d3a4, #c9a96c); }
   font-size: 15px;
   color: var(--ink-2, #7a6d56);
   text-align: right;
+  opacity: 0.8;
+}
+
+.tocName {
+  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--ink-0, #2a241b);
 }
 
 .tocEntry:hover .tocName,
 .tocEntry:hover .tocNo { color: var(--card-back-a, #5a2a26); }
-.tocEntry:hover .tocDots { border-bottom-color: var(--card-back-a, #5a2a26); }
+.tocEntry:hover .tocNo { opacity: 1; }
 
 /* colophon: the built books, offered at the foot of the contents leaf */
 .colophon {
