@@ -3760,6 +3760,54 @@ em.matchCut { background: linear-gradient(90deg, #e9d3a4, #c9a96c); }
   .book .gcrHint,
   .book .anHint { display: none; }
 
+  /* The chart plates stand a live readout beside the grid. Nothing is hovered
+     on paper, so that pane prints as a blank strip while the 270px column it
+     reserves squeezes the grid until its last file of cells is cut against the
+     pane's rule. Drop the pane and give the grid the whole plate. */
+  .book .gcrBody { display: block; }
+  .book .gcrReadout { display: none; }
+  /* the stacked eleven/leads blocks are laid out by an auto-width grid track,
+     which the chart would otherwise widen past the plate: pin the track to the
+     plate and let the chart scale into it */
+  .book .elvGridWrap { grid-template-columns: minmax(0, 1fr); }
+  .book .gcrTable { max-width: 100%; }
+
+  /* ---- wide statistics tables ---- */
+  /* On screen the wrapper scrolls sideways; paper cannot, and the overflow was
+     simply lost at the trim. Set these tables to the measure instead: fixed
+     layout at the full text width, a smaller face, heads that wrap, and cells
+     tight enough that the rightmost column survives. */
+  .book .treeTableWrap {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: none;
+    overflow: visible;
+    /* the wrapper stopped being a scroll container, so say plainly that the
+       head must stay with its rows rather than let the pair split */
+    break-inside: avoid;
+  }
+  .book .treeTable {
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+    font-size: 7.5pt;
+  }
+  .book .treeTable th,
+  .book .treeTable td { padding: 4.5px 6px; }
+  /* heads and row labels wrap; the figures never do, so no number is ever
+     broken across two lines to buy the width */
+  .book .treeTable th {
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+  .book .treeTable thead th {
+    font-size: 6pt;
+    letter-spacing: 0.06em;
+  }
+  .book .treeTable th:nth-child(2),
+  .book .treeTable td:nth-child(2) { max-width: none; }
+  .book .statTable5 { min-width: 0; }
+
   /* ---- pagination ---- */
   .section { break-inside: auto; }
   .section figure,
