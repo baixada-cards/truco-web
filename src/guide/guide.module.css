@@ -1198,7 +1198,9 @@ em.matchCut { background: linear-gradient(90deg, #e9d3a4, #c9a96c); }
    old-style figures, which drop a 3 or a 7 below the baseline and read as a
    subscript at this size. */
 .cardTok {
-  padding: 0 3px;
+  /* letter-spacing trails the last glyph, so the right pad is a hair shorter
+     to keep a following period or colon close to the token */
+  padding: 0 2px 0 3px;
   border-radius: 3px;
   background: rgba(122, 109, 86, 0.09);
   font-size: 0.95em;
