@@ -13,6 +13,7 @@ import { chapterNumber, GUIDE_PARTS } from './chapters'
 import { GUIDE_LOCALES } from './guide-locales'
 import styles from './guide.module.css'
 import { HashRedirect } from './HashRedirect'
+import { ReviewComments } from './ReviewComments'
 import { rich } from './rich'
 
 export function GuideLanding() {
@@ -105,6 +106,7 @@ export function GuideLanding() {
       </footer>
 
       <CopyEditor />
+      <ReviewComments />
     </div>
   )
 }

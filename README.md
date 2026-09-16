@@ -148,6 +148,26 @@ the same switch as the other dev routes
 (`TRUCO_ENABLE_DEV_ROUTES=false` turns it off in development too), and
 production builds alias the editor module to a no-op stub.
 
+**Review comments (development only).** For reading rather than rewriting,
+the same pages take Google-Docs-style margin comments. Select text inside a
+paragraph and a small `Comment` button appears by the selection; `Alt+C` does
+the same from the keyboard, and with nothing selected it comments on the
+paragraph the caret last landed in. `Alt+click` comments on a whole element,
+with no quote. The box is the copy editor's textarea with the same Vim
+keymap, opened in insert mode: `:w` saves, `C-c C-c` saves and closes, `:q`
+closes. Every commented element gets a numbered marker in the right margin;
+clicking it opens the thread, where a comment can be resolved, edited, or
+deleted. A pill at the bottom right counts the open comments on the page and
+reveals the resolved ones.
+
+Comments are stored in `src/guide/review/comments.json`, a sorted JSON array
+of `{id, locale, key, quote, body, createdAt, resolved}` records, so that a
+coding agent can read the file afterwards and act on them: `key` is the
+dotted path under `Study.guide`, which is all it needs to find the string.
+The store is read and written through `/api/dev/guide-comments`, gated like
+the copy editor, and `src/guide/ReviewComments.tsx` is aliased to a no-op in
+production builds.
+
 ## Licensed audio boundary
 
 The five Pro Sound Effects derivatives used by the full production soundscape

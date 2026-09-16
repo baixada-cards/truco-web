@@ -1,0 +1,213 @@
+/* Dev-only review comments. Same tool chrome as the copy editor: dark,
+   monospaced, brass-edged, so nothing here reads as part of the guide. */
+
+.layer {
+  position: fixed;
+  inset: 0;
+  z-index: 8800;
+  pointer-events: none;
+}
+
+.layer > * { pointer-events: auto; }
+
+/* the floating "Comment" button that follows a selection */
+.pick {
+  position: fixed;
+  transform: translate(-50%, -140%);
+  padding: 4px 9px;
+  border: 1px solid var(--brass-1, #a88540);
+  border-radius: 3px;
+  background: #17110c;
+  color: var(--brass-hi, #ecd999);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+}
+
+.pick:hover { background: #241a10; }
+
+/* a numbered tab in the right margin, one per commented element */
+.marker {
+  position: fixed;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(212, 179, 106, 0.55);
+  border-radius: 3px;
+  background: #17110c;
+  color: var(--brass-hi, #ecd999);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.82;
+  transition: opacity 120ms ease, background 120ms ease;
+}
+
+.marker:hover { opacity: 1; background: #241a10; }
+.markerOn {
+  opacity: 1;
+  background: var(--brass-hi, #ecd999);
+  color: #17110c;
+}
+
+.count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  min-width: 12px;
+  padding: 0 2px;
+  border-radius: 6px;
+  background: #a23c2c;
+  color: #f6edd7;
+  font-size: 9px;
+  line-height: 12px;
+  text-align: center;
+}
+
+/* the comment box and the thread share one panel */
+.panel {
+  position: fixed;
+  z-index: 9100;
+  width: 316px;
+  max-height: min(70vh, 520px);
+  overflow-y: auto;
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--brass-1, #a88540);
+  border-radius: 4px;
+  background: #17110c;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 9px;
+  border-bottom: 1px solid rgba(212, 179, 106, 0.35);
+  font-size: 11px;
+  color: rgba(246, 237, 215, 0.72);
+}
+
+.key {
+  overflow: hidden;
+  color: var(--brass-hi, #ecd999);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.close {
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  color: rgba(246, 237, 215, 0.6);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.close:hover { color: var(--brass-hi, #ecd999); }
+
+.quote {
+  padding: 7px 9px;
+  border-bottom: 1px solid rgba(212, 179, 106, 0.18);
+  border-left: 2px solid var(--brass-1, #a88540);
+  color: rgba(246, 237, 215, 0.62);
+  font-size: 11px;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.item {
+  padding: 8px 9px;
+  border-bottom: 1px solid rgba(212, 179, 106, 0.18);
+}
+
+.itemDone { opacity: 0.5; }
+
+.body {
+  color: #f2e9d6;
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.meta {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(246, 237, 215, 0.42);
+  font-size: 10px;
+}
+
+.done {
+  padding: 0 4px;
+  border: 1px solid rgba(127, 209, 139, 0.45);
+  border-radius: 2px;
+  color: #7fd18b;
+}
+
+.actions {
+  margin-left: auto;
+  display: flex;
+  gap: 7px;
+}
+
+.action {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgba(246, 237, 215, 0.55);
+  font-family: inherit;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.action:hover { color: var(--brass-hi, #ecd999); }
+.danger:hover { color: #e8674f; }
+
+.foot {
+  padding: 6px 9px;
+  display: flex;
+  gap: 10px;
+  font-size: 10px;
+}
+
+/* the open-comment tally, out of the way until it has something to say */
+.pill {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 8900;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 5px 10px;
+  border: 1px solid rgba(212, 179, 106, 0.45);
+  border-radius: 999px;
+  background: rgba(23, 17, 12, 0.92);
+  color: rgba(246, 237, 215, 0.66);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+
+.pillCount { color: var(--brass-hi, #ecd999); }
+
+.toggle {
+  border: 0;
+  background: transparent;
+  color: rgba(246, 237, 215, 0.55);
+  font-family: inherit;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.toggle:hover { color: var(--brass-hi, #ecd999); }
+.toggleOn { color: #7fd18b; }

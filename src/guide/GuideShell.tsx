@@ -23,6 +23,7 @@ import {
 } from './chapters'
 import { GUIDE_LOCALES } from './guide-locales'
 import styles from './guide.module.css'
+import { ReviewComments } from './ReviewComments'
 import { useReveal } from './useReveal'
 
 // Which section is under the reading line — drives the index's brass marker.
@@ -196,6 +197,7 @@ export function GuideShell({
       </footer>
 
       <CopyEditor />
+      <ReviewComments />
     </div>
   )
 }
