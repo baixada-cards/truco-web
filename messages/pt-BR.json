@@ -1128,7 +1128,6 @@
           "cmdTakeaway": "Read a pure cell as an instruction. Read a mixed cell as permission, and check the Cost view before you worry about the percentages.",
           "cfrHead": "Como a máquina resolve o jogo de verdade",
           "cfrP1": "A árvore real do jogo é grande demais para aritmética à mão, então a solução é calculada com <b>minimização de arrependimento contrafactual</b>: o programa joga contra si mesmo por bilhões de mãos e, a cada decisão, pende um pouco mais para aquilo de que se arrependeu —",
-          "cfrFnote": "Rᵀ(a) soma quanto jogar sempre a teria rendido a mais que a estratégia de fato jogada; arrependimentos positivos, renormalizados, viram a próxima mistura — regret matching.",
           "cfrP2": "Na média do tempo, esse jogo contra si mesmo assenta no equilíbrio, e o resultado é <b>certificado</b> — conferido ação por ação contra uma melhor resposta perfeita — então “exato” significa exato, dentro de uma tolerância declarada.",
           "aside": "Resolver exatamente é caro, e o lab inclui apenas alguns gráficos exportados. Uma opção cinza de Placar ou Vira significa que nenhum gráfico desse spot exato foi carregado aqui; não significa que ele esteja sendo calculado agora, nem que não exista um artefato do solver. O censo de cobertura no apêndice — o capítulo dos números — separa esses casos."
         },
@@ -1339,7 +1338,10 @@
           },
           "simTakeaway": "Quanto importam as coordenadas? Isso foi medido, sobre soluções vizinhas convergidas: <b>classes de vira</b> vizinhas são quase intercambiáveis por onde o jogo de fato passa, enquanto <b>placares</b> vizinhos discordam em cerca de um sétimo do jogo real, concentrado nos primeiros lances da mão. Essa assimetria é o motivo de soluções transferirem entre viras muito mais barato do que entre placares.",
           "sizesTakeaway": "O tamanho dessas árvores — e quanto da grade de 1.296 subgames já está resolvido, a que custo — é material de registro, guardado com o resto das medições.",
-          "seeAppendix": "As tabelas medidas, no apêndice"
+          "seeAppendix": "As tabelas medidas, no apêndice",
+          "updateHead": "The update rule the solver runs",
+          "updateP1": "Chapter ii describes counterfactual regret minimization in words. This is the rule itself. For every decision the solver keeps, per action, the regret accumulated so far: the sum over past iterations of how much better that action would have scored than the strategy actually played. The next strategy is the positive part of those regrets, renormalized. Actions with no positive regret are not played at all until they earn some, and the average of the strategies played over all iterations is what converges to the equilibrium and what the lab shows.",
+          "updateFnote": "Rᵀ(a) soma quanto jogar sempre a teria rendido a mais que a estratégia de fato jogada; arrependimentos positivos, renormalizados, viram a próxima mistura — regret matching."
         },
         "notation": {
           "title": "Anotando uma situação",

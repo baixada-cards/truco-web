@@ -1128,7 +1128,6 @@
           "cmdTakeaway": "Read a pure cell as an instruction. Read a mixed cell as permission, and check the Cost view before you worry about the percentages.",
           "cfrHead": "Cómo la máquina resuelve el juego real",
           "cfrP1": "El árbol real del juego es demasiado grande para aritmética a mano, así que la solución se calcula con <b>minimización de arrepentimiento contrafactual</b>: el programa juega contra sí mismo miles de millones de manos y, en cada decisión, se inclina un poco más hacia lo que se arrepintió de no jugar —",
-          "cfrFnote": "Rᵀ(a) suma cuánto mejor habría rendido jugar siempre a que la estrategia realmente jugada; los arrepentimientos positivos, renormalizados, arman la próxima mezcla — regret matching.",
           "cfrP2": "Promediado en el tiempo, ese juego contra sí mismo se asienta en el equilibrio, y el resultado queda <b>certificado</b> — revisado acción por acción contra una mejor respuesta perfecta — así que “exacto” significa exacto, dentro de una tolerancia declarada.",
           "aside": "Resolver de forma exacta es caro, y el lab incluye solo algunos gráficos exportados. Una opción gris de Marcador o Muestra significa que no hay un gráfico cargado para ese spot exacto; no significa que se esté calculando ahora ni que no exista un artefacto del solver. El censo de cobertura del apéndice — el capítulo de números — separa esos casos."
         },
@@ -1339,7 +1338,10 @@
           },
           "simTakeaway": "¿Cuánto importan las coordenadas? Está medido, sobre soluciones vecinas convergidas: las <b>clases de muestra</b> vecinas son casi intercambiables por donde el juego realmente pasa, mientras que los <b>marcadores</b> vecinos discrepan en cerca de un séptimo del juego real, concentrado en las primeras jugadas de la mano. Esa asimetría es la razón de que las soluciones se transfieran entre muestras mucho más barato que entre marcadores.",
           "sizesTakeaway": "El tamaño de esos árboles — y cuánto de la grilla de 1.296 subjuegos ya está resuelto, y a qué costo — es material de registro, guardado con el resto de las mediciones.",
-          "seeAppendix": "Las tablas medidas, en el apéndice"
+          "seeAppendix": "Las tablas medidas, en el apéndice",
+          "updateHead": "The update rule the solver runs",
+          "updateP1": "Chapter ii describes counterfactual regret minimization in words. This is the rule itself. For every decision the solver keeps, per action, the regret accumulated so far: the sum over past iterations of how much better that action would have scored than the strategy actually played. The next strategy is the positive part of those regrets, renormalized. Actions with no positive regret are not played at all until they earn some, and the average of the strategies played over all iterations is what converges to the equilibrium and what the lab shows.",
+          "updateFnote": "Rᵀ(a) suma cuánto mejor habría rendido jugar siempre a que la estrategia realmente jugada; los arrepentimientos positivos, renormalizados, arman la próxima mezcla — regret matching."
         },
         "notation": {
           "title": "Anotar una jugada",

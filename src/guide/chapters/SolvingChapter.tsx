@@ -3,7 +3,8 @@
 // equilibrium mixes, then the two readings a player needs before trusting a
 // chart: unexploitable is not "best against this opponent", and a mixed cell
 // is permission rather than a command. Ends with how CFR computes the real
-// thing and a references footer.
+// thing, in words (the update rule itself is in Appendix A), and a
+// references footer.
 
 import { useTranslations } from 'next-intl'
 
@@ -20,8 +21,6 @@ const TEX = {
   indiff: String.raw`3 - 6p \;=\; \underbrace{-1}_{\text{fold}} \quad\Longrightarrow\quad p^{\star} = \tfrac{2}{3}`,
   posterior: String.raw`P(\text{m}\clubsuit \mid \text{truco}) \;=\; \frac{\tfrac12}{\tfrac12 + \tfrac12\,b} \;=\; \frac{1}{1+b} \;\overset{!}{=}\; \tfrac{2}{3} \quad\Longrightarrow\quad b^{\star} = \tfrac{1}{2}`,
   bluffEv: String.raw`\mathrm{EV}_{\text{bluff}} \;=\; c\,(-3) \;+\; (1-c)\,(+1) \;=\; 1 - 4c \;\overset{!}{=}\; -1 \quad\Longrightarrow\quad c^{\star} = \tfrac{1}{2}`,
-  regretSum: String.raw`R^{T}(a) \;=\; \sum_{t \,\le\, T} \Bigl( u_t(a) - u_t(\sigma_t) \Bigr)`,
-  regretMatch: String.raw`\sigma_{T+1}(a) \;=\; \frac{\max\!\bigl(R^{T}(a),\,0\bigr)}{\sum_{a'} \max\!\bigl(R^{T}(a'),\,0\bigr)}`,
 } as const
 
 export function SolvingChapter() {
@@ -70,11 +69,6 @@ export function SolvingChapter() {
 
       <Section id="cfr" mark="§ 5" title={t('sec.solving.cfrHead')}>
         <Prose>{t.rich('sec.solving.cfrP1', rich)}</Prose>
-        <div className={styles.formula}>
-          <Math display tex={TEX.regretSum} />
-          <Math display tex={TEX.regretMatch} />
-          <p className={styles.formulaNote}>{t('sec.solving.cfrFnote')}</p>
-        </div>
         <Prose>{t.rich('sec.solving.cfrP2', rich)}</Prose>
         <p className={styles.aside}>{t.rich('sec.solving.aside', rich)}</p>
       </Section>

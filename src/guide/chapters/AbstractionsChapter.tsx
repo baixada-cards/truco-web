@@ -6,12 +6,20 @@
 import { useLocale, useTranslations } from 'next-intl'
 
 import styles from '../guide.module.css'
+import { Math } from '../Math'
 import { ScoreDependencyPlate } from '../plates/ScoreDependencyPlate'
 import { SubgameBacksolvePlate } from '../plates/SubgameBacksolvePlate'
 import { ViraClassPlate } from '../plates/ViraClassPlate'
 import { Reveal, Section } from '../Section'
 import { Prose } from '../Prose'
 import { rich } from '../rich'
+
+// counterfactual regret minimization's update rule, moved here from chapter
+// ii, which keeps the description in words
+const TEX = {
+  regretSum: String.raw`R^{T}(a) \;=\; \sum_{t \,\le\, T} \Bigl( u_t(a) - u_t(\sigma_t) \Bigr)`,
+  regretMatch: String.raw`\sigma_{T+1}(a) \;=\; \frac{\max\!\bigl(R^{T}(a),\,0\bigr)}{\sum_{a'} \max\!\bigl(R^{T}(a'),\,0\bigr)}`,
+} as const
 
 export function AbstractionsChapter() {
   const t = useTranslations('Study.guide')
@@ -139,6 +147,14 @@ export function AbstractionsChapter() {
         </a>
       </Section>
 
+      <Section id="update-rule" mark="§ 6" title={t('sec.abstractions.updateHead')}>
+        <Prose>{t.rich('sec.abstractions.updateP1', rich)}</Prose>
+        <div className={styles.formula}>
+          <Math display tex={TEX.regretSum} />
+          <Math display tex={TEX.regretMatch} />
+          <p className={styles.formulaNote}>{t('sec.abstractions.updateFnote')}</p>
+        </div>
+      </Section>
     </>
   )
 }

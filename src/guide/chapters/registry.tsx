@@ -60,6 +60,7 @@ export const CHAPTER_SECTION_DEFS: Record<GuideChapter, Array<{ id: string; labe
     { id: 'roles', labelKey: 'Study.guide.sec.abstractions.rolesHead' },
     { id: 'vira-classes', labelKey: 'Study.guide.sec.abstractions.viraHead' },
     { id: 'subgames', labelKey: 'Study.guide.sec.abstractions.subgamesHead' },
+    { id: 'update-rule', labelKey: 'Study.guide.sec.abstractions.updateHead' },
   ],
   chart: [
     { id: 'blocks', labelKey: 'Study.guide.sec.chart.blocksHead' },
