@@ -5,16 +5,22 @@
 
 // explicit extension: the node test runner resolves this chain itself
 import { RICH_TAG_NAMES } from './rich-tags.ts'
-import { normalizeScore } from './token-text.ts'
+import { normalizeCard, normalizeScore } from './token-text.ts'
 
 const RICH_TEXT_TOKEN = new RegExp(`</?(?:${RICH_TAG_NAMES.join('|')})>`, 'g')
 
 /** a score renders in one spelling, so the catalog's spelling is read as that */
 const SCORE_TAG = /<score>([^<]*)<\/score>/g
 
+/** a card written as a bare suit is a manilha, and shows its m */
+const CARD_TAG = /<card>([^<]*)<\/card>/g
+const HAND_TAG = /<hand>([^<]*)<\/hand>/g
+
 export function renderedCatalogText(raw: string) {
   return raw
     .replace(SCORE_TAG, (_, inner: string) => normalizeScore(inner))
+    .replace(CARD_TAG, (_, inner: string) => normalizeCard(inner))
+    .replace(HAND_TAG, (_, inner: string) => inner.replace(/\S+/g, (card) => normalizeCard(card)))
     .replace(RICH_TEXT_TOKEN, '')
     .replace(/\s+/g, ' ')
     .trim()

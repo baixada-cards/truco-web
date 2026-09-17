@@ -1216,6 +1216,22 @@ em.matchCut { background: linear-gradient(90deg, #e9d3a4, #c9a96c); }
 }
 .cardTok[data-suit='♥'], .cardTok[data-suit='♦'] { color: var(--suit-red, #a23c2c); }
 
+/* The manilha of a suit, <card>m♣</card> or the bare <card>♣</card>: the same
+   face, the suit a size larger and in the suit's own colour, under a small m
+   in the corner so a bare suit is never read as a typo. The m is lifted by
+   relative position rather than by vertical-align, which would grow the line
+   box; its zero line-height keeps it out of the box entirely. */
+.manilhaTok { font-size: 1.04em; letter-spacing: 0; }
+.manilhaMark {
+  position: relative;
+  top: -0.78em;
+  margin-right: 1px;
+  font-size: 0.52em;
+  font-weight: 700;
+  line-height: 0;
+  opacity: 0.62;
+}
+
 /* a holding: its cards keep the spaces between them, and never break a line */
 .handTok { white-space: nowrap; }
 
@@ -3785,6 +3801,18 @@ em.matchCut { background: linear-gradient(90deg, #e9d3a4, #c9a96c); }
     box-shadow: none;
     font-size: 1em;
     font-variant-numeric: lining-nums;
+  }
+  /* with the face gone a corner mark has no corner to sit in, so the manilha
+     prints as the m♣ the copy used to read */
+  .book .manilhaTok { font-size: 1em; }
+  .book .manilhaMark {
+    position: static;
+    top: auto;
+    margin-right: 0;
+    font-size: 1em;
+    font-weight: 600;
+    line-height: inherit;
+    opacity: 1;
   }
 
   /* ---- plates as plates ---- */

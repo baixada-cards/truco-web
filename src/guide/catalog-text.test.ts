@@ -33,6 +33,14 @@ test('a score is read in the one spelling it renders in, however it is written',
   assert.equal(renderedCatalogText('the <code>11x11 v4</code> export'), 'the 11x11 v4 export')
 })
 
+test('a manilha card reads with the m the token draws, however it is written', () => {
+  assert.equal(renderedCatalogText('the top manilha is <card>♣</card>.'), 'the top manilha is m♣.')
+  assert.equal(renderedCatalogText('the top manilha is <card>m♣</card>.'), 'the top manilha is m♣.')
+  // an ordinary card is untouched, inside a hand as well as alone
+  assert.equal(renderedCatalogText('lead the <card>5♣</card>'), 'lead the 5♣')
+  assert.equal(renderedCatalogText('hold <hand>♥ Q 7</hand>'), 'hold m♥ Q 7')
+})
+
 test('a points token leaves its figure as the DOM spells it', () => {
   assert.equal(
     renderedCatalogText('from <pts>1</pts> point to <pts>3</pts>.'),

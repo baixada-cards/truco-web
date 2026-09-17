@@ -14,6 +14,23 @@ export function tokenText(node: React.ReactNode): string | null {
 }
 
 /**
+ * The manilha of a suit is written as a bare suit, `♣`, or with its m, `m♣`.
+ * Either spelling gives the suit; anything else (`5♣`, `K`) is an ordinary
+ * card and gives null.
+ */
+const MANILHA = /^m?([♣♦♥♠])$/
+
+export function manilhaSuit(text: string) {
+  return MANILHA.exec(text.trim())?.[1] ?? null
+}
+
+/** the text a card shows: a bare suit gains the m the token draws */
+export function normalizeCard(text: string) {
+  const suit = manilhaSuit(text)
+  return suit ? `m${suit}` : text
+}
+
+/**
  * A score may be written `11x11`, `11 x 11` or `11 x 11` with the sign in the
  * catalog, and is always set as one spelling: a multiplication sign between
  * thin spaces. Both the rendered token and renderedCatalogText run this, so
