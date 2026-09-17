@@ -1190,23 +1190,29 @@ em.matchCut { background: linear-gradient(90deg, #e9d3a4, #c9a96c); }
 }
 .chapterLink:hover { color: var(--card-back-a, #5a2a26); border-color: var(--card-back-a, #5a2a26); }
 
-/* A card named in the prose: a hair smaller than the text, a touch heavier
-   and letter-spaced, on a stock-coloured bed rather than inside a rule, so a
-   sentence about the 5♣ still reads as a sentence. Red suits take the
-   guide's vermillion; black suits keep the line's ink.
-   The token keeps the paragraph's own face: the serifs here are set with
+/* A card named in the prose, set as a tiny playing card: white stock inside a
+   warm hairline, the corner radius of a real card at this size, and the
+   faintest shadow under it. Red suits take the guide's vermillion; black
+   suits keep the line's ink.
+   The token stays an inline box with line-height 1 and hairline padding, so a
+   paragraph carrying cards keeps exactly the line spacing of one that does
+   not. It also keeps the paragraph's own face: the serifs here are set with
    old-style figures, which drop a 3 or a 7 below the baseline and read as a
    subscript at this size. */
 .cardTok {
   /* letter-spacing trails the last glyph, so the right pad is a hair shorter
      to keep a following period or colon close to the token */
-  padding: 0 2px 0 3px;
-  border-radius: 3px;
-  background: rgba(122, 109, 86, 0.09);
+  padding: 1.5px 2px 1.5px 3px;
+  border: 1px solid rgba(42, 36, 27, 0.26);
+  border-radius: 2.5px;
+  background: #fffcf4;
+  box-shadow: 0 1px 0 rgba(42, 36, 27, 0.07);
   font-size: 0.95em;
   font-weight: 600;
+  line-height: 1;
   letter-spacing: 0.03em;
   white-space: nowrap;
+  vertical-align: baseline;
 }
 .cardTok[data-suit='♥'], .cardTok[data-suit='♦'] { color: var(--suit-red, #a23c2c); }
 
@@ -3757,11 +3763,14 @@ em.matchCut { background: linear-gradient(90deg, #e9d3a4, #c9a96c); }
     font-weight: 600;
     font-size: 0.94em;
   }
-  /* on paper a card needs no bed: the weight and the letter-spacing carry it,
-     and a red suit keeps its colour */
+  /* on paper the card face goes: a hairline box printed at this size closes
+     up into a grey smudge, so the weight and the letter-spacing carry it, and
+     a red suit keeps its colour */
   .book .cardTok {
     padding: 0;
+    border: 0;
     background: none;
+    box-shadow: none;
     font-size: 1em;
     font-variant-numeric: lining-nums;
   }
