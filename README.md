@@ -142,7 +142,11 @@ touching a component. The inline tags the guide renders are `<b>`, `<i>`,
 `<em>` and `<code>`; the **card notation** `<card>K</card>` for one card and
 `<hand>5♣ Q 7</hand>` for a holding, which splits its text on whitespace into
 one token per card and works over an ICU placeholder too
-(`<hand>{strongestWorstHand}</hand>`); and one **cross-reference tag per
+(`<hand>{strongestWorstHand}</hand>`); the **figures** `<pts>3</pts>` for
+points and stakes and `<score>11 × 11</score>` for a match score, which sets
+its two halves around a multiplication sign however the catalog writes them
+(`11x11`, `11 x 11`, `11 × 11`) and never breaks across a line, while lab
+notation inside `<code>` (`11x11 v4`) is left exactly as written; and one **cross-reference tag per
 chapter**, named after that chapter's id, as in `<ranges>the ranges
 chapter</ranges>`, `<numbers>Appendix B</numbers>`, or `<leads>the opening
 leads chapter</leads>`. A cross-reference links to

@@ -16,6 +16,12 @@ export const TEXT_TAG_NAMES = ['b', 'i', 'em', 'code'] as const
 export const CARD_TAG_NAMES = ['card', 'hand'] as const
 
 /**
+ * Figures: `<pts>3</pts>` is points or stakes, `<score>11 × 11</score>` a
+ * match score, which is normalized to one spelling however it is written.
+ */
+export const NUMBER_TAG_NAMES = ['pts', 'score'] as const
+
+/**
  * A cross-reference is tagged with the target chapter's own id, because
  * next-intl only accepts simple tag names: `<ranges>the ranges chapter</ranges>`
  * links to that chapter, so a new chapter in GUIDE_CHAPTERS gets its tag for
@@ -26,5 +32,6 @@ export const CHAPTER_TAG_NAMES = GUIDE_CHAPTERS
 export const RICH_TAG_NAMES: readonly string[] = [
   ...TEXT_TAG_NAMES,
   ...CARD_TAG_NAMES,
+  ...NUMBER_TAG_NAMES,
   ...CHAPTER_TAG_NAMES,
 ]

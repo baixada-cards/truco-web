@@ -10,19 +10,9 @@
 import { Fragment } from 'react'
 
 import styles from './guide.module.css'
+import { tokenText } from './token-text'
 
 const SUITS = new Set(['♣', '♦', '♥', '♠'])
-
-/** the plain text of a tag's chunks, or null when it is not plain text */
-function tokenText(node: React.ReactNode): string | null {
-  if (typeof node === 'string') return node
-  if (typeof node === 'number') return String(node)
-  if (Array.isArray(node)) {
-    const parts = node.map(tokenText)
-    return parts.every((part) => part !== null) ? parts.join('') : null
-  }
-  return null
-}
 
 export function CardToken({ children }: { children: React.ReactNode }) {
   const text = tokenText(children)

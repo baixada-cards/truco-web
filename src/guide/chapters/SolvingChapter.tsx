@@ -39,7 +39,7 @@ export function SolvingChapter() {
         <div className={styles.formula}>
           <Math display tex={TEX.evCall} />
           <Math display tex={TEX.indiff} />
-          <p className={styles.formulaNote}>{t('sec.solving.toyFnote')}</p>
+          <p className={styles.formulaNote}>{t.rich('sec.solving.toyFnote', rich)}</p>
         </div>
         <Prose>{t.rich('sec.solving.toyP3', rich)}</Prose>
       </Section>

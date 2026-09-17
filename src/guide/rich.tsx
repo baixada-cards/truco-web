@@ -5,6 +5,7 @@
 import { CardToken, HandToken } from './CardTokens'
 import { ChapterLink } from './ChapterLink'
 import type { GuideChapter } from './chapters'
+import { PointsToken, ScoreToken } from './NumberTokens'
 import { CHAPTER_TAG_NAMES } from './rich-tags'
 
 type TagRenderer = (chunks: React.ReactNode) => React.ReactNode
@@ -24,5 +25,7 @@ export const rich = {
   code: (chunks: React.ReactNode) => <code>{chunks}</code>,
   card: (chunks: React.ReactNode) => <CardToken>{chunks}</CardToken>,
   hand: (chunks: React.ReactNode) => <HandToken>{chunks}</HandToken>,
+  pts: (chunks: React.ReactNode) => <PointsToken>{chunks}</PointsToken>,
+  score: (chunks: React.ReactNode) => <ScoreToken>{chunks}</ScoreToken>,
   ...chapterTags,
 }

@@ -24,6 +24,22 @@ test('card and hand tokens leave the cards as the DOM spells them', () => {
   )
 })
 
+test('a score is read in the one spelling it renders in, however it is written', () => {
+  // the thin spaces the token sets collapse to ordinary ones on both sides
+  assert.equal(renderedCatalogText('at <score>11x11</score> the hand is worth 3.'), 'at 11 × 11 the hand is worth 3.')
+  assert.equal(renderedCatalogText('at <score>11 x 11</score>.'), 'at 11 × 11.')
+  assert.equal(renderedCatalogText('at <score>11 × 11</score>.'), 'at 11 × 11.')
+  // lab notation inside <code> is not a score and is left as written
+  assert.equal(renderedCatalogText('the <code>11x11 v4</code> export'), 'the 11x11 v4 export')
+})
+
+test('a points token leaves its figure as the DOM spells it', () => {
+  assert.equal(
+    renderedCatalogText('from <pts>1</pts> point to <pts>3</pts>.'),
+    'from 1 point to 3.',
+  )
+})
+
 test('catalog whitespace collapses to the same shape as DOM text', () => {
   assert.equal(renderedCatalogText('  first\n\n second\tthird  '), 'first second third')
 })
