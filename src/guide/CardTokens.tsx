@@ -4,15 +4,19 @@
 // solver export renders (`<hand>{strongestWorstHand}</hand>`): next-intl has
 // already substituted the value by the time the tag is called.
 //
-// A card whose text is a bare suit, `<card>♣</card>`, or an m and a suit,
-// `<card>m♣</card>`, is the manilha of that suit: the same card face, showing
-// the suit large in the suit's own colour under a small m in the corner. The
-// m is a real text node in both spellings, so the element's text is "m♣"
-// either way — and renderedCatalogText writes the same m into a bare suit, so
-// the copy editor still matches the paragraph to its key.
+// In this notation a plain card is a rank with no suit, and a manilha is
+// identified by its suit alone: the same white card face, showing only the
+// suit, in the suit's own colour and sized to the width of a rank card. A
+// card whose text is a bare suit, `<card>♣</card>`; an m and a suit,
+// `<card>m♣</card>` (the old spelling, kept as an alias since the formulas
+// still write it); or a rank and a suit, `<card>5♣</card>` (a solver label,
+// or a card inside a `<hand>`): all three are the manilha of that suit and
+// render the same suit-only face. normalizeCard folds all three to the bare
+// suit, so renderedCatalogText writes the same text into any of them and the
+// copy editor still matches the paragraph to its key.
 //
 // The spaces between a hand's cards are real text nodes too, so a holding's
-// text stays "5♣ Q 7".
+// text stays "5♣ Q 7" even where the manilha inside it renders as "♣".
 
 import { Fragment } from 'react'
 
@@ -30,14 +34,7 @@ export function CardToken({ children }: { children: React.ReactNode }) {
       className={manilha ? `${styles.cardTok} ${styles.manilhaTok}` : styles.cardTok}
       data-suit={suit && SUITS.has(suit) ? suit : undefined}
     >
-      {manilha ? (
-        <>
-          <span className={styles.manilhaMark}>m</span>
-          {manilha}
-        </>
-      ) : (
-        (text ?? children)
-      )}
+      {manilha ?? (text ?? children)}
     </span>
   )
 }

@@ -17,10 +17,10 @@ test('a cross-reference tag leaves only the words it links', () => {
   )
 })
 
-test('card and hand tokens leave the cards as the DOM spells them', () => {
+test('card and hand tokens leave plain cards as the DOM spells them', () => {
   assert.equal(
-    renderedCatalogText('Take <hand>5♣ Q 7</hand> and lead the <card>7</card>.'),
-    'Take 5♣ Q 7 and lead the 7.',
+    renderedCatalogText('Take <hand>Q 7 3</hand> and lead the <card>7</card>.'),
+    'Take Q 7 3 and lead the 7.',
   )
 })
 
@@ -33,12 +33,12 @@ test('a score is read in the one spelling it renders in, however it is written',
   assert.equal(renderedCatalogText('the <code>11x11 v4</code> export'), 'the 11x11 v4 export')
 })
 
-test('a manilha card reads with the m the token draws, however it is written', () => {
-  assert.equal(renderedCatalogText('the top manilha is <card>♣</card>.'), 'the top manilha is m♣.')
-  assert.equal(renderedCatalogText('the top manilha is <card>m♣</card>.'), 'the top manilha is m♣.')
-  // an ordinary card is untouched, inside a hand as well as alone
-  assert.equal(renderedCatalogText('lead the <card>5♣</card>'), 'lead the 5♣')
-  assert.equal(renderedCatalogText('hold <hand>♥ Q 7</hand>'), 'hold m♥ Q 7')
+test('a manilha card reads as its suit, however it is written', () => {
+  assert.equal(renderedCatalogText('the top manilha is <card>♣</card>.'), 'the top manilha is ♣.')
+  assert.equal(renderedCatalogText('the top manilha is <card>m♣</card>.'), 'the top manilha is ♣.')
+  // a rank and suit together are the manilha of that suit too, inside a hand as well as alone
+  assert.equal(renderedCatalogText('lead the <card>5♥</card>'), 'lead the ♥')
+  assert.equal(renderedCatalogText('hold <hand>5♣ Q 7</hand>'), 'hold ♣ Q 7')
 })
 
 test('a points token leaves its figure as the DOM spells it', () => {

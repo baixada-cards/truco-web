@@ -14,20 +14,21 @@ export function tokenText(node: React.ReactNode): string | null {
 }
 
 /**
- * The manilha of a suit is written as a bare suit, `♣`, or with its m, `m♣`.
- * Either spelling gives the suit; anything else (`5♣`, `K`) is an ordinary
- * card and gives null.
+ * A manilha is identified by its suit alone. The suit is written bare,
+ * `♣`; with its old m, `m♣` (kept as an alias, since the formulas still
+ * write it); or with a rank in front, `5♣` (a solver label, or a card inside
+ * a `<hand>`). All three name the same manilha and give its suit; a rank
+ * with no suit (`K`) is an ordinary card and gives null.
  */
-const MANILHA = /^m?([♣♦♥♠])$/
+const MANILHA = /^[^♣♦♥♠\s]*([♣♦♥♠])$/
 
 export function manilhaSuit(text: string) {
   return MANILHA.exec(text.trim())?.[1] ?? null
 }
 
-/** the text a card shows: a bare suit gains the m the token draws */
+/** the text a card shows: a manilha, in any spelling, shows only its suit */
 export function normalizeCard(text: string) {
-  const suit = manilhaSuit(text)
-  return suit ? `m${suit}` : text
+  return manilhaSuit(text) ?? text
 }
 
 /**

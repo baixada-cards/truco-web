@@ -12,7 +12,7 @@ const RICH_TEXT_TOKEN = new RegExp(`</?(?:${RICH_TAG_NAMES.join('|')})>`, 'g')
 /** a score renders in one spelling, so the catalog's spelling is read as that */
 const SCORE_TAG = /<score>([^<]*)<\/score>/g
 
-/** a card written as a bare suit is a manilha, and shows its m */
+/** a card naming only a suit, or a rank and suit, is a manilha and shows its suit */
 const CARD_TAG = /<card>([^<]*)<\/card>/g
 const HAND_TAG = /<hand>([^<]*)<\/hand>/g
 

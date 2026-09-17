@@ -142,10 +142,13 @@ touching a component. The inline tags the guide renders are `<b>`, `<i>`,
 `<em>` and `<code>`; the **card notation** `<card>K</card>` for one card and
 `<hand>5♣ Q 7</hand>` for a holding, which splits its text on whitespace into
 one token per card and works over an ICU placeholder too
-(`<hand>{strongestWorstHand}</hand>`) — a card whose text is a bare suit
-(`<card>♣</card>`) or an m and a suit (`<card>m♣</card>`) is the **manilha of
-that suit**, drawn with the suit large and a small m in the corner, and reads
-as `m♣` either way; the **figures** `<pts>3</pts>` for
+(`<hand>{strongestWorstHand}</hand>`): a plain rank card carries no suit, and
+a **manilha** is written as its suit alone: `<card>♣</card>` draws the white
+card face showing only the suit, in the suit's own colour and sized to the
+width of a rank card. `<card>m♣</card>` is kept as an alias of the same card, since the formulas
+still write the m; and `5♣` in a catalog string or a solver label, such as
+`<card>5♣</card>` or a card inside `<hand>5♣ Q 7</hand>`, normalizes to the
+bare suit the same way; the **figures** `<pts>3</pts>` for
 points and stakes and `<score>11 × 11</score>` for a match score, which sets
 its two halves around a multiplication sign however the catalog writes them
 (`11x11`, `11 x 11`, `11 × 11`) and never breaks across a line, while lab
