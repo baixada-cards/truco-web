@@ -59,12 +59,12 @@
       "nanoid@<3.3.18": "3.3.18",
       "picomatch@>=4.0.0 <4.0.4": "4.0.4",
       "postcss@<8.5.23": "8.5.23",
-      "sharp@<0.35.0": "0.35.0",
       "fast-uri@>=3.0.0 <3.1.8": "3.1.8",
       "brace-expansion@<1.1.21": "1.1.21",
       "brace-expansion@>=2.0.0 <2.1.7": "2.1.7",
       "brace-expansion@>=3.0.0 <3.0.9": "3.0.9",
-      "brace-expansion@>=5.0.0 <5.0.12": "5.0.12"
+      "brace-expansion@>=5.0.0 <5.0.12": "5.0.12",
+      "sharp@<0.35.5": "0.35.5"
     }
   },
   "packageManager": "pnpm@10.26.2",
