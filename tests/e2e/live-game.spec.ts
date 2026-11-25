@@ -362,9 +362,10 @@ test('launcher walnut is one continuous full-screen surface', async ({ page }) =
   })
 
   expect(launcherMaterial.backgroundImage).toContain('rich-walnut.webp')
-  expect(launcherMaterial.backgroundPosition.split(', ')).toEqual(Array(6).fill('50% 50%'))
-  expect(launcherMaterial.backgroundRepeat.split(', ')).toEqual(Array(6).fill('no-repeat'))
-  expect(launcherMaterial.backgroundSize.split(', ')).toEqual(Array(6).fill('cover'))
+  // CSS repeats shorter background lists across layers. Chromium can serialize that as one value.
+  expect([...new Set(launcherMaterial.backgroundPosition.split(', '))]).toEqual(['50% 50%'])
+  expect([...new Set(launcherMaterial.backgroundRepeat.split(', '))]).toEqual(['no-repeat'])
+  expect([...new Set(launcherMaterial.backgroundSize.split(', '))]).toEqual(['cover'])
   expect(launcherMaterial.height).toBe(launcherMaterial.viewportHeight)
   expect(launcherMaterial.width).toBe(launcherMaterial.viewportWidth)
 })
